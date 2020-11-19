@@ -1,0 +1,2633 @@
+Verbosity level: 2
+Query Variable: 'MINVOLSET'
+Observed Variables: {'VENTMACH': 'LOW'}
+
+Elimination ordering function: most_outgoing_arcs.
+Elimination variable ordering: ['INTUBATION', 'HR', 'LVFAILURE', 'VENTLUNG', 'HYPOVOLEMIA', 'LVEDVOLUME', 'ERRCAUTER', 'TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'STROKEVOLUME', 'ERRLOWOUTPUT', 'INSUFFANESTH', 'ANAPHYLAXIS', 'FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'MINVOLSET', 'VENTMACH', 'CATECHOL', 'CO', 'HISTORY', 'CVP', 'PCWP', 'HRBP', 'HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP'].
+
+Identified Factors, before reducing observed variables
+f_0(HISTORY, LVFAILURE) = 
+  HISTORY LVFAILURE  prob
+0    TRUE      TRUE  0.90
+1   FALSE      TRUE  0.10
+2    TRUE     FALSE  0.01
+3   FALSE     FALSE  0.99
+
+f_1(LVEDVOLUME, CVP) = 
+      CVP LVEDVOLUME  prob
+0     LOW        LOW  0.95
+1  NORMAL        LOW  0.04
+2    HIGH        LOW  0.01
+3     LOW     NORMAL  0.04
+4  NORMAL     NORMAL  0.95
+5    HIGH     NORMAL  0.01
+6     LOW       HIGH  0.01
+7  NORMAL       HIGH  0.29
+8    HIGH       HIGH  0.70
+
+f_2(LVEDVOLUME, PCWP) = 
+     PCWP LVEDVOLUME  prob
+0     LOW        LOW  0.95
+1  NORMAL        LOW  0.04
+2    HIGH        LOW  0.01
+3     LOW     NORMAL  0.04
+4  NORMAL     NORMAL  0.95
+5    HIGH     NORMAL  0.01
+6     LOW       HIGH  0.01
+7  NORMAL       HIGH  0.04
+8    HIGH       HIGH  0.95
+
+f_3(HYPOVOLEMIA) = 
+  HYPOVOLEMIA  prob
+0        TRUE   0.2
+1       FALSE   0.8
+
+f_4(LVEDVOLUME, HYPOVOLEMIA, LVFAILURE) = 
+   LVEDVOLUME HYPOVOLEMIA LVFAILURE  prob
+0         LOW        TRUE      TRUE  0.95
+1      NORMAL        TRUE      TRUE  0.04
+2        HIGH        TRUE      TRUE  0.01
+3         LOW       FALSE      TRUE  0.98
+4      NORMAL       FALSE      TRUE  0.01
+5        HIGH       FALSE      TRUE  0.01
+6         LOW        TRUE     FALSE  0.01
+7      NORMAL        TRUE     FALSE  0.09
+8        HIGH        TRUE     FALSE  0.90
+9         LOW       FALSE     FALSE  0.05
+10     NORMAL       FALSE     FALSE  0.90
+11       HIGH       FALSE     FALSE  0.05
+
+f_5(LVFAILURE) = 
+  LVFAILURE  prob
+0      TRUE  0.05
+1     FALSE  0.95
+
+f_6(LVFAILURE, HYPOVOLEMIA, STROKEVOLUME) = 
+   STROKEVOLUME HYPOVOLEMIA LVFAILURE  prob
+0           LOW        TRUE      TRUE  0.98
+1        NORMAL        TRUE      TRUE  0.01
+2          HIGH        TRUE      TRUE  0.01
+3           LOW       FALSE      TRUE  0.95
+4        NORMAL       FALSE      TRUE  0.04
+5          HIGH       FALSE      TRUE  0.01
+6           LOW        TRUE     FALSE  0.50
+7        NORMAL        TRUE     FALSE  0.49
+8          HIGH        TRUE     FALSE  0.01
+9           LOW       FALSE     FALSE  0.05
+10       NORMAL       FALSE     FALSE  0.90
+11         HIGH       FALSE     FALSE  0.05
+
+f_7(ERRLOWOUTPUT) = 
+  ERRLOWOUTPUT  prob
+0         TRUE  0.05
+1        FALSE  0.95
+
+f_8(HRBP, HR, ERRLOWOUTPUT) = 
+      HRBP ERRLOWOUTPUT      HR  prob
+0      LOW         TRUE     LOW  0.98
+1   NORMAL         TRUE     LOW  0.01
+2     HIGH         TRUE     LOW  0.01
+3      LOW        FALSE     LOW  0.40
+4   NORMAL        FALSE     LOW  0.59
+5     HIGH        FALSE     LOW  0.01
+6      LOW         TRUE  NORMAL  0.30
+7   NORMAL         TRUE  NORMAL  0.40
+8     HIGH         TRUE  NORMAL  0.30
+9      LOW        FALSE  NORMAL  0.98
+10  NORMAL        FALSE  NORMAL  0.01
+11    HIGH        FALSE  NORMAL  0.01
+12     LOW         TRUE    HIGH  0.01
+13  NORMAL         TRUE    HIGH  0.98
+14    HIGH         TRUE    HIGH  0.01
+15     LOW        FALSE    HIGH  0.01
+16  NORMAL        FALSE    HIGH  0.01
+17    HIGH        FALSE    HIGH  0.98
+
+f_9(HREKG, ERRCAUTER, HR) = 
+     HREKG ERRCAUTER      HR      prob
+0      LOW      TRUE     LOW  0.333333
+1   NORMAL      TRUE     LOW  0.333333
+2     HIGH      TRUE     LOW  0.333333
+3      LOW     FALSE     LOW  0.333333
+4   NORMAL     FALSE     LOW  0.333333
+5     HIGH     FALSE     LOW  0.333333
+6      LOW      TRUE  NORMAL  0.333333
+7   NORMAL      TRUE  NORMAL  0.333333
+8     HIGH      TRUE  NORMAL  0.333333
+9      LOW     FALSE  NORMAL  0.980000
+10  NORMAL     FALSE  NORMAL  0.010000
+11    HIGH     FALSE  NORMAL  0.010000
+12     LOW      TRUE    HIGH  0.010000
+13  NORMAL      TRUE    HIGH  0.980000
+14    HIGH      TRUE    HIGH  0.010000
+15     LOW     FALSE    HIGH  0.010000
+16  NORMAL     FALSE    HIGH  0.010000
+17    HIGH     FALSE    HIGH  0.980000
+
+f_10(ERRCAUTER) = 
+  ERRCAUTER  prob
+0      TRUE   0.1
+1     FALSE   0.9
+
+f_11(ERRCAUTER, HRSAT, HR) = 
+     HRSAT ERRCAUTER      HR      prob
+0      LOW      TRUE     LOW  0.333333
+1   NORMAL      TRUE     LOW  0.333333
+2     HIGH      TRUE     LOW  0.333333
+3      LOW     FALSE     LOW  0.333333
+4   NORMAL     FALSE     LOW  0.333333
+5     HIGH     FALSE     LOW  0.333333
+6      LOW      TRUE  NORMAL  0.333333
+7   NORMAL      TRUE  NORMAL  0.333333
+8     HIGH      TRUE  NORMAL  0.333333
+9      LOW     FALSE  NORMAL  0.980000
+10  NORMAL     FALSE  NORMAL  0.010000
+11    HIGH     FALSE  NORMAL  0.010000
+12     LOW      TRUE    HIGH  0.010000
+13  NORMAL      TRUE    HIGH  0.980000
+14    HIGH      TRUE    HIGH  0.010000
+15     LOW     FALSE    HIGH  0.010000
+16  NORMAL     FALSE    HIGH  0.010000
+17    HIGH     FALSE    HIGH  0.980000
+
+f_12(INSUFFANESTH) = 
+  INSUFFANESTH  prob
+0         TRUE   0.1
+1        FALSE   0.9
+
+f_13(ANAPHYLAXIS) = 
+  ANAPHYLAXIS  prob
+0        TRUE  0.01
+1       FALSE  0.99
+
+f_14(ANAPHYLAXIS, TPR) = 
+      TPR ANAPHYLAXIS  prob
+0     LOW        TRUE  0.98
+1  NORMAL        TRUE  0.01
+2    HIGH        TRUE  0.01
+3     LOW       FALSE  0.30
+4  NORMAL       FALSE  0.40
+5    HIGH       FALSE  0.30
+
+f_15(ARTCO2, VENTLUNG, EXPCO2) = 
+    EXPCO2  ARTCO2 VENTLUNG  prob
+0     ZERO     LOW     ZERO  0.97
+1      LOW     LOW     ZERO  0.01
+2   NORMAL     LOW     ZERO  0.01
+3     HIGH     LOW     ZERO  0.01
+4     ZERO  NORMAL     ZERO  0.01
+5      LOW  NORMAL     ZERO  0.97
+6   NORMAL  NORMAL     ZERO  0.01
+7     HIGH  NORMAL     ZERO  0.01
+8     ZERO    HIGH     ZERO  0.01
+9      LOW    HIGH     ZERO  0.97
+10  NORMAL    HIGH     ZERO  0.01
+11    HIGH    HIGH     ZERO  0.01
+12    ZERO     LOW      LOW  0.01
+13     LOW     LOW      LOW  0.97
+14  NORMAL     LOW      LOW  0.01
+15    HIGH     LOW      LOW  0.01
+16    ZERO  NORMAL      LOW  0.97
+17     LOW  NORMAL      LOW  0.01
+18  NORMAL  NORMAL      LOW  0.01
+19    HIGH  NORMAL      LOW  0.01
+20    ZERO    HIGH      LOW  0.01
+21     LOW    HIGH      LOW  0.01
+22  NORMAL    HIGH      LOW  0.97
+23    HIGH    HIGH      LOW  0.01
+24    ZERO     LOW   NORMAL  0.01
+25     LOW     LOW   NORMAL  0.01
+26  NORMAL     LOW   NORMAL  0.97
+27    HIGH     LOW   NORMAL  0.01
+28    ZERO  NORMAL   NORMAL  0.01
+29     LOW  NORMAL   NORMAL  0.01
+30  NORMAL  NORMAL   NORMAL  0.97
+31    HIGH  NORMAL   NORMAL  0.01
+32    ZERO    HIGH   NORMAL  0.97
+33     LOW    HIGH   NORMAL  0.01
+34  NORMAL    HIGH   NORMAL  0.01
+35    HIGH    HIGH   NORMAL  0.01
+36    ZERO     LOW     HIGH  0.01
+37     LOW     LOW     HIGH  0.01
+38  NORMAL     LOW     HIGH  0.01
+39    HIGH     LOW     HIGH  0.97
+40    ZERO  NORMAL     HIGH  0.01
+41     LOW  NORMAL     HIGH  0.01
+42  NORMAL  NORMAL     HIGH  0.01
+43    HIGH  NORMAL     HIGH  0.97
+44    ZERO    HIGH     HIGH  0.01
+45     LOW    HIGH     HIGH  0.01
+46  NORMAL    HIGH     HIGH  0.01
+47    HIGH    HIGH     HIGH  0.97
+
+f_16(KINKEDTUBE) = 
+  KINKEDTUBE  prob
+0       TRUE  0.04
+1      FALSE  0.96
+
+f_17(INTUBATION, MINVOL, VENTLUNG) = 
+    MINVOL  INTUBATION VENTLUNG  prob
+0     ZERO      NORMAL     ZERO  0.97
+1      LOW      NORMAL     ZERO  0.01
+2   NORMAL      NORMAL     ZERO  0.01
+3     HIGH      NORMAL     ZERO  0.01
+4     ZERO  ESOPHAGEAL     ZERO  0.01
+5      LOW  ESOPHAGEAL     ZERO  0.97
+6   NORMAL  ESOPHAGEAL     ZERO  0.01
+7     HIGH  ESOPHAGEAL     ZERO  0.01
+8     ZERO    ONESIDED     ZERO  0.01
+9      LOW    ONESIDED     ZERO  0.01
+10  NORMAL    ONESIDED     ZERO  0.97
+11    HIGH    ONESIDED     ZERO  0.01
+12    ZERO      NORMAL      LOW  0.01
+13     LOW      NORMAL      LOW  0.01
+14  NORMAL      NORMAL      LOW  0.01
+15    HIGH      NORMAL      LOW  0.97
+16    ZERO  ESOPHAGEAL      LOW  0.97
+17     LOW  ESOPHAGEAL      LOW  0.01
+18  NORMAL  ESOPHAGEAL      LOW  0.01
+19    HIGH  ESOPHAGEAL      LOW  0.01
+20    ZERO    ONESIDED      LOW  0.60
+21     LOW    ONESIDED      LOW  0.38
+22  NORMAL    ONESIDED      LOW  0.01
+23    HIGH    ONESIDED      LOW  0.01
+24    ZERO      NORMAL   NORMAL  0.50
+25     LOW      NORMAL   NORMAL  0.48
+26  NORMAL      NORMAL   NORMAL  0.01
+27    HIGH      NORMAL   NORMAL  0.01
+28    ZERO  ESOPHAGEAL   NORMAL  0.50
+29     LOW  ESOPHAGEAL   NORMAL  0.48
+30  NORMAL  ESOPHAGEAL   NORMAL  0.01
+31    HIGH  ESOPHAGEAL   NORMAL  0.01
+32    ZERO    ONESIDED   NORMAL  0.97
+33     LOW    ONESIDED   NORMAL  0.01
+34  NORMAL    ONESIDED   NORMAL  0.01
+35    HIGH    ONESIDED   NORMAL  0.01
+36    ZERO      NORMAL     HIGH  0.01
+37     LOW      NORMAL     HIGH  0.97
+38  NORMAL      NORMAL     HIGH  0.01
+39    HIGH      NORMAL     HIGH  0.01
+40    ZERO  ESOPHAGEAL     HIGH  0.01
+41     LOW  ESOPHAGEAL     HIGH  0.01
+42  NORMAL  ESOPHAGEAL     HIGH  0.97
+43    HIGH  ESOPHAGEAL     HIGH  0.01
+44    ZERO    ONESIDED     HIGH  0.01
+45     LOW    ONESIDED     HIGH  0.01
+46  NORMAL    ONESIDED     HIGH  0.01
+47    HIGH    ONESIDED     HIGH  0.97
+
+f_18(FIO2) = 
+     FIO2  prob
+0     LOW  0.05
+1  NORMAL  0.95
+
+f_19(FIO2, PVSAT, VENTALV) = 
+     PVSAT    FIO2 VENTALV  prob
+0      LOW     LOW    ZERO  1.00
+1   NORMAL     LOW    ZERO  0.00
+2     HIGH     LOW    ZERO  0.00
+3      LOW  NORMAL    ZERO  0.99
+4   NORMAL  NORMAL    ZERO  0.01
+5     HIGH  NORMAL    ZERO  0.00
+6      LOW     LOW     LOW  0.95
+7   NORMAL     LOW     LOW  0.04
+8     HIGH     LOW     LOW  0.01
+9      LOW  NORMAL     LOW  0.95
+10  NORMAL  NORMAL     LOW  0.04
+11    HIGH  NORMAL     LOW  0.01
+12     LOW     LOW  NORMAL  1.00
+13  NORMAL     LOW  NORMAL  0.00
+14    HIGH     LOW  NORMAL  0.00
+15     LOW  NORMAL  NORMAL  0.95
+16  NORMAL  NORMAL  NORMAL  0.04
+17    HIGH  NORMAL  NORMAL  0.01
+18     LOW     LOW    HIGH  0.01
+19  NORMAL     LOW    HIGH  0.95
+20    HIGH     LOW    HIGH  0.04
+21     LOW  NORMAL    HIGH  0.01
+22  NORMAL  NORMAL    HIGH  0.01
+23    HIGH  NORMAL    HIGH  0.98
+
+f_20(SAO2, SHUNT, PVSAT) = 
+      SAO2   PVSAT   SHUNT  prob
+0      LOW     LOW  NORMAL  0.98
+1   NORMAL     LOW  NORMAL  0.01
+2     HIGH     LOW  NORMAL  0.01
+3      LOW  NORMAL  NORMAL  0.01
+4   NORMAL  NORMAL  NORMAL  0.98
+5     HIGH  NORMAL  NORMAL  0.01
+6      LOW    HIGH  NORMAL  0.01
+7   NORMAL    HIGH  NORMAL  0.01
+8     HIGH    HIGH  NORMAL  0.98
+9      LOW     LOW    HIGH  0.98
+10  NORMAL     LOW    HIGH  0.01
+11    HIGH     LOW    HIGH  0.01
+12     LOW  NORMAL    HIGH  0.98
+13  NORMAL  NORMAL    HIGH  0.01
+14    HIGH  NORMAL    HIGH  0.01
+15     LOW    HIGH    HIGH  0.69
+16  NORMAL    HIGH    HIGH  0.30
+17    HIGH    HIGH    HIGH  0.01
+
+f_21(PAP, PULMEMBOLUS) = 
+      PAP PULMEMBOLUS  prob
+0     LOW        TRUE  0.01
+1  NORMAL        TRUE  0.19
+2    HIGH        TRUE  0.80
+3     LOW       FALSE  0.05
+4  NORMAL       FALSE  0.90
+5    HIGH       FALSE  0.05
+
+f_22(PULMEMBOLUS) = 
+  PULMEMBOLUS  prob
+0        TRUE  0.01
+1       FALSE  0.99
+
+f_23(SHUNT, PULMEMBOLUS, INTUBATION) = 
+     SHUNT  INTUBATION PULMEMBOLUS  prob
+0   NORMAL      NORMAL        TRUE  0.10
+1     HIGH      NORMAL        TRUE  0.90
+2   NORMAL  ESOPHAGEAL        TRUE  0.10
+3     HIGH  ESOPHAGEAL        TRUE  0.90
+4   NORMAL    ONESIDED        TRUE  0.01
+5     HIGH    ONESIDED        TRUE  0.99
+6   NORMAL      NORMAL       FALSE  0.95
+7     HIGH      NORMAL       FALSE  0.05
+8   NORMAL  ESOPHAGEAL       FALSE  0.95
+9     HIGH  ESOPHAGEAL       FALSE  0.05
+10  NORMAL    ONESIDED       FALSE  0.05
+11    HIGH    ONESIDED       FALSE  0.95
+
+f_24(INTUBATION) = 
+   INTUBATION  prob
+0      NORMAL  0.92
+1  ESOPHAGEAL  0.03
+2    ONESIDED  0.05
+
+f_25(PRESS, INTUBATION, VENTTUBE, KINKEDTUBE) = 
+     PRESS  INTUBATION KINKEDTUBE VENTTUBE  prob
+0     ZERO      NORMAL       TRUE     ZERO  0.97
+1      LOW      NORMAL       TRUE     ZERO  0.01
+2   NORMAL      NORMAL       TRUE     ZERO  0.01
+3     HIGH      NORMAL       TRUE     ZERO  0.01
+4     ZERO  ESOPHAGEAL       TRUE     ZERO  0.01
+..     ...         ...        ...      ...   ...
+91    HIGH  ESOPHAGEAL      FALSE     HIGH  0.60
+92    ZERO    ONESIDED      FALSE     HIGH  0.01
+93     LOW    ONESIDED      FALSE     HIGH  0.01
+94  NORMAL    ONESIDED      FALSE     HIGH  0.01
+95    HIGH    ONESIDED      FALSE     HIGH  0.97
+
+[96 rows x 5 columns]
+
+f_26(DISCONNECT) = 
+  DISCONNECT  prob
+0       TRUE   0.1
+1      FALSE   0.9
+
+f_27(MINVOLSET) = 
+  MINVOLSET  prob
+0       LOW  0.05
+1    NORMAL  0.90
+2      HIGH  0.05
+
+f_28(MINVOLSET, VENTMACH) = 
+   VENTMACH MINVOLSET  prob
+0      ZERO       LOW  0.05
+1       LOW       LOW  0.93
+2    NORMAL       LOW  0.01
+3      HIGH       LOW  0.01
+4      ZERO    NORMAL  0.05
+5       LOW    NORMAL  0.01
+6    NORMAL    NORMAL  0.93
+7      HIGH    NORMAL  0.01
+8      ZERO      HIGH  0.05
+9       LOW      HIGH  0.01
+10   NORMAL      HIGH  0.01
+11     HIGH      HIGH  0.93
+
+f_29(DISCONNECT, VENTTUBE, VENTMACH) = 
+   VENTTUBE DISCONNECT VENTMACH  prob
+0      ZERO       TRUE     ZERO  0.97
+1       LOW       TRUE     ZERO  0.01
+2    NORMAL       TRUE     ZERO  0.01
+3      HIGH       TRUE     ZERO  0.01
+4      ZERO      FALSE     ZERO  0.97
+5       LOW      FALSE     ZERO  0.01
+6    NORMAL      FALSE     ZERO  0.01
+7      HIGH      FALSE     ZERO  0.01
+8      ZERO       TRUE      LOW  0.97
+9       LOW       TRUE      LOW  0.01
+10   NORMAL       TRUE      LOW  0.01
+11     HIGH       TRUE      LOW  0.01
+12     ZERO      FALSE      LOW  0.97
+13      LOW      FALSE      LOW  0.01
+14   NORMAL      FALSE      LOW  0.01
+15     HIGH      FALSE      LOW  0.01
+16     ZERO       TRUE   NORMAL  0.97
+17      LOW       TRUE   NORMAL  0.01
+18   NORMAL       TRUE   NORMAL  0.01
+19     HIGH       TRUE   NORMAL  0.01
+20     ZERO      FALSE   NORMAL  0.01
+21      LOW      FALSE   NORMAL  0.97
+22   NORMAL      FALSE   NORMAL  0.01
+23     HIGH      FALSE   NORMAL  0.01
+24     ZERO       TRUE     HIGH  0.01
+25      LOW       TRUE     HIGH  0.01
+26   NORMAL       TRUE     HIGH  0.97
+27     HIGH       TRUE     HIGH  0.01
+28     ZERO      FALSE     HIGH  0.01
+29      LOW      FALSE     HIGH  0.01
+30   NORMAL      FALSE     HIGH  0.01
+31     HIGH      FALSE     HIGH  0.97
+
+f_30(KINKEDTUBE, INTUBATION, VENTTUBE, VENTLUNG) = 
+   VENTLUNG  INTUBATION KINKEDTUBE VENTTUBE  prob
+0      ZERO      NORMAL       TRUE     ZERO  0.97
+1       LOW      NORMAL       TRUE     ZERO  0.01
+2    NORMAL      NORMAL       TRUE     ZERO  0.01
+3      HIGH      NORMAL       TRUE     ZERO  0.01
+4      ZERO  ESOPHAGEAL       TRUE     ZERO  0.95
+..      ...         ...        ...      ...   ...
+91     HIGH  ESOPHAGEAL      FALSE     HIGH  0.01
+92     ZERO    ONESIDED      FALSE     HIGH  0.01
+93      LOW    ONESIDED      FALSE     HIGH  0.01
+94   NORMAL    ONESIDED      FALSE     HIGH  0.01
+95     HIGH    ONESIDED      FALSE     HIGH  0.97
+
+[96 rows x 5 columns]
+
+f_31(INTUBATION, VENTLUNG, VENTALV) = 
+   VENTALV  INTUBATION VENTLUNG  prob
+0     ZERO      NORMAL     ZERO  0.97
+1      LOW      NORMAL     ZERO  0.01
+2   NORMAL      NORMAL     ZERO  0.01
+3     HIGH      NORMAL     ZERO  0.01
+4     ZERO  ESOPHAGEAL     ZERO  0.01
+5      LOW  ESOPHAGEAL     ZERO  0.97
+6   NORMAL  ESOPHAGEAL     ZERO  0.01
+7     HIGH  ESOPHAGEAL     ZERO  0.01
+8     ZERO    ONESIDED     ZERO  0.01
+9      LOW    ONESIDED     ZERO  0.01
+10  NORMAL    ONESIDED     ZERO  0.97
+11    HIGH    ONESIDED     ZERO  0.01
+12    ZERO      NORMAL      LOW  0.01
+13     LOW      NORMAL      LOW  0.01
+14  NORMAL      NORMAL      LOW  0.01
+15    HIGH      NORMAL      LOW  0.97
+16    ZERO  ESOPHAGEAL      LOW  0.97
+17     LOW  ESOPHAGEAL      LOW  0.01
+18  NORMAL  ESOPHAGEAL      LOW  0.01
+19    HIGH  ESOPHAGEAL      LOW  0.01
+20    ZERO    ONESIDED      LOW  0.01
+21     LOW    ONESIDED      LOW  0.97
+22  NORMAL    ONESIDED      LOW  0.01
+23    HIGH    ONESIDED      LOW  0.01
+24    ZERO      NORMAL   NORMAL  0.01
+25     LOW      NORMAL   NORMAL  0.01
+26  NORMAL      NORMAL   NORMAL  0.97
+27    HIGH      NORMAL   NORMAL  0.01
+28    ZERO  ESOPHAGEAL   NORMAL  0.01
+29     LOW  ESOPHAGEAL   NORMAL  0.01
+30  NORMAL  ESOPHAGEAL   NORMAL  0.01
+31    HIGH  ESOPHAGEAL   NORMAL  0.97
+32    ZERO    ONESIDED   NORMAL  0.97
+33     LOW    ONESIDED   NORMAL  0.01
+34  NORMAL    ONESIDED   NORMAL  0.01
+35    HIGH    ONESIDED   NORMAL  0.01
+36    ZERO      NORMAL     HIGH  0.03
+37     LOW      NORMAL     HIGH  0.95
+38  NORMAL      NORMAL     HIGH  0.01
+39    HIGH      NORMAL     HIGH  0.01
+40    ZERO  ESOPHAGEAL     HIGH  0.01
+41     LOW  ESOPHAGEAL     HIGH  0.94
+42  NORMAL  ESOPHAGEAL     HIGH  0.04
+43    HIGH  ESOPHAGEAL     HIGH  0.01
+44    ZERO    ONESIDED     HIGH  0.01
+45     LOW    ONESIDED     HIGH  0.88
+46  NORMAL    ONESIDED     HIGH  0.10
+47    HIGH    ONESIDED     HIGH  0.01
+
+f_32(VENTALV, ARTCO2) = 
+    ARTCO2 VENTALV  prob
+0      LOW    ZERO  0.01
+1   NORMAL    ZERO  0.01
+2     HIGH    ZERO  0.98
+3      LOW     LOW  0.01
+4   NORMAL     LOW  0.01
+5     HIGH     LOW  0.98
+6      LOW  NORMAL  0.04
+7   NORMAL  NORMAL  0.92
+8     HIGH  NORMAL  0.04
+9      LOW    HIGH  0.90
+10  NORMAL    HIGH  0.09
+11    HIGH    HIGH  0.01
+
+f_33(CATECHOL, TPR, ARTCO2, SAO2, INSUFFANESTH) = 
+    CATECHOL  ARTCO2 INSUFFANESTH  SAO2   TPR  prob
+0     NORMAL     LOW         TRUE   LOW   LOW  0.01
+1       HIGH     LOW         TRUE   LOW   LOW  0.99
+2     NORMAL  NORMAL         TRUE   LOW   LOW  0.01
+3       HIGH  NORMAL         TRUE   LOW   LOW  0.99
+4     NORMAL    HIGH         TRUE   LOW   LOW  0.01
+..       ...     ...          ...   ...   ...   ...
+103     HIGH     LOW        FALSE  HIGH  HIGH  0.05
+104   NORMAL  NORMAL        FALSE  HIGH  HIGH  0.99
+105     HIGH  NORMAL        FALSE  HIGH  HIGH  0.01
+106   NORMAL    HIGH        FALSE  HIGH  HIGH  0.30
+107     HIGH    HIGH        FALSE  HIGH  HIGH  0.70
+
+[108 rows x 6 columns]
+
+f_34(CATECHOL, HR) = 
+       HR CATECHOL  prob
+0     LOW   NORMAL  0.05
+1  NORMAL   NORMAL  0.90
+2    HIGH   NORMAL  0.05
+3     LOW     HIGH  0.01
+4  NORMAL     HIGH  0.09
+5    HIGH     HIGH  0.90
+
+f_35(CO, HR, STROKEVOLUME) = 
+        CO      HR STROKEVOLUME  prob
+0      LOW     LOW          LOW  0.98
+1   NORMAL     LOW          LOW  0.01
+2     HIGH     LOW          LOW  0.01
+3      LOW  NORMAL          LOW  0.95
+4   NORMAL  NORMAL          LOW  0.04
+5     HIGH  NORMAL          LOW  0.01
+6      LOW    HIGH          LOW  0.80
+7   NORMAL    HIGH          LOW  0.19
+8     HIGH    HIGH          LOW  0.01
+9      LOW     LOW       NORMAL  0.95
+10  NORMAL     LOW       NORMAL  0.04
+11    HIGH     LOW       NORMAL  0.01
+12     LOW  NORMAL       NORMAL  0.04
+13  NORMAL  NORMAL       NORMAL  0.95
+14    HIGH  NORMAL       NORMAL  0.01
+15     LOW    HIGH       NORMAL  0.01
+16  NORMAL    HIGH       NORMAL  0.04
+17    HIGH    HIGH       NORMAL  0.95
+18     LOW     LOW         HIGH  0.30
+19  NORMAL     LOW         HIGH  0.69
+20    HIGH     LOW         HIGH  0.01
+21     LOW  NORMAL         HIGH  0.01
+22  NORMAL  NORMAL         HIGH  0.30
+23    HIGH  NORMAL         HIGH  0.69
+24     LOW    HIGH         HIGH  0.01
+25  NORMAL    HIGH         HIGH  0.01
+26    HIGH    HIGH         HIGH  0.98
+
+f_36(CO, BP, TPR) = 
+        BP      CO     TPR  prob
+0      LOW     LOW     LOW  0.98
+1   NORMAL     LOW     LOW  0.01
+2     HIGH     LOW     LOW  0.01
+3      LOW  NORMAL     LOW  0.98
+4   NORMAL  NORMAL     LOW  0.01
+5     HIGH  NORMAL     LOW  0.01
+6      LOW    HIGH     LOW  0.90
+7   NORMAL    HIGH     LOW  0.09
+8     HIGH    HIGH     LOW  0.01
+9      LOW     LOW  NORMAL  0.98
+10  NORMAL     LOW  NORMAL  0.01
+11    HIGH     LOW  NORMAL  0.01
+12     LOW  NORMAL  NORMAL  0.10
+13  NORMAL  NORMAL  NORMAL  0.85
+14    HIGH  NORMAL  NORMAL  0.05
+15     LOW    HIGH  NORMAL  0.05
+16  NORMAL    HIGH  NORMAL  0.20
+17    HIGH    HIGH  NORMAL  0.75
+18     LOW     LOW    HIGH  0.30
+19  NORMAL     LOW    HIGH  0.60
+20    HIGH     LOW    HIGH  0.10
+21     LOW  NORMAL    HIGH  0.05
+22  NORMAL  NORMAL    HIGH  0.40
+23    HIGH  NORMAL    HIGH  0.55
+24     LOW    HIGH    HIGH  0.01
+25  NORMAL    HIGH    HIGH  0.09
+26    HIGH    HIGH    HIGH  0.90
+
+
+Identified Factors, after reducing observed variables
+f_0(HISTORY, LVFAILURE) = 
+  HISTORY LVFAILURE  prob
+0    TRUE      TRUE  0.90
+1   FALSE      TRUE  0.10
+2    TRUE     FALSE  0.01
+3   FALSE     FALSE  0.99
+
+f_1(LVEDVOLUME, CVP) = 
+      CVP LVEDVOLUME  prob
+0     LOW        LOW  0.95
+1  NORMAL        LOW  0.04
+2    HIGH        LOW  0.01
+3     LOW     NORMAL  0.04
+4  NORMAL     NORMAL  0.95
+5    HIGH     NORMAL  0.01
+6     LOW       HIGH  0.01
+7  NORMAL       HIGH  0.29
+8    HIGH       HIGH  0.70
+
+f_2(LVEDVOLUME, PCWP) = 
+     PCWP LVEDVOLUME  prob
+0     LOW        LOW  0.95
+1  NORMAL        LOW  0.04
+2    HIGH        LOW  0.01
+3     LOW     NORMAL  0.04
+4  NORMAL     NORMAL  0.95
+5    HIGH     NORMAL  0.01
+6     LOW       HIGH  0.01
+7  NORMAL       HIGH  0.04
+8    HIGH       HIGH  0.95
+
+f_3(HYPOVOLEMIA) = 
+  HYPOVOLEMIA  prob
+0        TRUE   0.2
+1       FALSE   0.8
+
+f_4(LVEDVOLUME, HYPOVOLEMIA, LVFAILURE) = 
+   LVEDVOLUME HYPOVOLEMIA LVFAILURE  prob
+0         LOW        TRUE      TRUE  0.95
+1      NORMAL        TRUE      TRUE  0.04
+2        HIGH        TRUE      TRUE  0.01
+3         LOW       FALSE      TRUE  0.98
+4      NORMAL       FALSE      TRUE  0.01
+5        HIGH       FALSE      TRUE  0.01
+6         LOW        TRUE     FALSE  0.01
+7      NORMAL        TRUE     FALSE  0.09
+8        HIGH        TRUE     FALSE  0.90
+9         LOW       FALSE     FALSE  0.05
+10     NORMAL       FALSE     FALSE  0.90
+11       HIGH       FALSE     FALSE  0.05
+
+f_5(LVFAILURE) = 
+  LVFAILURE  prob
+0      TRUE  0.05
+1     FALSE  0.95
+
+f_6(LVFAILURE, HYPOVOLEMIA, STROKEVOLUME) = 
+   STROKEVOLUME HYPOVOLEMIA LVFAILURE  prob
+0           LOW        TRUE      TRUE  0.98
+1        NORMAL        TRUE      TRUE  0.01
+2          HIGH        TRUE      TRUE  0.01
+3           LOW       FALSE      TRUE  0.95
+4        NORMAL       FALSE      TRUE  0.04
+5          HIGH       FALSE      TRUE  0.01
+6           LOW        TRUE     FALSE  0.50
+7        NORMAL        TRUE     FALSE  0.49
+8          HIGH        TRUE     FALSE  0.01
+9           LOW       FALSE     FALSE  0.05
+10       NORMAL       FALSE     FALSE  0.90
+11         HIGH       FALSE     FALSE  0.05
+
+f_7(ERRLOWOUTPUT) = 
+  ERRLOWOUTPUT  prob
+0         TRUE  0.05
+1        FALSE  0.95
+
+f_8(HRBP, HR, ERRLOWOUTPUT) = 
+      HRBP ERRLOWOUTPUT      HR  prob
+0      LOW         TRUE     LOW  0.98
+1   NORMAL         TRUE     LOW  0.01
+2     HIGH         TRUE     LOW  0.01
+3      LOW        FALSE     LOW  0.40
+4   NORMAL        FALSE     LOW  0.59
+5     HIGH        FALSE     LOW  0.01
+6      LOW         TRUE  NORMAL  0.30
+7   NORMAL         TRUE  NORMAL  0.40
+8     HIGH         TRUE  NORMAL  0.30
+9      LOW        FALSE  NORMAL  0.98
+10  NORMAL        FALSE  NORMAL  0.01
+11    HIGH        FALSE  NORMAL  0.01
+12     LOW         TRUE    HIGH  0.01
+13  NORMAL         TRUE    HIGH  0.98
+14    HIGH         TRUE    HIGH  0.01
+15     LOW        FALSE    HIGH  0.01
+16  NORMAL        FALSE    HIGH  0.01
+17    HIGH        FALSE    HIGH  0.98
+
+f_9(HREKG, ERRCAUTER, HR) = 
+     HREKG ERRCAUTER      HR      prob
+0      LOW      TRUE     LOW  0.333333
+1   NORMAL      TRUE     LOW  0.333333
+2     HIGH      TRUE     LOW  0.333333
+3      LOW     FALSE     LOW  0.333333
+4   NORMAL     FALSE     LOW  0.333333
+5     HIGH     FALSE     LOW  0.333333
+6      LOW      TRUE  NORMAL  0.333333
+7   NORMAL      TRUE  NORMAL  0.333333
+8     HIGH      TRUE  NORMAL  0.333333
+9      LOW     FALSE  NORMAL  0.980000
+10  NORMAL     FALSE  NORMAL  0.010000
+11    HIGH     FALSE  NORMAL  0.010000
+12     LOW      TRUE    HIGH  0.010000
+13  NORMAL      TRUE    HIGH  0.980000
+14    HIGH      TRUE    HIGH  0.010000
+15     LOW     FALSE    HIGH  0.010000
+16  NORMAL     FALSE    HIGH  0.010000
+17    HIGH     FALSE    HIGH  0.980000
+
+f_10(ERRCAUTER) = 
+  ERRCAUTER  prob
+0      TRUE   0.1
+1     FALSE   0.9
+
+f_11(ERRCAUTER, HRSAT, HR) = 
+     HRSAT ERRCAUTER      HR      prob
+0      LOW      TRUE     LOW  0.333333
+1   NORMAL      TRUE     LOW  0.333333
+2     HIGH      TRUE     LOW  0.333333
+3      LOW     FALSE     LOW  0.333333
+4   NORMAL     FALSE     LOW  0.333333
+5     HIGH     FALSE     LOW  0.333333
+6      LOW      TRUE  NORMAL  0.333333
+7   NORMAL      TRUE  NORMAL  0.333333
+8     HIGH      TRUE  NORMAL  0.333333
+9      LOW     FALSE  NORMAL  0.980000
+10  NORMAL     FALSE  NORMAL  0.010000
+11    HIGH     FALSE  NORMAL  0.010000
+12     LOW      TRUE    HIGH  0.010000
+13  NORMAL      TRUE    HIGH  0.980000
+14    HIGH      TRUE    HIGH  0.010000
+15     LOW     FALSE    HIGH  0.010000
+16  NORMAL     FALSE    HIGH  0.010000
+17    HIGH     FALSE    HIGH  0.980000
+
+f_12(INSUFFANESTH) = 
+  INSUFFANESTH  prob
+0         TRUE   0.1
+1        FALSE   0.9
+
+f_13(ANAPHYLAXIS) = 
+  ANAPHYLAXIS  prob
+0        TRUE  0.01
+1       FALSE  0.99
+
+f_14(ANAPHYLAXIS, TPR) = 
+      TPR ANAPHYLAXIS  prob
+0     LOW        TRUE  0.98
+1  NORMAL        TRUE  0.01
+2    HIGH        TRUE  0.01
+3     LOW       FALSE  0.30
+4  NORMAL       FALSE  0.40
+5    HIGH       FALSE  0.30
+
+f_15(ARTCO2, VENTLUNG, EXPCO2) = 
+    EXPCO2  ARTCO2 VENTLUNG  prob
+0     ZERO     LOW     ZERO  0.97
+1      LOW     LOW     ZERO  0.01
+2   NORMAL     LOW     ZERO  0.01
+3     HIGH     LOW     ZERO  0.01
+4     ZERO  NORMAL     ZERO  0.01
+5      LOW  NORMAL     ZERO  0.97
+6   NORMAL  NORMAL     ZERO  0.01
+7     HIGH  NORMAL     ZERO  0.01
+8     ZERO    HIGH     ZERO  0.01
+9      LOW    HIGH     ZERO  0.97
+10  NORMAL    HIGH     ZERO  0.01
+11    HIGH    HIGH     ZERO  0.01
+12    ZERO     LOW      LOW  0.01
+13     LOW     LOW      LOW  0.97
+14  NORMAL     LOW      LOW  0.01
+15    HIGH     LOW      LOW  0.01
+16    ZERO  NORMAL      LOW  0.97
+17     LOW  NORMAL      LOW  0.01
+18  NORMAL  NORMAL      LOW  0.01
+19    HIGH  NORMAL      LOW  0.01
+20    ZERO    HIGH      LOW  0.01
+21     LOW    HIGH      LOW  0.01
+22  NORMAL    HIGH      LOW  0.97
+23    HIGH    HIGH      LOW  0.01
+24    ZERO     LOW   NORMAL  0.01
+25     LOW     LOW   NORMAL  0.01
+26  NORMAL     LOW   NORMAL  0.97
+27    HIGH     LOW   NORMAL  0.01
+28    ZERO  NORMAL   NORMAL  0.01
+29     LOW  NORMAL   NORMAL  0.01
+30  NORMAL  NORMAL   NORMAL  0.97
+31    HIGH  NORMAL   NORMAL  0.01
+32    ZERO    HIGH   NORMAL  0.97
+33     LOW    HIGH   NORMAL  0.01
+34  NORMAL    HIGH   NORMAL  0.01
+35    HIGH    HIGH   NORMAL  0.01
+36    ZERO     LOW     HIGH  0.01
+37     LOW     LOW     HIGH  0.01
+38  NORMAL     LOW     HIGH  0.01
+39    HIGH     LOW     HIGH  0.97
+40    ZERO  NORMAL     HIGH  0.01
+41     LOW  NORMAL     HIGH  0.01
+42  NORMAL  NORMAL     HIGH  0.01
+43    HIGH  NORMAL     HIGH  0.97
+44    ZERO    HIGH     HIGH  0.01
+45     LOW    HIGH     HIGH  0.01
+46  NORMAL    HIGH     HIGH  0.01
+47    HIGH    HIGH     HIGH  0.97
+
+f_16(KINKEDTUBE) = 
+  KINKEDTUBE  prob
+0       TRUE  0.04
+1      FALSE  0.96
+
+f_17(INTUBATION, MINVOL, VENTLUNG) = 
+    MINVOL  INTUBATION VENTLUNG  prob
+0     ZERO      NORMAL     ZERO  0.97
+1      LOW      NORMAL     ZERO  0.01
+2   NORMAL      NORMAL     ZERO  0.01
+3     HIGH      NORMAL     ZERO  0.01
+4     ZERO  ESOPHAGEAL     ZERO  0.01
+5      LOW  ESOPHAGEAL     ZERO  0.97
+6   NORMAL  ESOPHAGEAL     ZERO  0.01
+7     HIGH  ESOPHAGEAL     ZERO  0.01
+8     ZERO    ONESIDED     ZERO  0.01
+9      LOW    ONESIDED     ZERO  0.01
+10  NORMAL    ONESIDED     ZERO  0.97
+11    HIGH    ONESIDED     ZERO  0.01
+12    ZERO      NORMAL      LOW  0.01
+13     LOW      NORMAL      LOW  0.01
+14  NORMAL      NORMAL      LOW  0.01
+15    HIGH      NORMAL      LOW  0.97
+16    ZERO  ESOPHAGEAL      LOW  0.97
+17     LOW  ESOPHAGEAL      LOW  0.01
+18  NORMAL  ESOPHAGEAL      LOW  0.01
+19    HIGH  ESOPHAGEAL      LOW  0.01
+20    ZERO    ONESIDED      LOW  0.60
+21     LOW    ONESIDED      LOW  0.38
+22  NORMAL    ONESIDED      LOW  0.01
+23    HIGH    ONESIDED      LOW  0.01
+24    ZERO      NORMAL   NORMAL  0.50
+25     LOW      NORMAL   NORMAL  0.48
+26  NORMAL      NORMAL   NORMAL  0.01
+27    HIGH      NORMAL   NORMAL  0.01
+28    ZERO  ESOPHAGEAL   NORMAL  0.50
+29     LOW  ESOPHAGEAL   NORMAL  0.48
+30  NORMAL  ESOPHAGEAL   NORMAL  0.01
+31    HIGH  ESOPHAGEAL   NORMAL  0.01
+32    ZERO    ONESIDED   NORMAL  0.97
+33     LOW    ONESIDED   NORMAL  0.01
+34  NORMAL    ONESIDED   NORMAL  0.01
+35    HIGH    ONESIDED   NORMAL  0.01
+36    ZERO      NORMAL     HIGH  0.01
+37     LOW      NORMAL     HIGH  0.97
+38  NORMAL      NORMAL     HIGH  0.01
+39    HIGH      NORMAL     HIGH  0.01
+40    ZERO  ESOPHAGEAL     HIGH  0.01
+41     LOW  ESOPHAGEAL     HIGH  0.01
+42  NORMAL  ESOPHAGEAL     HIGH  0.97
+43    HIGH  ESOPHAGEAL     HIGH  0.01
+44    ZERO    ONESIDED     HIGH  0.01
+45     LOW    ONESIDED     HIGH  0.01
+46  NORMAL    ONESIDED     HIGH  0.01
+47    HIGH    ONESIDED     HIGH  0.97
+
+f_18(FIO2) = 
+     FIO2  prob
+0     LOW  0.05
+1  NORMAL  0.95
+
+f_19(FIO2, PVSAT, VENTALV) = 
+     PVSAT    FIO2 VENTALV  prob
+0      LOW     LOW    ZERO  1.00
+1   NORMAL     LOW    ZERO  0.00
+2     HIGH     LOW    ZERO  0.00
+3      LOW  NORMAL    ZERO  0.99
+4   NORMAL  NORMAL    ZERO  0.01
+5     HIGH  NORMAL    ZERO  0.00
+6      LOW     LOW     LOW  0.95
+7   NORMAL     LOW     LOW  0.04
+8     HIGH     LOW     LOW  0.01
+9      LOW  NORMAL     LOW  0.95
+10  NORMAL  NORMAL     LOW  0.04
+11    HIGH  NORMAL     LOW  0.01
+12     LOW     LOW  NORMAL  1.00
+13  NORMAL     LOW  NORMAL  0.00
+14    HIGH     LOW  NORMAL  0.00
+15     LOW  NORMAL  NORMAL  0.95
+16  NORMAL  NORMAL  NORMAL  0.04
+17    HIGH  NORMAL  NORMAL  0.01
+18     LOW     LOW    HIGH  0.01
+19  NORMAL     LOW    HIGH  0.95
+20    HIGH     LOW    HIGH  0.04
+21     LOW  NORMAL    HIGH  0.01
+22  NORMAL  NORMAL    HIGH  0.01
+23    HIGH  NORMAL    HIGH  0.98
+
+f_20(SAO2, SHUNT, PVSAT) = 
+      SAO2   PVSAT   SHUNT  prob
+0      LOW     LOW  NORMAL  0.98
+1   NORMAL     LOW  NORMAL  0.01
+2     HIGH     LOW  NORMAL  0.01
+3      LOW  NORMAL  NORMAL  0.01
+4   NORMAL  NORMAL  NORMAL  0.98
+5     HIGH  NORMAL  NORMAL  0.01
+6      LOW    HIGH  NORMAL  0.01
+7   NORMAL    HIGH  NORMAL  0.01
+8     HIGH    HIGH  NORMAL  0.98
+9      LOW     LOW    HIGH  0.98
+10  NORMAL     LOW    HIGH  0.01
+11    HIGH     LOW    HIGH  0.01
+12     LOW  NORMAL    HIGH  0.98
+13  NORMAL  NORMAL    HIGH  0.01
+14    HIGH  NORMAL    HIGH  0.01
+15     LOW    HIGH    HIGH  0.69
+16  NORMAL    HIGH    HIGH  0.30
+17    HIGH    HIGH    HIGH  0.01
+
+f_21(PAP, PULMEMBOLUS) = 
+      PAP PULMEMBOLUS  prob
+0     LOW        TRUE  0.01
+1  NORMAL        TRUE  0.19
+2    HIGH        TRUE  0.80
+3     LOW       FALSE  0.05
+4  NORMAL       FALSE  0.90
+5    HIGH       FALSE  0.05
+
+f_22(PULMEMBOLUS) = 
+  PULMEMBOLUS  prob
+0        TRUE  0.01
+1       FALSE  0.99
+
+f_23(SHUNT, PULMEMBOLUS, INTUBATION) = 
+     SHUNT  INTUBATION PULMEMBOLUS  prob
+0   NORMAL      NORMAL        TRUE  0.10
+1     HIGH      NORMAL        TRUE  0.90
+2   NORMAL  ESOPHAGEAL        TRUE  0.10
+3     HIGH  ESOPHAGEAL        TRUE  0.90
+4   NORMAL    ONESIDED        TRUE  0.01
+5     HIGH    ONESIDED        TRUE  0.99
+6   NORMAL      NORMAL       FALSE  0.95
+7     HIGH      NORMAL       FALSE  0.05
+8   NORMAL  ESOPHAGEAL       FALSE  0.95
+9     HIGH  ESOPHAGEAL       FALSE  0.05
+10  NORMAL    ONESIDED       FALSE  0.05
+11    HIGH    ONESIDED       FALSE  0.95
+
+f_24(INTUBATION) = 
+   INTUBATION  prob
+0      NORMAL  0.92
+1  ESOPHAGEAL  0.03
+2    ONESIDED  0.05
+
+f_25(PRESS, INTUBATION, VENTTUBE, KINKEDTUBE) = 
+     PRESS  INTUBATION KINKEDTUBE VENTTUBE  prob
+0     ZERO      NORMAL       TRUE     ZERO  0.97
+1      LOW      NORMAL       TRUE     ZERO  0.01
+2   NORMAL      NORMAL       TRUE     ZERO  0.01
+3     HIGH      NORMAL       TRUE     ZERO  0.01
+4     ZERO  ESOPHAGEAL       TRUE     ZERO  0.01
+..     ...         ...        ...      ...   ...
+91    HIGH  ESOPHAGEAL      FALSE     HIGH  0.60
+92    ZERO    ONESIDED      FALSE     HIGH  0.01
+93     LOW    ONESIDED      FALSE     HIGH  0.01
+94  NORMAL    ONESIDED      FALSE     HIGH  0.01
+95    HIGH    ONESIDED      FALSE     HIGH  0.97
+
+[96 rows x 5 columns]
+
+f_26(DISCONNECT) = 
+  DISCONNECT  prob
+0       TRUE   0.1
+1      FALSE   0.9
+
+f_27(MINVOLSET) = 
+  MINVOLSET  prob
+0       LOW  0.05
+1    NORMAL  0.90
+2      HIGH  0.05
+
+f_28(MINVOLSET) = 
+  MINVOLSET  prob
+1       LOW  0.93
+5    NORMAL  0.01
+9      HIGH  0.01
+
+f_29(DISCONNECT, VENTTUBE) = 
+   VENTTUBE DISCONNECT  prob
+8      ZERO       TRUE  0.97
+9       LOW       TRUE  0.01
+10   NORMAL       TRUE  0.01
+11     HIGH       TRUE  0.01
+12     ZERO      FALSE  0.97
+13      LOW      FALSE  0.01
+14   NORMAL      FALSE  0.01
+15     HIGH      FALSE  0.01
+
+f_30(KINKEDTUBE, INTUBATION, VENTTUBE, VENTLUNG) = 
+   VENTLUNG  INTUBATION KINKEDTUBE VENTTUBE  prob
+0      ZERO      NORMAL       TRUE     ZERO  0.97
+1       LOW      NORMAL       TRUE     ZERO  0.01
+2    NORMAL      NORMAL       TRUE     ZERO  0.01
+3      HIGH      NORMAL       TRUE     ZERO  0.01
+4      ZERO  ESOPHAGEAL       TRUE     ZERO  0.95
+..      ...         ...        ...      ...   ...
+91     HIGH  ESOPHAGEAL      FALSE     HIGH  0.01
+92     ZERO    ONESIDED      FALSE     HIGH  0.01
+93      LOW    ONESIDED      FALSE     HIGH  0.01
+94   NORMAL    ONESIDED      FALSE     HIGH  0.01
+95     HIGH    ONESIDED      FALSE     HIGH  0.97
+
+[96 rows x 5 columns]
+
+f_31(INTUBATION, VENTLUNG, VENTALV) = 
+   VENTALV  INTUBATION VENTLUNG  prob
+0     ZERO      NORMAL     ZERO  0.97
+1      LOW      NORMAL     ZERO  0.01
+2   NORMAL      NORMAL     ZERO  0.01
+3     HIGH      NORMAL     ZERO  0.01
+4     ZERO  ESOPHAGEAL     ZERO  0.01
+5      LOW  ESOPHAGEAL     ZERO  0.97
+6   NORMAL  ESOPHAGEAL     ZERO  0.01
+7     HIGH  ESOPHAGEAL     ZERO  0.01
+8     ZERO    ONESIDED     ZERO  0.01
+9      LOW    ONESIDED     ZERO  0.01
+10  NORMAL    ONESIDED     ZERO  0.97
+11    HIGH    ONESIDED     ZERO  0.01
+12    ZERO      NORMAL      LOW  0.01
+13     LOW      NORMAL      LOW  0.01
+14  NORMAL      NORMAL      LOW  0.01
+15    HIGH      NORMAL      LOW  0.97
+16    ZERO  ESOPHAGEAL      LOW  0.97
+17     LOW  ESOPHAGEAL      LOW  0.01
+18  NORMAL  ESOPHAGEAL      LOW  0.01
+19    HIGH  ESOPHAGEAL      LOW  0.01
+20    ZERO    ONESIDED      LOW  0.01
+21     LOW    ONESIDED      LOW  0.97
+22  NORMAL    ONESIDED      LOW  0.01
+23    HIGH    ONESIDED      LOW  0.01
+24    ZERO      NORMAL   NORMAL  0.01
+25     LOW      NORMAL   NORMAL  0.01
+26  NORMAL      NORMAL   NORMAL  0.97
+27    HIGH      NORMAL   NORMAL  0.01
+28    ZERO  ESOPHAGEAL   NORMAL  0.01
+29     LOW  ESOPHAGEAL   NORMAL  0.01
+30  NORMAL  ESOPHAGEAL   NORMAL  0.01
+31    HIGH  ESOPHAGEAL   NORMAL  0.97
+32    ZERO    ONESIDED   NORMAL  0.97
+33     LOW    ONESIDED   NORMAL  0.01
+34  NORMAL    ONESIDED   NORMAL  0.01
+35    HIGH    ONESIDED   NORMAL  0.01
+36    ZERO      NORMAL     HIGH  0.03
+37     LOW      NORMAL     HIGH  0.95
+38  NORMAL      NORMAL     HIGH  0.01
+39    HIGH      NORMAL     HIGH  0.01
+40    ZERO  ESOPHAGEAL     HIGH  0.01
+41     LOW  ESOPHAGEAL     HIGH  0.94
+42  NORMAL  ESOPHAGEAL     HIGH  0.04
+43    HIGH  ESOPHAGEAL     HIGH  0.01
+44    ZERO    ONESIDED     HIGH  0.01
+45     LOW    ONESIDED     HIGH  0.88
+46  NORMAL    ONESIDED     HIGH  0.10
+47    HIGH    ONESIDED     HIGH  0.01
+
+f_32(VENTALV, ARTCO2) = 
+    ARTCO2 VENTALV  prob
+0      LOW    ZERO  0.01
+1   NORMAL    ZERO  0.01
+2     HIGH    ZERO  0.98
+3      LOW     LOW  0.01
+4   NORMAL     LOW  0.01
+5     HIGH     LOW  0.98
+6      LOW  NORMAL  0.04
+7   NORMAL  NORMAL  0.92
+8     HIGH  NORMAL  0.04
+9      LOW    HIGH  0.90
+10  NORMAL    HIGH  0.09
+11    HIGH    HIGH  0.01
+
+f_33(CATECHOL, TPR, ARTCO2, SAO2, INSUFFANESTH) = 
+    CATECHOL  ARTCO2 INSUFFANESTH  SAO2   TPR  prob
+0     NORMAL     LOW         TRUE   LOW   LOW  0.01
+1       HIGH     LOW         TRUE   LOW   LOW  0.99
+2     NORMAL  NORMAL         TRUE   LOW   LOW  0.01
+3       HIGH  NORMAL         TRUE   LOW   LOW  0.99
+4     NORMAL    HIGH         TRUE   LOW   LOW  0.01
+..       ...     ...          ...   ...   ...   ...
+103     HIGH     LOW        FALSE  HIGH  HIGH  0.05
+104   NORMAL  NORMAL        FALSE  HIGH  HIGH  0.99
+105     HIGH  NORMAL        FALSE  HIGH  HIGH  0.01
+106   NORMAL    HIGH        FALSE  HIGH  HIGH  0.30
+107     HIGH    HIGH        FALSE  HIGH  HIGH  0.70
+
+[108 rows x 6 columns]
+
+f_34(CATECHOL, HR) = 
+       HR CATECHOL  prob
+0     LOW   NORMAL  0.05
+1  NORMAL   NORMAL  0.90
+2    HIGH   NORMAL  0.05
+3     LOW     HIGH  0.01
+4  NORMAL     HIGH  0.09
+5    HIGH     HIGH  0.90
+
+f_35(CO, HR, STROKEVOLUME) = 
+        CO      HR STROKEVOLUME  prob
+0      LOW     LOW          LOW  0.98
+1   NORMAL     LOW          LOW  0.01
+2     HIGH     LOW          LOW  0.01
+3      LOW  NORMAL          LOW  0.95
+4   NORMAL  NORMAL          LOW  0.04
+5     HIGH  NORMAL          LOW  0.01
+6      LOW    HIGH          LOW  0.80
+7   NORMAL    HIGH          LOW  0.19
+8     HIGH    HIGH          LOW  0.01
+9      LOW     LOW       NORMAL  0.95
+10  NORMAL     LOW       NORMAL  0.04
+11    HIGH     LOW       NORMAL  0.01
+12     LOW  NORMAL       NORMAL  0.04
+13  NORMAL  NORMAL       NORMAL  0.95
+14    HIGH  NORMAL       NORMAL  0.01
+15     LOW    HIGH       NORMAL  0.01
+16  NORMAL    HIGH       NORMAL  0.04
+17    HIGH    HIGH       NORMAL  0.95
+18     LOW     LOW         HIGH  0.30
+19  NORMAL     LOW         HIGH  0.69
+20    HIGH     LOW         HIGH  0.01
+21     LOW  NORMAL         HIGH  0.01
+22  NORMAL  NORMAL         HIGH  0.30
+23    HIGH  NORMAL         HIGH  0.69
+24     LOW    HIGH         HIGH  0.01
+25  NORMAL    HIGH         HIGH  0.01
+26    HIGH    HIGH         HIGH  0.98
+
+f_36(CO, BP, TPR) = 
+        BP      CO     TPR  prob
+0      LOW     LOW     LOW  0.98
+1   NORMAL     LOW     LOW  0.01
+2     HIGH     LOW     LOW  0.01
+3      LOW  NORMAL     LOW  0.98
+4   NORMAL  NORMAL     LOW  0.01
+5     HIGH  NORMAL     LOW  0.01
+6      LOW    HIGH     LOW  0.90
+7   NORMAL    HIGH     LOW  0.09
+8     HIGH    HIGH     LOW  0.01
+9      LOW     LOW  NORMAL  0.98
+10  NORMAL     LOW  NORMAL  0.01
+11    HIGH     LOW  NORMAL  0.01
+12     LOW  NORMAL  NORMAL  0.10
+13  NORMAL  NORMAL  NORMAL  0.85
+14    HIGH  NORMAL  NORMAL  0.05
+15     LOW    HIGH  NORMAL  0.05
+16  NORMAL    HIGH  NORMAL  0.20
+17    HIGH    HIGH  NORMAL  0.75
+18     LOW     LOW    HIGH  0.30
+19  NORMAL     LOW    HIGH  0.60
+20    HIGH     LOW    HIGH  0.10
+21     LOW  NORMAL    HIGH  0.05
+22  NORMAL  NORMAL    HIGH  0.40
+23    HIGH  NORMAL    HIGH  0.55
+24     LOW    HIGH    HIGH  0.01
+25  NORMAL    HIGH    HIGH  0.09
+26    HIGH    HIGH    HIGH  0.90
+
+
+Elimination order:
+['INTUBATION', 'HR', 'LVFAILURE', 'VENTLUNG', 'HYPOVOLEMIA', 'LVEDVOLUME', 'ERRCAUTER', 'TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'STROKEVOLUME', 'ERRLOWOUTPUT', 'INSUFFANESTH', 'ANAPHYLAXIS', 'FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HISTORY', 'CVP', 'PCWP', 'HRBP', 'HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP']
+P(MINVOLSET|VENTMACH = LOW) = sum_['INTUBATION', 'HR', 'LVFAILURE', 'VENTLUNG', 'HYPOVOLEMIA', 'LVEDVOLUME', 'ERRCAUTER', 'TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'STROKEVOLUME', 'ERRLOWOUTPUT', 'INSUFFANESTH', 'ANAPHYLAXIS', 'FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HISTORY', 'CVP', 'PCWP', 'HRBP', 'HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP']f_0(HISTORY, LVFAILURE)f_1(LVEDVOLUME, CVP)f_2(LVEDVOLUME, PCWP)f_3(HYPOVOLEMIA)f_4(LVEDVOLUME, HYPOVOLEMIA, LVFAILURE)f_5(LVFAILURE)f_6(LVFAILURE, HYPOVOLEMIA, STROKEVOLUME)f_7(ERRLOWOUTPUT)f_8(HRBP, HR, ERRLOWOUTPUT)f_9(HREKG, ERRCAUTER, HR)f_10(ERRCAUTER)f_11(ERRCAUTER, HRSAT, HR)f_12(INSUFFANESTH)f_13(ANAPHYLAXIS)f_14(ANAPHYLAXIS, TPR)f_15(ARTCO2, VENTLUNG, EXPCO2)f_16(KINKEDTUBE)f_17(INTUBATION, MINVOL, VENTLUNG)f_18(FIO2)f_19(FIO2, PVSAT, VENTALV)f_20(SAO2, SHUNT, PVSAT)f_21(PAP, PULMEMBOLUS)f_22(PULMEMBOLUS)f_23(SHUNT, PULMEMBOLUS, INTUBATION)f_24(INTUBATION)f_25(PRESS, INTUBATION, VENTTUBE, KINKEDTUBE)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_29(DISCONNECT, VENTTUBE)f_30(KINKEDTUBE, INTUBATION, VENTTUBE, VENTLUNG)f_31(INTUBATION, VENTLUNG, VENTALV)f_32(VENTALV, ARTCO2)f_33(CATECHOL, TPR, ARTCO2, SAO2, INSUFFANESTH)f_34(CATECHOL, HR)f_35(CO, HR, STROKEVOLUME)f_36(CO, BP, TPR)
+
+Variable 'INTUBATION' is being eliminated.
+
+f_17(INTUBATION, MINVOL, VENTLUNG)f_23(SHUNT, PULMEMBOLUS, INTUBATION)f_24(INTUBATION)f_25(PRESS, INTUBATION, VENTTUBE, KINKEDTUBE)f_30(KINKEDTUBE, INTUBATION, VENTTUBE, VENTLUNG)f_31(INTUBATION, VENTLUNG, VENTALV) = f_41(PRESS, INTUBATION, KINKEDTUBE, VENTLUNG, VENTALV, SHUNT, VENTTUBE, MINVOL, PULMEMBOLUS) = 
+      MINVOL INTUBATION VENTLUNG   SHUNT PULMEMBOLUS   PRESS KINKEDTUBE VENTTUBE VENTALV      prob
+0       ZERO     NORMAL     ZERO  NORMAL        TRUE    ZERO       TRUE     ZERO    ZERO  0.081447
+1       ZERO     NORMAL     ZERO  NORMAL        TRUE    ZERO       TRUE     ZERO     LOW  0.000840
+2       ZERO     NORMAL     ZERO  NORMAL        TRUE    ZERO       TRUE     ZERO  NORMAL  0.000840
+3       ZERO     NORMAL     ZERO  NORMAL        TRUE    ZERO       TRUE     ZERO    HIGH  0.000840
+4       ZERO     NORMAL     ZERO  NORMAL        TRUE     LOW       TRUE     ZERO    ZERO  0.000840
+...      ...        ...      ...     ...         ...     ...        ...      ...     ...       ...
+24571   HIGH   ONESIDED     HIGH    HIGH       FALSE  NORMAL      FALSE     HIGH    HIGH  0.000004
+24572   HIGH   ONESIDED     HIGH    HIGH       FALSE    HIGH      FALSE     HIGH    ZERO  0.000434
+24573   HIGH   ONESIDED     HIGH    HIGH       FALSE    HIGH      FALSE     HIGH     LOW  0.038150
+24574   HIGH   ONESIDED     HIGH    HIGH       FALSE    HIGH      FALSE     HIGH  NORMAL  0.004335
+24575   HIGH   ONESIDED     HIGH    HIGH       FALSE    HIGH      FALSE     HIGH    HIGH  0.000434
+
+[24576 rows x 10 columns]
+
+After summing out 'INTUBATION': f_41(PRESS, KINKEDTUBE, VENTLUNG, VENTALV, SHUNT, VENTTUBE, MINVOL, PULMEMBOLUS) = 
+     PRESS KINKEDTUBE VENTLUNG VENTALV   SHUNT VENTTUBE  MINVOL PULMEMBOLUS      prob
+0     HIGH      FALSE     HIGH    HIGH    HIGH     HIGH    HIGH       FALSE  0.000434
+1     HIGH      FALSE     HIGH    HIGH    HIGH     HIGH    HIGH        TRUE  0.000452
+2     HIGH      FALSE     HIGH    HIGH    HIGH     HIGH     LOW       FALSE  0.000005
+3     HIGH      FALSE     HIGH    HIGH    HIGH     HIGH     LOW        TRUE  0.000005
+4     HIGH      FALSE     HIGH    HIGH    HIGH     HIGH  NORMAL       FALSE  0.000005
+...    ...        ...      ...     ...     ...      ...     ...         ...       ...
+8187  ZERO       TRUE     ZERO    ZERO  NORMAL     ZERO     LOW        TRUE  0.000840
+8188  ZERO       TRUE     ZERO    ZERO  NORMAL     ZERO  NORMAL       FALSE  0.007977
+8189  ZERO       TRUE     ZERO    ZERO  NORMAL     ZERO  NORMAL        TRUE  0.000840
+8190  ZERO       TRUE     ZERO    ZERO  NORMAL     ZERO    ZERO       FALSE  0.773746
+8191  ZERO       TRUE     ZERO    ZERO  NORMAL     ZERO    ZERO        TRUE  0.081447
+
+[8192 rows x 9 columns]
+
+Variable 'INTUBATION' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['HR', 'LVFAILURE', 'VENTLUNG', 'HYPOVOLEMIA', 'LVEDVOLUME', 'ERRCAUTER', 'TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'STROKEVOLUME', 'ERRLOWOUTPUT', 'INSUFFANESTH', 'ANAPHYLAXIS', 'FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HISTORY', 'CVP', 'PCWP', 'HRBP', 'HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP']f_0(HISTORY, LVFAILURE)f_1(LVEDVOLUME, CVP)f_2(LVEDVOLUME, PCWP)f_3(HYPOVOLEMIA)f_4(LVEDVOLUME, HYPOVOLEMIA, LVFAILURE)f_5(LVFAILURE)f_6(LVFAILURE, HYPOVOLEMIA, STROKEVOLUME)f_7(ERRLOWOUTPUT)f_8(HRBP, HR, ERRLOWOUTPUT)f_9(HREKG, ERRCAUTER, HR)f_10(ERRCAUTER)f_11(ERRCAUTER, HRSAT, HR)f_12(INSUFFANESTH)f_13(ANAPHYLAXIS)f_14(ANAPHYLAXIS, TPR)f_15(ARTCO2, VENTLUNG, EXPCO2)f_16(KINKEDTUBE)f_18(FIO2)f_19(FIO2, PVSAT, VENTALV)f_20(SAO2, SHUNT, PVSAT)f_21(PAP, PULMEMBOLUS)f_22(PULMEMBOLUS)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_29(DISCONNECT, VENTTUBE)f_32(VENTALV, ARTCO2)f_33(CATECHOL, TPR, ARTCO2, SAO2, INSUFFANESTH)f_34(CATECHOL, HR)f_35(CO, HR, STROKEVOLUME)f_36(CO, BP, TPR)f_41(PRESS, KINKEDTUBE, VENTLUNG, VENTALV, SHUNT, VENTTUBE, MINVOL, PULMEMBOLUS)
+
+Variable 'HR' is being eliminated.
+
+f_8(HRBP, HR, ERRLOWOUTPUT)f_9(HREKG, ERRCAUTER, HR)f_11(ERRCAUTER, HRSAT, HR)f_34(CATECHOL, HR)f_35(CO, HR, STROKEVOLUME) = f_45(HREKG, CATECHOL, ERRCAUTER, HRBP, STROKEVOLUME, CO, HRSAT, HR, ERRLOWOUTPUT) = 
+      HRBP ERRLOWOUTPUT    HR HREKG ERRCAUTER HRSAT CATECHOL      CO STROKEVOLUME      prob
+0      LOW         TRUE   LOW   LOW      TRUE   LOW   NORMAL     LOW          LOW  0.005336
+1      LOW         TRUE   LOW   LOW      TRUE   LOW   NORMAL  NORMAL          LOW  0.000054
+2      LOW         TRUE   LOW   LOW      TRUE   LOW   NORMAL    HIGH          LOW  0.000054
+3      LOW         TRUE   LOW   LOW      TRUE   LOW   NORMAL     LOW       NORMAL  0.005172
+4      LOW         TRUE   LOW   LOW      TRUE   LOW   NORMAL  NORMAL       NORMAL  0.000218
+...    ...          ...   ...   ...       ...   ...      ...     ...          ...       ...
+5827  HIGH        FALSE  HIGH  HIGH     FALSE  HIGH     HIGH  NORMAL       NORMAL  0.033883
+5828  HIGH        FALSE  HIGH  HIGH     FALSE  HIGH     HIGH    HIGH       NORMAL  0.804719
+5829  HIGH        FALSE  HIGH  HIGH     FALSE  HIGH     HIGH     LOW         HIGH  0.008471
+5830  HIGH        FALSE  HIGH  HIGH     FALSE  HIGH     HIGH  NORMAL         HIGH  0.008471
+5831  HIGH        FALSE  HIGH  HIGH     FALSE  HIGH     HIGH    HIGH         HIGH  0.830131
+
+[5832 rows x 10 columns]
+
+After summing out 'HR': f_45(HREKG, CATECHOL, ERRCAUTER, HRBP, STROKEVOLUME, CO, HRSAT, ERRLOWOUTPUT) = 
+       HREKG CATECHOL ERRCAUTER    HRBP STROKEVOLUME      CO   HRSAT ERRLOWOUTPUT      prob
+0       HIGH     HIGH     FALSE    HIGH         HIGH    HIGH    HIGH        FALSE  0.830132
+1       HIGH     HIGH     FALSE    HIGH         HIGH    HIGH    HIGH         TRUE  0.008473
+2       HIGH     HIGH     FALSE    HIGH         HIGH    HIGH     LOW        FALSE  0.008477
+3       HIGH     HIGH     FALSE    HIGH         HIGH    HIGH     LOW         TRUE  0.000269
+4       HIGH     HIGH     FALSE    HIGH         HIGH    HIGH  NORMAL        FALSE  0.008471
+...      ...      ...       ...     ...          ...     ...     ...          ...       ...
+1939  NORMAL   NORMAL      TRUE  NORMAL       NORMAL  NORMAL    HIGH         TRUE  0.038021
+1940  NORMAL   NORMAL      TRUE  NORMAL       NORMAL  NORMAL     LOW        FALSE  0.001081
+1941  NORMAL   NORMAL      TRUE  NORMAL       NORMAL  NORMAL     LOW         TRUE  0.038021
+1942  NORMAL   NORMAL      TRUE  NORMAL       NORMAL  NORMAL  NORMAL        FALSE  0.001100
+1943  NORMAL   NORMAL      TRUE  NORMAL       NORMAL  NORMAL  NORMAL         TRUE  0.039885
+
+[1944 rows x 9 columns]
+
+Variable 'HR' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['LVFAILURE', 'VENTLUNG', 'HYPOVOLEMIA', 'LVEDVOLUME', 'ERRCAUTER', 'TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'STROKEVOLUME', 'ERRLOWOUTPUT', 'INSUFFANESTH', 'ANAPHYLAXIS', 'FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HISTORY', 'CVP', 'PCWP', 'HRBP', 'HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP']f_0(HISTORY, LVFAILURE)f_1(LVEDVOLUME, CVP)f_2(LVEDVOLUME, PCWP)f_3(HYPOVOLEMIA)f_4(LVEDVOLUME, HYPOVOLEMIA, LVFAILURE)f_5(LVFAILURE)f_6(LVFAILURE, HYPOVOLEMIA, STROKEVOLUME)f_7(ERRLOWOUTPUT)f_10(ERRCAUTER)f_12(INSUFFANESTH)f_13(ANAPHYLAXIS)f_14(ANAPHYLAXIS, TPR)f_15(ARTCO2, VENTLUNG, EXPCO2)f_16(KINKEDTUBE)f_18(FIO2)f_19(FIO2, PVSAT, VENTALV)f_20(SAO2, SHUNT, PVSAT)f_21(PAP, PULMEMBOLUS)f_22(PULMEMBOLUS)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_29(DISCONNECT, VENTTUBE)f_32(VENTALV, ARTCO2)f_33(CATECHOL, TPR, ARTCO2, SAO2, INSUFFANESTH)f_36(CO, BP, TPR)f_41(PRESS, KINKEDTUBE, VENTLUNG, VENTALV, SHUNT, VENTTUBE, MINVOL, PULMEMBOLUS)f_45(HREKG, CATECHOL, ERRCAUTER, HRBP, STROKEVOLUME, CO, HRSAT, ERRLOWOUTPUT)
+
+Variable 'LVFAILURE' is being eliminated.
+
+f_0(HISTORY, LVFAILURE)f_4(LVEDVOLUME, HYPOVOLEMIA, LVFAILURE)f_5(LVFAILURE)f_6(LVFAILURE, HYPOVOLEMIA, STROKEVOLUME) = f_48(LVEDVOLUME, HISTORY, HYPOVOLEMIA, STROKEVOLUME, LVFAILURE) = 
+   HISTORY LVFAILURE LVEDVOLUME HYPOVOLEMIA STROKEVOLUME      prob
+0     TRUE      TRUE        LOW        TRUE          LOW  0.041895
+1     TRUE      TRUE        LOW        TRUE       NORMAL  0.000428
+2     TRUE      TRUE        LOW        TRUE         HIGH  0.000428
+3     TRUE      TRUE     NORMAL        TRUE          LOW  0.001764
+4     TRUE      TRUE     NORMAL        TRUE       NORMAL  0.000018
+..     ...       ...        ...         ...          ...       ...
+67   FALSE     FALSE     NORMAL       FALSE       NORMAL  0.761805
+68   FALSE     FALSE     NORMAL       FALSE         HIGH  0.042322
+69   FALSE     FALSE       HIGH       FALSE          LOW  0.002351
+70   FALSE     FALSE       HIGH       FALSE       NORMAL  0.042322
+71   FALSE     FALSE       HIGH       FALSE         HIGH  0.002351
+
+[72 rows x 6 columns]
+
+After summing out 'LVFAILURE': f_48(LVEDVOLUME, HISTORY, HYPOVOLEMIA, STROKEVOLUME) = 
+   LVEDVOLUME HISTORY HYPOVOLEMIA STROKEVOLUME      prob
+0        HIGH   FALSE       FALSE         HIGH  0.002352
+1        HIGH   FALSE       FALSE          LOW  0.002399
+2        HIGH   FALSE       FALSE       NORMAL  0.042325
+3        HIGH   FALSE        TRUE         HIGH  0.008465
+4        HIGH   FALSE        TRUE          LOW  0.423274
+5        HIGH   FALSE        TRUE       NORMAL  0.414761
+6        HIGH    TRUE       FALSE         HIGH  0.000028
+7        HIGH    TRUE       FALSE          LOW  0.000451
+8        HIGH    TRUE       FALSE       NORMAL  0.000445
+9        HIGH    TRUE        TRUE         HIGH  0.000090
+10       HIGH    TRUE        TRUE          LOW  0.004716
+11       HIGH    TRUE        TRUE       NORMAL  0.004194
+12        LOW   FALSE       FALSE         HIGH  0.002400
+13        LOW   FALSE       FALSE          LOW  0.007006
+14        LOW   FALSE       FALSE       NORMAL  0.042519
+15        LOW   FALSE        TRUE         HIGH  0.000142
+16        LOW   FALSE        TRUE          LOW  0.009358
+17        LOW   FALSE        TRUE       NORMAL  0.004656
+18        LOW    TRUE       FALSE         HIGH  0.000465
+19        LOW    TRUE       FALSE          LOW  0.041919
+20        LOW    TRUE       FALSE       NORMAL  0.002191
+21        LOW    TRUE        TRUE         HIGH  0.000428
+22        LOW    TRUE        TRUE          LOW  0.041943
+23        LOW    TRUE        TRUE       NORMAL  0.000474
+24     NORMAL   FALSE       FALSE         HIGH  0.042323
+25     NORMAL   FALSE       FALSE          LOW  0.042370
+26     NORMAL   FALSE       FALSE       NORMAL  0.761807
+27     NORMAL   FALSE        TRUE         HIGH  0.000848
+28     NORMAL   FALSE        TRUE          LOW  0.042519
+29     NORMAL   FALSE        TRUE       NORMAL  0.041478
+30     NORMAL    TRUE       FALSE         HIGH  0.000432
+31     NORMAL    TRUE       FALSE          LOW  0.000855
+32     NORMAL    TRUE       FALSE       NORMAL  0.007713
+33     NORMAL    TRUE        TRUE         HIGH  0.000027
+34     NORMAL    TRUE        TRUE          LOW  0.002192
+35     NORMAL    TRUE        TRUE       NORMAL  0.000437
+
+Variable 'LVFAILURE' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['VENTLUNG', 'HYPOVOLEMIA', 'LVEDVOLUME', 'ERRCAUTER', 'TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'STROKEVOLUME', 'ERRLOWOUTPUT', 'INSUFFANESTH', 'ANAPHYLAXIS', 'FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HISTORY', 'CVP', 'PCWP', 'HRBP', 'HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP']f_1(LVEDVOLUME, CVP)f_2(LVEDVOLUME, PCWP)f_3(HYPOVOLEMIA)f_7(ERRLOWOUTPUT)f_10(ERRCAUTER)f_12(INSUFFANESTH)f_13(ANAPHYLAXIS)f_14(ANAPHYLAXIS, TPR)f_15(ARTCO2, VENTLUNG, EXPCO2)f_16(KINKEDTUBE)f_18(FIO2)f_19(FIO2, PVSAT, VENTALV)f_20(SAO2, SHUNT, PVSAT)f_21(PAP, PULMEMBOLUS)f_22(PULMEMBOLUS)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_29(DISCONNECT, VENTTUBE)f_32(VENTALV, ARTCO2)f_33(CATECHOL, TPR, ARTCO2, SAO2, INSUFFANESTH)f_36(CO, BP, TPR)f_41(PRESS, KINKEDTUBE, VENTLUNG, VENTALV, SHUNT, VENTTUBE, MINVOL, PULMEMBOLUS)f_45(HREKG, CATECHOL, ERRCAUTER, HRBP, STROKEVOLUME, CO, HRSAT, ERRLOWOUTPUT)f_48(LVEDVOLUME, HISTORY, HYPOVOLEMIA, STROKEVOLUME)
+
+Variable 'VENTLUNG' is being eliminated.
+
+f_15(ARTCO2, VENTLUNG, EXPCO2)f_41(PRESS, KINKEDTUBE, VENTLUNG, VENTALV, SHUNT, VENTTUBE, MINVOL, PULMEMBOLUS) = f_49(PRESS, KINKEDTUBE, VENTLUNG, EXPCO2, VENTALV, SHUNT, MINVOL, ARTCO2, VENTTUBE, PULMEMBOLUS) = 
+      EXPCO2 ARTCO2 VENTLUNG PRESS KINKEDTUBE VENTALV   SHUNT VENTTUBE  MINVOL PULMEMBOLUS          prob
+0       ZERO    LOW     ZERO  HIGH      FALSE    HIGH    HIGH     HIGH    HIGH       FALSE  4.601195e-08
+1       ZERO    LOW     ZERO  HIGH      FALSE    HIGH    HIGH     HIGH    HIGH        TRUE  7.032015e-08
+2       ZERO    LOW     ZERO  HIGH      FALSE    HIGH    HIGH     HIGH     LOW       FALSE  1.298200e-07
+3       ZERO    LOW     ZERO  HIGH      FALSE    HIGH    HIGH     HIGH     LOW        TRUE  1.578864e-06
+4       ZERO    LOW     ZERO  HIGH      FALSE    HIGH    HIGH     HIGH  NORMAL       FALSE  4.336516e-06
+...      ...    ...      ...   ...        ...     ...     ...      ...     ...         ...           ...
+98299   HIGH   HIGH     HIGH  ZERO       TRUE    ZERO  NORMAL     ZERO     LOW        TRUE  2.518981e-05
+98300   HIGH   HIGH     HIGH  ZERO       TRUE    ZERO  NORMAL     ZERO  NORMAL       FALSE  2.493880e-06
+98301   HIGH   HIGH     HIGH  ZERO       TRUE    ZERO  NORMAL     ZERO  NORMAL        TRUE  2.625159e-07
+98302   HIGH   HIGH     HIGH  ZERO       TRUE    ZERO  NORMAL     ZERO    ZERO       FALSE  2.467340e-06
+98303   HIGH   HIGH     HIGH  ZERO       TRUE    ZERO  NORMAL     ZERO    ZERO        TRUE  2.597223e-07
+
+[98304 rows x 11 columns]
+
+After summing out 'VENTLUNG': f_49(PRESS, KINKEDTUBE, EXPCO2, VENTALV, SHUNT, MINVOL, ARTCO2, VENTTUBE, PULMEMBOLUS) = 
+      PRESS KINKEDTUBE EXPCO2 VENTALV   SHUNT MINVOL  ARTCO2 VENTTUBE PULMEMBOLUS      prob
+0      HIGH      FALSE   HIGH    HIGH    HIGH   HIGH    HIGH     HIGH       FALSE  0.000425
+1      HIGH      FALSE   HIGH    HIGH    HIGH   HIGH    HIGH     HIGH        TRUE  0.000515
+2      HIGH      FALSE   HIGH    HIGH    HIGH   HIGH    HIGH      LOW       FALSE  0.000010
+3      HIGH      FALSE   HIGH    HIGH    HIGH   HIGH    HIGH      LOW        TRUE  0.000099
+4      HIGH      FALSE   HIGH    HIGH    HIGH   HIGH    HIGH   NORMAL       FALSE  0.000008
+...     ...        ...    ...     ...     ...    ...     ...      ...         ...       ...
+24571  ZERO       TRUE   ZERO    ZERO  NORMAL   ZERO  NORMAL      LOW        TRUE  0.000042
+24572  ZERO       TRUE   ZERO    ZERO  NORMAL   ZERO  NORMAL   NORMAL       FALSE  0.007991
+24573  ZERO       TRUE   ZERO    ZERO  NORMAL   ZERO  NORMAL   NORMAL        TRUE  0.000841
+24574  ZERO       TRUE   ZERO    ZERO  NORMAL   ZERO  NORMAL     ZERO       FALSE  0.007747
+24575  ZERO       TRUE   ZERO    ZERO  NORMAL   ZERO  NORMAL     ZERO        TRUE  0.000815
+
+[24576 rows x 10 columns]
+
+Variable 'VENTLUNG' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['HYPOVOLEMIA', 'LVEDVOLUME', 'ERRCAUTER', 'TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'STROKEVOLUME', 'ERRLOWOUTPUT', 'INSUFFANESTH', 'ANAPHYLAXIS', 'FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HISTORY', 'CVP', 'PCWP', 'HRBP', 'HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP']f_1(LVEDVOLUME, CVP)f_2(LVEDVOLUME, PCWP)f_3(HYPOVOLEMIA)f_7(ERRLOWOUTPUT)f_10(ERRCAUTER)f_12(INSUFFANESTH)f_13(ANAPHYLAXIS)f_14(ANAPHYLAXIS, TPR)f_16(KINKEDTUBE)f_18(FIO2)f_19(FIO2, PVSAT, VENTALV)f_20(SAO2, SHUNT, PVSAT)f_21(PAP, PULMEMBOLUS)f_22(PULMEMBOLUS)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_29(DISCONNECT, VENTTUBE)f_32(VENTALV, ARTCO2)f_33(CATECHOL, TPR, ARTCO2, SAO2, INSUFFANESTH)f_36(CO, BP, TPR)f_45(HREKG, CATECHOL, ERRCAUTER, HRBP, STROKEVOLUME, CO, HRSAT, ERRLOWOUTPUT)f_48(LVEDVOLUME, HISTORY, HYPOVOLEMIA, STROKEVOLUME)f_49(PRESS, KINKEDTUBE, EXPCO2, VENTALV, SHUNT, MINVOL, ARTCO2, VENTTUBE, PULMEMBOLUS)
+
+Variable 'HYPOVOLEMIA' is being eliminated.
+
+f_3(HYPOVOLEMIA)f_48(LVEDVOLUME, HISTORY, HYPOVOLEMIA, STROKEVOLUME) = f_50(LVEDVOLUME, HISTORY, HYPOVOLEMIA, STROKEVOLUME) = 
+   HYPOVOLEMIA LVEDVOLUME HISTORY STROKEVOLUME      prob
+0         TRUE       HIGH   FALSE         HIGH  0.001693
+1         TRUE       HIGH   FALSE          LOW  0.084655
+2         TRUE       HIGH   FALSE       NORMAL  0.082952
+3         TRUE       HIGH    TRUE         HIGH  0.000018
+4         TRUE       HIGH    TRUE          LOW  0.000943
+5         TRUE       HIGH    TRUE       NORMAL  0.000839
+6         TRUE        LOW   FALSE         HIGH  0.000028
+7         TRUE        LOW   FALSE          LOW  0.001872
+8         TRUE        LOW   FALSE       NORMAL  0.000931
+9         TRUE        LOW    TRUE         HIGH  0.000086
+10        TRUE        LOW    TRUE          LOW  0.008389
+11        TRUE        LOW    TRUE       NORMAL  0.000095
+12        TRUE     NORMAL   FALSE         HIGH  0.000170
+13        TRUE     NORMAL   FALSE          LOW  0.008504
+14        TRUE     NORMAL   FALSE       NORMAL  0.008296
+15        TRUE     NORMAL    TRUE         HIGH  0.000005
+16        TRUE     NORMAL    TRUE          LOW  0.000438
+17        TRUE     NORMAL    TRUE       NORMAL  0.000087
+18       FALSE       HIGH   FALSE         HIGH  0.001881
+19       FALSE       HIGH   FALSE          LOW  0.001919
+20       FALSE       HIGH   FALSE       NORMAL  0.033860
+21       FALSE       HIGH    TRUE         HIGH  0.000023
+22       FALSE       HIGH    TRUE          LOW  0.000361
+23       FALSE       HIGH    TRUE       NORMAL  0.000356
+24       FALSE        LOW   FALSE         HIGH  0.001920
+25       FALSE        LOW   FALSE          LOW  0.005605
+26       FALSE        LOW   FALSE       NORMAL  0.034015
+27       FALSE        LOW    TRUE         HIGH  0.000372
+28       FALSE        LOW    TRUE          LOW  0.033535
+29       FALSE        LOW    TRUE       NORMAL  0.001753
+30       FALSE     NORMAL   FALSE         HIGH  0.033858
+31       FALSE     NORMAL   FALSE          LOW  0.033896
+32       FALSE     NORMAL   FALSE       NORMAL  0.609446
+33       FALSE     NORMAL    TRUE         HIGH  0.000346
+34       FALSE     NORMAL    TRUE          LOW  0.000684
+35       FALSE     NORMAL    TRUE       NORMAL  0.006170
+
+After summing out 'HYPOVOLEMIA': f_50(LVEDVOLUME, HISTORY, STROKEVOLUME) = 
+   LVEDVOLUME HISTORY STROKEVOLUME      prob
+0        HIGH   FALSE         HIGH  0.003574
+1        HIGH   FALSE          LOW  0.086574
+2        HIGH   FALSE       NORMAL  0.116812
+3        HIGH    TRUE         HIGH  0.000041
+4        HIGH    TRUE          LOW  0.001304
+5        HIGH    TRUE       NORMAL  0.001195
+6         LOW   FALSE         HIGH  0.001949
+7         LOW   FALSE          LOW  0.007477
+8         LOW   FALSE       NORMAL  0.034946
+9         LOW    TRUE         HIGH  0.000457
+10        LOW    TRUE          LOW  0.041924
+11        LOW    TRUE       NORMAL  0.001848
+12     NORMAL   FALSE         HIGH  0.034028
+13     NORMAL   FALSE          LOW  0.042400
+14     NORMAL   FALSE       NORMAL  0.617741
+15     NORMAL    TRUE         HIGH  0.000351
+16     NORMAL    TRUE          LOW  0.001122
+17     NORMAL    TRUE       NORMAL  0.006258
+
+Variable 'HYPOVOLEMIA' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['LVEDVOLUME', 'ERRCAUTER', 'TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'STROKEVOLUME', 'ERRLOWOUTPUT', 'INSUFFANESTH', 'ANAPHYLAXIS', 'FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HISTORY', 'CVP', 'PCWP', 'HRBP', 'HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP']f_1(LVEDVOLUME, CVP)f_2(LVEDVOLUME, PCWP)f_7(ERRLOWOUTPUT)f_10(ERRCAUTER)f_12(INSUFFANESTH)f_13(ANAPHYLAXIS)f_14(ANAPHYLAXIS, TPR)f_16(KINKEDTUBE)f_18(FIO2)f_19(FIO2, PVSAT, VENTALV)f_20(SAO2, SHUNT, PVSAT)f_21(PAP, PULMEMBOLUS)f_22(PULMEMBOLUS)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_29(DISCONNECT, VENTTUBE)f_32(VENTALV, ARTCO2)f_33(CATECHOL, TPR, ARTCO2, SAO2, INSUFFANESTH)f_36(CO, BP, TPR)f_45(HREKG, CATECHOL, ERRCAUTER, HRBP, STROKEVOLUME, CO, HRSAT, ERRLOWOUTPUT)f_49(PRESS, KINKEDTUBE, EXPCO2, VENTALV, SHUNT, MINVOL, ARTCO2, VENTTUBE, PULMEMBOLUS)f_50(LVEDVOLUME, HISTORY, STROKEVOLUME)
+
+Variable 'LVEDVOLUME' is being eliminated.
+
+f_1(LVEDVOLUME, CVP)f_2(LVEDVOLUME, PCWP)f_50(LVEDVOLUME, HISTORY, STROKEVOLUME) = f_52(LVEDVOLUME, CVP, HISTORY, STROKEVOLUME, PCWP) = 
+      CVP LVEDVOLUME  PCWP HISTORY STROKEVOLUME      prob
+0     LOW        LOW   LOW   FALSE         HIGH  0.001759
+1     LOW        LOW   LOW   FALSE          LOW  0.006748
+2     LOW        LOW   LOW   FALSE       NORMAL  0.031539
+3     LOW        LOW   LOW    TRUE         HIGH  0.000413
+4     LOW        LOW   LOW    TRUE          LOW  0.037836
+..    ...        ...   ...     ...          ...       ...
+157  HIGH       HIGH  HIGH   FALSE          LOW  0.057572
+158  HIGH       HIGH  HIGH   FALSE       NORMAL  0.077680
+159  HIGH       HIGH  HIGH    TRUE         HIGH  0.000027
+160  HIGH       HIGH  HIGH    TRUE          LOW  0.000867
+161  HIGH       HIGH  HIGH    TRUE       NORMAL  0.000795
+
+[162 rows x 6 columns]
+
+After summing out 'LVEDVOLUME': f_52(CVP, HISTORY, STROKEVOLUME, PCWP) = 
+       CVP HISTORY STROKEVOLUME    PCWP      prob
+0     HIGH   FALSE         HIGH    HIGH  0.002381
+1     HIGH   FALSE         HIGH     LOW  0.000057
+2     HIGH   FALSE         HIGH  NORMAL  0.000424
+3     HIGH   FALSE          LOW    HIGH  0.057577
+4     HIGH   FALSE          LOW     LOW  0.000694
+5     HIGH   FALSE          LOW  NORMAL  0.002830
+6     HIGH   FALSE       NORMAL    HIGH  0.077745
+7     HIGH   FALSE       NORMAL     LOW  0.001397
+8     HIGH   FALSE       NORMAL  NORMAL  0.009153
+9     HIGH    TRUE         HIGH    HIGH  0.000027
+10    HIGH    TRUE         HIGH     LOW  0.000005
+11    HIGH    TRUE         HIGH  NORMAL  0.000005
+12    HIGH    TRUE          LOW    HIGH  0.000872
+13    HIGH    TRUE          LOW     LOW  0.000408
+14    HIGH    TRUE          LOW  NORMAL  0.000064
+15    HIGH    TRUE       NORMAL    HIGH  0.000796
+16    HIGH    TRUE       NORMAL     LOW  0.000028
+17    HIGH    TRUE       NORMAL  NORMAL  0.000094
+18     LOW   FALSE         HIGH    HIGH  0.000066
+19     LOW   FALSE         HIGH     LOW  0.001813
+20     LOW   FALSE         HIGH  NORMAL  0.001369
+21     LOW   FALSE          LOW    HIGH  0.000910
+22     LOW   FALSE          LOW     LOW  0.006824
+23     LOW   FALSE          LOW  NORMAL  0.001930
+24     LOW   FALSE       NORMAL    HIGH  0.001689
+25     LOW   FALSE       NORMAL     LOW  0.032539
+26     LOW   FALSE       NORMAL  NORMAL  0.024849
+27     LOW    TRUE         HIGH    HIGH  0.000005
+28     LOW    TRUE         HIGH     LOW  0.000413
+29     LOW    TRUE         HIGH  NORMAL  0.000031
+30     LOW    TRUE          LOW    HIGH  0.000411
+31     LOW    TRUE          LOW     LOW  0.037838
+32     LOW    TRUE          LOW  NORMAL  0.001636
+33     LOW    TRUE       NORMAL    HIGH  0.000031
+34     LOW    TRUE       NORMAL     LOW  0.001678
+35     LOW    TRUE       NORMAL  NORMAL  0.000308
+36  NORMAL   FALSE         HIGH    HIGH  0.001309
+37  NORMAL   FALSE         HIGH     LOW  0.001377
+38  NORMAL   FALSE         HIGH  NORMAL  0.030755
+39  NORMAL   FALSE          LOW    HIGH  0.024257
+40  NORMAL   FALSE          LOW     LOW  0.002146
+41  NORMAL   FALSE          LOW  NORMAL  0.039282
+42  NORMAL   FALSE       NORMAL    HIGH  0.038064
+43  NORMAL   FALSE       NORMAL     LOW  0.025141
+44  NORMAL   FALSE       NORMAL  NORMAL  0.558922
+45  NORMAL    TRUE         HIGH    HIGH  0.000015
+46  NORMAL    TRUE         HIGH     LOW  0.000031
+47  NORMAL    TRUE         HIGH  NORMAL  0.000318
+48  NORMAL    TRUE          LOW    HIGH  0.000387
+49  NORMAL    TRUE          LOW     LOW  0.001640
+50  NORMAL    TRUE          LOW  NORMAL  0.001095
+51  NORMAL    TRUE       NORMAL    HIGH  0.000389
+52  NORMAL    TRUE       NORMAL     LOW  0.000311
+53  NORMAL    TRUE       NORMAL  NORMAL  0.005664
+
+Variable 'LVEDVOLUME' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['ERRCAUTER', 'TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'STROKEVOLUME', 'ERRLOWOUTPUT', 'INSUFFANESTH', 'ANAPHYLAXIS', 'FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HISTORY', 'CVP', 'PCWP', 'HRBP', 'HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP']f_7(ERRLOWOUTPUT)f_10(ERRCAUTER)f_12(INSUFFANESTH)f_13(ANAPHYLAXIS)f_14(ANAPHYLAXIS, TPR)f_16(KINKEDTUBE)f_18(FIO2)f_19(FIO2, PVSAT, VENTALV)f_20(SAO2, SHUNT, PVSAT)f_21(PAP, PULMEMBOLUS)f_22(PULMEMBOLUS)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_29(DISCONNECT, VENTTUBE)f_32(VENTALV, ARTCO2)f_33(CATECHOL, TPR, ARTCO2, SAO2, INSUFFANESTH)f_36(CO, BP, TPR)f_45(HREKG, CATECHOL, ERRCAUTER, HRBP, STROKEVOLUME, CO, HRSAT, ERRLOWOUTPUT)f_49(PRESS, KINKEDTUBE, EXPCO2, VENTALV, SHUNT, MINVOL, ARTCO2, VENTTUBE, PULMEMBOLUS)f_52(CVP, HISTORY, STROKEVOLUME, PCWP)
+
+Variable 'ERRCAUTER' is being eliminated.
+
+f_10(ERRCAUTER)f_45(HREKG, CATECHOL, ERRCAUTER, HRBP, STROKEVOLUME, CO, HRSAT, ERRLOWOUTPUT) = f_53(HREKG, CATECHOL, ERRCAUTER, HRBP, STROKEVOLUME, CO, HRSAT, ERRLOWOUTPUT) = 
+     ERRCAUTER   HREKG CATECHOL    HRBP STROKEVOLUME      CO   HRSAT ERRLOWOUTPUT      prob
+0         TRUE    HIGH     HIGH    HIGH         HIGH    HIGH    HIGH        FALSE  0.000016
+1         TRUE    HIGH     HIGH    HIGH         HIGH    HIGH    HIGH         TRUE  0.000207
+2         TRUE    HIGH     HIGH    HIGH         HIGH    HIGH     LOW        FALSE  0.000016
+3         TRUE    HIGH     HIGH    HIGH         HIGH    HIGH     LOW         TRUE  0.000207
+4         TRUE    HIGH     HIGH    HIGH         HIGH    HIGH  NORMAL        FALSE  0.000854
+...        ...     ...      ...     ...          ...     ...     ...          ...       ...
+1939     FALSE  NORMAL   NORMAL  NORMAL       NORMAL  NORMAL    HIGH         TRUE  0.000050
+1940     FALSE  NORMAL   NORMAL  NORMAL       NORMAL  NORMAL     LOW        FALSE  0.000193
+1941     FALSE  NORMAL   NORMAL  NORMAL       NORMAL  NORMAL     LOW         TRUE  0.003019
+1942     FALSE  NORMAL   NORMAL  NORMAL       NORMAL  NORMAL  NORMAL        FALSE  0.000119
+1943     FALSE  NORMAL   NORMAL  NORMAL       NORMAL  NORMAL  NORMAL         TRUE  0.000033
+
+[1944 rows x 9 columns]
+
+After summing out 'ERRCAUTER': f_53(HREKG, CATECHOL, HRBP, STROKEVOLUME, CO, HRSAT, ERRLOWOUTPUT) = 
+      HREKG CATECHOL    HRBP STROKEVOLUME      CO   HRSAT ERRLOWOUTPUT      prob
+0      HIGH     HIGH    HIGH         HIGH    HIGH    HIGH        FALSE  0.747134
+1      HIGH     HIGH    HIGH         HIGH    HIGH    HIGH         TRUE  0.007833
+2      HIGH     HIGH    HIGH         HIGH    HIGH     LOW        FALSE  0.007645
+3      HIGH     HIGH    HIGH         HIGH    HIGH     LOW         TRUE  0.000449
+4      HIGH     HIGH    HIGH         HIGH    HIGH  NORMAL        FALSE  0.008478
+..      ...      ...     ...          ...     ...     ...          ...       ...
+967  NORMAL   NORMAL  NORMAL       NORMAL  NORMAL    HIGH         TRUE  0.003852
+968  NORMAL   NORMAL  NORMAL       NORMAL  NORMAL     LOW        FALSE  0.000302
+969  NORMAL   NORMAL  NORMAL       NORMAL  NORMAL     LOW         TRUE  0.006821
+970  NORMAL   NORMAL  NORMAL       NORMAL  NORMAL  NORMAL        FALSE  0.000229
+971  NORMAL   NORMAL  NORMAL       NORMAL  NORMAL  NORMAL         TRUE  0.004021
+
+[972 rows x 8 columns]
+
+Variable 'ERRCAUTER' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'STROKEVOLUME', 'ERRLOWOUTPUT', 'INSUFFANESTH', 'ANAPHYLAXIS', 'FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HISTORY', 'CVP', 'PCWP', 'HRBP', 'HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP']f_7(ERRLOWOUTPUT)f_12(INSUFFANESTH)f_13(ANAPHYLAXIS)f_14(ANAPHYLAXIS, TPR)f_16(KINKEDTUBE)f_18(FIO2)f_19(FIO2, PVSAT, VENTALV)f_20(SAO2, SHUNT, PVSAT)f_21(PAP, PULMEMBOLUS)f_22(PULMEMBOLUS)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_29(DISCONNECT, VENTTUBE)f_32(VENTALV, ARTCO2)f_33(CATECHOL, TPR, ARTCO2, SAO2, INSUFFANESTH)f_36(CO, BP, TPR)f_49(PRESS, KINKEDTUBE, EXPCO2, VENTALV, SHUNT, MINVOL, ARTCO2, VENTTUBE, PULMEMBOLUS)f_52(CVP, HISTORY, STROKEVOLUME, PCWP)f_53(HREKG, CATECHOL, HRBP, STROKEVOLUME, CO, HRSAT, ERRLOWOUTPUT)
+
+Variable 'TPR' is being eliminated.
+
+f_14(ANAPHYLAXIS, TPR)f_33(CATECHOL, TPR, ARTCO2, SAO2, INSUFFANESTH)f_36(CO, BP, TPR) = f_55(CATECHOL, BP, TPR, ANAPHYLAXIS, CO, ARTCO2, SAO2, INSUFFANESTH) = 
+       TPR ANAPHYLAXIS CATECHOL ARTCO2 INSUFFANESTH  SAO2      BP      CO      prob
+0      LOW        TRUE   NORMAL    LOW         TRUE   LOW     LOW     LOW  0.009604
+1      LOW        TRUE   NORMAL    LOW         TRUE   LOW  NORMAL     LOW  0.000098
+2      LOW        TRUE   NORMAL    LOW         TRUE   LOW    HIGH     LOW  0.000098
+3      LOW        TRUE   NORMAL    LOW         TRUE   LOW     LOW  NORMAL  0.009604
+4      LOW        TRUE   NORMAL    LOW         TRUE   LOW  NORMAL  NORMAL  0.000098
+...    ...         ...      ...    ...          ...   ...     ...     ...       ...
+1939  HIGH       FALSE     HIGH   HIGH        FALSE  HIGH  NORMAL  NORMAL  0.084000
+1940  HIGH       FALSE     HIGH   HIGH        FALSE  HIGH    HIGH  NORMAL  0.115500
+1941  HIGH       FALSE     HIGH   HIGH        FALSE  HIGH     LOW    HIGH  0.002100
+1942  HIGH       FALSE     HIGH   HIGH        FALSE  HIGH  NORMAL    HIGH  0.018900
+1943  HIGH       FALSE     HIGH   HIGH        FALSE  HIGH    HIGH    HIGH  0.189000
+
+[1944 rows x 9 columns]
+
+After summing out 'TPR': f_55(CATECHOL, BP, ANAPHYLAXIS, CO, ARTCO2, SAO2, INSUFFANESTH) = 
+    CATECHOL      BP ANAPHYLAXIS      CO  ARTCO2    SAO2 INSUFFANESTH      prob
+0       HIGH    HIGH       FALSE    HIGH    HIGH    HIGH        FALSE  0.488970
+1       HIGH    HIGH       FALSE    HIGH    HIGH    HIGH         TRUE  0.488970
+2       HIGH    HIGH       FALSE    HIGH    HIGH     LOW        FALSE  0.542970
+3       HIGH    HIGH       FALSE    HIGH    HIGH     LOW         TRUE  0.542970
+4       HIGH    HIGH       FALSE    HIGH    HIGH  NORMAL        FALSE  0.488970
+..       ...     ...         ...     ...     ...     ...          ...       ...
+643   NORMAL  NORMAL        TRUE  NORMAL  NORMAL    HIGH         TRUE  0.004483
+644   NORMAL  NORMAL        TRUE  NORMAL  NORMAL     LOW        FALSE  0.003323
+645   NORMAL  NORMAL        TRUE  NORMAL  NORMAL     LOW         TRUE  0.002983
+646   NORMAL  NORMAL        TRUE  NORMAL  NORMAL  NORMAL        FALSE  0.004483
+647   NORMAL  NORMAL        TRUE  NORMAL  NORMAL  NORMAL         TRUE  0.003323
+
+[648 rows x 8 columns]
+
+Variable 'TPR' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'STROKEVOLUME', 'ERRLOWOUTPUT', 'INSUFFANESTH', 'ANAPHYLAXIS', 'FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HISTORY', 'CVP', 'PCWP', 'HRBP', 'HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP']f_7(ERRLOWOUTPUT)f_12(INSUFFANESTH)f_13(ANAPHYLAXIS)f_16(KINKEDTUBE)f_18(FIO2)f_19(FIO2, PVSAT, VENTALV)f_20(SAO2, SHUNT, PVSAT)f_21(PAP, PULMEMBOLUS)f_22(PULMEMBOLUS)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_29(DISCONNECT, VENTTUBE)f_32(VENTALV, ARTCO2)f_49(PRESS, KINKEDTUBE, EXPCO2, VENTALV, SHUNT, MINVOL, ARTCO2, VENTTUBE, PULMEMBOLUS)f_52(CVP, HISTORY, STROKEVOLUME, PCWP)f_53(HREKG, CATECHOL, HRBP, STROKEVOLUME, CO, HRSAT, ERRLOWOUTPUT)f_55(CATECHOL, BP, ANAPHYLAXIS, CO, ARTCO2, SAO2, INSUFFANESTH)
+
+Variable 'KINKEDTUBE' is being eliminated.
+
+f_16(KINKEDTUBE)f_49(PRESS, KINKEDTUBE, EXPCO2, VENTALV, SHUNT, MINVOL, ARTCO2, VENTTUBE, PULMEMBOLUS) = f_56(PRESS, KINKEDTUBE, VENTALV, EXPCO2, SHUNT, ARTCO2, VENTTUBE, MINVOL, PULMEMBOLUS) = 
+      KINKEDTUBE PRESS EXPCO2 VENTALV   SHUNT MINVOL  ARTCO2 VENTTUBE PULMEMBOLUS          prob
+0           TRUE  HIGH   HIGH    HIGH    HIGH   HIGH    HIGH     HIGH       FALSE  3.575408e-09
+1           TRUE  HIGH   HIGH    HIGH    HIGH   HIGH    HIGH     HIGH        TRUE  3.372257e-08
+2           TRUE  HIGH   HIGH    HIGH    HIGH   HIGH    HIGH      LOW       FALSE  8.143101e-08
+3           TRUE  HIGH   HIGH    HIGH    HIGH   HIGH    HIGH      LOW        TRUE  1.435123e-06
+4           TRUE  HIGH   HIGH    HIGH    HIGH   HIGH    HIGH   NORMAL       FALSE  3.575408e-09
+...          ...   ...    ...     ...     ...    ...     ...      ...         ...           ...
+24571      FALSE  ZERO   ZERO    ZERO  NORMAL   ZERO  NORMAL      LOW        TRUE  2.053384e-05
+24572      FALSE  ZERO   ZERO    ZERO  NORMAL   ZERO  NORMAL   NORMAL       FALSE  2.432287e-04
+24573      FALSE  ZERO   ZERO    ZERO  NORMAL   ZERO  NORMAL   NORMAL        TRUE  2.561696e-05
+24574      FALSE  ZERO   ZERO    ZERO  NORMAL   ZERO  NORMAL     ZERO       FALSE  2.665336e-04
+24575      FALSE  ZERO   ZERO    ZERO  NORMAL   ZERO  NORMAL     ZERO        TRUE  2.805966e-05
+
+[24576 rows x 10 columns]
+
+After summing out 'KINKEDTUBE': f_56(PRESS, VENTALV, EXPCO2, SHUNT, ARTCO2, VENTTUBE, MINVOL, PULMEMBOLUS) = 
+      PRESS VENTALV EXPCO2   SHUNT  ARTCO2 VENTTUBE  MINVOL PULMEMBOLUS          prob
+0      HIGH    HIGH   HIGH    HIGH    HIGH     HIGH    HIGH       FALSE  4.078114e-04
+1      HIGH    HIGH   HIGH    HIGH    HIGH     HIGH    HIGH        TRUE  4.947594e-04
+2      HIGH    HIGH   HIGH    HIGH    HIGH     HIGH     LOW       FALSE  8.168489e-06
+3      HIGH    HIGH   HIGH    HIGH    HIGH     HIGH     LOW        TRUE  7.615683e-05
+4      HIGH    HIGH   HIGH    HIGH    HIGH     HIGH  NORMAL       FALSE  4.412089e-06
+...     ...     ...    ...     ...     ...      ...     ...         ...           ...
+12283  ZERO    ZERO   ZERO  NORMAL  NORMAL     ZERO     LOW        TRUE  9.681873e-07
+12284  ZERO    ZERO   ZERO  NORMAL  NORMAL     ZERO  NORMAL       FALSE  6.598092e-06
+12285  ZERO    ZERO   ZERO  NORMAL  NORMAL     ZERO  NORMAL        TRUE  6.967288e-07
+12286  ZERO    ZERO   ZERO  NORMAL  NORMAL     ZERO    ZERO       FALSE  5.763985e-04
+12287  ZERO    ZERO   ZERO  NORMAL  NORMAL     ZERO    ZERO        TRUE  6.067734e-05
+
+[12288 rows x 9 columns]
+
+Variable 'KINKEDTUBE' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'STROKEVOLUME', 'ERRLOWOUTPUT', 'INSUFFANESTH', 'ANAPHYLAXIS', 'FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HISTORY', 'CVP', 'PCWP', 'HRBP', 'HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP']f_7(ERRLOWOUTPUT)f_12(INSUFFANESTH)f_13(ANAPHYLAXIS)f_18(FIO2)f_19(FIO2, PVSAT, VENTALV)f_20(SAO2, SHUNT, PVSAT)f_21(PAP, PULMEMBOLUS)f_22(PULMEMBOLUS)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_29(DISCONNECT, VENTTUBE)f_32(VENTALV, ARTCO2)f_52(CVP, HISTORY, STROKEVOLUME, PCWP)f_53(HREKG, CATECHOL, HRBP, STROKEVOLUME, CO, HRSAT, ERRLOWOUTPUT)f_55(CATECHOL, BP, ANAPHYLAXIS, CO, ARTCO2, SAO2, INSUFFANESTH)f_56(PRESS, VENTALV, EXPCO2, SHUNT, ARTCO2, VENTTUBE, MINVOL, PULMEMBOLUS)
+
+Variable 'PULMEMBOLUS' is being eliminated.
+
+f_21(PAP, PULMEMBOLUS)f_22(PULMEMBOLUS)f_56(PRESS, VENTALV, EXPCO2, SHUNT, ARTCO2, VENTTUBE, MINVOL, PULMEMBOLUS) = f_58(PRESS, PAP, VENTALV, EXPCO2, SHUNT, MINVOL, ARTCO2, VENTTUBE, PULMEMBOLUS) = 
+        PAP PULMEMBOLUS PRESS VENTALV EXPCO2   SHUNT  ARTCO2 VENTTUBE  MINVOL          prob
+0       LOW        TRUE  HIGH    HIGH   HIGH    HIGH    HIGH     HIGH    HIGH  4.947594e-08
+1       LOW        TRUE  HIGH    HIGH   HIGH    HIGH    HIGH     HIGH     LOW  7.615683e-09
+2       LOW        TRUE  HIGH    HIGH   HIGH    HIGH    HIGH     HIGH  NORMAL  8.069201e-10
+3       LOW        TRUE  HIGH    HIGH   HIGH    HIGH    HIGH     HIGH    ZERO  7.840445e-09
+4       LOW        TRUE  HIGH    HIGH   HIGH    HIGH    HIGH      LOW    HIGH  9.624786e-09
+...     ...         ...   ...     ...    ...     ...     ...      ...     ...           ...
+36859  HIGH       FALSE  ZERO    ZERO   ZERO  NORMAL  NORMAL   NORMAL    ZERO  2.786253e-05
+36860  HIGH       FALSE  ZERO    ZERO   ZERO  NORMAL  NORMAL     ZERO    HIGH  3.110462e-06
+36861  HIGH       FALSE  ZERO    ZERO   ZERO  NORMAL  NORMAL     ZERO     LOW  4.547798e-07
+36862  HIGH       FALSE  ZERO    ZERO   ZERO  NORMAL  NORMAL     ZERO  NORMAL  3.266056e-07
+36863  HIGH       FALSE  ZERO    ZERO   ZERO  NORMAL  NORMAL     ZERO    ZERO  2.853173e-05
+
+[36864 rows x 10 columns]
+
+After summing out 'PULMEMBOLUS': f_58(PRESS, PAP, VENTALV, EXPCO2, SHUNT, MINVOL, ARTCO2, VENTTUBE) = 
+      PRESS     PAP VENTALV EXPCO2   SHUNT MINVOL  ARTCO2 VENTTUBE      prob
+0      HIGH    HIGH    HIGH   HIGH    HIGH   HIGH    HIGH     HIGH  0.000024
+1      HIGH    HIGH    HIGH   HIGH    HIGH   HIGH    HIGH      LOW  0.000001
+2      HIGH    HIGH    HIGH   HIGH    HIGH   HIGH    HIGH   NORMAL  0.000002
+3      HIGH    HIGH    HIGH   HIGH    HIGH   HIGH    HIGH     ZERO  0.000053
+4      HIGH    HIGH    HIGH   HIGH    HIGH   HIGH     LOW     HIGH  0.000024
+...     ...     ...     ...    ...     ...    ...     ...      ...       ...
+18427  ZERO  NORMAL    ZERO   ZERO  NORMAL   ZERO     LOW     ZERO  0.028807
+18428  ZERO  NORMAL    ZERO   ZERO  NORMAL   ZERO  NORMAL     HIGH  0.000062
+18429  ZERO  NORMAL    ZERO   ZERO  NORMAL   ZERO  NORMAL      LOW  0.000188
+18430  ZERO  NORMAL    ZERO   ZERO  NORMAL   ZERO  NORMAL   NORMAL  0.000502
+18431  ZERO  NORMAL    ZERO   ZERO  NORMAL   ZERO  NORMAL     ZERO  0.000514
+
+[18432 rows x 9 columns]
+
+Variable 'PULMEMBOLUS' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['VENTTUBE', 'VENTALV', 'ARTCO2', 'STROKEVOLUME', 'ERRLOWOUTPUT', 'INSUFFANESTH', 'ANAPHYLAXIS', 'FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HISTORY', 'CVP', 'PCWP', 'HRBP', 'HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP']f_7(ERRLOWOUTPUT)f_12(INSUFFANESTH)f_13(ANAPHYLAXIS)f_18(FIO2)f_19(FIO2, PVSAT, VENTALV)f_20(SAO2, SHUNT, PVSAT)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_29(DISCONNECT, VENTTUBE)f_32(VENTALV, ARTCO2)f_52(CVP, HISTORY, STROKEVOLUME, PCWP)f_53(HREKG, CATECHOL, HRBP, STROKEVOLUME, CO, HRSAT, ERRLOWOUTPUT)f_55(CATECHOL, BP, ANAPHYLAXIS, CO, ARTCO2, SAO2, INSUFFANESTH)f_58(PRESS, PAP, VENTALV, EXPCO2, SHUNT, MINVOL, ARTCO2, VENTTUBE)
+
+Variable 'VENTTUBE' is being eliminated.
+
+f_29(DISCONNECT, VENTTUBE)f_58(PRESS, PAP, VENTALV, EXPCO2, SHUNT, MINVOL, ARTCO2, VENTTUBE) = f_59(PRESS, PAP, DISCONNECT, VENTALV, EXPCO2, SHUNT, MINVOL, ARTCO2, VENTTUBE) = 
+      VENTTUBE DISCONNECT PRESS     PAP VENTALV EXPCO2   SHUNT  MINVOL  ARTCO2          prob
+0         ZERO       TRUE  HIGH    HIGH    HIGH   HIGH    HIGH    HIGH    HIGH  5.146277e-05
+1         ZERO       TRUE  HIGH    HIGH    HIGH   HIGH    HIGH    HIGH     LOW  5.146277e-05
+2         ZERO       TRUE  HIGH    HIGH    HIGH   HIGH    HIGH    HIGH  NORMAL  5.146277e-05
+3         ZERO       TRUE  HIGH    HIGH    HIGH   HIGH    HIGH     LOW    HIGH  1.296403e-06
+4         ZERO       TRUE  HIGH    HIGH    HIGH   HIGH    HIGH     LOW     LOW  1.296403e-06
+...        ...        ...   ...     ...     ...    ...     ...     ...     ...           ...
+36859     HIGH      FALSE  ZERO  NORMAL    ZERO   ZERO  NORMAL  NORMAL     LOW  5.839428e-07
+36860     HIGH      FALSE  ZERO  NORMAL    ZERO   ZERO  NORMAL  NORMAL  NORMAL  1.355026e-08
+36861     HIGH      FALSE  ZERO  NORMAL    ZERO   ZERO  NORMAL    ZERO    HIGH  6.043107e-07
+36862     HIGH      FALSE  ZERO  NORMAL    ZERO   ZERO  NORMAL    ZERO     LOW  5.584851e-05
+36863     HIGH      FALSE  ZERO  NORMAL    ZERO   ZERO  NORMAL    ZERO  NORMAL  6.240010e-07
+
+[36864 rows x 10 columns]
+
+After summing out 'VENTTUBE': f_59(PRESS, PAP, DISCONNECT, VENTALV, EXPCO2, SHUNT, MINVOL, ARTCO2) = 
+     PRESS     PAP DISCONNECT VENTALV EXPCO2   SHUNT  MINVOL  ARTCO2      prob
+0     HIGH    HIGH      FALSE    HIGH   HIGH    HIGH    HIGH    HIGH  0.000052
+1     HIGH    HIGH      FALSE    HIGH   HIGH    HIGH    HIGH     LOW  0.000052
+2     HIGH    HIGH      FALSE    HIGH   HIGH    HIGH    HIGH  NORMAL  0.000052
+3     HIGH    HIGH      FALSE    HIGH   HIGH    HIGH     LOW    HIGH  0.000002
+4     HIGH    HIGH      FALSE    HIGH   HIGH    HIGH     LOW     LOW  0.000002
+...    ...     ...        ...     ...    ...     ...     ...     ...       ...
+9211  ZERO  NORMAL       TRUE    ZERO   ZERO  NORMAL  NORMAL     LOW  0.000296
+9212  ZERO  NORMAL       TRUE    ZERO   ZERO  NORMAL  NORMAL  NORMAL  0.000006
+9213  ZERO  NORMAL       TRUE    ZERO   ZERO  NORMAL    ZERO    HIGH  0.000299
+9214  ZERO  NORMAL       TRUE    ZERO   ZERO  NORMAL    ZERO     LOW  0.028345
+9215  ZERO  NORMAL       TRUE    ZERO   ZERO  NORMAL    ZERO  NORMAL  0.000506
+
+[9216 rows x 9 columns]
+
+Variable 'VENTTUBE' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['VENTALV', 'ARTCO2', 'STROKEVOLUME', 'ERRLOWOUTPUT', 'INSUFFANESTH', 'ANAPHYLAXIS', 'FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HISTORY', 'CVP', 'PCWP', 'HRBP', 'HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP']f_7(ERRLOWOUTPUT)f_12(INSUFFANESTH)f_13(ANAPHYLAXIS)f_18(FIO2)f_19(FIO2, PVSAT, VENTALV)f_20(SAO2, SHUNT, PVSAT)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_32(VENTALV, ARTCO2)f_52(CVP, HISTORY, STROKEVOLUME, PCWP)f_53(HREKG, CATECHOL, HRBP, STROKEVOLUME, CO, HRSAT, ERRLOWOUTPUT)f_55(CATECHOL, BP, ANAPHYLAXIS, CO, ARTCO2, SAO2, INSUFFANESTH)f_59(PRESS, PAP, DISCONNECT, VENTALV, EXPCO2, SHUNT, MINVOL, ARTCO2)
+
+Variable 'VENTALV' is being eliminated.
+
+f_19(FIO2, PVSAT, VENTALV)f_32(VENTALV, ARTCO2)f_59(PRESS, PAP, DISCONNECT, VENTALV, EXPCO2, SHUNT, MINVOL, ARTCO2) = f_61(PRESS, PAP, FIO2, DISCONNECT, VENTALV, EXPCO2, SHUNT, MINVOL, ARTCO2, PVSAT) = 
+      PVSAT    FIO2 VENTALV ARTCO2 PRESS     PAP DISCONNECT EXPCO2   SHUNT  MINVOL          prob
+0       LOW     LOW    ZERO    LOW  HIGH    HIGH      FALSE   HIGH    HIGH    HIGH  1.063058e-08
+1       LOW     LOW    ZERO    LOW  HIGH    HIGH      FALSE   HIGH    HIGH     LOW  4.803673e-08
+2       LOW     LOW    ZERO    LOW  HIGH    HIGH      FALSE   HIGH    HIGH  NORMAL  3.008590e-09
+3       LOW     LOW    ZERO    LOW  HIGH    HIGH      FALSE   HIGH    HIGH    ZERO  2.314693e-07
+4       LOW     LOW    ZERO    LOW  HIGH    HIGH      FALSE   HIGH  NORMAL    HIGH  4.042124e-08
+...     ...     ...     ...    ...   ...     ...        ...    ...     ...     ...           ...
+55291  HIGH  NORMAL    HIGH   HIGH  ZERO  NORMAL       TRUE   ZERO    HIGH    ZERO  6.583237e-08
+55292  HIGH  NORMAL    HIGH   HIGH  ZERO  NORMAL       TRUE   ZERO  NORMAL    HIGH  5.116298e-07
+55293  HIGH  NORMAL    HIGH   HIGH  ZERO  NORMAL       TRUE   ZERO  NORMAL     LOW  1.081124e-06
+55294  HIGH  NORMAL    HIGH   HIGH  ZERO  NORMAL       TRUE   ZERO  NORMAL  NORMAL  2.795538e-08
+55295  HIGH  NORMAL    HIGH   HIGH  ZERO  NORMAL       TRUE   ZERO  NORMAL    ZERO  1.133092e-06
+
+[55296 rows x 11 columns]
+
+After summing out 'VENTALV': f_61(PRESS, PAP, FIO2, DISCONNECT, EXPCO2, SHUNT, MINVOL, ARTCO2, PVSAT) = 
+      PRESS     PAP    FIO2 DISCONNECT EXPCO2   SHUNT MINVOL  ARTCO2   PVSAT          prob
+0      HIGH    HIGH     LOW      FALSE   HIGH    HIGH   HIGH    HIGH    HIGH  2.538760e-07
+1      HIGH    HIGH     LOW      FALSE   HIGH    HIGH   HIGH    HIGH     LOW  2.332086e-05
+2      HIGH    HIGH     LOW      FALSE   HIGH    HIGH   HIGH    HIGH  NORMAL  1.424188e-06
+3      HIGH    HIGH     LOW      FALSE   HIGH    HIGH   HIGH     LOW    HIGH  1.864737e-06
+4      HIGH    HIGH     LOW      FALSE   HIGH    HIGH   HIGH     LOW     LOW  8.237510e-07
+...     ...     ...     ...        ...    ...     ...    ...     ...     ...           ...
+13819  ZERO  NORMAL  NORMAL       TRUE   ZERO  NORMAL   ZERO     LOW     LOW  2.994041e-04
+13820  ZERO  NORMAL  NORMAL       TRUE   ZERO  NORMAL   ZERO     LOW  NORMAL  6.177898e-06
+13821  ZERO  NORMAL  NORMAL       TRUE   ZERO  NORMAL   ZERO  NORMAL    HIGH  5.037811e-06
+13822  ZERO  NORMAL  NORMAL       TRUE   ZERO  NORMAL   ZERO  NORMAL     LOW  1.179022e-05
+13823  ZERO  NORMAL  NORMAL       TRUE   ZERO  NORMAL   ZERO  NORMAL  NORMAL  3.847216e-07
+
+[13824 rows x 10 columns]
+
+Variable 'VENTALV' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['ARTCO2', 'STROKEVOLUME', 'ERRLOWOUTPUT', 'INSUFFANESTH', 'ANAPHYLAXIS', 'FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HISTORY', 'CVP', 'PCWP', 'HRBP', 'HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP']f_7(ERRLOWOUTPUT)f_12(INSUFFANESTH)f_13(ANAPHYLAXIS)f_18(FIO2)f_20(SAO2, SHUNT, PVSAT)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_52(CVP, HISTORY, STROKEVOLUME, PCWP)f_53(HREKG, CATECHOL, HRBP, STROKEVOLUME, CO, HRSAT, ERRLOWOUTPUT)f_55(CATECHOL, BP, ANAPHYLAXIS, CO, ARTCO2, SAO2, INSUFFANESTH)f_61(PRESS, PAP, FIO2, DISCONNECT, EXPCO2, SHUNT, MINVOL, ARTCO2, PVSAT)
+
+Variable 'ARTCO2' is being eliminated.
+
+f_55(CATECHOL, BP, ANAPHYLAXIS, CO, ARTCO2, SAO2, INSUFFANESTH)f_61(PRESS, PAP, FIO2, DISCONNECT, EXPCO2, SHUNT, MINVOL, ARTCO2, PVSAT) = f_62(PRESS, CATECHOL, PAP, EXPCO2, SHUNT, CO, FIO2, BP, DISCONNECT, ANAPHYLAXIS, PVSAT, ARTCO2, SAO2, INSUFFANESTH, MINVOL) = 
+        CATECHOL      BP ANAPHYLAXIS      CO  ARTCO2    SAO2 INSUFFANESTH PRESS     PAP    FIO2 DISCONNECT EXPCO2   SHUNT  MINVOL   PVSAT          prob
+0           HIGH    HIGH       FALSE    HIGH    HIGH    HIGH        FALSE  HIGH    HIGH     LOW      FALSE   HIGH    HIGH    HIGH    HIGH  1.241378e-07
+1           HIGH    HIGH       FALSE    HIGH    HIGH    HIGH        FALSE  HIGH    HIGH     LOW      FALSE   HIGH    HIGH    HIGH     LOW  1.140320e-05
+2           HIGH    HIGH       FALSE    HIGH    HIGH    HIGH        FALSE  HIGH    HIGH     LOW      FALSE   HIGH    HIGH    HIGH  NORMAL  6.963853e-07
+3           HIGH    HIGH       FALSE    HIGH    HIGH    HIGH        FALSE  HIGH    HIGH     LOW      FALSE   HIGH    HIGH     LOW    HIGH  6.935825e-07
+4           HIGH    HIGH       FALSE    HIGH    HIGH    HIGH        FALSE  HIGH    HIGH     LOW      FALSE   HIGH    HIGH     LOW     LOW  6.819185e-05
+...          ...     ...         ...     ...     ...     ...          ...   ...     ...     ...        ...    ...     ...     ...     ...           ...
+2985979   NORMAL  NORMAL        TRUE  NORMAL  NORMAL  NORMAL         TRUE  ZERO  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL     LOW  8.365702e-09
+2985980   NORMAL  NORMAL        TRUE  NORMAL  NORMAL  NORMAL         TRUE  ZERO  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL  NORMAL  4.895382e-10
+2985981   NORMAL  NORMAL        TRUE  NORMAL  NORMAL  NORMAL         TRUE  ZERO  NORMAL  NORMAL       TRUE   ZERO  NORMAL    ZERO    HIGH  1.674064e-08
+2985982   NORMAL  NORMAL        TRUE  NORMAL  NORMAL  NORMAL         TRUE  ZERO  NORMAL  NORMAL       TRUE   ZERO  NORMAL    ZERO     LOW  3.917891e-08
+2985983   NORMAL  NORMAL        TRUE  NORMAL  NORMAL  NORMAL         TRUE  ZERO  NORMAL  NORMAL       TRUE   ZERO  NORMAL    ZERO  NORMAL  1.278430e-09
+
+[2985984 rows x 16 columns]
+
+After summing out 'ARTCO2': f_62(PRESS, CATECHOL, PAP, EXPCO2, SHUNT, CO, FIO2, BP, DISCONNECT, ANAPHYLAXIS, PVSAT, SAO2, INSUFFANESTH, MINVOL) = 
+       PRESS CATECHOL     PAP EXPCO2   SHUNT      CO    FIO2      BP DISCONNECT ANAPHYLAXIS   PVSAT    SAO2 INSUFFANESTH  MINVOL          prob
+0       HIGH     HIGH    HIGH   HIGH    HIGH    HIGH     LOW    HIGH      FALSE       FALSE    HIGH    HIGH        FALSE    HIGH  7.408785e-07
+1       HIGH     HIGH    HIGH   HIGH    HIGH    HIGH     LOW    HIGH      FALSE       FALSE    HIGH    HIGH        FALSE     LOW  7.267380e-07
+2       HIGH     HIGH    HIGH   HIGH    HIGH    HIGH     LOW    HIGH      FALSE       FALSE    HIGH    HIGH        FALSE  NORMAL  1.556334e-08
+3       HIGH     HIGH    HIGH   HIGH    HIGH    HIGH     LOW    HIGH      FALSE       FALSE    HIGH    HIGH        FALSE    ZERO  2.129493e-08
+4       HIGH     HIGH    HIGH   HIGH    HIGH    HIGH     LOW    HIGH      FALSE       FALSE    HIGH    HIGH         TRUE    HIGH  7.411249e-07
+...      ...      ...     ...    ...     ...     ...     ...     ...        ...         ...     ...     ...          ...     ...           ...
+995323  ZERO   NORMAL  NORMAL   ZERO  NORMAL  NORMAL  NORMAL  NORMAL       TRUE        TRUE  NORMAL  NORMAL        FALSE    ZERO  3.334925e-08
+995324  ZERO   NORMAL  NORMAL   ZERO  NORMAL  NORMAL  NORMAL  NORMAL       TRUE        TRUE  NORMAL  NORMAL         TRUE    HIGH  2.285564e-08
+995325  ZERO   NORMAL  NORMAL   ZERO  NORMAL  NORMAL  NORMAL  NORMAL       TRUE        TRUE  NORMAL  NORMAL         TRUE     LOW  4.131921e-08
+995326  ZERO   NORMAL  NORMAL   ZERO  NORMAL  NORMAL  NORMAL  NORMAL       TRUE        TRUE  NORMAL  NORMAL         TRUE  NORMAL  2.291559e-09
+995327  ZERO   NORMAL  NORMAL   ZERO  NORMAL  NORMAL  NORMAL  NORMAL       TRUE        TRUE  NORMAL  NORMAL         TRUE    ZERO  2.388054e-08
+
+[995328 rows x 15 columns]
+
+Variable 'ARTCO2' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['STROKEVOLUME', 'ERRLOWOUTPUT', 'INSUFFANESTH', 'ANAPHYLAXIS', 'FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HISTORY', 'CVP', 'PCWP', 'HRBP', 'HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP']f_7(ERRLOWOUTPUT)f_12(INSUFFANESTH)f_13(ANAPHYLAXIS)f_18(FIO2)f_20(SAO2, SHUNT, PVSAT)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_52(CVP, HISTORY, STROKEVOLUME, PCWP)f_53(HREKG, CATECHOL, HRBP, STROKEVOLUME, CO, HRSAT, ERRLOWOUTPUT)f_62(PRESS, CATECHOL, PAP, EXPCO2, SHUNT, CO, FIO2, BP, DISCONNECT, ANAPHYLAXIS, PVSAT, SAO2, INSUFFANESTH, MINVOL)
+
+Variable 'STROKEVOLUME' is being eliminated.
+
+f_52(CVP, HISTORY, STROKEVOLUME, PCWP)f_53(HREKG, CATECHOL, HRBP, STROKEVOLUME, CO, HRSAT, ERRLOWOUTPUT) = f_63(HREKG, CATECHOL, HISTORY, CVP, HRBP, STROKEVOLUME, CO, HRSAT, PCWP, ERRLOWOUTPUT) = 
+          CVP HISTORY STROKEVOLUME    PCWP   HREKG CATECHOL    HRBP      CO   HRSAT ERRLOWOUTPUT      prob
+0        HIGH   FALSE         HIGH    HIGH    HIGH     HIGH    HIGH    HIGH    HIGH        FALSE  0.001779
+1        HIGH   FALSE         HIGH    HIGH    HIGH     HIGH    HIGH    HIGH    HIGH         TRUE  0.000019
+2        HIGH   FALSE         HIGH    HIGH    HIGH     HIGH    HIGH    HIGH     LOW        FALSE  0.000018
+3        HIGH   FALSE         HIGH    HIGH    HIGH     HIGH    HIGH    HIGH     LOW         TRUE  0.000001
+4        HIGH   FALSE         HIGH    HIGH    HIGH     HIGH    HIGH    HIGH  NORMAL        FALSE  0.000020
+...       ...     ...          ...     ...     ...      ...     ...     ...     ...          ...       ...
+17491  NORMAL    TRUE       NORMAL  NORMAL  NORMAL   NORMAL  NORMAL  NORMAL    HIGH         TRUE  0.000022
+17492  NORMAL    TRUE       NORMAL  NORMAL  NORMAL   NORMAL  NORMAL  NORMAL     LOW        FALSE  0.000002
+17493  NORMAL    TRUE       NORMAL  NORMAL  NORMAL   NORMAL  NORMAL  NORMAL     LOW         TRUE  0.000039
+17494  NORMAL    TRUE       NORMAL  NORMAL  NORMAL   NORMAL  NORMAL  NORMAL  NORMAL        FALSE  0.000001
+17495  NORMAL    TRUE       NORMAL  NORMAL  NORMAL   NORMAL  NORMAL  NORMAL  NORMAL         TRUE  0.000023
+
+[17496 rows x 11 columns]
+
+After summing out 'STROKEVOLUME': f_63(HREKG, CATECHOL, HISTORY, CVP, HRBP, CO, HRSAT, PCWP, ERRLOWOUTPUT) = 
+       HREKG CATECHOL HISTORY     CVP    HRBP      CO   HRSAT    PCWP ERRLOWOUTPUT          prob
+0       HIGH     HIGH   FALSE    HIGH    HIGH    HIGH    HIGH    HIGH        FALSE  5.852492e-02
+1       HIGH     HIGH   FALSE    HIGH    HIGH    HIGH    HIGH    HIGH         TRUE  5.981139e-04
+2       HIGH     HIGH   FALSE    HIGH    HIGH    HIGH    HIGH     LOW        FALSE  1.059600e-03
+3       HIGH     HIGH   FALSE    HIGH    HIGH    HIGH    HIGH     LOW         TRUE  1.083073e-05
+4       HIGH     HIGH   FALSE    HIGH    HIGH    HIGH    HIGH  NORMAL        FALSE  6.967751e-03
+...      ...      ...     ...     ...     ...     ...     ...     ...          ...           ...
+5827  NORMAL   NORMAL    TRUE  NORMAL  NORMAL  NORMAL  NORMAL    HIGH         TRUE  1.993959e-06
+5828  NORMAL   NORMAL    TRUE  NORMAL  NORMAL  NORMAL  NORMAL     LOW        FALSE  2.172832e-07
+5829  NORMAL   NORMAL    TRUE  NORMAL  NORMAL  NORMAL  NORMAL     LOW         TRUE  3.025239e-06
+5830  NORMAL   NORMAL    TRUE  NORMAL  NORMAL  NORMAL  NORMAL  NORMAL        FALSE  2.075110e-06
+5831  NORMAL   NORMAL    TRUE  NORMAL  NORMAL  NORMAL  NORMAL  NORMAL         TRUE  2.434825e-05
+
+[5832 rows x 10 columns]
+
+Variable 'STROKEVOLUME' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['ERRLOWOUTPUT', 'INSUFFANESTH', 'ANAPHYLAXIS', 'FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HISTORY', 'CVP', 'PCWP', 'HRBP', 'HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP']f_7(ERRLOWOUTPUT)f_12(INSUFFANESTH)f_13(ANAPHYLAXIS)f_18(FIO2)f_20(SAO2, SHUNT, PVSAT)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_62(PRESS, CATECHOL, PAP, EXPCO2, SHUNT, CO, FIO2, BP, DISCONNECT, ANAPHYLAXIS, PVSAT, SAO2, INSUFFANESTH, MINVOL)f_63(HREKG, CATECHOL, HISTORY, CVP, HRBP, CO, HRSAT, PCWP, ERRLOWOUTPUT)
+
+Variable 'ERRLOWOUTPUT' is being eliminated.
+
+f_7(ERRLOWOUTPUT)f_63(HREKG, CATECHOL, HISTORY, CVP, HRBP, CO, HRSAT, PCWP, ERRLOWOUTPUT) = f_64(HREKG, CATECHOL, HISTORY, CVP, HRBP, CO, HRSAT, PCWP, ERRLOWOUTPUT) = 
+     ERRLOWOUTPUT   HREKG CATECHOL HISTORY     CVP    HRBP      CO   HRSAT    PCWP          prob
+0            TRUE    HIGH     HIGH   FALSE    HIGH    HIGH    HIGH    HIGH    HIGH  2.990570e-05
+1            TRUE    HIGH     HIGH   FALSE    HIGH    HIGH    HIGH    HIGH     LOW  5.415363e-07
+2            TRUE    HIGH     HIGH   FALSE    HIGH    HIGH    HIGH    HIGH  NORMAL  3.561278e-06
+3            TRUE    HIGH     HIGH   FALSE    HIGH    HIGH    HIGH     LOW    HIGH  3.864054e-07
+4            TRUE    HIGH     HIGH   FALSE    HIGH    HIGH    HIGH     LOW     LOW  7.158040e-09
+...           ...     ...      ...     ...     ...     ...     ...     ...     ...           ...
+5827        FALSE  NORMAL   NORMAL    TRUE  NORMAL  NORMAL  NORMAL     LOW     LOW  2.194497e-07
+5828        FALSE  NORMAL   NORMAL    TRUE  NORMAL  NORMAL  NORMAL     LOW  NORMAL  2.363638e-06
+5829        FALSE  NORMAL   NORMAL    TRUE  NORMAL  NORMAL  NORMAL  NORMAL    HIGH  1.335523e-07
+5830        FALSE  NORMAL   NORMAL    TRUE  NORMAL  NORMAL  NORMAL  NORMAL     LOW  2.064190e-07
+5831        FALSE  NORMAL   NORMAL    TRUE  NORMAL  NORMAL  NORMAL  NORMAL  NORMAL  1.971354e-06
+
+[5832 rows x 10 columns]
+
+After summing out 'ERRLOWOUTPUT': f_64(HREKG, CATECHOL, HISTORY, CVP, HRBP, CO, HRSAT, PCWP) = 
+       HREKG CATECHOL HISTORY     CVP    HRBP      CO   HRSAT    PCWP          prob
+0       HIGH     HIGH   FALSE    HIGH    HIGH    HIGH    HIGH    HIGH  5.562858e-02
+1       HIGH     HIGH   FALSE    HIGH    HIGH    HIGH    HIGH     LOW  1.007162e-03
+2       HIGH     HIGH   FALSE    HIGH    HIGH    HIGH    HIGH  NORMAL  6.622925e-03
+3       HIGH     HIGH   FALSE    HIGH    HIGH    HIGH     LOW    HIGH  5.684216e-04
+4       HIGH     HIGH   FALSE    HIGH    HIGH    HIGH     LOW     LOW  1.029157e-05
+...      ...      ...     ...     ...     ...     ...     ...     ...           ...
+2911  NORMAL   NORMAL    TRUE  NORMAL  NORMAL  NORMAL     LOW     LOW  3.534472e-07
+2912  NORMAL   NORMAL    TRUE  NORMAL  NORMAL  NORMAL     LOW  NORMAL  4.346563e-06
+2913  NORMAL   NORMAL    TRUE  NORMAL  NORMAL  NORMAL  NORMAL    HIGH  2.332502e-07
+2914  NORMAL   NORMAL    TRUE  NORMAL  NORMAL  NORMAL  NORMAL     LOW  3.576810e-07
+2915  NORMAL   NORMAL    TRUE  NORMAL  NORMAL  NORMAL  NORMAL  NORMAL  3.188767e-06
+
+[2916 rows x 9 columns]
+
+Variable 'ERRLOWOUTPUT' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['INSUFFANESTH', 'ANAPHYLAXIS', 'FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HISTORY', 'CVP', 'PCWP', 'HRBP', 'HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP']f_12(INSUFFANESTH)f_13(ANAPHYLAXIS)f_18(FIO2)f_20(SAO2, SHUNT, PVSAT)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_62(PRESS, CATECHOL, PAP, EXPCO2, SHUNT, CO, FIO2, BP, DISCONNECT, ANAPHYLAXIS, PVSAT, SAO2, INSUFFANESTH, MINVOL)f_64(HREKG, CATECHOL, HISTORY, CVP, HRBP, CO, HRSAT, PCWP)
+
+Variable 'INSUFFANESTH' is being eliminated.
+
+f_12(INSUFFANESTH)f_62(PRESS, CATECHOL, PAP, EXPCO2, SHUNT, CO, FIO2, BP, DISCONNECT, ANAPHYLAXIS, PVSAT, SAO2, INSUFFANESTH, MINVOL) = f_65(PRESS, CATECHOL, PAP, FIO2, BP, DISCONNECT, EXPCO2, SHUNT, CO, ANAPHYLAXIS, MINVOL, SAO2, INSUFFANESTH, PVSAT) = 
+       INSUFFANESTH PRESS CATECHOL     PAP EXPCO2   SHUNT      CO    FIO2      BP DISCONNECT ANAPHYLAXIS   PVSAT    SAO2  MINVOL          prob
+0              TRUE  HIGH     HIGH    HIGH   HIGH    HIGH    HIGH     LOW    HIGH      FALSE       FALSE    HIGH    HIGH    HIGH  7.411249e-08
+1              TRUE  HIGH     HIGH    HIGH   HIGH    HIGH    HIGH     LOW    HIGH      FALSE       FALSE    HIGH    HIGH     LOW  7.267513e-08
+2              TRUE  HIGH     HIGH    HIGH   HIGH    HIGH    HIGH     LOW    HIGH      FALSE       FALSE    HIGH    HIGH  NORMAL  1.556604e-09
+3              TRUE  HIGH     HIGH    HIGH   HIGH    HIGH    HIGH     LOW    HIGH      FALSE       FALSE    HIGH    HIGH    ZERO  2.129880e-09
+4              TRUE  HIGH     HIGH    HIGH   HIGH    HIGH    HIGH     LOW    HIGH      FALSE       FALSE    HIGH     LOW    HIGH  9.201127e-08
+...             ...   ...      ...     ...    ...     ...     ...     ...     ...        ...         ...     ...     ...     ...           ...
+995323        FALSE  ZERO   NORMAL  NORMAL   ZERO  NORMAL  NORMAL  NORMAL  NORMAL       TRUE        TRUE  NORMAL     LOW    ZERO  2.149249e-08
+995324        FALSE  ZERO   NORMAL  NORMAL   ZERO  NORMAL  NORMAL  NORMAL  NORMAL       TRUE        TRUE  NORMAL  NORMAL    HIGH  2.774680e-08
+995325        FALSE  ZERO   NORMAL  NORMAL   ZERO  NORMAL  NORMAL  NORMAL  NORMAL       TRUE        TRUE  NORMAL  NORMAL     LOW  5.344493e-08
+995326        FALSE  ZERO   NORMAL  NORMAL   ZERO  NORMAL  NORMAL  NORMAL  NORMAL       TRUE        TRUE  NORMAL  NORMAL  NORMAL  2.825248e-09
+995327        FALSE  ZERO   NORMAL  NORMAL   ZERO  NORMAL  NORMAL  NORMAL  NORMAL       TRUE        TRUE  NORMAL  NORMAL    ZERO  3.001432e-08
+
+[995328 rows x 15 columns]
+
+After summing out 'INSUFFANESTH': f_65(PRESS, CATECHOL, PAP, FIO2, BP, DISCONNECT, EXPCO2, SHUNT, CO, ANAPHYLAXIS, MINVOL, SAO2, PVSAT) = 
+       PRESS CATECHOL     PAP    FIO2      BP DISCONNECT EXPCO2   SHUNT      CO ANAPHYLAXIS MINVOL    SAO2   PVSAT          prob
+0       HIGH     HIGH    HIGH     LOW    HIGH      FALSE   HIGH    HIGH    HIGH       FALSE   HIGH    HIGH    HIGH  7.409031e-07
+1       HIGH     HIGH    HIGH     LOW    HIGH      FALSE   HIGH    HIGH    HIGH       FALSE   HIGH    HIGH     LOW  1.254563e-05
+2       HIGH     HIGH    HIGH     LOW    HIGH      FALSE   HIGH    HIGH    HIGH       FALSE   HIGH    HIGH  NORMAL  1.531675e-05
+3       HIGH     HIGH    HIGH     LOW    HIGH      FALSE   HIGH    HIGH    HIGH       FALSE   HIGH     LOW    HIGH  8.979365e-07
+4       HIGH     HIGH    HIGH     LOW    HIGH      FALSE   HIGH    HIGH    HIGH       FALSE   HIGH     LOW     LOW  1.410662e-05
+...      ...      ...     ...     ...     ...        ...    ...     ...     ...         ...    ...     ...     ...           ...
+497659  ZERO   NORMAL  NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL        TRUE   ZERO     LOW     LOW  1.201297e-06
+497660  ZERO   NORMAL  NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL        TRUE   ZERO     LOW  NORMAL  2.365741e-08
+497661  ZERO   NORMAL  NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL        TRUE   ZERO  NORMAL    HIGH  1.127164e-06
+497662  ZERO   NORMAL  NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL        TRUE   ZERO  NORMAL     LOW  1.713206e-06
+497663  ZERO   NORMAL  NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL        TRUE   ZERO  NORMAL  NORMAL  3.240238e-08
+
+[497664 rows x 14 columns]
+
+Variable 'INSUFFANESTH' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['ANAPHYLAXIS', 'FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HISTORY', 'CVP', 'PCWP', 'HRBP', 'HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP']f_13(ANAPHYLAXIS)f_18(FIO2)f_20(SAO2, SHUNT, PVSAT)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_64(HREKG, CATECHOL, HISTORY, CVP, HRBP, CO, HRSAT, PCWP)f_65(PRESS, CATECHOL, PAP, FIO2, BP, DISCONNECT, EXPCO2, SHUNT, CO, ANAPHYLAXIS, MINVOL, SAO2, PVSAT)
+
+Variable 'ANAPHYLAXIS' is being eliminated.
+
+f_13(ANAPHYLAXIS)f_65(PRESS, CATECHOL, PAP, FIO2, BP, DISCONNECT, EXPCO2, SHUNT, CO, ANAPHYLAXIS, MINVOL, SAO2, PVSAT) = f_66(PRESS, CATECHOL, PAP, FIO2, BP, DISCONNECT, EXPCO2, ANAPHYLAXIS, SHUNT, CO, PVSAT, SAO2, MINVOL) = 
+       ANAPHYLAXIS PRESS CATECHOL     PAP    FIO2      BP DISCONNECT EXPCO2   SHUNT      CO MINVOL    SAO2   PVSAT          prob
+0             TRUE  HIGH     HIGH    HIGH     LOW    HIGH      FALSE   HIGH    HIGH    HIGH   HIGH    HIGH    HIGH  4.063100e-10
+1             TRUE  HIGH     HIGH    HIGH     LOW    HIGH      FALSE   HIGH    HIGH    HIGH   HIGH    HIGH     LOW  6.112540e-09
+2             TRUE  HIGH     HIGH    HIGH     LOW    HIGH      FALSE   HIGH    HIGH    HIGH   HIGH    HIGH  NORMAL  8.555225e-09
+3             TRUE  HIGH     HIGH    HIGH     LOW    HIGH      FALSE   HIGH    HIGH    HIGH   HIGH     LOW    HIGH  4.656194e-10
+4             TRUE  HIGH     HIGH    HIGH     LOW    HIGH      FALSE   HIGH    HIGH    HIGH   HIGH     LOW     LOW  6.646103e-09
+...            ...   ...      ...     ...     ...     ...        ...    ...     ...     ...    ...     ...     ...           ...
+497659       FALSE  ZERO   NORMAL  NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL   ZERO     LOW     LOW  3.536472e-05
+497660       FALSE  ZERO   NORMAL  NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL   ZERO     LOW  NORMAL  7.018706e-07
+497661       FALSE  ZERO   NORMAL  NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL   ZERO  NORMAL    HIGH  3.382749e-05
+497662       FALSE  ZERO   NORMAL  NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL   ZERO  NORMAL     LOW  5.067316e-05
+497663       FALSE  ZERO   NORMAL  NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL   ZERO  NORMAL  NORMAL  9.638052e-07
+
+[497664 rows x 14 columns]
+
+After summing out 'ANAPHYLAXIS': f_66(PRESS, CATECHOL, PAP, FIO2, BP, DISCONNECT, EXPCO2, SHUNT, CO, PVSAT, SAO2, MINVOL) = 
+       PRESS CATECHOL     PAP    FIO2      BP DISCONNECT EXPCO2   SHUNT      CO   PVSAT    SAO2  MINVOL          prob
+0       HIGH     HIGH    HIGH     LOW    HIGH      FALSE   HIGH    HIGH    HIGH    HIGH    HIGH    HIGH  7.339004e-07
+1       HIGH     HIGH    HIGH     LOW    HIGH      FALSE   HIGH    HIGH    HIGH    HIGH    HIGH     LOW  7.198229e-07
+2       HIGH     HIGH    HIGH     LOW    HIGH      FALSE   HIGH    HIGH    HIGH    HIGH    HIGH  NORMAL  1.541599e-08
+3       HIGH     HIGH    HIGH     LOW    HIGH      FALSE   HIGH    HIGH    HIGH    HIGH    HIGH    ZERO  2.109337e-08
+4       HIGH     HIGH    HIGH     LOW    HIGH      FALSE   HIGH    HIGH    HIGH    HIGH     LOW    HIGH  8.894228e-07
+...      ...      ...     ...     ...     ...        ...    ...     ...     ...     ...     ...     ...           ...
+248827  ZERO   NORMAL  NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL  NORMAL     LOW    ZERO  7.021072e-07
+248828  ZERO   NORMAL  NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL  NORMAL  NORMAL    HIGH  9.010220e-07
+248829  ZERO   NORMAL  NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL  NORMAL  NORMAL     LOW  1.706799e-06
+248830  ZERO   NORMAL  NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL  NORMAL  NORMAL  NORMAL  9.117212e-08
+248831  ZERO   NORMAL  NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL  NORMAL  NORMAL    ZERO  9.641292e-07
+
+[248832 rows x 13 columns]
+
+Variable 'ANAPHYLAXIS' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HISTORY', 'CVP', 'PCWP', 'HRBP', 'HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP']f_18(FIO2)f_20(SAO2, SHUNT, PVSAT)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_64(HREKG, CATECHOL, HISTORY, CVP, HRBP, CO, HRSAT, PCWP)f_66(PRESS, CATECHOL, PAP, FIO2, BP, DISCONNECT, EXPCO2, SHUNT, CO, PVSAT, SAO2, MINVOL)
+
+Variable 'FIO2' is being eliminated.
+
+f_18(FIO2)f_66(PRESS, CATECHOL, PAP, FIO2, BP, DISCONNECT, EXPCO2, SHUNT, CO, PVSAT, SAO2, MINVOL) = f_67(PRESS, CATECHOL, FIO2, PAP, BP, DISCONNECT, EXPCO2, SHUNT, CO, MINVOL, SAO2, PVSAT) = 
+          FIO2 PRESS CATECHOL     PAP      BP DISCONNECT EXPCO2   SHUNT      CO   PVSAT    SAO2  MINVOL          prob
+0          LOW  HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH    HIGH    HIGH    HIGH    HIGH  3.669502e-08
+1          LOW  HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH    HIGH    HIGH    HIGH     LOW  3.599115e-08
+2          LOW  HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH    HIGH    HIGH    HIGH  NORMAL  7.707996e-10
+3          LOW  HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH    HIGH    HIGH    HIGH    ZERO  1.054669e-09
+4          LOW  HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH    HIGH    HIGH     LOW    HIGH  4.447114e-08
+...        ...   ...      ...     ...     ...        ...    ...     ...     ...     ...     ...     ...           ...
+248827  NORMAL  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL  NORMAL     LOW    ZERO  6.670018e-07
+248828  NORMAL  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL  NORMAL  NORMAL    HIGH  8.559709e-07
+248829  NORMAL  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL  NORMAL  NORMAL     LOW  1.621459e-06
+248830  NORMAL  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL  NORMAL  NORMAL  NORMAL  8.661352e-08
+248831  NORMAL  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL  NORMAL  NORMAL    ZERO  9.159227e-07
+
+[248832 rows x 13 columns]
+
+After summing out 'FIO2': f_67(PRESS, CATECHOL, PAP, BP, DISCONNECT, EXPCO2, SHUNT, CO, MINVOL, SAO2, PVSAT) = 
+       PRESS CATECHOL     PAP      BP DISCONNECT EXPCO2   SHUNT      CO MINVOL    SAO2   PVSAT      prob
+0       HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH    HIGH   HIGH    HIGH    HIGH  0.000015
+1       HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH    HIGH   HIGH    HIGH     LOW  0.000012
+2       HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH    HIGH   HIGH    HIGH  NORMAL  0.000001
+3       HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH    HIGH   HIGH     LOW    HIGH  0.000018
+4       HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH    HIGH   HIGH     LOW     LOW  0.000014
+...      ...      ...     ...     ...        ...    ...     ...     ...    ...     ...     ...       ...
+124411  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL   ZERO     LOW     LOW  0.000035
+124412  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL   ZERO     LOW  NORMAL  0.000002
+124413  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL   ZERO  NORMAL    HIGH  0.000032
+124414  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL   ZERO  NORMAL     LOW  0.000051
+124415  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL   ZERO  NORMAL  NORMAL  0.000003
+
+[124416 rows x 12 columns]
+
+Variable 'FIO2' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HISTORY', 'CVP', 'PCWP', 'HRBP', 'HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP']f_20(SAO2, SHUNT, PVSAT)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_64(HREKG, CATECHOL, HISTORY, CVP, HRBP, CO, HRSAT, PCWP)f_67(PRESS, CATECHOL, PAP, BP, DISCONNECT, EXPCO2, SHUNT, CO, MINVOL, SAO2, PVSAT)
+
+Variable 'PVSAT' is being eliminated.
+
+f_20(SAO2, SHUNT, PVSAT)f_67(PRESS, CATECHOL, PAP, BP, DISCONNECT, EXPCO2, SHUNT, CO, MINVOL, SAO2, PVSAT) = f_68(PRESS, CATECHOL, PAP, BP, DISCONNECT, EXPCO2, SHUNT, CO, MINVOL, SAO2, PVSAT) = 
+        SAO2 PVSAT   SHUNT PRESS CATECHOL     PAP      BP DISCONNECT EXPCO2      CO  MINVOL          prob
+0        LOW   LOW  NORMAL  HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH    HIGH  9.486382e-06
+1        LOW   LOW  NORMAL  HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH     LOW  3.701563e-04
+2        LOW   LOW  NORMAL  HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH  NORMAL  4.708667e-06
+3        LOW   LOW  NORMAL  HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH    ZERO  6.471422e-05
+4        LOW   LOW  NORMAL  HIGH     HIGH    HIGH    HIGH      FALSE   HIGH     LOW    HIGH  5.558515e-07
+...      ...   ...     ...   ...      ...     ...     ...        ...    ...     ...     ...           ...
+124411  HIGH  HIGH    HIGH  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO     LOW    ZERO  2.422454e-08
+124412  HIGH  HIGH    HIGH  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL    HIGH  3.369375e-08
+124413  HIGH  HIGH    HIGH  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL     LOW  1.392629e-08
+124414  HIGH  HIGH    HIGH  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL  4.431763e-08
+124415  HIGH  HIGH    HIGH  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL    ZERO  1.853723e-08
+
+[124416 rows x 12 columns]
+
+After summing out 'PVSAT': f_68(PRESS, CATECHOL, PAP, BP, DISCONNECT, EXPCO2, SHUNT, CO, MINVOL, SAO2) = 
+      PRESS CATECHOL     PAP      BP DISCONNECT EXPCO2   SHUNT      CO  MINVOL    SAO2          prob
+0      HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH    HIGH    HIGH    HIGH  2.833232e-07
+1      HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH    HIGH    HIGH     LOW  2.760853e-05
+2      HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH    HIGH    HIGH  NORMAL  4.611717e-06
+3      HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH    HIGH     LOW    HIGH  7.300786e-07
+4      HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH    HIGH     LOW     LOW  7.929397e-05
+...     ...      ...     ...     ...        ...    ...     ...     ...     ...     ...           ...
+41467  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL  NORMAL     LOW  1.591173e-06
+41468  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL  NORMAL  NORMAL  1.904544e-07
+41469  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL    ZERO    HIGH  3.289313e-05
+41470  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL    ZERO     LOW  3.496009e-05
+41471  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL    ZERO  NORMAL  3.334445e-06
+
+[41472 rows x 11 columns]
+
+Variable 'PVSAT' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HISTORY', 'CVP', 'PCWP', 'HRBP', 'HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP']f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_64(HREKG, CATECHOL, HISTORY, CVP, HRBP, CO, HRSAT, PCWP)f_68(PRESS, CATECHOL, PAP, BP, DISCONNECT, EXPCO2, SHUNT, CO, MINVOL, SAO2)
+
+Variable 'SAO2' is being eliminated.
+
+f_68(PRESS, CATECHOL, PAP, BP, DISCONNECT, EXPCO2, SHUNT, CO, MINVOL, SAO2) = 
+      PRESS CATECHOL     PAP      BP DISCONNECT EXPCO2   SHUNT      CO  MINVOL    SAO2          prob
+0      HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH    HIGH    HIGH    HIGH  2.833232e-07
+1      HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH    HIGH    HIGH     LOW  2.760853e-05
+2      HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH    HIGH    HIGH  NORMAL  4.611717e-06
+3      HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH    HIGH     LOW    HIGH  7.300786e-07
+4      HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH    HIGH     LOW     LOW  7.929397e-05
+...     ...      ...     ...     ...        ...    ...     ...     ...     ...     ...           ...
+41467  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL  NORMAL     LOW  1.591173e-06
+41468  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL  NORMAL  NORMAL  1.904544e-07
+41469  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL    ZERO    HIGH  3.289313e-05
+41470  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL    ZERO     LOW  3.496009e-05
+41471  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL    ZERO  NORMAL  3.334445e-06
+
+[41472 rows x 11 columns]
+
+After summing out 'SAO2': f_68(PRESS, CATECHOL, PAP, BP, DISCONNECT, EXPCO2, SHUNT, CO, MINVOL) = 
+      PRESS CATECHOL     PAP      BP DISCONNECT EXPCO2   SHUNT      CO  MINVOL      prob
+0      HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH    HIGH    HIGH  0.000033
+1      HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH    HIGH     LOW  0.000081
+2      HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH    HIGH  NORMAL  0.000002
+3      HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH    HIGH    ZERO  0.000014
+4      HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH     LOW    HIGH  0.000002
+...     ...      ...     ...     ...        ...    ...     ...     ...     ...       ...
+13819  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL     LOW    ZERO  0.000091
+13820  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL    HIGH  0.000070
+13821  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL     LOW  0.000052
+13822  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL  NORMAL  0.000003
+13823  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL    ZERO  0.000071
+
+[13824 rows x 10 columns]
+
+Variable 'SAO2' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HISTORY', 'CVP', 'PCWP', 'HRBP', 'HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP']f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_64(HREKG, CATECHOL, HISTORY, CVP, HRBP, CO, HRSAT, PCWP)f_68(PRESS, CATECHOL, PAP, BP, DISCONNECT, EXPCO2, SHUNT, CO, MINVOL)
+
+Variable 'SHUNT' is being eliminated.
+
+f_68(PRESS, CATECHOL, PAP, BP, DISCONNECT, EXPCO2, SHUNT, CO, MINVOL) = 
+      PRESS CATECHOL     PAP      BP DISCONNECT EXPCO2   SHUNT      CO  MINVOL      prob
+0      HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH    HIGH    HIGH  0.000033
+1      HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH    HIGH     LOW  0.000081
+2      HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH    HIGH  NORMAL  0.000002
+3      HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH    HIGH    ZERO  0.000014
+4      HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH     LOW    HIGH  0.000002
+...     ...      ...     ...     ...        ...    ...     ...     ...     ...       ...
+13819  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL     LOW    ZERO  0.000091
+13820  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL    HIGH  0.000070
+13821  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL     LOW  0.000052
+13822  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL  NORMAL  0.000003
+13823  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL    ZERO  0.000071
+
+[13824 rows x 10 columns]
+
+After summing out 'SHUNT': f_68(PRESS, CATECHOL, PAP, BP, DISCONNECT, EXPCO2, CO, MINVOL) = 
+     PRESS CATECHOL     PAP      BP DISCONNECT EXPCO2      CO  MINVOL      prob
+0     HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH    HIGH  0.000118
+1     HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH     LOW  0.000479
+2     HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH  NORMAL  0.000007
+3     HIGH     HIGH    HIGH    HIGH      FALSE   HIGH    HIGH    ZERO  0.000082
+4     HIGH     HIGH    HIGH    HIGH      FALSE   HIGH     LOW    HIGH  0.000004
+...    ...      ...     ...     ...        ...    ...     ...     ...       ...
+6907  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO     LOW    ZERO  0.000097
+6908  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL    HIGH  0.000073
+6909  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL     LOW  0.000055
+6910  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL  NORMAL  0.000025
+6911  ZERO   NORMAL  NORMAL  NORMAL       TRUE   ZERO  NORMAL    ZERO  0.000076
+
+[6912 rows x 9 columns]
+
+Variable 'SHUNT' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['DISCONNECT', 'CATECHOL', 'CO', 'HISTORY', 'CVP', 'PCWP', 'HRBP', 'HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP']f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_64(HREKG, CATECHOL, HISTORY, CVP, HRBP, CO, HRSAT, PCWP)f_68(PRESS, CATECHOL, PAP, BP, DISCONNECT, EXPCO2, CO, MINVOL)
+
+Variable 'DISCONNECT' is being eliminated.
+
+f_26(DISCONNECT)f_68(PRESS, CATECHOL, PAP, BP, DISCONNECT, EXPCO2, CO, MINVOL) = f_69(PRESS, CATECHOL, PAP, DISCONNECT, BP, EXPCO2, CO, MINVOL) = 
+     DISCONNECT PRESS CATECHOL     PAP      BP EXPCO2      CO  MINVOL          prob
+0          TRUE  HIGH     HIGH    HIGH    HIGH   HIGH    HIGH    HIGH  1.182170e-05
+1          TRUE  HIGH     HIGH    HIGH    HIGH   HIGH    HIGH     LOW  4.786885e-05
+2          TRUE  HIGH     HIGH    HIGH    HIGH   HIGH    HIGH  NORMAL  7.399059e-07
+3          TRUE  HIGH     HIGH    HIGH    HIGH   HIGH    HIGH    ZERO  8.201777e-06
+4          TRUE  HIGH     HIGH    HIGH    HIGH   HIGH     LOW    HIGH  4.293637e-07
+...         ...   ...      ...     ...     ...    ...     ...     ...           ...
+6907      FALSE  ZERO   NORMAL  NORMAL  NORMAL   ZERO     LOW    ZERO  8.707674e-05
+6908      FALSE  ZERO   NORMAL  NORMAL  NORMAL   ZERO  NORMAL    HIGH  6.613284e-05
+6909      FALSE  ZERO   NORMAL  NORMAL  NORMAL   ZERO  NORMAL     LOW  4.970962e-05
+6910      FALSE  ZERO   NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL  2.264460e-05
+6911      FALSE  ZERO   NORMAL  NORMAL  NORMAL   ZERO  NORMAL    ZERO  6.806209e-05
+
+[6912 rows x 9 columns]
+
+After summing out 'DISCONNECT': f_69(PRESS, CATECHOL, PAP, BP, EXPCO2, CO, MINVOL) = 
+     PRESS CATECHOL     PAP      BP EXPCO2      CO  MINVOL      prob
+0     HIGH     HIGH    HIGH    HIGH   HIGH    HIGH    HIGH  0.000118
+1     HIGH     HIGH    HIGH    HIGH   HIGH    HIGH     LOW  0.000479
+2     HIGH     HIGH    HIGH    HIGH   HIGH    HIGH  NORMAL  0.000007
+3     HIGH     HIGH    HIGH    HIGH   HIGH    HIGH    ZERO  0.000082
+4     HIGH     HIGH    HIGH    HIGH   HIGH     LOW    HIGH  0.000004
+...    ...      ...     ...     ...    ...     ...     ...       ...
+3451  ZERO   NORMAL  NORMAL  NORMAL   ZERO     LOW    ZERO  0.000097
+3452  ZERO   NORMAL  NORMAL  NORMAL   ZERO  NORMAL    HIGH  0.000073
+3453  ZERO   NORMAL  NORMAL  NORMAL   ZERO  NORMAL     LOW  0.000055
+3454  ZERO   NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL  0.000025
+3455  ZERO   NORMAL  NORMAL  NORMAL   ZERO  NORMAL    ZERO  0.000076
+
+[3456 rows x 8 columns]
+
+Variable 'DISCONNECT' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['CATECHOL', 'CO', 'HISTORY', 'CVP', 'PCWP', 'HRBP', 'HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP']f_27(MINVOLSET)f_28(MINVOLSET)f_64(HREKG, CATECHOL, HISTORY, CVP, HRBP, CO, HRSAT, PCWP)f_69(PRESS, CATECHOL, PAP, BP, EXPCO2, CO, MINVOL)
+
+Variable 'CATECHOL' is being eliminated.
+
+f_64(HREKG, CATECHOL, HISTORY, CVP, HRBP, CO, HRSAT, PCWP)f_69(PRESS, CATECHOL, PAP, BP, EXPCO2, CO, MINVOL) = f_70(HREKG, CATECHOL, PRESS, PAP, HISTORY, CVP, HRBP, BP, EXPCO2, CO, HRSAT, PCWP, MINVOL) = 
+          HREKG CATECHOL HISTORY     CVP    HRBP      CO   HRSAT    PCWP PRESS     PAP      BP  EXPCO2  MINVOL          prob
+0          HIGH     HIGH   FALSE    HIGH    HIGH    HIGH    HIGH    HIGH  HIGH    HIGH    HIGH    HIGH    HIGH  6.576245e-06
+1          HIGH     HIGH   FALSE    HIGH    HIGH    HIGH    HIGH    HIGH  HIGH    HIGH    HIGH    HIGH     LOW  2.662876e-05
+2          HIGH     HIGH   FALSE    HIGH    HIGH    HIGH    HIGH    HIGH  HIGH    HIGH    HIGH    HIGH  NORMAL  4.115991e-07
+3          HIGH     HIGH   FALSE    HIGH    HIGH    HIGH    HIGH    HIGH  HIGH    HIGH    HIGH    HIGH    ZERO  4.562532e-06
+4          HIGH     HIGH   FALSE    HIGH    HIGH    HIGH    HIGH    HIGH  HIGH    HIGH    HIGH     LOW    HIGH  4.634978e-04
+...         ...      ...     ...     ...     ...     ...     ...     ...   ...     ...     ...     ...     ...           ...
+1679611  NORMAL   NORMAL    TRUE  NORMAL  NORMAL  NORMAL  NORMAL  NORMAL  ZERO  NORMAL  NORMAL  NORMAL    ZERO  1.390717e-10
+1679612  NORMAL   NORMAL    TRUE  NORMAL  NORMAL  NORMAL  NORMAL  NORMAL  ZERO  NORMAL  NORMAL    ZERO    HIGH  2.343136e-10
+1679613  NORMAL   NORMAL    TRUE  NORMAL  NORMAL  NORMAL  NORMAL  NORMAL  ZERO  NORMAL  NORMAL    ZERO     LOW  1.761249e-10
+1679614  NORMAL   NORMAL    TRUE  NORMAL  NORMAL  NORMAL  NORMAL  NORMAL  ZERO  NORMAL  NORMAL    ZERO  NORMAL  8.023151e-11
+1679615  NORMAL   NORMAL    TRUE  NORMAL  NORMAL  NORMAL  NORMAL  NORMAL  ZERO  NORMAL  NORMAL    ZERO    ZERO  2.411491e-10
+
+[1679616 rows x 14 columns]
+
+After summing out 'CATECHOL': f_70(HREKG, PRESS, PAP, HISTORY, CVP, HRBP, BP, EXPCO2, CO, HRSAT, PCWP, MINVOL) = 
+         HREKG PRESS     PAP HISTORY     CVP    HRBP      BP EXPCO2      CO   HRSAT    PCWP  MINVOL          prob
+0         HIGH  HIGH    HIGH   FALSE    HIGH    HIGH    HIGH   HIGH    HIGH    HIGH    HIGH    HIGH  6.828426e-06
+1         HIGH  HIGH    HIGH   FALSE    HIGH    HIGH    HIGH   HIGH    HIGH    HIGH    HIGH     LOW  2.674451e-05
+2         HIGH  HIGH    HIGH   FALSE    HIGH    HIGH    HIGH   HIGH    HIGH    HIGH    HIGH  NORMAL  4.160423e-07
+3         HIGH  HIGH    HIGH   FALSE    HIGH    HIGH    HIGH   HIGH    HIGH    HIGH    HIGH    ZERO  4.584632e-06
+4         HIGH  HIGH    HIGH   FALSE    HIGH    HIGH    HIGH   HIGH    HIGH    HIGH     LOW    HIGH  1.236295e-07
+...        ...   ...     ...     ...     ...     ...     ...    ...     ...     ...     ...     ...           ...
+839803  NORMAL  ZERO  NORMAL    TRUE  NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL     LOW    ZERO  6.591802e-10
+839804  NORMAL  ZERO  NORMAL    TRUE  NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL  NORMAL    HIGH  7.446978e-10
+839805  NORMAL  ZERO  NORMAL    TRUE  NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL  NORMAL     LOW  8.776274e-10
+839806  NORMAL  ZERO  NORMAL    TRUE  NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL  NORMAL  NORMAL  3.257653e-10
+839807  NORMAL  ZERO  NORMAL    TRUE  NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL  NORMAL    ZERO  1.241767e-09
+
+[839808 rows x 13 columns]
+
+Variable 'CATECHOL' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['CO', 'HISTORY', 'CVP', 'PCWP', 'HRBP', 'HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP']f_27(MINVOLSET)f_28(MINVOLSET)f_70(HREKG, PRESS, PAP, HISTORY, CVP, HRBP, BP, EXPCO2, CO, HRSAT, PCWP, MINVOL)
+
+Variable 'CO' is being eliminated.
+
+f_70(HREKG, PRESS, PAP, HISTORY, CVP, HRBP, BP, EXPCO2, CO, HRSAT, PCWP, MINVOL) = 
+         HREKG PRESS     PAP HISTORY     CVP    HRBP      BP EXPCO2      CO   HRSAT    PCWP  MINVOL          prob
+0         HIGH  HIGH    HIGH   FALSE    HIGH    HIGH    HIGH   HIGH    HIGH    HIGH    HIGH    HIGH  6.828426e-06
+1         HIGH  HIGH    HIGH   FALSE    HIGH    HIGH    HIGH   HIGH    HIGH    HIGH    HIGH     LOW  2.674451e-05
+2         HIGH  HIGH    HIGH   FALSE    HIGH    HIGH    HIGH   HIGH    HIGH    HIGH    HIGH  NORMAL  4.160423e-07
+3         HIGH  HIGH    HIGH   FALSE    HIGH    HIGH    HIGH   HIGH    HIGH    HIGH    HIGH    ZERO  4.584632e-06
+4         HIGH  HIGH    HIGH   FALSE    HIGH    HIGH    HIGH   HIGH    HIGH    HIGH     LOW    HIGH  1.236295e-07
+...        ...   ...     ...     ...     ...     ...     ...    ...     ...     ...     ...     ...           ...
+839803  NORMAL  ZERO  NORMAL    TRUE  NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL     LOW    ZERO  6.591802e-10
+839804  NORMAL  ZERO  NORMAL    TRUE  NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL  NORMAL    HIGH  7.446978e-10
+839805  NORMAL  ZERO  NORMAL    TRUE  NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL  NORMAL     LOW  8.776274e-10
+839806  NORMAL  ZERO  NORMAL    TRUE  NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL  NORMAL  NORMAL  3.257653e-10
+839807  NORMAL  ZERO  NORMAL    TRUE  NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL  NORMAL    ZERO  1.241767e-09
+
+[839808 rows x 13 columns]
+
+After summing out 'CO': f_70(HREKG, PRESS, PAP, HISTORY, CVP, HRBP, BP, EXPCO2, HRSAT, PCWP, MINVOL) = 
+         HREKG PRESS     PAP HISTORY     CVP    HRBP      BP EXPCO2   HRSAT    PCWP  MINVOL          prob
+0         HIGH  HIGH    HIGH   FALSE    HIGH    HIGH    HIGH   HIGH    HIGH    HIGH    HIGH  7.204628e-06
+1         HIGH  HIGH    HIGH   FALSE    HIGH    HIGH    HIGH   HIGH    HIGH    HIGH     LOW  2.927927e-05
+2         HIGH  HIGH    HIGH   FALSE    HIGH    HIGH    HIGH   HIGH    HIGH    HIGH  NORMAL  4.522708e-07
+3         HIGH  HIGH    HIGH   FALSE    HIGH    HIGH    HIGH   HIGH    HIGH    HIGH    ZERO  5.016524e-06
+4         HIGH  HIGH    HIGH   FALSE    HIGH    HIGH    HIGH   HIGH    HIGH     LOW    HIGH  1.284693e-07
+...        ...   ...     ...     ...     ...     ...     ...    ...     ...     ...     ...           ...
+279931  NORMAL  ZERO  NORMAL    TRUE  NORMAL  NORMAL  NORMAL   ZERO  NORMAL     LOW    ZERO  2.193451e-09
+279932  NORMAL  ZERO  NORMAL    TRUE  NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL    HIGH  4.631659e-09
+279933  NORMAL  ZERO  NORMAL    TRUE  NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL     LOW  5.215460e-09
+279934  NORMAL  ZERO  NORMAL    TRUE  NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL  NORMAL  1.967510e-09
+279935  NORMAL  ZERO  NORMAL    TRUE  NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL    ZERO  7.359651e-09
+
+[279936 rows x 12 columns]
+
+Variable 'CO' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['HISTORY', 'CVP', 'PCWP', 'HRBP', 'HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP']f_27(MINVOLSET)f_28(MINVOLSET)f_70(HREKG, PRESS, PAP, HISTORY, CVP, HRBP, BP, EXPCO2, HRSAT, PCWP, MINVOL)
+
+Variable 'HISTORY' is being eliminated.
+
+f_70(HREKG, PRESS, PAP, HISTORY, CVP, HRBP, BP, EXPCO2, HRSAT, PCWP, MINVOL) = 
+         HREKG PRESS     PAP HISTORY     CVP    HRBP      BP EXPCO2   HRSAT    PCWP  MINVOL          prob
+0         HIGH  HIGH    HIGH   FALSE    HIGH    HIGH    HIGH   HIGH    HIGH    HIGH    HIGH  7.204628e-06
+1         HIGH  HIGH    HIGH   FALSE    HIGH    HIGH    HIGH   HIGH    HIGH    HIGH     LOW  2.927927e-05
+2         HIGH  HIGH    HIGH   FALSE    HIGH    HIGH    HIGH   HIGH    HIGH    HIGH  NORMAL  4.522708e-07
+3         HIGH  HIGH    HIGH   FALSE    HIGH    HIGH    HIGH   HIGH    HIGH    HIGH    ZERO  5.016524e-06
+4         HIGH  HIGH    HIGH   FALSE    HIGH    HIGH    HIGH   HIGH    HIGH     LOW    HIGH  1.284693e-07
+...        ...   ...     ...     ...     ...     ...     ...    ...     ...     ...     ...           ...
+279931  NORMAL  ZERO  NORMAL    TRUE  NORMAL  NORMAL  NORMAL   ZERO  NORMAL     LOW    ZERO  2.193451e-09
+279932  NORMAL  ZERO  NORMAL    TRUE  NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL    HIGH  4.631659e-09
+279933  NORMAL  ZERO  NORMAL    TRUE  NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL     LOW  5.215460e-09
+279934  NORMAL  ZERO  NORMAL    TRUE  NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL  NORMAL  1.967510e-09
+279935  NORMAL  ZERO  NORMAL    TRUE  NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL    ZERO  7.359651e-09
+
+[279936 rows x 12 columns]
+
+After summing out 'HISTORY': f_70(HREKG, PRESS, PAP, CVP, HRBP, BP, EXPCO2, HRSAT, PCWP, MINVOL) = 
+         HREKG PRESS     PAP     CVP    HRBP      BP EXPCO2   HRSAT    PCWP  MINVOL          prob
+0         HIGH  HIGH    HIGH    HIGH    HIGH    HIGH   HIGH    HIGH    HIGH    HIGH  7.280440e-06
+1         HIGH  HIGH    HIGH    HIGH    HIGH    HIGH   HIGH    HIGH    HIGH     LOW  2.959149e-05
+2         HIGH  HIGH    HIGH    HIGH    HIGH    HIGH   HIGH    HIGH    HIGH  NORMAL  4.570817e-07
+3         HIGH  HIGH    HIGH    HIGH    HIGH    HIGH   HIGH    HIGH    HIGH    ZERO  5.070010e-06
+4         HIGH  HIGH    HIGH    HIGH    HIGH    HIGH   HIGH    HIGH     LOW    HIGH  1.339722e-07
+...        ...   ...     ...     ...     ...     ...    ...     ...     ...     ...           ...
+139963  NORMAL  ZERO  NORMAL  NORMAL  NORMAL  NORMAL   ZERO  NORMAL     LOW    ZERO  3.177322e-08
+139964  NORMAL  ZERO  NORMAL  NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL    HIGH  4.206283e-07
+139965  NORMAL  ZERO  NORMAL  NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL     LOW  4.651212e-07
+139966  NORMAL  ZERO  NORMAL  NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL  NORMAL  1.766974e-07
+139967  NORMAL  ZERO  NORMAL  NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL    ZERO  6.556233e-07
+
+[139968 rows x 11 columns]
+
+Variable 'HISTORY' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['CVP', 'PCWP', 'HRBP', 'HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP']f_27(MINVOLSET)f_28(MINVOLSET)f_70(HREKG, PRESS, PAP, CVP, HRBP, BP, EXPCO2, HRSAT, PCWP, MINVOL)
+
+Variable 'CVP' is being eliminated.
+
+f_70(HREKG, PRESS, PAP, CVP, HRBP, BP, EXPCO2, HRSAT, PCWP, MINVOL) = 
+         HREKG PRESS     PAP     CVP    HRBP      BP EXPCO2   HRSAT    PCWP  MINVOL          prob
+0         HIGH  HIGH    HIGH    HIGH    HIGH    HIGH   HIGH    HIGH    HIGH    HIGH  7.280440e-06
+1         HIGH  HIGH    HIGH    HIGH    HIGH    HIGH   HIGH    HIGH    HIGH     LOW  2.959149e-05
+2         HIGH  HIGH    HIGH    HIGH    HIGH    HIGH   HIGH    HIGH    HIGH  NORMAL  4.570817e-07
+3         HIGH  HIGH    HIGH    HIGH    HIGH    HIGH   HIGH    HIGH    HIGH    ZERO  5.070010e-06
+4         HIGH  HIGH    HIGH    HIGH    HIGH    HIGH   HIGH    HIGH     LOW    HIGH  1.339722e-07
+...        ...   ...     ...     ...     ...     ...    ...     ...     ...     ...           ...
+139963  NORMAL  ZERO  NORMAL  NORMAL  NORMAL  NORMAL   ZERO  NORMAL     LOW    ZERO  3.177322e-08
+139964  NORMAL  ZERO  NORMAL  NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL    HIGH  4.206283e-07
+139965  NORMAL  ZERO  NORMAL  NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL     LOW  4.651212e-07
+139966  NORMAL  ZERO  NORMAL  NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL  NORMAL  1.766974e-07
+139967  NORMAL  ZERO  NORMAL  NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL    ZERO  6.556233e-07
+
+[139968 rows x 11 columns]
+
+After summing out 'CVP': f_70(HREKG, PRESS, PAP, HRBP, BP, EXPCO2, HRSAT, PCWP, MINVOL) = 
+        HREKG PRESS     PAP    HRBP      BP EXPCO2   HRSAT    PCWP  MINVOL          prob
+0        HIGH  HIGH    HIGH    HIGH    HIGH   HIGH    HIGH    HIGH    HIGH  1.099295e-05
+1        HIGH  HIGH    HIGH    HIGH    HIGH   HIGH    HIGH    HIGH     LOW  4.462111e-05
+2        HIGH  HIGH    HIGH    HIGH    HIGH   HIGH    HIGH    HIGH  NORMAL  6.894093e-07
+3        HIGH  HIGH    HIGH    HIGH    HIGH   HIGH    HIGH    HIGH    ZERO  7.645227e-06
+4        HIGH  HIGH    HIGH    HIGH    HIGH   HIGH    HIGH     LOW    HIGH  5.849310e-06
+...       ...   ...     ...     ...     ...    ...     ...     ...     ...           ...
+46651  NORMAL  ZERO  NORMAL  NORMAL  NORMAL   ZERO  NORMAL     LOW    ZERO  1.220682e-07
+46652  NORMAL  ZERO  NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL    HIGH  4.485789e-07
+46653  NORMAL  ZERO  NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL     LOW  4.965716e-07
+46654  NORMAL  ZERO  NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL  NORMAL  1.885652e-07
+46655  NORMAL  ZERO  NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL    ZERO  7.000016e-07
+
+[46656 rows x 10 columns]
+
+Variable 'CVP' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['PCWP', 'HRBP', 'HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP']f_27(MINVOLSET)f_28(MINVOLSET)f_70(HREKG, PRESS, PAP, HRBP, BP, EXPCO2, HRSAT, PCWP, MINVOL)
+
+Variable 'PCWP' is being eliminated.
+
+f_70(HREKG, PRESS, PAP, HRBP, BP, EXPCO2, HRSAT, PCWP, MINVOL) = 
+        HREKG PRESS     PAP    HRBP      BP EXPCO2   HRSAT    PCWP  MINVOL          prob
+0        HIGH  HIGH    HIGH    HIGH    HIGH   HIGH    HIGH    HIGH    HIGH  1.099295e-05
+1        HIGH  HIGH    HIGH    HIGH    HIGH   HIGH    HIGH    HIGH     LOW  4.462111e-05
+2        HIGH  HIGH    HIGH    HIGH    HIGH   HIGH    HIGH    HIGH  NORMAL  6.894093e-07
+3        HIGH  HIGH    HIGH    HIGH    HIGH   HIGH    HIGH    HIGH    ZERO  7.645227e-06
+4        HIGH  HIGH    HIGH    HIGH    HIGH   HIGH    HIGH     LOW    HIGH  5.849310e-06
+...       ...   ...     ...     ...     ...    ...     ...     ...     ...           ...
+46651  NORMAL  ZERO  NORMAL  NORMAL  NORMAL   ZERO  NORMAL     LOW    ZERO  1.220682e-07
+46652  NORMAL  ZERO  NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL    HIGH  4.485789e-07
+46653  NORMAL  ZERO  NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL     LOW  4.965716e-07
+46654  NORMAL  ZERO  NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL  NORMAL  1.885652e-07
+46655  NORMAL  ZERO  NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL    ZERO  7.000016e-07
+
+[46656 rows x 10 columns]
+
+After summing out 'PCWP': f_70(HREKG, PRESS, PAP, HRBP, BP, EXPCO2, HRSAT, MINVOL) = 
+        HREKG PRESS     PAP    HRBP      BP EXPCO2   HRSAT  MINVOL          prob
+0        HIGH  HIGH    HIGH    HIGH    HIGH   HIGH    HIGH    HIGH  7.102990e-05
+1        HIGH  HIGH    HIGH    HIGH    HIGH   HIGH    HIGH     LOW  2.826193e-04
+2        HIGH  HIGH    HIGH    HIGH    HIGH   HIGH    HIGH  NORMAL  4.383135e-06
+3        HIGH  HIGH    HIGH    HIGH    HIGH   HIGH    HIGH    ZERO  4.843660e-05
+4        HIGH  HIGH    HIGH    HIGH    HIGH   HIGH     LOW    HIGH  7.449624e-07
+...       ...   ...     ...     ...     ...    ...     ...     ...           ...
+15547  NORMAL  ZERO  NORMAL  NORMAL  NORMAL   ZERO     LOW    ZERO  4.241605e-07
+15548  NORMAL  ZERO  NORMAL  NORMAL  NORMAL   ZERO  NORMAL    HIGH  6.524757e-07
+15549  NORMAL  ZERO  NORMAL  NORMAL  NORMAL   ZERO  NORMAL     LOW  7.384822e-07
+15550  NORMAL  ZERO  NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL  2.780424e-07
+15551  NORMAL  ZERO  NORMAL  NORMAL  NORMAL   ZERO  NORMAL    ZERO  1.042406e-06
+
+[15552 rows x 9 columns]
+
+Variable 'PCWP' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['HRBP', 'HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP']f_27(MINVOLSET)f_28(MINVOLSET)f_70(HREKG, PRESS, PAP, HRBP, BP, EXPCO2, HRSAT, MINVOL)
+
+Variable 'HRBP' is being eliminated.
+
+f_70(HREKG, PRESS, PAP, HRBP, BP, EXPCO2, HRSAT, MINVOL) = 
+        HREKG PRESS     PAP    HRBP      BP EXPCO2   HRSAT  MINVOL          prob
+0        HIGH  HIGH    HIGH    HIGH    HIGH   HIGH    HIGH    HIGH  7.102990e-05
+1        HIGH  HIGH    HIGH    HIGH    HIGH   HIGH    HIGH     LOW  2.826193e-04
+2        HIGH  HIGH    HIGH    HIGH    HIGH   HIGH    HIGH  NORMAL  4.383135e-06
+3        HIGH  HIGH    HIGH    HIGH    HIGH   HIGH    HIGH    ZERO  4.843660e-05
+4        HIGH  HIGH    HIGH    HIGH    HIGH   HIGH     LOW    HIGH  7.449624e-07
+...       ...   ...     ...     ...     ...    ...     ...     ...           ...
+15547  NORMAL  ZERO  NORMAL  NORMAL  NORMAL   ZERO     LOW    ZERO  4.241605e-07
+15548  NORMAL  ZERO  NORMAL  NORMAL  NORMAL   ZERO  NORMAL    HIGH  6.524757e-07
+15549  NORMAL  ZERO  NORMAL  NORMAL  NORMAL   ZERO  NORMAL     LOW  7.384822e-07
+15550  NORMAL  ZERO  NORMAL  NORMAL  NORMAL   ZERO  NORMAL  NORMAL  2.780424e-07
+15551  NORMAL  ZERO  NORMAL  NORMAL  NORMAL   ZERO  NORMAL    ZERO  1.042406e-06
+
+[15552 rows x 9 columns]
+
+After summing out 'HRBP': f_70(HREKG, PRESS, PAP, BP, EXPCO2, HRSAT, MINVOL) = 
+       HREKG PRESS     PAP      BP EXPCO2   HRSAT  MINVOL      prob
+0       HIGH  HIGH    HIGH    HIGH   HIGH    HIGH    HIGH  0.000077
+1       HIGH  HIGH    HIGH    HIGH   HIGH    HIGH     LOW  0.000304
+2       HIGH  HIGH    HIGH    HIGH   HIGH    HIGH  NORMAL  0.000005
+3       HIGH  HIGH    HIGH    HIGH   HIGH    HIGH    ZERO  0.000052
+4       HIGH  HIGH    HIGH    HIGH   HIGH     LOW    HIGH  0.000002
+...      ...   ...     ...     ...    ...     ...     ...       ...
+5179  NORMAL  ZERO  NORMAL  NORMAL   ZERO     LOW    ZERO  0.000003
+5180  NORMAL  ZERO  NORMAL  NORMAL   ZERO  NORMAL    HIGH  0.000007
+5181  NORMAL  ZERO  NORMAL  NORMAL   ZERO  NORMAL     LOW  0.000009
+5182  NORMAL  ZERO  NORMAL  NORMAL   ZERO  NORMAL  NORMAL  0.000003
+5183  NORMAL  ZERO  NORMAL  NORMAL   ZERO  NORMAL    ZERO  0.000013
+
+[5184 rows x 8 columns]
+
+Variable 'HRBP' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP']f_27(MINVOLSET)f_28(MINVOLSET)f_70(HREKG, PRESS, PAP, BP, EXPCO2, HRSAT, MINVOL)
+
+Variable 'HREKG' is being eliminated.
+
+f_70(HREKG, PRESS, PAP, BP, EXPCO2, HRSAT, MINVOL) = 
+       HREKG PRESS     PAP      BP EXPCO2   HRSAT  MINVOL      prob
+0       HIGH  HIGH    HIGH    HIGH   HIGH    HIGH    HIGH  0.000077
+1       HIGH  HIGH    HIGH    HIGH   HIGH    HIGH     LOW  0.000304
+2       HIGH  HIGH    HIGH    HIGH   HIGH    HIGH  NORMAL  0.000005
+3       HIGH  HIGH    HIGH    HIGH   HIGH    HIGH    ZERO  0.000052
+4       HIGH  HIGH    HIGH    HIGH   HIGH     LOW    HIGH  0.000002
+...      ...   ...     ...     ...    ...     ...     ...       ...
+5179  NORMAL  ZERO  NORMAL  NORMAL   ZERO     LOW    ZERO  0.000003
+5180  NORMAL  ZERO  NORMAL  NORMAL   ZERO  NORMAL    HIGH  0.000007
+5181  NORMAL  ZERO  NORMAL  NORMAL   ZERO  NORMAL     LOW  0.000009
+5182  NORMAL  ZERO  NORMAL  NORMAL   ZERO  NORMAL  NORMAL  0.000003
+5183  NORMAL  ZERO  NORMAL  NORMAL   ZERO  NORMAL    ZERO  0.000013
+
+[5184 rows x 8 columns]
+
+After summing out 'HREKG': f_70(PRESS, PAP, BP, EXPCO2, HRSAT, MINVOL) = 
+     PRESS     PAP      BP EXPCO2   HRSAT  MINVOL      prob
+0     HIGH    HIGH    HIGH   HIGH    HIGH    HIGH  0.000080
+1     HIGH    HIGH    HIGH   HIGH    HIGH     LOW  0.000311
+2     HIGH    HIGH    HIGH   HIGH    HIGH  NORMAL  0.000005
+3     HIGH    HIGH    HIGH   HIGH    HIGH    ZERO  0.000053
+4     HIGH    HIGH    HIGH   HIGH     LOW    HIGH  0.000036
+...    ...     ...     ...    ...     ...     ...       ...
+1723  ZERO  NORMAL  NORMAL   ZERO     LOW    ZERO  0.000092
+1724  ZERO  NORMAL  NORMAL   ZERO  NORMAL    HIGH  0.000011
+1725  ZERO  NORMAL  NORMAL   ZERO  NORMAL     LOW  0.000013
+1726  ZERO  NORMAL  NORMAL   ZERO  NORMAL  NORMAL  0.000005
+1727  ZERO  NORMAL  NORMAL   ZERO  NORMAL    ZERO  0.000018
+
+[1728 rows x 7 columns]
+
+Variable 'HREKG' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP']f_27(MINVOLSET)f_28(MINVOLSET)f_70(PRESS, PAP, BP, EXPCO2, HRSAT, MINVOL)
+
+Variable 'HRSAT' is being eliminated.
+
+f_70(PRESS, PAP, BP, EXPCO2, HRSAT, MINVOL) = 
+     PRESS     PAP      BP EXPCO2   HRSAT  MINVOL      prob
+0     HIGH    HIGH    HIGH   HIGH    HIGH    HIGH  0.000080
+1     HIGH    HIGH    HIGH   HIGH    HIGH     LOW  0.000311
+2     HIGH    HIGH    HIGH   HIGH    HIGH  NORMAL  0.000005
+3     HIGH    HIGH    HIGH   HIGH    HIGH    ZERO  0.000053
+4     HIGH    HIGH    HIGH   HIGH     LOW    HIGH  0.000036
+...    ...     ...     ...    ...     ...     ...       ...
+1723  ZERO  NORMAL  NORMAL   ZERO     LOW    ZERO  0.000092
+1724  ZERO  NORMAL  NORMAL   ZERO  NORMAL    HIGH  0.000011
+1725  ZERO  NORMAL  NORMAL   ZERO  NORMAL     LOW  0.000013
+1726  ZERO  NORMAL  NORMAL   ZERO  NORMAL  NORMAL  0.000005
+1727  ZERO  NORMAL  NORMAL   ZERO  NORMAL    ZERO  0.000018
+
+[1728 rows x 7 columns]
+
+After summing out 'HRSAT': f_70(PRESS, PAP, BP, EXPCO2, MINVOL) = 
+    PRESS     PAP      BP  EXPCO2  MINVOL      prob
+0    HIGH    HIGH    HIGH    HIGH    HIGH  0.000127
+1    HIGH    HIGH    HIGH    HIGH     LOW  0.000380
+2    HIGH    HIGH    HIGH    HIGH  NORMAL  0.000006
+3    HIGH    HIGH    HIGH    HIGH    ZERO  0.000066
+4    HIGH    HIGH    HIGH     LOW    HIGH  0.009514
+..    ...     ...     ...     ...     ...       ...
+571  ZERO  NORMAL  NORMAL  NORMAL    ZERO  0.000183
+572  ZERO  NORMAL  NORMAL    ZERO    HIGH  0.000143
+573  ZERO  NORMAL  NORMAL    ZERO     LOW  0.000156
+574  ZERO  NORMAL  NORMAL    ZERO  NORMAL  0.000060
+575  ZERO  NORMAL  NORMAL    ZERO    ZERO  0.000219
+
+[576 rows x 6 columns]
+
+Variable 'HRSAT' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP']f_27(MINVOLSET)f_28(MINVOLSET)f_70(PRESS, PAP, BP, EXPCO2, MINVOL)
+
+Variable 'EXPCO2' is being eliminated.
+
+f_70(PRESS, PAP, BP, EXPCO2, MINVOL) = 
+    PRESS     PAP      BP  EXPCO2  MINVOL      prob
+0    HIGH    HIGH    HIGH    HIGH    HIGH  0.000127
+1    HIGH    HIGH    HIGH    HIGH     LOW  0.000380
+2    HIGH    HIGH    HIGH    HIGH  NORMAL  0.000006
+3    HIGH    HIGH    HIGH    HIGH    ZERO  0.000066
+4    HIGH    HIGH    HIGH     LOW    HIGH  0.009514
+..    ...     ...     ...     ...     ...       ...
+571  ZERO  NORMAL  NORMAL  NORMAL    ZERO  0.000183
+572  ZERO  NORMAL  NORMAL    ZERO    HIGH  0.000143
+573  ZERO  NORMAL  NORMAL    ZERO     LOW  0.000156
+574  ZERO  NORMAL  NORMAL    ZERO  NORMAL  0.000060
+575  ZERO  NORMAL  NORMAL    ZERO    ZERO  0.000219
+
+[576 rows x 6 columns]
+
+After summing out 'EXPCO2': f_70(PRESS, PAP, BP, MINVOL) = 
+    PRESS     PAP      BP  MINVOL      prob
+0    HIGH    HIGH    HIGH    HIGH  0.011277
+1    HIGH    HIGH    HIGH     LOW  0.000681
+2    HIGH    HIGH    HIGH  NORMAL  0.000210
+3    HIGH    HIGH    HIGH    ZERO  0.006155
+4    HIGH    HIGH     LOW    HIGH  0.012658
+..    ...     ...     ...     ...       ...
+139  ZERO  NORMAL     LOW    ZERO  0.012693
+140  ZERO  NORMAL  NORMAL    HIGH  0.001473
+141  ZERO  NORMAL  NORMAL     LOW  0.004715
+142  ZERO  NORMAL  NORMAL  NORMAL  0.001126
+143  ZERO  NORMAL  NORMAL    ZERO  0.006354
+
+[144 rows x 5 columns]
+
+Variable 'EXPCO2' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['MINVOL', 'PAP', 'PRESS', 'BP']f_27(MINVOLSET)f_28(MINVOLSET)f_70(PRESS, PAP, BP, MINVOL)
+
+Variable 'MINVOL' is being eliminated.
+
+f_70(PRESS, PAP, BP, MINVOL) = 
+    PRESS     PAP      BP  MINVOL      prob
+0    HIGH    HIGH    HIGH    HIGH  0.011277
+1    HIGH    HIGH    HIGH     LOW  0.000681
+2    HIGH    HIGH    HIGH  NORMAL  0.000210
+3    HIGH    HIGH    HIGH    ZERO  0.006155
+4    HIGH    HIGH     LOW    HIGH  0.012658
+..    ...     ...     ...     ...       ...
+139  ZERO  NORMAL     LOW    ZERO  0.012693
+140  ZERO  NORMAL  NORMAL    HIGH  0.001473
+141  ZERO  NORMAL  NORMAL     LOW  0.004715
+142  ZERO  NORMAL  NORMAL  NORMAL  0.001126
+143  ZERO  NORMAL  NORMAL    ZERO  0.006354
+
+[144 rows x 5 columns]
+
+After summing out 'MINVOL': f_70(PRESS, PAP, BP) = 
+     PRESS     PAP      BP      prob
+0     HIGH    HIGH    HIGH  0.018323
+1     HIGH    HIGH     LOW  0.019272
+2     HIGH    HIGH  NORMAL  0.011155
+3     HIGH     LOW    HIGH  0.015760
+4     HIGH     LOW     LOW  0.016634
+5     HIGH     LOW  NORMAL  0.009658
+6     HIGH  NORMAL    HIGH  0.283718
+7     HIGH  NORMAL     LOW  0.299438
+8     HIGH  NORMAL  NORMAL  0.173866
+9      LOW    HIGH    HIGH  0.001292
+10     LOW    HIGH     LOW  0.001363
+11     LOW    HIGH  NORMAL  0.000793
+12     LOW     LOW    HIGH  0.001113
+13     LOW     LOW     LOW  0.001176
+14     LOW     LOW  NORMAL  0.000685
+15     LOW  NORMAL    HIGH  0.020042
+16     LOW  NORMAL     LOW  0.021176
+17     LOW  NORMAL  NORMAL  0.012330
+18  NORMAL    HIGH    HIGH  0.000354
+19  NORMAL    HIGH     LOW  0.000362
+20  NORMAL    HIGH  NORMAL  0.000203
+21  NORMAL     LOW    HIGH  0.000305
+22  NORMAL     LOW     LOW  0.000312
+23  NORMAL     LOW  NORMAL  0.000176
+24  NORMAL  NORMAL    HIGH  0.005486
+25  NORMAL  NORMAL     LOW  0.005620
+26  NORMAL  NORMAL  NORMAL  0.003167
+27    ZERO    HIGH    HIGH  0.001798
+28    ZERO    HIGH     LOW  0.001705
+29    ZERO    HIGH  NORMAL  0.000880
+30    ZERO     LOW    HIGH  0.001550
+31    ZERO     LOW     LOW  0.001471
+32    ZERO     LOW  NORMAL  0.000759
+33    ZERO  NORMAL    HIGH  0.027907
+34    ZERO  NORMAL     LOW  0.026482
+35    ZERO  NORMAL  NORMAL  0.013668
+
+Variable 'MINVOL' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['PAP', 'PRESS', 'BP']f_27(MINVOLSET)f_28(MINVOLSET)f_70(PRESS, PAP, BP)
+
+Variable 'PAP' is being eliminated.
+
+f_70(PRESS, PAP, BP) = 
+     PRESS     PAP      BP      prob
+0     HIGH    HIGH    HIGH  0.018323
+1     HIGH    HIGH     LOW  0.019272
+2     HIGH    HIGH  NORMAL  0.011155
+3     HIGH     LOW    HIGH  0.015760
+4     HIGH     LOW     LOW  0.016634
+5     HIGH     LOW  NORMAL  0.009658
+6     HIGH  NORMAL    HIGH  0.283718
+7     HIGH  NORMAL     LOW  0.299438
+8     HIGH  NORMAL  NORMAL  0.173866
+9      LOW    HIGH    HIGH  0.001292
+10     LOW    HIGH     LOW  0.001363
+11     LOW    HIGH  NORMAL  0.000793
+12     LOW     LOW    HIGH  0.001113
+13     LOW     LOW     LOW  0.001176
+14     LOW     LOW  NORMAL  0.000685
+15     LOW  NORMAL    HIGH  0.020042
+16     LOW  NORMAL     LOW  0.021176
+17     LOW  NORMAL  NORMAL  0.012330
+18  NORMAL    HIGH    HIGH  0.000354
+19  NORMAL    HIGH     LOW  0.000362
+20  NORMAL    HIGH  NORMAL  0.000203
+21  NORMAL     LOW    HIGH  0.000305
+22  NORMAL     LOW     LOW  0.000312
+23  NORMAL     LOW  NORMAL  0.000176
+24  NORMAL  NORMAL    HIGH  0.005486
+25  NORMAL  NORMAL     LOW  0.005620
+26  NORMAL  NORMAL  NORMAL  0.003167
+27    ZERO    HIGH    HIGH  0.001798
+28    ZERO    HIGH     LOW  0.001705
+29    ZERO    HIGH  NORMAL  0.000880
+30    ZERO     LOW    HIGH  0.001550
+31    ZERO     LOW     LOW  0.001471
+32    ZERO     LOW  NORMAL  0.000759
+33    ZERO  NORMAL    HIGH  0.027907
+34    ZERO  NORMAL     LOW  0.026482
+35    ZERO  NORMAL  NORMAL  0.013668
+
+After summing out 'PAP': f_70(PRESS, BP) = 
+     PRESS      BP      prob
+0     HIGH    HIGH  0.317801
+1     HIGH     LOW  0.335344
+2     HIGH  NORMAL  0.194679
+3      LOW    HIGH  0.022448
+4      LOW     LOW  0.023716
+5      LOW  NORMAL  0.013808
+6   NORMAL    HIGH  0.006145
+7   NORMAL     LOW  0.006294
+8   NORMAL  NORMAL  0.003546
+9     ZERO    HIGH  0.031255
+10    ZERO     LOW  0.029658
+11    ZERO  NORMAL  0.015306
+
+Variable 'PAP' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['PRESS', 'BP']f_27(MINVOLSET)f_28(MINVOLSET)f_70(PRESS, BP)
+
+Variable 'PRESS' is being eliminated.
+
+f_70(PRESS, BP) = 
+     PRESS      BP      prob
+0     HIGH    HIGH  0.317801
+1     HIGH     LOW  0.335344
+2     HIGH  NORMAL  0.194679
+3      LOW    HIGH  0.022448
+4      LOW     LOW  0.023716
+5      LOW  NORMAL  0.013808
+6   NORMAL    HIGH  0.006145
+7   NORMAL     LOW  0.006294
+8   NORMAL  NORMAL  0.003546
+9     ZERO    HIGH  0.031255
+10    ZERO     LOW  0.029658
+11    ZERO  NORMAL  0.015306
+
+After summing out 'PRESS': f_70(BP) = 
+       BP      prob
+0    HIGH  0.377648
+1     LOW  0.395012
+2  NORMAL  0.227339
+
+Variable 'PRESS' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['BP']f_27(MINVOLSET)f_28(MINVOLSET)f_70(BP)
+
+Variable 'BP' is being eliminated.
+
+f_70(BP) = 
+       BP      prob
+0    HIGH  0.377648
+1     LOW  0.395012
+2  NORMAL  0.227339
+
+After summing out 'BP': f_70() = 
+       BP      prob
+0    HIGH  0.377648
+1     LOW  0.395012
+2  NORMAL  0.227339
+
+Variable 'BP' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = f_27(MINVOLSET)f_28(MINVOLSET)
+
+f_27(MINVOLSET)f_28(MINVOLSET) = f_71(MINVOLSET) = 
+  MINVOLSET    prob
+0       LOW  0.0465
+1    NORMAL  0.0090
+2      HIGH  0.0005
+
+Now normalize the final vector.
+{'MINVOLSET':   MINVOLSET      prob
+0       LOW  0.830357
+1    NORMAL  0.160714
+2      HIGH  0.008929}

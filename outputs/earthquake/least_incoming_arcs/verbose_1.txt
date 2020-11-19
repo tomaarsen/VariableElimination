@@ -1,0 +1,46 @@
+Verbosity level: 1
+Query Variable: 'Alarm'
+Observed Variables: {'Burglary': 'True'}
+
+Elimination ordering function: least_incoming_arcs.
+Elimination variable ordering: ['Burglary', 'Earthquake', 'JohnCalls', 'MaryCalls', 'Alarm'].
+
+Identified Factors, before reducing observed variables
+f_0(Burglary)
+f_1(Earthquake)
+f_2(Earthquake, Burglary, Alarm)
+f_3(JohnCalls, Alarm)
+f_4(MaryCalls, Alarm)
+
+Identified Factors, after reducing observed variables
+f_1(Earthquake)
+f_2(Earthquake, Alarm)
+f_3(JohnCalls, Alarm)
+f_4(MaryCalls, Alarm)
+
+Elimination order:
+['Earthquake', 'JohnCalls', 'MaryCalls']
+P(Alarm|Burglary = True) = sum_['Earthquake', 'JohnCalls', 'MaryCalls']f_1(Earthquake)f_2(Earthquake, Alarm)f_3(JohnCalls, Alarm)f_4(MaryCalls, Alarm)
+
+Variable 'Earthquake' is being eliminated.
+
+Variable 'Earthquake' has been eliminated.
+
+P(Alarm|Burglary = True) = sum_['JohnCalls', 'MaryCalls']f_3(JohnCalls, Alarm)f_4(MaryCalls, Alarm)f_5(Alarm)
+
+Variable 'JohnCalls' is being eliminated.
+
+Variable 'JohnCalls' has been eliminated.
+
+P(Alarm|Burglary = True) = sum_['MaryCalls']f_4(MaryCalls, Alarm)f_5(Alarm)f_3(Alarm)
+
+Variable 'MaryCalls' is being eliminated.
+
+Variable 'MaryCalls' has been eliminated.
+
+P(Alarm|Burglary = True) = f_5(Alarm)f_3(Alarm)f_4(Alarm)
+
+Now normalize the final vector.
+{'Alarm':    Alarm    prob
+0  False  0.0598
+1   True  0.9402}

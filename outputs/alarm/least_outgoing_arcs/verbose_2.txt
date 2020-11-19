@@ -1,0 +1,2751 @@
+Verbosity level: 2
+Query Variable: 'MINVOLSET'
+Observed Variables: {'VENTMACH': 'LOW'}
+
+Elimination ordering function: least_outgoing_arcs.
+Elimination variable ordering: ['HISTORY', 'CVP', 'PCWP', 'HRBP', 'HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP', 'STROKEVOLUME', 'ERRLOWOUTPUT', 'INSUFFANESTH', 'ANAPHYLAXIS', 'FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'MINVOLSET', 'VENTMACH', 'CATECHOL', 'CO', 'HYPOVOLEMIA', 'LVEDVOLUME', 'ERRCAUTER', 'TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'LVFAILURE', 'VENTLUNG', 'HR', 'INTUBATION'].
+
+Identified Factors, before reducing observed variables
+f_0(HISTORY, LVFAILURE) = 
+  HISTORY LVFAILURE  prob
+0    TRUE      TRUE  0.90
+1   FALSE      TRUE  0.10
+2    TRUE     FALSE  0.01
+3   FALSE     FALSE  0.99
+
+f_1(LVEDVOLUME, CVP) = 
+      CVP LVEDVOLUME  prob
+0     LOW        LOW  0.95
+1  NORMAL        LOW  0.04
+2    HIGH        LOW  0.01
+3     LOW     NORMAL  0.04
+4  NORMAL     NORMAL  0.95
+5    HIGH     NORMAL  0.01
+6     LOW       HIGH  0.01
+7  NORMAL       HIGH  0.29
+8    HIGH       HIGH  0.70
+
+f_2(LVEDVOLUME, PCWP) = 
+     PCWP LVEDVOLUME  prob
+0     LOW        LOW  0.95
+1  NORMAL        LOW  0.04
+2    HIGH        LOW  0.01
+3     LOW     NORMAL  0.04
+4  NORMAL     NORMAL  0.95
+5    HIGH     NORMAL  0.01
+6     LOW       HIGH  0.01
+7  NORMAL       HIGH  0.04
+8    HIGH       HIGH  0.95
+
+f_3(HYPOVOLEMIA) = 
+  HYPOVOLEMIA  prob
+0        TRUE   0.2
+1       FALSE   0.8
+
+f_4(LVEDVOLUME, HYPOVOLEMIA, LVFAILURE) = 
+   LVEDVOLUME HYPOVOLEMIA LVFAILURE  prob
+0         LOW        TRUE      TRUE  0.95
+1      NORMAL        TRUE      TRUE  0.04
+2        HIGH        TRUE      TRUE  0.01
+3         LOW       FALSE      TRUE  0.98
+4      NORMAL       FALSE      TRUE  0.01
+5        HIGH       FALSE      TRUE  0.01
+6         LOW        TRUE     FALSE  0.01
+7      NORMAL        TRUE     FALSE  0.09
+8        HIGH        TRUE     FALSE  0.90
+9         LOW       FALSE     FALSE  0.05
+10     NORMAL       FALSE     FALSE  0.90
+11       HIGH       FALSE     FALSE  0.05
+
+f_5(LVFAILURE) = 
+  LVFAILURE  prob
+0      TRUE  0.05
+1     FALSE  0.95
+
+f_6(LVFAILURE, HYPOVOLEMIA, STROKEVOLUME) = 
+   STROKEVOLUME HYPOVOLEMIA LVFAILURE  prob
+0           LOW        TRUE      TRUE  0.98
+1        NORMAL        TRUE      TRUE  0.01
+2          HIGH        TRUE      TRUE  0.01
+3           LOW       FALSE      TRUE  0.95
+4        NORMAL       FALSE      TRUE  0.04
+5          HIGH       FALSE      TRUE  0.01
+6           LOW        TRUE     FALSE  0.50
+7        NORMAL        TRUE     FALSE  0.49
+8          HIGH        TRUE     FALSE  0.01
+9           LOW       FALSE     FALSE  0.05
+10       NORMAL       FALSE     FALSE  0.90
+11         HIGH       FALSE     FALSE  0.05
+
+f_7(ERRLOWOUTPUT) = 
+  ERRLOWOUTPUT  prob
+0         TRUE  0.05
+1        FALSE  0.95
+
+f_8(HRBP, HR, ERRLOWOUTPUT) = 
+      HRBP ERRLOWOUTPUT      HR  prob
+0      LOW         TRUE     LOW  0.98
+1   NORMAL         TRUE     LOW  0.01
+2     HIGH         TRUE     LOW  0.01
+3      LOW        FALSE     LOW  0.40
+4   NORMAL        FALSE     LOW  0.59
+5     HIGH        FALSE     LOW  0.01
+6      LOW         TRUE  NORMAL  0.30
+7   NORMAL         TRUE  NORMAL  0.40
+8     HIGH         TRUE  NORMAL  0.30
+9      LOW        FALSE  NORMAL  0.98
+10  NORMAL        FALSE  NORMAL  0.01
+11    HIGH        FALSE  NORMAL  0.01
+12     LOW         TRUE    HIGH  0.01
+13  NORMAL         TRUE    HIGH  0.98
+14    HIGH         TRUE    HIGH  0.01
+15     LOW        FALSE    HIGH  0.01
+16  NORMAL        FALSE    HIGH  0.01
+17    HIGH        FALSE    HIGH  0.98
+
+f_9(HREKG, ERRCAUTER, HR) = 
+     HREKG ERRCAUTER      HR      prob
+0      LOW      TRUE     LOW  0.333333
+1   NORMAL      TRUE     LOW  0.333333
+2     HIGH      TRUE     LOW  0.333333
+3      LOW     FALSE     LOW  0.333333
+4   NORMAL     FALSE     LOW  0.333333
+5     HIGH     FALSE     LOW  0.333333
+6      LOW      TRUE  NORMAL  0.333333
+7   NORMAL      TRUE  NORMAL  0.333333
+8     HIGH      TRUE  NORMAL  0.333333
+9      LOW     FALSE  NORMAL  0.980000
+10  NORMAL     FALSE  NORMAL  0.010000
+11    HIGH     FALSE  NORMAL  0.010000
+12     LOW      TRUE    HIGH  0.010000
+13  NORMAL      TRUE    HIGH  0.980000
+14    HIGH      TRUE    HIGH  0.010000
+15     LOW     FALSE    HIGH  0.010000
+16  NORMAL     FALSE    HIGH  0.010000
+17    HIGH     FALSE    HIGH  0.980000
+
+f_10(ERRCAUTER) = 
+  ERRCAUTER  prob
+0      TRUE   0.1
+1     FALSE   0.9
+
+f_11(ERRCAUTER, HRSAT, HR) = 
+     HRSAT ERRCAUTER      HR      prob
+0      LOW      TRUE     LOW  0.333333
+1   NORMAL      TRUE     LOW  0.333333
+2     HIGH      TRUE     LOW  0.333333
+3      LOW     FALSE     LOW  0.333333
+4   NORMAL     FALSE     LOW  0.333333
+5     HIGH     FALSE     LOW  0.333333
+6      LOW      TRUE  NORMAL  0.333333
+7   NORMAL      TRUE  NORMAL  0.333333
+8     HIGH      TRUE  NORMAL  0.333333
+9      LOW     FALSE  NORMAL  0.980000
+10  NORMAL     FALSE  NORMAL  0.010000
+11    HIGH     FALSE  NORMAL  0.010000
+12     LOW      TRUE    HIGH  0.010000
+13  NORMAL      TRUE    HIGH  0.980000
+14    HIGH      TRUE    HIGH  0.010000
+15     LOW     FALSE    HIGH  0.010000
+16  NORMAL     FALSE    HIGH  0.010000
+17    HIGH     FALSE    HIGH  0.980000
+
+f_12(INSUFFANESTH) = 
+  INSUFFANESTH  prob
+0         TRUE   0.1
+1        FALSE   0.9
+
+f_13(ANAPHYLAXIS) = 
+  ANAPHYLAXIS  prob
+0        TRUE  0.01
+1       FALSE  0.99
+
+f_14(ANAPHYLAXIS, TPR) = 
+      TPR ANAPHYLAXIS  prob
+0     LOW        TRUE  0.98
+1  NORMAL        TRUE  0.01
+2    HIGH        TRUE  0.01
+3     LOW       FALSE  0.30
+4  NORMAL       FALSE  0.40
+5    HIGH       FALSE  0.30
+
+f_15(ARTCO2, VENTLUNG, EXPCO2) = 
+    EXPCO2  ARTCO2 VENTLUNG  prob
+0     ZERO     LOW     ZERO  0.97
+1      LOW     LOW     ZERO  0.01
+2   NORMAL     LOW     ZERO  0.01
+3     HIGH     LOW     ZERO  0.01
+4     ZERO  NORMAL     ZERO  0.01
+5      LOW  NORMAL     ZERO  0.97
+6   NORMAL  NORMAL     ZERO  0.01
+7     HIGH  NORMAL     ZERO  0.01
+8     ZERO    HIGH     ZERO  0.01
+9      LOW    HIGH     ZERO  0.97
+10  NORMAL    HIGH     ZERO  0.01
+11    HIGH    HIGH     ZERO  0.01
+12    ZERO     LOW      LOW  0.01
+13     LOW     LOW      LOW  0.97
+14  NORMAL     LOW      LOW  0.01
+15    HIGH     LOW      LOW  0.01
+16    ZERO  NORMAL      LOW  0.97
+17     LOW  NORMAL      LOW  0.01
+18  NORMAL  NORMAL      LOW  0.01
+19    HIGH  NORMAL      LOW  0.01
+20    ZERO    HIGH      LOW  0.01
+21     LOW    HIGH      LOW  0.01
+22  NORMAL    HIGH      LOW  0.97
+23    HIGH    HIGH      LOW  0.01
+24    ZERO     LOW   NORMAL  0.01
+25     LOW     LOW   NORMAL  0.01
+26  NORMAL     LOW   NORMAL  0.97
+27    HIGH     LOW   NORMAL  0.01
+28    ZERO  NORMAL   NORMAL  0.01
+29     LOW  NORMAL   NORMAL  0.01
+30  NORMAL  NORMAL   NORMAL  0.97
+31    HIGH  NORMAL   NORMAL  0.01
+32    ZERO    HIGH   NORMAL  0.97
+33     LOW    HIGH   NORMAL  0.01
+34  NORMAL    HIGH   NORMAL  0.01
+35    HIGH    HIGH   NORMAL  0.01
+36    ZERO     LOW     HIGH  0.01
+37     LOW     LOW     HIGH  0.01
+38  NORMAL     LOW     HIGH  0.01
+39    HIGH     LOW     HIGH  0.97
+40    ZERO  NORMAL     HIGH  0.01
+41     LOW  NORMAL     HIGH  0.01
+42  NORMAL  NORMAL     HIGH  0.01
+43    HIGH  NORMAL     HIGH  0.97
+44    ZERO    HIGH     HIGH  0.01
+45     LOW    HIGH     HIGH  0.01
+46  NORMAL    HIGH     HIGH  0.01
+47    HIGH    HIGH     HIGH  0.97
+
+f_16(KINKEDTUBE) = 
+  KINKEDTUBE  prob
+0       TRUE  0.04
+1      FALSE  0.96
+
+f_17(INTUBATION, MINVOL, VENTLUNG) = 
+    MINVOL  INTUBATION VENTLUNG  prob
+0     ZERO      NORMAL     ZERO  0.97
+1      LOW      NORMAL     ZERO  0.01
+2   NORMAL      NORMAL     ZERO  0.01
+3     HIGH      NORMAL     ZERO  0.01
+4     ZERO  ESOPHAGEAL     ZERO  0.01
+5      LOW  ESOPHAGEAL     ZERO  0.97
+6   NORMAL  ESOPHAGEAL     ZERO  0.01
+7     HIGH  ESOPHAGEAL     ZERO  0.01
+8     ZERO    ONESIDED     ZERO  0.01
+9      LOW    ONESIDED     ZERO  0.01
+10  NORMAL    ONESIDED     ZERO  0.97
+11    HIGH    ONESIDED     ZERO  0.01
+12    ZERO      NORMAL      LOW  0.01
+13     LOW      NORMAL      LOW  0.01
+14  NORMAL      NORMAL      LOW  0.01
+15    HIGH      NORMAL      LOW  0.97
+16    ZERO  ESOPHAGEAL      LOW  0.97
+17     LOW  ESOPHAGEAL      LOW  0.01
+18  NORMAL  ESOPHAGEAL      LOW  0.01
+19    HIGH  ESOPHAGEAL      LOW  0.01
+20    ZERO    ONESIDED      LOW  0.60
+21     LOW    ONESIDED      LOW  0.38
+22  NORMAL    ONESIDED      LOW  0.01
+23    HIGH    ONESIDED      LOW  0.01
+24    ZERO      NORMAL   NORMAL  0.50
+25     LOW      NORMAL   NORMAL  0.48
+26  NORMAL      NORMAL   NORMAL  0.01
+27    HIGH      NORMAL   NORMAL  0.01
+28    ZERO  ESOPHAGEAL   NORMAL  0.50
+29     LOW  ESOPHAGEAL   NORMAL  0.48
+30  NORMAL  ESOPHAGEAL   NORMAL  0.01
+31    HIGH  ESOPHAGEAL   NORMAL  0.01
+32    ZERO    ONESIDED   NORMAL  0.97
+33     LOW    ONESIDED   NORMAL  0.01
+34  NORMAL    ONESIDED   NORMAL  0.01
+35    HIGH    ONESIDED   NORMAL  0.01
+36    ZERO      NORMAL     HIGH  0.01
+37     LOW      NORMAL     HIGH  0.97
+38  NORMAL      NORMAL     HIGH  0.01
+39    HIGH      NORMAL     HIGH  0.01
+40    ZERO  ESOPHAGEAL     HIGH  0.01
+41     LOW  ESOPHAGEAL     HIGH  0.01
+42  NORMAL  ESOPHAGEAL     HIGH  0.97
+43    HIGH  ESOPHAGEAL     HIGH  0.01
+44    ZERO    ONESIDED     HIGH  0.01
+45     LOW    ONESIDED     HIGH  0.01
+46  NORMAL    ONESIDED     HIGH  0.01
+47    HIGH    ONESIDED     HIGH  0.97
+
+f_18(FIO2) = 
+     FIO2  prob
+0     LOW  0.05
+1  NORMAL  0.95
+
+f_19(FIO2, PVSAT, VENTALV) = 
+     PVSAT    FIO2 VENTALV  prob
+0      LOW     LOW    ZERO  1.00
+1   NORMAL     LOW    ZERO  0.00
+2     HIGH     LOW    ZERO  0.00
+3      LOW  NORMAL    ZERO  0.99
+4   NORMAL  NORMAL    ZERO  0.01
+5     HIGH  NORMAL    ZERO  0.00
+6      LOW     LOW     LOW  0.95
+7   NORMAL     LOW     LOW  0.04
+8     HIGH     LOW     LOW  0.01
+9      LOW  NORMAL     LOW  0.95
+10  NORMAL  NORMAL     LOW  0.04
+11    HIGH  NORMAL     LOW  0.01
+12     LOW     LOW  NORMAL  1.00
+13  NORMAL     LOW  NORMAL  0.00
+14    HIGH     LOW  NORMAL  0.00
+15     LOW  NORMAL  NORMAL  0.95
+16  NORMAL  NORMAL  NORMAL  0.04
+17    HIGH  NORMAL  NORMAL  0.01
+18     LOW     LOW    HIGH  0.01
+19  NORMAL     LOW    HIGH  0.95
+20    HIGH     LOW    HIGH  0.04
+21     LOW  NORMAL    HIGH  0.01
+22  NORMAL  NORMAL    HIGH  0.01
+23    HIGH  NORMAL    HIGH  0.98
+
+f_20(SAO2, SHUNT, PVSAT) = 
+      SAO2   PVSAT   SHUNT  prob
+0      LOW     LOW  NORMAL  0.98
+1   NORMAL     LOW  NORMAL  0.01
+2     HIGH     LOW  NORMAL  0.01
+3      LOW  NORMAL  NORMAL  0.01
+4   NORMAL  NORMAL  NORMAL  0.98
+5     HIGH  NORMAL  NORMAL  0.01
+6      LOW    HIGH  NORMAL  0.01
+7   NORMAL    HIGH  NORMAL  0.01
+8     HIGH    HIGH  NORMAL  0.98
+9      LOW     LOW    HIGH  0.98
+10  NORMAL     LOW    HIGH  0.01
+11    HIGH     LOW    HIGH  0.01
+12     LOW  NORMAL    HIGH  0.98
+13  NORMAL  NORMAL    HIGH  0.01
+14    HIGH  NORMAL    HIGH  0.01
+15     LOW    HIGH    HIGH  0.69
+16  NORMAL    HIGH    HIGH  0.30
+17    HIGH    HIGH    HIGH  0.01
+
+f_21(PAP, PULMEMBOLUS) = 
+      PAP PULMEMBOLUS  prob
+0     LOW        TRUE  0.01
+1  NORMAL        TRUE  0.19
+2    HIGH        TRUE  0.80
+3     LOW       FALSE  0.05
+4  NORMAL       FALSE  0.90
+5    HIGH       FALSE  0.05
+
+f_22(PULMEMBOLUS) = 
+  PULMEMBOLUS  prob
+0        TRUE  0.01
+1       FALSE  0.99
+
+f_23(SHUNT, PULMEMBOLUS, INTUBATION) = 
+     SHUNT  INTUBATION PULMEMBOLUS  prob
+0   NORMAL      NORMAL        TRUE  0.10
+1     HIGH      NORMAL        TRUE  0.90
+2   NORMAL  ESOPHAGEAL        TRUE  0.10
+3     HIGH  ESOPHAGEAL        TRUE  0.90
+4   NORMAL    ONESIDED        TRUE  0.01
+5     HIGH    ONESIDED        TRUE  0.99
+6   NORMAL      NORMAL       FALSE  0.95
+7     HIGH      NORMAL       FALSE  0.05
+8   NORMAL  ESOPHAGEAL       FALSE  0.95
+9     HIGH  ESOPHAGEAL       FALSE  0.05
+10  NORMAL    ONESIDED       FALSE  0.05
+11    HIGH    ONESIDED       FALSE  0.95
+
+f_24(INTUBATION) = 
+   INTUBATION  prob
+0      NORMAL  0.92
+1  ESOPHAGEAL  0.03
+2    ONESIDED  0.05
+
+f_25(PRESS, INTUBATION, VENTTUBE, KINKEDTUBE) = 
+     PRESS  INTUBATION KINKEDTUBE VENTTUBE  prob
+0     ZERO      NORMAL       TRUE     ZERO  0.97
+1      LOW      NORMAL       TRUE     ZERO  0.01
+2   NORMAL      NORMAL       TRUE     ZERO  0.01
+3     HIGH      NORMAL       TRUE     ZERO  0.01
+4     ZERO  ESOPHAGEAL       TRUE     ZERO  0.01
+..     ...         ...        ...      ...   ...
+91    HIGH  ESOPHAGEAL      FALSE     HIGH  0.60
+92    ZERO    ONESIDED      FALSE     HIGH  0.01
+93     LOW    ONESIDED      FALSE     HIGH  0.01
+94  NORMAL    ONESIDED      FALSE     HIGH  0.01
+95    HIGH    ONESIDED      FALSE     HIGH  0.97
+
+[96 rows x 5 columns]
+
+f_26(DISCONNECT) = 
+  DISCONNECT  prob
+0       TRUE   0.1
+1      FALSE   0.9
+
+f_27(MINVOLSET) = 
+  MINVOLSET  prob
+0       LOW  0.05
+1    NORMAL  0.90
+2      HIGH  0.05
+
+f_28(MINVOLSET, VENTMACH) = 
+   VENTMACH MINVOLSET  prob
+0      ZERO       LOW  0.05
+1       LOW       LOW  0.93
+2    NORMAL       LOW  0.01
+3      HIGH       LOW  0.01
+4      ZERO    NORMAL  0.05
+5       LOW    NORMAL  0.01
+6    NORMAL    NORMAL  0.93
+7      HIGH    NORMAL  0.01
+8      ZERO      HIGH  0.05
+9       LOW      HIGH  0.01
+10   NORMAL      HIGH  0.01
+11     HIGH      HIGH  0.93
+
+f_29(DISCONNECT, VENTTUBE, VENTMACH) = 
+   VENTTUBE DISCONNECT VENTMACH  prob
+0      ZERO       TRUE     ZERO  0.97
+1       LOW       TRUE     ZERO  0.01
+2    NORMAL       TRUE     ZERO  0.01
+3      HIGH       TRUE     ZERO  0.01
+4      ZERO      FALSE     ZERO  0.97
+5       LOW      FALSE     ZERO  0.01
+6    NORMAL      FALSE     ZERO  0.01
+7      HIGH      FALSE     ZERO  0.01
+8      ZERO       TRUE      LOW  0.97
+9       LOW       TRUE      LOW  0.01
+10   NORMAL       TRUE      LOW  0.01
+11     HIGH       TRUE      LOW  0.01
+12     ZERO      FALSE      LOW  0.97
+13      LOW      FALSE      LOW  0.01
+14   NORMAL      FALSE      LOW  0.01
+15     HIGH      FALSE      LOW  0.01
+16     ZERO       TRUE   NORMAL  0.97
+17      LOW       TRUE   NORMAL  0.01
+18   NORMAL       TRUE   NORMAL  0.01
+19     HIGH       TRUE   NORMAL  0.01
+20     ZERO      FALSE   NORMAL  0.01
+21      LOW      FALSE   NORMAL  0.97
+22   NORMAL      FALSE   NORMAL  0.01
+23     HIGH      FALSE   NORMAL  0.01
+24     ZERO       TRUE     HIGH  0.01
+25      LOW       TRUE     HIGH  0.01
+26   NORMAL       TRUE     HIGH  0.97
+27     HIGH       TRUE     HIGH  0.01
+28     ZERO      FALSE     HIGH  0.01
+29      LOW      FALSE     HIGH  0.01
+30   NORMAL      FALSE     HIGH  0.01
+31     HIGH      FALSE     HIGH  0.97
+
+f_30(KINKEDTUBE, INTUBATION, VENTTUBE, VENTLUNG) = 
+   VENTLUNG  INTUBATION KINKEDTUBE VENTTUBE  prob
+0      ZERO      NORMAL       TRUE     ZERO  0.97
+1       LOW      NORMAL       TRUE     ZERO  0.01
+2    NORMAL      NORMAL       TRUE     ZERO  0.01
+3      HIGH      NORMAL       TRUE     ZERO  0.01
+4      ZERO  ESOPHAGEAL       TRUE     ZERO  0.95
+..      ...         ...        ...      ...   ...
+91     HIGH  ESOPHAGEAL      FALSE     HIGH  0.01
+92     ZERO    ONESIDED      FALSE     HIGH  0.01
+93      LOW    ONESIDED      FALSE     HIGH  0.01
+94   NORMAL    ONESIDED      FALSE     HIGH  0.01
+95     HIGH    ONESIDED      FALSE     HIGH  0.97
+
+[96 rows x 5 columns]
+
+f_31(INTUBATION, VENTLUNG, VENTALV) = 
+   VENTALV  INTUBATION VENTLUNG  prob
+0     ZERO      NORMAL     ZERO  0.97
+1      LOW      NORMAL     ZERO  0.01
+2   NORMAL      NORMAL     ZERO  0.01
+3     HIGH      NORMAL     ZERO  0.01
+4     ZERO  ESOPHAGEAL     ZERO  0.01
+5      LOW  ESOPHAGEAL     ZERO  0.97
+6   NORMAL  ESOPHAGEAL     ZERO  0.01
+7     HIGH  ESOPHAGEAL     ZERO  0.01
+8     ZERO    ONESIDED     ZERO  0.01
+9      LOW    ONESIDED     ZERO  0.01
+10  NORMAL    ONESIDED     ZERO  0.97
+11    HIGH    ONESIDED     ZERO  0.01
+12    ZERO      NORMAL      LOW  0.01
+13     LOW      NORMAL      LOW  0.01
+14  NORMAL      NORMAL      LOW  0.01
+15    HIGH      NORMAL      LOW  0.97
+16    ZERO  ESOPHAGEAL      LOW  0.97
+17     LOW  ESOPHAGEAL      LOW  0.01
+18  NORMAL  ESOPHAGEAL      LOW  0.01
+19    HIGH  ESOPHAGEAL      LOW  0.01
+20    ZERO    ONESIDED      LOW  0.01
+21     LOW    ONESIDED      LOW  0.97
+22  NORMAL    ONESIDED      LOW  0.01
+23    HIGH    ONESIDED      LOW  0.01
+24    ZERO      NORMAL   NORMAL  0.01
+25     LOW      NORMAL   NORMAL  0.01
+26  NORMAL      NORMAL   NORMAL  0.97
+27    HIGH      NORMAL   NORMAL  0.01
+28    ZERO  ESOPHAGEAL   NORMAL  0.01
+29     LOW  ESOPHAGEAL   NORMAL  0.01
+30  NORMAL  ESOPHAGEAL   NORMAL  0.01
+31    HIGH  ESOPHAGEAL   NORMAL  0.97
+32    ZERO    ONESIDED   NORMAL  0.97
+33     LOW    ONESIDED   NORMAL  0.01
+34  NORMAL    ONESIDED   NORMAL  0.01
+35    HIGH    ONESIDED   NORMAL  0.01
+36    ZERO      NORMAL     HIGH  0.03
+37     LOW      NORMAL     HIGH  0.95
+38  NORMAL      NORMAL     HIGH  0.01
+39    HIGH      NORMAL     HIGH  0.01
+40    ZERO  ESOPHAGEAL     HIGH  0.01
+41     LOW  ESOPHAGEAL     HIGH  0.94
+42  NORMAL  ESOPHAGEAL     HIGH  0.04
+43    HIGH  ESOPHAGEAL     HIGH  0.01
+44    ZERO    ONESIDED     HIGH  0.01
+45     LOW    ONESIDED     HIGH  0.88
+46  NORMAL    ONESIDED     HIGH  0.10
+47    HIGH    ONESIDED     HIGH  0.01
+
+f_32(VENTALV, ARTCO2) = 
+    ARTCO2 VENTALV  prob
+0      LOW    ZERO  0.01
+1   NORMAL    ZERO  0.01
+2     HIGH    ZERO  0.98
+3      LOW     LOW  0.01
+4   NORMAL     LOW  0.01
+5     HIGH     LOW  0.98
+6      LOW  NORMAL  0.04
+7   NORMAL  NORMAL  0.92
+8     HIGH  NORMAL  0.04
+9      LOW    HIGH  0.90
+10  NORMAL    HIGH  0.09
+11    HIGH    HIGH  0.01
+
+f_33(CATECHOL, TPR, ARTCO2, SAO2, INSUFFANESTH) = 
+    CATECHOL  ARTCO2 INSUFFANESTH  SAO2   TPR  prob
+0     NORMAL     LOW         TRUE   LOW   LOW  0.01
+1       HIGH     LOW         TRUE   LOW   LOW  0.99
+2     NORMAL  NORMAL         TRUE   LOW   LOW  0.01
+3       HIGH  NORMAL         TRUE   LOW   LOW  0.99
+4     NORMAL    HIGH         TRUE   LOW   LOW  0.01
+..       ...     ...          ...   ...   ...   ...
+103     HIGH     LOW        FALSE  HIGH  HIGH  0.05
+104   NORMAL  NORMAL        FALSE  HIGH  HIGH  0.99
+105     HIGH  NORMAL        FALSE  HIGH  HIGH  0.01
+106   NORMAL    HIGH        FALSE  HIGH  HIGH  0.30
+107     HIGH    HIGH        FALSE  HIGH  HIGH  0.70
+
+[108 rows x 6 columns]
+
+f_34(CATECHOL, HR) = 
+       HR CATECHOL  prob
+0     LOW   NORMAL  0.05
+1  NORMAL   NORMAL  0.90
+2    HIGH   NORMAL  0.05
+3     LOW     HIGH  0.01
+4  NORMAL     HIGH  0.09
+5    HIGH     HIGH  0.90
+
+f_35(CO, HR, STROKEVOLUME) = 
+        CO      HR STROKEVOLUME  prob
+0      LOW     LOW          LOW  0.98
+1   NORMAL     LOW          LOW  0.01
+2     HIGH     LOW          LOW  0.01
+3      LOW  NORMAL          LOW  0.95
+4   NORMAL  NORMAL          LOW  0.04
+5     HIGH  NORMAL          LOW  0.01
+6      LOW    HIGH          LOW  0.80
+7   NORMAL    HIGH          LOW  0.19
+8     HIGH    HIGH          LOW  0.01
+9      LOW     LOW       NORMAL  0.95
+10  NORMAL     LOW       NORMAL  0.04
+11    HIGH     LOW       NORMAL  0.01
+12     LOW  NORMAL       NORMAL  0.04
+13  NORMAL  NORMAL       NORMAL  0.95
+14    HIGH  NORMAL       NORMAL  0.01
+15     LOW    HIGH       NORMAL  0.01
+16  NORMAL    HIGH       NORMAL  0.04
+17    HIGH    HIGH       NORMAL  0.95
+18     LOW     LOW         HIGH  0.30
+19  NORMAL     LOW         HIGH  0.69
+20    HIGH     LOW         HIGH  0.01
+21     LOW  NORMAL         HIGH  0.01
+22  NORMAL  NORMAL         HIGH  0.30
+23    HIGH  NORMAL         HIGH  0.69
+24     LOW    HIGH         HIGH  0.01
+25  NORMAL    HIGH         HIGH  0.01
+26    HIGH    HIGH         HIGH  0.98
+
+f_36(CO, BP, TPR) = 
+        BP      CO     TPR  prob
+0      LOW     LOW     LOW  0.98
+1   NORMAL     LOW     LOW  0.01
+2     HIGH     LOW     LOW  0.01
+3      LOW  NORMAL     LOW  0.98
+4   NORMAL  NORMAL     LOW  0.01
+5     HIGH  NORMAL     LOW  0.01
+6      LOW    HIGH     LOW  0.90
+7   NORMAL    HIGH     LOW  0.09
+8     HIGH    HIGH     LOW  0.01
+9      LOW     LOW  NORMAL  0.98
+10  NORMAL     LOW  NORMAL  0.01
+11    HIGH     LOW  NORMAL  0.01
+12     LOW  NORMAL  NORMAL  0.10
+13  NORMAL  NORMAL  NORMAL  0.85
+14    HIGH  NORMAL  NORMAL  0.05
+15     LOW    HIGH  NORMAL  0.05
+16  NORMAL    HIGH  NORMAL  0.20
+17    HIGH    HIGH  NORMAL  0.75
+18     LOW     LOW    HIGH  0.30
+19  NORMAL     LOW    HIGH  0.60
+20    HIGH     LOW    HIGH  0.10
+21     LOW  NORMAL    HIGH  0.05
+22  NORMAL  NORMAL    HIGH  0.40
+23    HIGH  NORMAL    HIGH  0.55
+24     LOW    HIGH    HIGH  0.01
+25  NORMAL    HIGH    HIGH  0.09
+26    HIGH    HIGH    HIGH  0.90
+
+
+Identified Factors, after reducing observed variables
+f_0(HISTORY, LVFAILURE) = 
+  HISTORY LVFAILURE  prob
+0    TRUE      TRUE  0.90
+1   FALSE      TRUE  0.10
+2    TRUE     FALSE  0.01
+3   FALSE     FALSE  0.99
+
+f_1(LVEDVOLUME, CVP) = 
+      CVP LVEDVOLUME  prob
+0     LOW        LOW  0.95
+1  NORMAL        LOW  0.04
+2    HIGH        LOW  0.01
+3     LOW     NORMAL  0.04
+4  NORMAL     NORMAL  0.95
+5    HIGH     NORMAL  0.01
+6     LOW       HIGH  0.01
+7  NORMAL       HIGH  0.29
+8    HIGH       HIGH  0.70
+
+f_2(LVEDVOLUME, PCWP) = 
+     PCWP LVEDVOLUME  prob
+0     LOW        LOW  0.95
+1  NORMAL        LOW  0.04
+2    HIGH        LOW  0.01
+3     LOW     NORMAL  0.04
+4  NORMAL     NORMAL  0.95
+5    HIGH     NORMAL  0.01
+6     LOW       HIGH  0.01
+7  NORMAL       HIGH  0.04
+8    HIGH       HIGH  0.95
+
+f_3(HYPOVOLEMIA) = 
+  HYPOVOLEMIA  prob
+0        TRUE   0.2
+1       FALSE   0.8
+
+f_4(LVEDVOLUME, HYPOVOLEMIA, LVFAILURE) = 
+   LVEDVOLUME HYPOVOLEMIA LVFAILURE  prob
+0         LOW        TRUE      TRUE  0.95
+1      NORMAL        TRUE      TRUE  0.04
+2        HIGH        TRUE      TRUE  0.01
+3         LOW       FALSE      TRUE  0.98
+4      NORMAL       FALSE      TRUE  0.01
+5        HIGH       FALSE      TRUE  0.01
+6         LOW        TRUE     FALSE  0.01
+7      NORMAL        TRUE     FALSE  0.09
+8        HIGH        TRUE     FALSE  0.90
+9         LOW       FALSE     FALSE  0.05
+10     NORMAL       FALSE     FALSE  0.90
+11       HIGH       FALSE     FALSE  0.05
+
+f_5(LVFAILURE) = 
+  LVFAILURE  prob
+0      TRUE  0.05
+1     FALSE  0.95
+
+f_6(LVFAILURE, HYPOVOLEMIA, STROKEVOLUME) = 
+   STROKEVOLUME HYPOVOLEMIA LVFAILURE  prob
+0           LOW        TRUE      TRUE  0.98
+1        NORMAL        TRUE      TRUE  0.01
+2          HIGH        TRUE      TRUE  0.01
+3           LOW       FALSE      TRUE  0.95
+4        NORMAL       FALSE      TRUE  0.04
+5          HIGH       FALSE      TRUE  0.01
+6           LOW        TRUE     FALSE  0.50
+7        NORMAL        TRUE     FALSE  0.49
+8          HIGH        TRUE     FALSE  0.01
+9           LOW       FALSE     FALSE  0.05
+10       NORMAL       FALSE     FALSE  0.90
+11         HIGH       FALSE     FALSE  0.05
+
+f_7(ERRLOWOUTPUT) = 
+  ERRLOWOUTPUT  prob
+0         TRUE  0.05
+1        FALSE  0.95
+
+f_8(HRBP, HR, ERRLOWOUTPUT) = 
+      HRBP ERRLOWOUTPUT      HR  prob
+0      LOW         TRUE     LOW  0.98
+1   NORMAL         TRUE     LOW  0.01
+2     HIGH         TRUE     LOW  0.01
+3      LOW        FALSE     LOW  0.40
+4   NORMAL        FALSE     LOW  0.59
+5     HIGH        FALSE     LOW  0.01
+6      LOW         TRUE  NORMAL  0.30
+7   NORMAL         TRUE  NORMAL  0.40
+8     HIGH         TRUE  NORMAL  0.30
+9      LOW        FALSE  NORMAL  0.98
+10  NORMAL        FALSE  NORMAL  0.01
+11    HIGH        FALSE  NORMAL  0.01
+12     LOW         TRUE    HIGH  0.01
+13  NORMAL         TRUE    HIGH  0.98
+14    HIGH         TRUE    HIGH  0.01
+15     LOW        FALSE    HIGH  0.01
+16  NORMAL        FALSE    HIGH  0.01
+17    HIGH        FALSE    HIGH  0.98
+
+f_9(HREKG, ERRCAUTER, HR) = 
+     HREKG ERRCAUTER      HR      prob
+0      LOW      TRUE     LOW  0.333333
+1   NORMAL      TRUE     LOW  0.333333
+2     HIGH      TRUE     LOW  0.333333
+3      LOW     FALSE     LOW  0.333333
+4   NORMAL     FALSE     LOW  0.333333
+5     HIGH     FALSE     LOW  0.333333
+6      LOW      TRUE  NORMAL  0.333333
+7   NORMAL      TRUE  NORMAL  0.333333
+8     HIGH      TRUE  NORMAL  0.333333
+9      LOW     FALSE  NORMAL  0.980000
+10  NORMAL     FALSE  NORMAL  0.010000
+11    HIGH     FALSE  NORMAL  0.010000
+12     LOW      TRUE    HIGH  0.010000
+13  NORMAL      TRUE    HIGH  0.980000
+14    HIGH      TRUE    HIGH  0.010000
+15     LOW     FALSE    HIGH  0.010000
+16  NORMAL     FALSE    HIGH  0.010000
+17    HIGH     FALSE    HIGH  0.980000
+
+f_10(ERRCAUTER) = 
+  ERRCAUTER  prob
+0      TRUE   0.1
+1     FALSE   0.9
+
+f_11(ERRCAUTER, HRSAT, HR) = 
+     HRSAT ERRCAUTER      HR      prob
+0      LOW      TRUE     LOW  0.333333
+1   NORMAL      TRUE     LOW  0.333333
+2     HIGH      TRUE     LOW  0.333333
+3      LOW     FALSE     LOW  0.333333
+4   NORMAL     FALSE     LOW  0.333333
+5     HIGH     FALSE     LOW  0.333333
+6      LOW      TRUE  NORMAL  0.333333
+7   NORMAL      TRUE  NORMAL  0.333333
+8     HIGH      TRUE  NORMAL  0.333333
+9      LOW     FALSE  NORMAL  0.980000
+10  NORMAL     FALSE  NORMAL  0.010000
+11    HIGH     FALSE  NORMAL  0.010000
+12     LOW      TRUE    HIGH  0.010000
+13  NORMAL      TRUE    HIGH  0.980000
+14    HIGH      TRUE    HIGH  0.010000
+15     LOW     FALSE    HIGH  0.010000
+16  NORMAL     FALSE    HIGH  0.010000
+17    HIGH     FALSE    HIGH  0.980000
+
+f_12(INSUFFANESTH) = 
+  INSUFFANESTH  prob
+0         TRUE   0.1
+1        FALSE   0.9
+
+f_13(ANAPHYLAXIS) = 
+  ANAPHYLAXIS  prob
+0        TRUE  0.01
+1       FALSE  0.99
+
+f_14(ANAPHYLAXIS, TPR) = 
+      TPR ANAPHYLAXIS  prob
+0     LOW        TRUE  0.98
+1  NORMAL        TRUE  0.01
+2    HIGH        TRUE  0.01
+3     LOW       FALSE  0.30
+4  NORMAL       FALSE  0.40
+5    HIGH       FALSE  0.30
+
+f_15(ARTCO2, VENTLUNG, EXPCO2) = 
+    EXPCO2  ARTCO2 VENTLUNG  prob
+0     ZERO     LOW     ZERO  0.97
+1      LOW     LOW     ZERO  0.01
+2   NORMAL     LOW     ZERO  0.01
+3     HIGH     LOW     ZERO  0.01
+4     ZERO  NORMAL     ZERO  0.01
+5      LOW  NORMAL     ZERO  0.97
+6   NORMAL  NORMAL     ZERO  0.01
+7     HIGH  NORMAL     ZERO  0.01
+8     ZERO    HIGH     ZERO  0.01
+9      LOW    HIGH     ZERO  0.97
+10  NORMAL    HIGH     ZERO  0.01
+11    HIGH    HIGH     ZERO  0.01
+12    ZERO     LOW      LOW  0.01
+13     LOW     LOW      LOW  0.97
+14  NORMAL     LOW      LOW  0.01
+15    HIGH     LOW      LOW  0.01
+16    ZERO  NORMAL      LOW  0.97
+17     LOW  NORMAL      LOW  0.01
+18  NORMAL  NORMAL      LOW  0.01
+19    HIGH  NORMAL      LOW  0.01
+20    ZERO    HIGH      LOW  0.01
+21     LOW    HIGH      LOW  0.01
+22  NORMAL    HIGH      LOW  0.97
+23    HIGH    HIGH      LOW  0.01
+24    ZERO     LOW   NORMAL  0.01
+25     LOW     LOW   NORMAL  0.01
+26  NORMAL     LOW   NORMAL  0.97
+27    HIGH     LOW   NORMAL  0.01
+28    ZERO  NORMAL   NORMAL  0.01
+29     LOW  NORMAL   NORMAL  0.01
+30  NORMAL  NORMAL   NORMAL  0.97
+31    HIGH  NORMAL   NORMAL  0.01
+32    ZERO    HIGH   NORMAL  0.97
+33     LOW    HIGH   NORMAL  0.01
+34  NORMAL    HIGH   NORMAL  0.01
+35    HIGH    HIGH   NORMAL  0.01
+36    ZERO     LOW     HIGH  0.01
+37     LOW     LOW     HIGH  0.01
+38  NORMAL     LOW     HIGH  0.01
+39    HIGH     LOW     HIGH  0.97
+40    ZERO  NORMAL     HIGH  0.01
+41     LOW  NORMAL     HIGH  0.01
+42  NORMAL  NORMAL     HIGH  0.01
+43    HIGH  NORMAL     HIGH  0.97
+44    ZERO    HIGH     HIGH  0.01
+45     LOW    HIGH     HIGH  0.01
+46  NORMAL    HIGH     HIGH  0.01
+47    HIGH    HIGH     HIGH  0.97
+
+f_16(KINKEDTUBE) = 
+  KINKEDTUBE  prob
+0       TRUE  0.04
+1      FALSE  0.96
+
+f_17(INTUBATION, MINVOL, VENTLUNG) = 
+    MINVOL  INTUBATION VENTLUNG  prob
+0     ZERO      NORMAL     ZERO  0.97
+1      LOW      NORMAL     ZERO  0.01
+2   NORMAL      NORMAL     ZERO  0.01
+3     HIGH      NORMAL     ZERO  0.01
+4     ZERO  ESOPHAGEAL     ZERO  0.01
+5      LOW  ESOPHAGEAL     ZERO  0.97
+6   NORMAL  ESOPHAGEAL     ZERO  0.01
+7     HIGH  ESOPHAGEAL     ZERO  0.01
+8     ZERO    ONESIDED     ZERO  0.01
+9      LOW    ONESIDED     ZERO  0.01
+10  NORMAL    ONESIDED     ZERO  0.97
+11    HIGH    ONESIDED     ZERO  0.01
+12    ZERO      NORMAL      LOW  0.01
+13     LOW      NORMAL      LOW  0.01
+14  NORMAL      NORMAL      LOW  0.01
+15    HIGH      NORMAL      LOW  0.97
+16    ZERO  ESOPHAGEAL      LOW  0.97
+17     LOW  ESOPHAGEAL      LOW  0.01
+18  NORMAL  ESOPHAGEAL      LOW  0.01
+19    HIGH  ESOPHAGEAL      LOW  0.01
+20    ZERO    ONESIDED      LOW  0.60
+21     LOW    ONESIDED      LOW  0.38
+22  NORMAL    ONESIDED      LOW  0.01
+23    HIGH    ONESIDED      LOW  0.01
+24    ZERO      NORMAL   NORMAL  0.50
+25     LOW      NORMAL   NORMAL  0.48
+26  NORMAL      NORMAL   NORMAL  0.01
+27    HIGH      NORMAL   NORMAL  0.01
+28    ZERO  ESOPHAGEAL   NORMAL  0.50
+29     LOW  ESOPHAGEAL   NORMAL  0.48
+30  NORMAL  ESOPHAGEAL   NORMAL  0.01
+31    HIGH  ESOPHAGEAL   NORMAL  0.01
+32    ZERO    ONESIDED   NORMAL  0.97
+33     LOW    ONESIDED   NORMAL  0.01
+34  NORMAL    ONESIDED   NORMAL  0.01
+35    HIGH    ONESIDED   NORMAL  0.01
+36    ZERO      NORMAL     HIGH  0.01
+37     LOW      NORMAL     HIGH  0.97
+38  NORMAL      NORMAL     HIGH  0.01
+39    HIGH      NORMAL     HIGH  0.01
+40    ZERO  ESOPHAGEAL     HIGH  0.01
+41     LOW  ESOPHAGEAL     HIGH  0.01
+42  NORMAL  ESOPHAGEAL     HIGH  0.97
+43    HIGH  ESOPHAGEAL     HIGH  0.01
+44    ZERO    ONESIDED     HIGH  0.01
+45     LOW    ONESIDED     HIGH  0.01
+46  NORMAL    ONESIDED     HIGH  0.01
+47    HIGH    ONESIDED     HIGH  0.97
+
+f_18(FIO2) = 
+     FIO2  prob
+0     LOW  0.05
+1  NORMAL  0.95
+
+f_19(FIO2, PVSAT, VENTALV) = 
+     PVSAT    FIO2 VENTALV  prob
+0      LOW     LOW    ZERO  1.00
+1   NORMAL     LOW    ZERO  0.00
+2     HIGH     LOW    ZERO  0.00
+3      LOW  NORMAL    ZERO  0.99
+4   NORMAL  NORMAL    ZERO  0.01
+5     HIGH  NORMAL    ZERO  0.00
+6      LOW     LOW     LOW  0.95
+7   NORMAL     LOW     LOW  0.04
+8     HIGH     LOW     LOW  0.01
+9      LOW  NORMAL     LOW  0.95
+10  NORMAL  NORMAL     LOW  0.04
+11    HIGH  NORMAL     LOW  0.01
+12     LOW     LOW  NORMAL  1.00
+13  NORMAL     LOW  NORMAL  0.00
+14    HIGH     LOW  NORMAL  0.00
+15     LOW  NORMAL  NORMAL  0.95
+16  NORMAL  NORMAL  NORMAL  0.04
+17    HIGH  NORMAL  NORMAL  0.01
+18     LOW     LOW    HIGH  0.01
+19  NORMAL     LOW    HIGH  0.95
+20    HIGH     LOW    HIGH  0.04
+21     LOW  NORMAL    HIGH  0.01
+22  NORMAL  NORMAL    HIGH  0.01
+23    HIGH  NORMAL    HIGH  0.98
+
+f_20(SAO2, SHUNT, PVSAT) = 
+      SAO2   PVSAT   SHUNT  prob
+0      LOW     LOW  NORMAL  0.98
+1   NORMAL     LOW  NORMAL  0.01
+2     HIGH     LOW  NORMAL  0.01
+3      LOW  NORMAL  NORMAL  0.01
+4   NORMAL  NORMAL  NORMAL  0.98
+5     HIGH  NORMAL  NORMAL  0.01
+6      LOW    HIGH  NORMAL  0.01
+7   NORMAL    HIGH  NORMAL  0.01
+8     HIGH    HIGH  NORMAL  0.98
+9      LOW     LOW    HIGH  0.98
+10  NORMAL     LOW    HIGH  0.01
+11    HIGH     LOW    HIGH  0.01
+12     LOW  NORMAL    HIGH  0.98
+13  NORMAL  NORMAL    HIGH  0.01
+14    HIGH  NORMAL    HIGH  0.01
+15     LOW    HIGH    HIGH  0.69
+16  NORMAL    HIGH    HIGH  0.30
+17    HIGH    HIGH    HIGH  0.01
+
+f_21(PAP, PULMEMBOLUS) = 
+      PAP PULMEMBOLUS  prob
+0     LOW        TRUE  0.01
+1  NORMAL        TRUE  0.19
+2    HIGH        TRUE  0.80
+3     LOW       FALSE  0.05
+4  NORMAL       FALSE  0.90
+5    HIGH       FALSE  0.05
+
+f_22(PULMEMBOLUS) = 
+  PULMEMBOLUS  prob
+0        TRUE  0.01
+1       FALSE  0.99
+
+f_23(SHUNT, PULMEMBOLUS, INTUBATION) = 
+     SHUNT  INTUBATION PULMEMBOLUS  prob
+0   NORMAL      NORMAL        TRUE  0.10
+1     HIGH      NORMAL        TRUE  0.90
+2   NORMAL  ESOPHAGEAL        TRUE  0.10
+3     HIGH  ESOPHAGEAL        TRUE  0.90
+4   NORMAL    ONESIDED        TRUE  0.01
+5     HIGH    ONESIDED        TRUE  0.99
+6   NORMAL      NORMAL       FALSE  0.95
+7     HIGH      NORMAL       FALSE  0.05
+8   NORMAL  ESOPHAGEAL       FALSE  0.95
+9     HIGH  ESOPHAGEAL       FALSE  0.05
+10  NORMAL    ONESIDED       FALSE  0.05
+11    HIGH    ONESIDED       FALSE  0.95
+
+f_24(INTUBATION) = 
+   INTUBATION  prob
+0      NORMAL  0.92
+1  ESOPHAGEAL  0.03
+2    ONESIDED  0.05
+
+f_25(PRESS, INTUBATION, VENTTUBE, KINKEDTUBE) = 
+     PRESS  INTUBATION KINKEDTUBE VENTTUBE  prob
+0     ZERO      NORMAL       TRUE     ZERO  0.97
+1      LOW      NORMAL       TRUE     ZERO  0.01
+2   NORMAL      NORMAL       TRUE     ZERO  0.01
+3     HIGH      NORMAL       TRUE     ZERO  0.01
+4     ZERO  ESOPHAGEAL       TRUE     ZERO  0.01
+..     ...         ...        ...      ...   ...
+91    HIGH  ESOPHAGEAL      FALSE     HIGH  0.60
+92    ZERO    ONESIDED      FALSE     HIGH  0.01
+93     LOW    ONESIDED      FALSE     HIGH  0.01
+94  NORMAL    ONESIDED      FALSE     HIGH  0.01
+95    HIGH    ONESIDED      FALSE     HIGH  0.97
+
+[96 rows x 5 columns]
+
+f_26(DISCONNECT) = 
+  DISCONNECT  prob
+0       TRUE   0.1
+1      FALSE   0.9
+
+f_27(MINVOLSET) = 
+  MINVOLSET  prob
+0       LOW  0.05
+1    NORMAL  0.90
+2      HIGH  0.05
+
+f_28(MINVOLSET) = 
+  MINVOLSET  prob
+1       LOW  0.93
+5    NORMAL  0.01
+9      HIGH  0.01
+
+f_29(DISCONNECT, VENTTUBE) = 
+   VENTTUBE DISCONNECT  prob
+8      ZERO       TRUE  0.97
+9       LOW       TRUE  0.01
+10   NORMAL       TRUE  0.01
+11     HIGH       TRUE  0.01
+12     ZERO      FALSE  0.97
+13      LOW      FALSE  0.01
+14   NORMAL      FALSE  0.01
+15     HIGH      FALSE  0.01
+
+f_30(KINKEDTUBE, INTUBATION, VENTTUBE, VENTLUNG) = 
+   VENTLUNG  INTUBATION KINKEDTUBE VENTTUBE  prob
+0      ZERO      NORMAL       TRUE     ZERO  0.97
+1       LOW      NORMAL       TRUE     ZERO  0.01
+2    NORMAL      NORMAL       TRUE     ZERO  0.01
+3      HIGH      NORMAL       TRUE     ZERO  0.01
+4      ZERO  ESOPHAGEAL       TRUE     ZERO  0.95
+..      ...         ...        ...      ...   ...
+91     HIGH  ESOPHAGEAL      FALSE     HIGH  0.01
+92     ZERO    ONESIDED      FALSE     HIGH  0.01
+93      LOW    ONESIDED      FALSE     HIGH  0.01
+94   NORMAL    ONESIDED      FALSE     HIGH  0.01
+95     HIGH    ONESIDED      FALSE     HIGH  0.97
+
+[96 rows x 5 columns]
+
+f_31(INTUBATION, VENTLUNG, VENTALV) = 
+   VENTALV  INTUBATION VENTLUNG  prob
+0     ZERO      NORMAL     ZERO  0.97
+1      LOW      NORMAL     ZERO  0.01
+2   NORMAL      NORMAL     ZERO  0.01
+3     HIGH      NORMAL     ZERO  0.01
+4     ZERO  ESOPHAGEAL     ZERO  0.01
+5      LOW  ESOPHAGEAL     ZERO  0.97
+6   NORMAL  ESOPHAGEAL     ZERO  0.01
+7     HIGH  ESOPHAGEAL     ZERO  0.01
+8     ZERO    ONESIDED     ZERO  0.01
+9      LOW    ONESIDED     ZERO  0.01
+10  NORMAL    ONESIDED     ZERO  0.97
+11    HIGH    ONESIDED     ZERO  0.01
+12    ZERO      NORMAL      LOW  0.01
+13     LOW      NORMAL      LOW  0.01
+14  NORMAL      NORMAL      LOW  0.01
+15    HIGH      NORMAL      LOW  0.97
+16    ZERO  ESOPHAGEAL      LOW  0.97
+17     LOW  ESOPHAGEAL      LOW  0.01
+18  NORMAL  ESOPHAGEAL      LOW  0.01
+19    HIGH  ESOPHAGEAL      LOW  0.01
+20    ZERO    ONESIDED      LOW  0.01
+21     LOW    ONESIDED      LOW  0.97
+22  NORMAL    ONESIDED      LOW  0.01
+23    HIGH    ONESIDED      LOW  0.01
+24    ZERO      NORMAL   NORMAL  0.01
+25     LOW      NORMAL   NORMAL  0.01
+26  NORMAL      NORMAL   NORMAL  0.97
+27    HIGH      NORMAL   NORMAL  0.01
+28    ZERO  ESOPHAGEAL   NORMAL  0.01
+29     LOW  ESOPHAGEAL   NORMAL  0.01
+30  NORMAL  ESOPHAGEAL   NORMAL  0.01
+31    HIGH  ESOPHAGEAL   NORMAL  0.97
+32    ZERO    ONESIDED   NORMAL  0.97
+33     LOW    ONESIDED   NORMAL  0.01
+34  NORMAL    ONESIDED   NORMAL  0.01
+35    HIGH    ONESIDED   NORMAL  0.01
+36    ZERO      NORMAL     HIGH  0.03
+37     LOW      NORMAL     HIGH  0.95
+38  NORMAL      NORMAL     HIGH  0.01
+39    HIGH      NORMAL     HIGH  0.01
+40    ZERO  ESOPHAGEAL     HIGH  0.01
+41     LOW  ESOPHAGEAL     HIGH  0.94
+42  NORMAL  ESOPHAGEAL     HIGH  0.04
+43    HIGH  ESOPHAGEAL     HIGH  0.01
+44    ZERO    ONESIDED     HIGH  0.01
+45     LOW    ONESIDED     HIGH  0.88
+46  NORMAL    ONESIDED     HIGH  0.10
+47    HIGH    ONESIDED     HIGH  0.01
+
+f_32(VENTALV, ARTCO2) = 
+    ARTCO2 VENTALV  prob
+0      LOW    ZERO  0.01
+1   NORMAL    ZERO  0.01
+2     HIGH    ZERO  0.98
+3      LOW     LOW  0.01
+4   NORMAL     LOW  0.01
+5     HIGH     LOW  0.98
+6      LOW  NORMAL  0.04
+7   NORMAL  NORMAL  0.92
+8     HIGH  NORMAL  0.04
+9      LOW    HIGH  0.90
+10  NORMAL    HIGH  0.09
+11    HIGH    HIGH  0.01
+
+f_33(CATECHOL, TPR, ARTCO2, SAO2, INSUFFANESTH) = 
+    CATECHOL  ARTCO2 INSUFFANESTH  SAO2   TPR  prob
+0     NORMAL     LOW         TRUE   LOW   LOW  0.01
+1       HIGH     LOW         TRUE   LOW   LOW  0.99
+2     NORMAL  NORMAL         TRUE   LOW   LOW  0.01
+3       HIGH  NORMAL         TRUE   LOW   LOW  0.99
+4     NORMAL    HIGH         TRUE   LOW   LOW  0.01
+..       ...     ...          ...   ...   ...   ...
+103     HIGH     LOW        FALSE  HIGH  HIGH  0.05
+104   NORMAL  NORMAL        FALSE  HIGH  HIGH  0.99
+105     HIGH  NORMAL        FALSE  HIGH  HIGH  0.01
+106   NORMAL    HIGH        FALSE  HIGH  HIGH  0.30
+107     HIGH    HIGH        FALSE  HIGH  HIGH  0.70
+
+[108 rows x 6 columns]
+
+f_34(CATECHOL, HR) = 
+       HR CATECHOL  prob
+0     LOW   NORMAL  0.05
+1  NORMAL   NORMAL  0.90
+2    HIGH   NORMAL  0.05
+3     LOW     HIGH  0.01
+4  NORMAL     HIGH  0.09
+5    HIGH     HIGH  0.90
+
+f_35(CO, HR, STROKEVOLUME) = 
+        CO      HR STROKEVOLUME  prob
+0      LOW     LOW          LOW  0.98
+1   NORMAL     LOW          LOW  0.01
+2     HIGH     LOW          LOW  0.01
+3      LOW  NORMAL          LOW  0.95
+4   NORMAL  NORMAL          LOW  0.04
+5     HIGH  NORMAL          LOW  0.01
+6      LOW    HIGH          LOW  0.80
+7   NORMAL    HIGH          LOW  0.19
+8     HIGH    HIGH          LOW  0.01
+9      LOW     LOW       NORMAL  0.95
+10  NORMAL     LOW       NORMAL  0.04
+11    HIGH     LOW       NORMAL  0.01
+12     LOW  NORMAL       NORMAL  0.04
+13  NORMAL  NORMAL       NORMAL  0.95
+14    HIGH  NORMAL       NORMAL  0.01
+15     LOW    HIGH       NORMAL  0.01
+16  NORMAL    HIGH       NORMAL  0.04
+17    HIGH    HIGH       NORMAL  0.95
+18     LOW     LOW         HIGH  0.30
+19  NORMAL     LOW         HIGH  0.69
+20    HIGH     LOW         HIGH  0.01
+21     LOW  NORMAL         HIGH  0.01
+22  NORMAL  NORMAL         HIGH  0.30
+23    HIGH  NORMAL         HIGH  0.69
+24     LOW    HIGH         HIGH  0.01
+25  NORMAL    HIGH         HIGH  0.01
+26    HIGH    HIGH         HIGH  0.98
+
+f_36(CO, BP, TPR) = 
+        BP      CO     TPR  prob
+0      LOW     LOW     LOW  0.98
+1   NORMAL     LOW     LOW  0.01
+2     HIGH     LOW     LOW  0.01
+3      LOW  NORMAL     LOW  0.98
+4   NORMAL  NORMAL     LOW  0.01
+5     HIGH  NORMAL     LOW  0.01
+6      LOW    HIGH     LOW  0.90
+7   NORMAL    HIGH     LOW  0.09
+8     HIGH    HIGH     LOW  0.01
+9      LOW     LOW  NORMAL  0.98
+10  NORMAL     LOW  NORMAL  0.01
+11    HIGH     LOW  NORMAL  0.01
+12     LOW  NORMAL  NORMAL  0.10
+13  NORMAL  NORMAL  NORMAL  0.85
+14    HIGH  NORMAL  NORMAL  0.05
+15     LOW    HIGH  NORMAL  0.05
+16  NORMAL    HIGH  NORMAL  0.20
+17    HIGH    HIGH  NORMAL  0.75
+18     LOW     LOW    HIGH  0.30
+19  NORMAL     LOW    HIGH  0.60
+20    HIGH     LOW    HIGH  0.10
+21     LOW  NORMAL    HIGH  0.05
+22  NORMAL  NORMAL    HIGH  0.40
+23    HIGH  NORMAL    HIGH  0.55
+24     LOW    HIGH    HIGH  0.01
+25  NORMAL    HIGH    HIGH  0.09
+26    HIGH    HIGH    HIGH  0.90
+
+
+Elimination order:
+['HISTORY', 'CVP', 'PCWP', 'HRBP', 'HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP', 'STROKEVOLUME', 'ERRLOWOUTPUT', 'INSUFFANESTH', 'ANAPHYLAXIS', 'FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HYPOVOLEMIA', 'LVEDVOLUME', 'ERRCAUTER', 'TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'LVFAILURE', 'VENTLUNG', 'HR', 'INTUBATION']
+P(MINVOLSET|VENTMACH = LOW) = sum_['HISTORY', 'CVP', 'PCWP', 'HRBP', 'HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP', 'STROKEVOLUME', 'ERRLOWOUTPUT', 'INSUFFANESTH', 'ANAPHYLAXIS', 'FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HYPOVOLEMIA', 'LVEDVOLUME', 'ERRCAUTER', 'TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'LVFAILURE', 'VENTLUNG', 'HR', 'INTUBATION']f_0(HISTORY, LVFAILURE)f_1(LVEDVOLUME, CVP)f_2(LVEDVOLUME, PCWP)f_3(HYPOVOLEMIA)f_4(LVEDVOLUME, HYPOVOLEMIA, LVFAILURE)f_5(LVFAILURE)f_6(LVFAILURE, HYPOVOLEMIA, STROKEVOLUME)f_7(ERRLOWOUTPUT)f_8(HRBP, HR, ERRLOWOUTPUT)f_9(HREKG, ERRCAUTER, HR)f_10(ERRCAUTER)f_11(ERRCAUTER, HRSAT, HR)f_12(INSUFFANESTH)f_13(ANAPHYLAXIS)f_14(ANAPHYLAXIS, TPR)f_15(ARTCO2, VENTLUNG, EXPCO2)f_16(KINKEDTUBE)f_17(INTUBATION, MINVOL, VENTLUNG)f_18(FIO2)f_19(FIO2, PVSAT, VENTALV)f_20(SAO2, SHUNT, PVSAT)f_21(PAP, PULMEMBOLUS)f_22(PULMEMBOLUS)f_23(SHUNT, PULMEMBOLUS, INTUBATION)f_24(INTUBATION)f_25(PRESS, INTUBATION, VENTTUBE, KINKEDTUBE)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_29(DISCONNECT, VENTTUBE)f_30(KINKEDTUBE, INTUBATION, VENTTUBE, VENTLUNG)f_31(INTUBATION, VENTLUNG, VENTALV)f_32(VENTALV, ARTCO2)f_33(CATECHOL, TPR, ARTCO2, SAO2, INSUFFANESTH)f_34(CATECHOL, HR)f_35(CO, HR, STROKEVOLUME)f_36(CO, BP, TPR)
+
+Variable 'HISTORY' is being eliminated.
+
+f_0(HISTORY, LVFAILURE) = 
+  HISTORY LVFAILURE  prob
+0    TRUE      TRUE  0.90
+1   FALSE      TRUE  0.10
+2    TRUE     FALSE  0.01
+3   FALSE     FALSE  0.99
+
+After summing out 'HISTORY': f_0(LVFAILURE) = 
+  LVFAILURE  prob
+0     FALSE   1.0
+1      TRUE   1.0
+
+Variable 'HISTORY' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['CVP', 'PCWP', 'HRBP', 'HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP', 'STROKEVOLUME', 'ERRLOWOUTPUT', 'INSUFFANESTH', 'ANAPHYLAXIS', 'FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HYPOVOLEMIA', 'LVEDVOLUME', 'ERRCAUTER', 'TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'LVFAILURE', 'VENTLUNG', 'HR', 'INTUBATION']f_1(LVEDVOLUME, CVP)f_2(LVEDVOLUME, PCWP)f_3(HYPOVOLEMIA)f_4(LVEDVOLUME, HYPOVOLEMIA, LVFAILURE)f_5(LVFAILURE)f_6(LVFAILURE, HYPOVOLEMIA, STROKEVOLUME)f_7(ERRLOWOUTPUT)f_8(HRBP, HR, ERRLOWOUTPUT)f_9(HREKG, ERRCAUTER, HR)f_10(ERRCAUTER)f_11(ERRCAUTER, HRSAT, HR)f_12(INSUFFANESTH)f_13(ANAPHYLAXIS)f_14(ANAPHYLAXIS, TPR)f_15(ARTCO2, VENTLUNG, EXPCO2)f_16(KINKEDTUBE)f_17(INTUBATION, MINVOL, VENTLUNG)f_18(FIO2)f_19(FIO2, PVSAT, VENTALV)f_20(SAO2, SHUNT, PVSAT)f_21(PAP, PULMEMBOLUS)f_22(PULMEMBOLUS)f_23(SHUNT, PULMEMBOLUS, INTUBATION)f_24(INTUBATION)f_25(PRESS, INTUBATION, VENTTUBE, KINKEDTUBE)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_29(DISCONNECT, VENTTUBE)f_30(KINKEDTUBE, INTUBATION, VENTTUBE, VENTLUNG)f_31(INTUBATION, VENTLUNG, VENTALV)f_32(VENTALV, ARTCO2)f_33(CATECHOL, TPR, ARTCO2, SAO2, INSUFFANESTH)f_34(CATECHOL, HR)f_35(CO, HR, STROKEVOLUME)f_36(CO, BP, TPR)f_0(LVFAILURE)
+
+Variable 'CVP' is being eliminated.
+
+f_1(LVEDVOLUME, CVP) = 
+      CVP LVEDVOLUME  prob
+0     LOW        LOW  0.95
+1  NORMAL        LOW  0.04
+2    HIGH        LOW  0.01
+3     LOW     NORMAL  0.04
+4  NORMAL     NORMAL  0.95
+5    HIGH     NORMAL  0.01
+6     LOW       HIGH  0.01
+7  NORMAL       HIGH  0.29
+8    HIGH       HIGH  0.70
+
+After summing out 'CVP': f_1(LVEDVOLUME) = 
+  LVEDVOLUME  prob
+0       HIGH   1.0
+1        LOW   1.0
+2     NORMAL   1.0
+
+Variable 'CVP' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['PCWP', 'HRBP', 'HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP', 'STROKEVOLUME', 'ERRLOWOUTPUT', 'INSUFFANESTH', 'ANAPHYLAXIS', 'FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HYPOVOLEMIA', 'LVEDVOLUME', 'ERRCAUTER', 'TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'LVFAILURE', 'VENTLUNG', 'HR', 'INTUBATION']f_2(LVEDVOLUME, PCWP)f_3(HYPOVOLEMIA)f_4(LVEDVOLUME, HYPOVOLEMIA, LVFAILURE)f_5(LVFAILURE)f_6(LVFAILURE, HYPOVOLEMIA, STROKEVOLUME)f_7(ERRLOWOUTPUT)f_8(HRBP, HR, ERRLOWOUTPUT)f_9(HREKG, ERRCAUTER, HR)f_10(ERRCAUTER)f_11(ERRCAUTER, HRSAT, HR)f_12(INSUFFANESTH)f_13(ANAPHYLAXIS)f_14(ANAPHYLAXIS, TPR)f_15(ARTCO2, VENTLUNG, EXPCO2)f_16(KINKEDTUBE)f_17(INTUBATION, MINVOL, VENTLUNG)f_18(FIO2)f_19(FIO2, PVSAT, VENTALV)f_20(SAO2, SHUNT, PVSAT)f_21(PAP, PULMEMBOLUS)f_22(PULMEMBOLUS)f_23(SHUNT, PULMEMBOLUS, INTUBATION)f_24(INTUBATION)f_25(PRESS, INTUBATION, VENTTUBE, KINKEDTUBE)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_29(DISCONNECT, VENTTUBE)f_30(KINKEDTUBE, INTUBATION, VENTTUBE, VENTLUNG)f_31(INTUBATION, VENTLUNG, VENTALV)f_32(VENTALV, ARTCO2)f_33(CATECHOL, TPR, ARTCO2, SAO2, INSUFFANESTH)f_34(CATECHOL, HR)f_35(CO, HR, STROKEVOLUME)f_36(CO, BP, TPR)f_0(LVFAILURE)f_1(LVEDVOLUME)
+
+Variable 'PCWP' is being eliminated.
+
+f_2(LVEDVOLUME, PCWP) = 
+     PCWP LVEDVOLUME  prob
+0     LOW        LOW  0.95
+1  NORMAL        LOW  0.04
+2    HIGH        LOW  0.01
+3     LOW     NORMAL  0.04
+4  NORMAL     NORMAL  0.95
+5    HIGH     NORMAL  0.01
+6     LOW       HIGH  0.01
+7  NORMAL       HIGH  0.04
+8    HIGH       HIGH  0.95
+
+After summing out 'PCWP': f_2(LVEDVOLUME) = 
+  LVEDVOLUME  prob
+0       HIGH   1.0
+1        LOW   1.0
+2     NORMAL   1.0
+
+Variable 'PCWP' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['HRBP', 'HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP', 'STROKEVOLUME', 'ERRLOWOUTPUT', 'INSUFFANESTH', 'ANAPHYLAXIS', 'FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HYPOVOLEMIA', 'LVEDVOLUME', 'ERRCAUTER', 'TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'LVFAILURE', 'VENTLUNG', 'HR', 'INTUBATION']f_3(HYPOVOLEMIA)f_4(LVEDVOLUME, HYPOVOLEMIA, LVFAILURE)f_5(LVFAILURE)f_6(LVFAILURE, HYPOVOLEMIA, STROKEVOLUME)f_7(ERRLOWOUTPUT)f_8(HRBP, HR, ERRLOWOUTPUT)f_9(HREKG, ERRCAUTER, HR)f_10(ERRCAUTER)f_11(ERRCAUTER, HRSAT, HR)f_12(INSUFFANESTH)f_13(ANAPHYLAXIS)f_14(ANAPHYLAXIS, TPR)f_15(ARTCO2, VENTLUNG, EXPCO2)f_16(KINKEDTUBE)f_17(INTUBATION, MINVOL, VENTLUNG)f_18(FIO2)f_19(FIO2, PVSAT, VENTALV)f_20(SAO2, SHUNT, PVSAT)f_21(PAP, PULMEMBOLUS)f_22(PULMEMBOLUS)f_23(SHUNT, PULMEMBOLUS, INTUBATION)f_24(INTUBATION)f_25(PRESS, INTUBATION, VENTTUBE, KINKEDTUBE)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_29(DISCONNECT, VENTTUBE)f_30(KINKEDTUBE, INTUBATION, VENTTUBE, VENTLUNG)f_31(INTUBATION, VENTLUNG, VENTALV)f_32(VENTALV, ARTCO2)f_33(CATECHOL, TPR, ARTCO2, SAO2, INSUFFANESTH)f_34(CATECHOL, HR)f_35(CO, HR, STROKEVOLUME)f_36(CO, BP, TPR)f_0(LVFAILURE)f_1(LVEDVOLUME)f_2(LVEDVOLUME)
+
+Variable 'HRBP' is being eliminated.
+
+f_8(HRBP, HR, ERRLOWOUTPUT) = 
+      HRBP ERRLOWOUTPUT      HR  prob
+0      LOW         TRUE     LOW  0.98
+1   NORMAL         TRUE     LOW  0.01
+2     HIGH         TRUE     LOW  0.01
+3      LOW        FALSE     LOW  0.40
+4   NORMAL        FALSE     LOW  0.59
+5     HIGH        FALSE     LOW  0.01
+6      LOW         TRUE  NORMAL  0.30
+7   NORMAL         TRUE  NORMAL  0.40
+8     HIGH         TRUE  NORMAL  0.30
+9      LOW        FALSE  NORMAL  0.98
+10  NORMAL        FALSE  NORMAL  0.01
+11    HIGH        FALSE  NORMAL  0.01
+12     LOW         TRUE    HIGH  0.01
+13  NORMAL         TRUE    HIGH  0.98
+14    HIGH         TRUE    HIGH  0.01
+15     LOW        FALSE    HIGH  0.01
+16  NORMAL        FALSE    HIGH  0.01
+17    HIGH        FALSE    HIGH  0.98
+
+After summing out 'HRBP': f_8(HR, ERRLOWOUTPUT) = 
+       HR ERRLOWOUTPUT  prob
+0    HIGH        FALSE   1.0
+1    HIGH         TRUE   1.0
+2     LOW        FALSE   1.0
+3     LOW         TRUE   1.0
+4  NORMAL        FALSE   1.0
+5  NORMAL         TRUE   1.0
+
+Variable 'HRBP' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['HREKG', 'HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP', 'STROKEVOLUME', 'ERRLOWOUTPUT', 'INSUFFANESTH', 'ANAPHYLAXIS', 'FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HYPOVOLEMIA', 'LVEDVOLUME', 'ERRCAUTER', 'TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'LVFAILURE', 'VENTLUNG', 'HR', 'INTUBATION']f_3(HYPOVOLEMIA)f_4(LVEDVOLUME, HYPOVOLEMIA, LVFAILURE)f_5(LVFAILURE)f_6(LVFAILURE, HYPOVOLEMIA, STROKEVOLUME)f_7(ERRLOWOUTPUT)f_9(HREKG, ERRCAUTER, HR)f_10(ERRCAUTER)f_11(ERRCAUTER, HRSAT, HR)f_12(INSUFFANESTH)f_13(ANAPHYLAXIS)f_14(ANAPHYLAXIS, TPR)f_15(ARTCO2, VENTLUNG, EXPCO2)f_16(KINKEDTUBE)f_17(INTUBATION, MINVOL, VENTLUNG)f_18(FIO2)f_19(FIO2, PVSAT, VENTALV)f_20(SAO2, SHUNT, PVSAT)f_21(PAP, PULMEMBOLUS)f_22(PULMEMBOLUS)f_23(SHUNT, PULMEMBOLUS, INTUBATION)f_24(INTUBATION)f_25(PRESS, INTUBATION, VENTTUBE, KINKEDTUBE)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_29(DISCONNECT, VENTTUBE)f_30(KINKEDTUBE, INTUBATION, VENTTUBE, VENTLUNG)f_31(INTUBATION, VENTLUNG, VENTALV)f_32(VENTALV, ARTCO2)f_33(CATECHOL, TPR, ARTCO2, SAO2, INSUFFANESTH)f_34(CATECHOL, HR)f_35(CO, HR, STROKEVOLUME)f_36(CO, BP, TPR)f_0(LVFAILURE)f_1(LVEDVOLUME)f_2(LVEDVOLUME)f_8(HR, ERRLOWOUTPUT)
+
+Variable 'HREKG' is being eliminated.
+
+f_9(HREKG, ERRCAUTER, HR) = 
+     HREKG ERRCAUTER      HR      prob
+0      LOW      TRUE     LOW  0.333333
+1   NORMAL      TRUE     LOW  0.333333
+2     HIGH      TRUE     LOW  0.333333
+3      LOW     FALSE     LOW  0.333333
+4   NORMAL     FALSE     LOW  0.333333
+5     HIGH     FALSE     LOW  0.333333
+6      LOW      TRUE  NORMAL  0.333333
+7   NORMAL      TRUE  NORMAL  0.333333
+8     HIGH      TRUE  NORMAL  0.333333
+9      LOW     FALSE  NORMAL  0.980000
+10  NORMAL     FALSE  NORMAL  0.010000
+11    HIGH     FALSE  NORMAL  0.010000
+12     LOW      TRUE    HIGH  0.010000
+13  NORMAL      TRUE    HIGH  0.980000
+14    HIGH      TRUE    HIGH  0.010000
+15     LOW     FALSE    HIGH  0.010000
+16  NORMAL     FALSE    HIGH  0.010000
+17    HIGH     FALSE    HIGH  0.980000
+
+After summing out 'HREKG': f_9(ERRCAUTER, HR) = 
+  ERRCAUTER      HR  prob
+0     FALSE    HIGH   1.0
+1     FALSE     LOW   1.0
+2     FALSE  NORMAL   1.0
+3      TRUE    HIGH   1.0
+4      TRUE     LOW   1.0
+5      TRUE  NORMAL   1.0
+
+Variable 'HREKG' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['HRSAT', 'EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP', 'STROKEVOLUME', 'ERRLOWOUTPUT', 'INSUFFANESTH', 'ANAPHYLAXIS', 'FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HYPOVOLEMIA', 'LVEDVOLUME', 'ERRCAUTER', 'TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'LVFAILURE', 'VENTLUNG', 'HR', 'INTUBATION']f_3(HYPOVOLEMIA)f_4(LVEDVOLUME, HYPOVOLEMIA, LVFAILURE)f_5(LVFAILURE)f_6(LVFAILURE, HYPOVOLEMIA, STROKEVOLUME)f_7(ERRLOWOUTPUT)f_10(ERRCAUTER)f_11(ERRCAUTER, HRSAT, HR)f_12(INSUFFANESTH)f_13(ANAPHYLAXIS)f_14(ANAPHYLAXIS, TPR)f_15(ARTCO2, VENTLUNG, EXPCO2)f_16(KINKEDTUBE)f_17(INTUBATION, MINVOL, VENTLUNG)f_18(FIO2)f_19(FIO2, PVSAT, VENTALV)f_20(SAO2, SHUNT, PVSAT)f_21(PAP, PULMEMBOLUS)f_22(PULMEMBOLUS)f_23(SHUNT, PULMEMBOLUS, INTUBATION)f_24(INTUBATION)f_25(PRESS, INTUBATION, VENTTUBE, KINKEDTUBE)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_29(DISCONNECT, VENTTUBE)f_30(KINKEDTUBE, INTUBATION, VENTTUBE, VENTLUNG)f_31(INTUBATION, VENTLUNG, VENTALV)f_32(VENTALV, ARTCO2)f_33(CATECHOL, TPR, ARTCO2, SAO2, INSUFFANESTH)f_34(CATECHOL, HR)f_35(CO, HR, STROKEVOLUME)f_36(CO, BP, TPR)f_0(LVFAILURE)f_1(LVEDVOLUME)f_2(LVEDVOLUME)f_8(HR, ERRLOWOUTPUT)f_9(ERRCAUTER, HR)
+
+Variable 'HRSAT' is being eliminated.
+
+f_11(ERRCAUTER, HRSAT, HR) = 
+     HRSAT ERRCAUTER      HR      prob
+0      LOW      TRUE     LOW  0.333333
+1   NORMAL      TRUE     LOW  0.333333
+2     HIGH      TRUE     LOW  0.333333
+3      LOW     FALSE     LOW  0.333333
+4   NORMAL     FALSE     LOW  0.333333
+5     HIGH     FALSE     LOW  0.333333
+6      LOW      TRUE  NORMAL  0.333333
+7   NORMAL      TRUE  NORMAL  0.333333
+8     HIGH      TRUE  NORMAL  0.333333
+9      LOW     FALSE  NORMAL  0.980000
+10  NORMAL     FALSE  NORMAL  0.010000
+11    HIGH     FALSE  NORMAL  0.010000
+12     LOW      TRUE    HIGH  0.010000
+13  NORMAL      TRUE    HIGH  0.980000
+14    HIGH      TRUE    HIGH  0.010000
+15     LOW     FALSE    HIGH  0.010000
+16  NORMAL     FALSE    HIGH  0.010000
+17    HIGH     FALSE    HIGH  0.980000
+
+After summing out 'HRSAT': f_11(ERRCAUTER, HR) = 
+  ERRCAUTER      HR  prob
+0     FALSE    HIGH   1.0
+1     FALSE     LOW   1.0
+2     FALSE  NORMAL   1.0
+3      TRUE    HIGH   1.0
+4      TRUE     LOW   1.0
+5      TRUE  NORMAL   1.0
+
+Variable 'HRSAT' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['EXPCO2', 'MINVOL', 'PAP', 'PRESS', 'BP', 'STROKEVOLUME', 'ERRLOWOUTPUT', 'INSUFFANESTH', 'ANAPHYLAXIS', 'FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HYPOVOLEMIA', 'LVEDVOLUME', 'ERRCAUTER', 'TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'LVFAILURE', 'VENTLUNG', 'HR', 'INTUBATION']f_3(HYPOVOLEMIA)f_4(LVEDVOLUME, HYPOVOLEMIA, LVFAILURE)f_5(LVFAILURE)f_6(LVFAILURE, HYPOVOLEMIA, STROKEVOLUME)f_7(ERRLOWOUTPUT)f_10(ERRCAUTER)f_12(INSUFFANESTH)f_13(ANAPHYLAXIS)f_14(ANAPHYLAXIS, TPR)f_15(ARTCO2, VENTLUNG, EXPCO2)f_16(KINKEDTUBE)f_17(INTUBATION, MINVOL, VENTLUNG)f_18(FIO2)f_19(FIO2, PVSAT, VENTALV)f_20(SAO2, SHUNT, PVSAT)f_21(PAP, PULMEMBOLUS)f_22(PULMEMBOLUS)f_23(SHUNT, PULMEMBOLUS, INTUBATION)f_24(INTUBATION)f_25(PRESS, INTUBATION, VENTTUBE, KINKEDTUBE)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_29(DISCONNECT, VENTTUBE)f_30(KINKEDTUBE, INTUBATION, VENTTUBE, VENTLUNG)f_31(INTUBATION, VENTLUNG, VENTALV)f_32(VENTALV, ARTCO2)f_33(CATECHOL, TPR, ARTCO2, SAO2, INSUFFANESTH)f_34(CATECHOL, HR)f_35(CO, HR, STROKEVOLUME)f_36(CO, BP, TPR)f_0(LVFAILURE)f_1(LVEDVOLUME)f_2(LVEDVOLUME)f_8(HR, ERRLOWOUTPUT)f_9(ERRCAUTER, HR)f_11(ERRCAUTER, HR)
+
+Variable 'EXPCO2' is being eliminated.
+
+f_15(ARTCO2, VENTLUNG, EXPCO2) = 
+    EXPCO2  ARTCO2 VENTLUNG  prob
+0     ZERO     LOW     ZERO  0.97
+1      LOW     LOW     ZERO  0.01
+2   NORMAL     LOW     ZERO  0.01
+3     HIGH     LOW     ZERO  0.01
+4     ZERO  NORMAL     ZERO  0.01
+5      LOW  NORMAL     ZERO  0.97
+6   NORMAL  NORMAL     ZERO  0.01
+7     HIGH  NORMAL     ZERO  0.01
+8     ZERO    HIGH     ZERO  0.01
+9      LOW    HIGH     ZERO  0.97
+10  NORMAL    HIGH     ZERO  0.01
+11    HIGH    HIGH     ZERO  0.01
+12    ZERO     LOW      LOW  0.01
+13     LOW     LOW      LOW  0.97
+14  NORMAL     LOW      LOW  0.01
+15    HIGH     LOW      LOW  0.01
+16    ZERO  NORMAL      LOW  0.97
+17     LOW  NORMAL      LOW  0.01
+18  NORMAL  NORMAL      LOW  0.01
+19    HIGH  NORMAL      LOW  0.01
+20    ZERO    HIGH      LOW  0.01
+21     LOW    HIGH      LOW  0.01
+22  NORMAL    HIGH      LOW  0.97
+23    HIGH    HIGH      LOW  0.01
+24    ZERO     LOW   NORMAL  0.01
+25     LOW     LOW   NORMAL  0.01
+26  NORMAL     LOW   NORMAL  0.97
+27    HIGH     LOW   NORMAL  0.01
+28    ZERO  NORMAL   NORMAL  0.01
+29     LOW  NORMAL   NORMAL  0.01
+30  NORMAL  NORMAL   NORMAL  0.97
+31    HIGH  NORMAL   NORMAL  0.01
+32    ZERO    HIGH   NORMAL  0.97
+33     LOW    HIGH   NORMAL  0.01
+34  NORMAL    HIGH   NORMAL  0.01
+35    HIGH    HIGH   NORMAL  0.01
+36    ZERO     LOW     HIGH  0.01
+37     LOW     LOW     HIGH  0.01
+38  NORMAL     LOW     HIGH  0.01
+39    HIGH     LOW     HIGH  0.97
+40    ZERO  NORMAL     HIGH  0.01
+41     LOW  NORMAL     HIGH  0.01
+42  NORMAL  NORMAL     HIGH  0.01
+43    HIGH  NORMAL     HIGH  0.97
+44    ZERO    HIGH     HIGH  0.01
+45     LOW    HIGH     HIGH  0.01
+46  NORMAL    HIGH     HIGH  0.01
+47    HIGH    HIGH     HIGH  0.97
+
+After summing out 'EXPCO2': f_15(ARTCO2, VENTLUNG) = 
+    ARTCO2 VENTLUNG  prob
+0     HIGH     HIGH   1.0
+1     HIGH      LOW   1.0
+2     HIGH   NORMAL   1.0
+3     HIGH     ZERO   1.0
+4      LOW     HIGH   1.0
+5      LOW      LOW   1.0
+6      LOW   NORMAL   1.0
+7      LOW     ZERO   1.0
+8   NORMAL     HIGH   1.0
+9   NORMAL      LOW   1.0
+10  NORMAL   NORMAL   1.0
+11  NORMAL     ZERO   1.0
+
+Variable 'EXPCO2' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['MINVOL', 'PAP', 'PRESS', 'BP', 'STROKEVOLUME', 'ERRLOWOUTPUT', 'INSUFFANESTH', 'ANAPHYLAXIS', 'FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HYPOVOLEMIA', 'LVEDVOLUME', 'ERRCAUTER', 'TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'LVFAILURE', 'VENTLUNG', 'HR', 'INTUBATION']f_3(HYPOVOLEMIA)f_4(LVEDVOLUME, HYPOVOLEMIA, LVFAILURE)f_5(LVFAILURE)f_6(LVFAILURE, HYPOVOLEMIA, STROKEVOLUME)f_7(ERRLOWOUTPUT)f_10(ERRCAUTER)f_12(INSUFFANESTH)f_13(ANAPHYLAXIS)f_14(ANAPHYLAXIS, TPR)f_16(KINKEDTUBE)f_17(INTUBATION, MINVOL, VENTLUNG)f_18(FIO2)f_19(FIO2, PVSAT, VENTALV)f_20(SAO2, SHUNT, PVSAT)f_21(PAP, PULMEMBOLUS)f_22(PULMEMBOLUS)f_23(SHUNT, PULMEMBOLUS, INTUBATION)f_24(INTUBATION)f_25(PRESS, INTUBATION, VENTTUBE, KINKEDTUBE)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_29(DISCONNECT, VENTTUBE)f_30(KINKEDTUBE, INTUBATION, VENTTUBE, VENTLUNG)f_31(INTUBATION, VENTLUNG, VENTALV)f_32(VENTALV, ARTCO2)f_33(CATECHOL, TPR, ARTCO2, SAO2, INSUFFANESTH)f_34(CATECHOL, HR)f_35(CO, HR, STROKEVOLUME)f_36(CO, BP, TPR)f_0(LVFAILURE)f_1(LVEDVOLUME)f_2(LVEDVOLUME)f_8(HR, ERRLOWOUTPUT)f_9(ERRCAUTER, HR)f_11(ERRCAUTER, HR)f_15(ARTCO2, VENTLUNG)
+
+Variable 'MINVOL' is being eliminated.
+
+f_17(INTUBATION, MINVOL, VENTLUNG) = 
+    MINVOL  INTUBATION VENTLUNG  prob
+0     ZERO      NORMAL     ZERO  0.97
+1      LOW      NORMAL     ZERO  0.01
+2   NORMAL      NORMAL     ZERO  0.01
+3     HIGH      NORMAL     ZERO  0.01
+4     ZERO  ESOPHAGEAL     ZERO  0.01
+5      LOW  ESOPHAGEAL     ZERO  0.97
+6   NORMAL  ESOPHAGEAL     ZERO  0.01
+7     HIGH  ESOPHAGEAL     ZERO  0.01
+8     ZERO    ONESIDED     ZERO  0.01
+9      LOW    ONESIDED     ZERO  0.01
+10  NORMAL    ONESIDED     ZERO  0.97
+11    HIGH    ONESIDED     ZERO  0.01
+12    ZERO      NORMAL      LOW  0.01
+13     LOW      NORMAL      LOW  0.01
+14  NORMAL      NORMAL      LOW  0.01
+15    HIGH      NORMAL      LOW  0.97
+16    ZERO  ESOPHAGEAL      LOW  0.97
+17     LOW  ESOPHAGEAL      LOW  0.01
+18  NORMAL  ESOPHAGEAL      LOW  0.01
+19    HIGH  ESOPHAGEAL      LOW  0.01
+20    ZERO    ONESIDED      LOW  0.60
+21     LOW    ONESIDED      LOW  0.38
+22  NORMAL    ONESIDED      LOW  0.01
+23    HIGH    ONESIDED      LOW  0.01
+24    ZERO      NORMAL   NORMAL  0.50
+25     LOW      NORMAL   NORMAL  0.48
+26  NORMAL      NORMAL   NORMAL  0.01
+27    HIGH      NORMAL   NORMAL  0.01
+28    ZERO  ESOPHAGEAL   NORMAL  0.50
+29     LOW  ESOPHAGEAL   NORMAL  0.48
+30  NORMAL  ESOPHAGEAL   NORMAL  0.01
+31    HIGH  ESOPHAGEAL   NORMAL  0.01
+32    ZERO    ONESIDED   NORMAL  0.97
+33     LOW    ONESIDED   NORMAL  0.01
+34  NORMAL    ONESIDED   NORMAL  0.01
+35    HIGH    ONESIDED   NORMAL  0.01
+36    ZERO      NORMAL     HIGH  0.01
+37     LOW      NORMAL     HIGH  0.97
+38  NORMAL      NORMAL     HIGH  0.01
+39    HIGH      NORMAL     HIGH  0.01
+40    ZERO  ESOPHAGEAL     HIGH  0.01
+41     LOW  ESOPHAGEAL     HIGH  0.01
+42  NORMAL  ESOPHAGEAL     HIGH  0.97
+43    HIGH  ESOPHAGEAL     HIGH  0.01
+44    ZERO    ONESIDED     HIGH  0.01
+45     LOW    ONESIDED     HIGH  0.01
+46  NORMAL    ONESIDED     HIGH  0.01
+47    HIGH    ONESIDED     HIGH  0.97
+
+After summing out 'MINVOL': f_17(INTUBATION, VENTLUNG) = 
+    INTUBATION VENTLUNG  prob
+0   ESOPHAGEAL     HIGH   1.0
+1   ESOPHAGEAL      LOW   1.0
+2   ESOPHAGEAL   NORMAL   1.0
+3   ESOPHAGEAL     ZERO   1.0
+4       NORMAL     HIGH   1.0
+5       NORMAL      LOW   1.0
+6       NORMAL   NORMAL   1.0
+7       NORMAL     ZERO   1.0
+8     ONESIDED     HIGH   1.0
+9     ONESIDED      LOW   1.0
+10    ONESIDED   NORMAL   1.0
+11    ONESIDED     ZERO   1.0
+
+Variable 'MINVOL' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['PAP', 'PRESS', 'BP', 'STROKEVOLUME', 'ERRLOWOUTPUT', 'INSUFFANESTH', 'ANAPHYLAXIS', 'FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HYPOVOLEMIA', 'LVEDVOLUME', 'ERRCAUTER', 'TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'LVFAILURE', 'VENTLUNG', 'HR', 'INTUBATION']f_3(HYPOVOLEMIA)f_4(LVEDVOLUME, HYPOVOLEMIA, LVFAILURE)f_5(LVFAILURE)f_6(LVFAILURE, HYPOVOLEMIA, STROKEVOLUME)f_7(ERRLOWOUTPUT)f_10(ERRCAUTER)f_12(INSUFFANESTH)f_13(ANAPHYLAXIS)f_14(ANAPHYLAXIS, TPR)f_16(KINKEDTUBE)f_18(FIO2)f_19(FIO2, PVSAT, VENTALV)f_20(SAO2, SHUNT, PVSAT)f_21(PAP, PULMEMBOLUS)f_22(PULMEMBOLUS)f_23(SHUNT, PULMEMBOLUS, INTUBATION)f_24(INTUBATION)f_25(PRESS, INTUBATION, VENTTUBE, KINKEDTUBE)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_29(DISCONNECT, VENTTUBE)f_30(KINKEDTUBE, INTUBATION, VENTTUBE, VENTLUNG)f_31(INTUBATION, VENTLUNG, VENTALV)f_32(VENTALV, ARTCO2)f_33(CATECHOL, TPR, ARTCO2, SAO2, INSUFFANESTH)f_34(CATECHOL, HR)f_35(CO, HR, STROKEVOLUME)f_36(CO, BP, TPR)f_0(LVFAILURE)f_1(LVEDVOLUME)f_2(LVEDVOLUME)f_8(HR, ERRLOWOUTPUT)f_9(ERRCAUTER, HR)f_11(ERRCAUTER, HR)f_15(ARTCO2, VENTLUNG)f_17(INTUBATION, VENTLUNG)
+
+Variable 'PAP' is being eliminated.
+
+f_21(PAP, PULMEMBOLUS) = 
+      PAP PULMEMBOLUS  prob
+0     LOW        TRUE  0.01
+1  NORMAL        TRUE  0.19
+2    HIGH        TRUE  0.80
+3     LOW       FALSE  0.05
+4  NORMAL       FALSE  0.90
+5    HIGH       FALSE  0.05
+
+After summing out 'PAP': f_21(PULMEMBOLUS) = 
+  PULMEMBOLUS  prob
+0       FALSE   1.0
+1        TRUE   1.0
+
+Variable 'PAP' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['PRESS', 'BP', 'STROKEVOLUME', 'ERRLOWOUTPUT', 'INSUFFANESTH', 'ANAPHYLAXIS', 'FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HYPOVOLEMIA', 'LVEDVOLUME', 'ERRCAUTER', 'TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'LVFAILURE', 'VENTLUNG', 'HR', 'INTUBATION']f_3(HYPOVOLEMIA)f_4(LVEDVOLUME, HYPOVOLEMIA, LVFAILURE)f_5(LVFAILURE)f_6(LVFAILURE, HYPOVOLEMIA, STROKEVOLUME)f_7(ERRLOWOUTPUT)f_10(ERRCAUTER)f_12(INSUFFANESTH)f_13(ANAPHYLAXIS)f_14(ANAPHYLAXIS, TPR)f_16(KINKEDTUBE)f_18(FIO2)f_19(FIO2, PVSAT, VENTALV)f_20(SAO2, SHUNT, PVSAT)f_22(PULMEMBOLUS)f_23(SHUNT, PULMEMBOLUS, INTUBATION)f_24(INTUBATION)f_25(PRESS, INTUBATION, VENTTUBE, KINKEDTUBE)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_29(DISCONNECT, VENTTUBE)f_30(KINKEDTUBE, INTUBATION, VENTTUBE, VENTLUNG)f_31(INTUBATION, VENTLUNG, VENTALV)f_32(VENTALV, ARTCO2)f_33(CATECHOL, TPR, ARTCO2, SAO2, INSUFFANESTH)f_34(CATECHOL, HR)f_35(CO, HR, STROKEVOLUME)f_36(CO, BP, TPR)f_0(LVFAILURE)f_1(LVEDVOLUME)f_2(LVEDVOLUME)f_8(HR, ERRLOWOUTPUT)f_9(ERRCAUTER, HR)f_11(ERRCAUTER, HR)f_15(ARTCO2, VENTLUNG)f_17(INTUBATION, VENTLUNG)f_21(PULMEMBOLUS)
+
+Variable 'PRESS' is being eliminated.
+
+f_25(PRESS, INTUBATION, VENTTUBE, KINKEDTUBE) = 
+     PRESS  INTUBATION KINKEDTUBE VENTTUBE  prob
+0     ZERO      NORMAL       TRUE     ZERO  0.97
+1      LOW      NORMAL       TRUE     ZERO  0.01
+2   NORMAL      NORMAL       TRUE     ZERO  0.01
+3     HIGH      NORMAL       TRUE     ZERO  0.01
+4     ZERO  ESOPHAGEAL       TRUE     ZERO  0.01
+..     ...         ...        ...      ...   ...
+91    HIGH  ESOPHAGEAL      FALSE     HIGH  0.60
+92    ZERO    ONESIDED      FALSE     HIGH  0.01
+93     LOW    ONESIDED      FALSE     HIGH  0.01
+94  NORMAL    ONESIDED      FALSE     HIGH  0.01
+95    HIGH    ONESIDED      FALSE     HIGH  0.97
+
+[96 rows x 5 columns]
+
+After summing out 'PRESS': f_25(INTUBATION, VENTTUBE, KINKEDTUBE) = 
+    INTUBATION VENTTUBE KINKEDTUBE  prob
+0   ESOPHAGEAL     HIGH      FALSE   1.0
+1   ESOPHAGEAL     HIGH       TRUE   1.0
+2   ESOPHAGEAL      LOW      FALSE   1.0
+3   ESOPHAGEAL      LOW       TRUE   1.0
+4   ESOPHAGEAL   NORMAL      FALSE   1.0
+5   ESOPHAGEAL   NORMAL       TRUE   1.0
+6   ESOPHAGEAL     ZERO      FALSE   1.0
+7   ESOPHAGEAL     ZERO       TRUE   1.0
+8       NORMAL     HIGH      FALSE   1.0
+9       NORMAL     HIGH       TRUE   1.0
+10      NORMAL      LOW      FALSE   1.0
+11      NORMAL      LOW       TRUE   1.0
+12      NORMAL   NORMAL      FALSE   1.0
+13      NORMAL   NORMAL       TRUE   1.0
+14      NORMAL     ZERO      FALSE   1.0
+15      NORMAL     ZERO       TRUE   1.0
+16    ONESIDED     HIGH      FALSE   1.0
+17    ONESIDED     HIGH       TRUE   1.0
+18    ONESIDED      LOW      FALSE   1.0
+19    ONESIDED      LOW       TRUE   1.0
+20    ONESIDED   NORMAL      FALSE   1.0
+21    ONESIDED   NORMAL       TRUE   1.0
+22    ONESIDED     ZERO      FALSE   1.0
+23    ONESIDED     ZERO       TRUE   1.0
+
+Variable 'PRESS' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['BP', 'STROKEVOLUME', 'ERRLOWOUTPUT', 'INSUFFANESTH', 'ANAPHYLAXIS', 'FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HYPOVOLEMIA', 'LVEDVOLUME', 'ERRCAUTER', 'TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'LVFAILURE', 'VENTLUNG', 'HR', 'INTUBATION']f_3(HYPOVOLEMIA)f_4(LVEDVOLUME, HYPOVOLEMIA, LVFAILURE)f_5(LVFAILURE)f_6(LVFAILURE, HYPOVOLEMIA, STROKEVOLUME)f_7(ERRLOWOUTPUT)f_10(ERRCAUTER)f_12(INSUFFANESTH)f_13(ANAPHYLAXIS)f_14(ANAPHYLAXIS, TPR)f_16(KINKEDTUBE)f_18(FIO2)f_19(FIO2, PVSAT, VENTALV)f_20(SAO2, SHUNT, PVSAT)f_22(PULMEMBOLUS)f_23(SHUNT, PULMEMBOLUS, INTUBATION)f_24(INTUBATION)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_29(DISCONNECT, VENTTUBE)f_30(KINKEDTUBE, INTUBATION, VENTTUBE, VENTLUNG)f_31(INTUBATION, VENTLUNG, VENTALV)f_32(VENTALV, ARTCO2)f_33(CATECHOL, TPR, ARTCO2, SAO2, INSUFFANESTH)f_34(CATECHOL, HR)f_35(CO, HR, STROKEVOLUME)f_36(CO, BP, TPR)f_0(LVFAILURE)f_1(LVEDVOLUME)f_2(LVEDVOLUME)f_8(HR, ERRLOWOUTPUT)f_9(ERRCAUTER, HR)f_11(ERRCAUTER, HR)f_15(ARTCO2, VENTLUNG)f_17(INTUBATION, VENTLUNG)f_21(PULMEMBOLUS)f_25(INTUBATION, VENTTUBE, KINKEDTUBE)
+
+Variable 'BP' is being eliminated.
+
+f_36(CO, BP, TPR) = 
+        BP      CO     TPR  prob
+0      LOW     LOW     LOW  0.98
+1   NORMAL     LOW     LOW  0.01
+2     HIGH     LOW     LOW  0.01
+3      LOW  NORMAL     LOW  0.98
+4   NORMAL  NORMAL     LOW  0.01
+5     HIGH  NORMAL     LOW  0.01
+6      LOW    HIGH     LOW  0.90
+7   NORMAL    HIGH     LOW  0.09
+8     HIGH    HIGH     LOW  0.01
+9      LOW     LOW  NORMAL  0.98
+10  NORMAL     LOW  NORMAL  0.01
+11    HIGH     LOW  NORMAL  0.01
+12     LOW  NORMAL  NORMAL  0.10
+13  NORMAL  NORMAL  NORMAL  0.85
+14    HIGH  NORMAL  NORMAL  0.05
+15     LOW    HIGH  NORMAL  0.05
+16  NORMAL    HIGH  NORMAL  0.20
+17    HIGH    HIGH  NORMAL  0.75
+18     LOW     LOW    HIGH  0.30
+19  NORMAL     LOW    HIGH  0.60
+20    HIGH     LOW    HIGH  0.10
+21     LOW  NORMAL    HIGH  0.05
+22  NORMAL  NORMAL    HIGH  0.40
+23    HIGH  NORMAL    HIGH  0.55
+24     LOW    HIGH    HIGH  0.01
+25  NORMAL    HIGH    HIGH  0.09
+26    HIGH    HIGH    HIGH  0.90
+
+After summing out 'BP': f_36(CO, TPR) = 
+       CO     TPR  prob
+0    HIGH    HIGH   1.0
+1    HIGH     LOW   1.0
+2    HIGH  NORMAL   1.0
+3     LOW    HIGH   1.0
+4     LOW     LOW   1.0
+5     LOW  NORMAL   1.0
+6  NORMAL    HIGH   1.0
+7  NORMAL     LOW   1.0
+8  NORMAL  NORMAL   1.0
+
+Variable 'BP' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['STROKEVOLUME', 'ERRLOWOUTPUT', 'INSUFFANESTH', 'ANAPHYLAXIS', 'FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HYPOVOLEMIA', 'LVEDVOLUME', 'ERRCAUTER', 'TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'LVFAILURE', 'VENTLUNG', 'HR', 'INTUBATION']f_3(HYPOVOLEMIA)f_4(LVEDVOLUME, HYPOVOLEMIA, LVFAILURE)f_5(LVFAILURE)f_6(LVFAILURE, HYPOVOLEMIA, STROKEVOLUME)f_7(ERRLOWOUTPUT)f_10(ERRCAUTER)f_12(INSUFFANESTH)f_13(ANAPHYLAXIS)f_14(ANAPHYLAXIS, TPR)f_16(KINKEDTUBE)f_18(FIO2)f_19(FIO2, PVSAT, VENTALV)f_20(SAO2, SHUNT, PVSAT)f_22(PULMEMBOLUS)f_23(SHUNT, PULMEMBOLUS, INTUBATION)f_24(INTUBATION)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_29(DISCONNECT, VENTTUBE)f_30(KINKEDTUBE, INTUBATION, VENTTUBE, VENTLUNG)f_31(INTUBATION, VENTLUNG, VENTALV)f_32(VENTALV, ARTCO2)f_33(CATECHOL, TPR, ARTCO2, SAO2, INSUFFANESTH)f_34(CATECHOL, HR)f_35(CO, HR, STROKEVOLUME)f_0(LVFAILURE)f_1(LVEDVOLUME)f_2(LVEDVOLUME)f_8(HR, ERRLOWOUTPUT)f_9(ERRCAUTER, HR)f_11(ERRCAUTER, HR)f_15(ARTCO2, VENTLUNG)f_17(INTUBATION, VENTLUNG)f_21(PULMEMBOLUS)f_25(INTUBATION, VENTTUBE, KINKEDTUBE)f_36(CO, TPR)
+
+Variable 'STROKEVOLUME' is being eliminated.
+
+f_6(LVFAILURE, HYPOVOLEMIA, STROKEVOLUME)f_35(CO, HR, STROKEVOLUME) = f_37(CO, HYPOVOLEMIA, STROKEVOLUME, HR, LVFAILURE) = 
+    STROKEVOLUME HYPOVOLEMIA LVFAILURE      CO      HR    prob
+0            LOW        TRUE      TRUE     LOW     LOW  0.9604
+1            LOW        TRUE      TRUE  NORMAL     LOW  0.0098
+2            LOW        TRUE      TRUE    HIGH     LOW  0.0098
+3            LOW        TRUE      TRUE     LOW  NORMAL  0.9310
+4            LOW        TRUE      TRUE  NORMAL  NORMAL  0.0392
+..           ...         ...       ...     ...     ...     ...
+103         HIGH       FALSE     FALSE  NORMAL  NORMAL  0.0150
+104         HIGH       FALSE     FALSE    HIGH  NORMAL  0.0345
+105         HIGH       FALSE     FALSE     LOW    HIGH  0.0005
+106         HIGH       FALSE     FALSE  NORMAL    HIGH  0.0005
+107         HIGH       FALSE     FALSE    HIGH    HIGH  0.0490
+
+[108 rows x 6 columns]
+
+After summing out 'STROKEVOLUME': f_37(CO, HYPOVOLEMIA, HR, LVFAILURE) = 
+        CO HYPOVOLEMIA      HR LVFAILURE    prob
+0     HIGH       FALSE    HIGH     FALSE  0.9045
+1     HIGH       FALSE    HIGH      TRUE  0.0573
+2     HIGH       FALSE     LOW     FALSE  0.0100
+3     HIGH       FALSE     LOW      TRUE  0.0100
+4     HIGH       FALSE  NORMAL     FALSE  0.0440
+5     HIGH       FALSE  NORMAL      TRUE  0.0168
+6     HIGH        TRUE    HIGH     FALSE  0.4803
+7     HIGH        TRUE    HIGH      TRUE  0.0291
+8     HIGH        TRUE     LOW     FALSE  0.0100
+9     HIGH        TRUE     LOW      TRUE  0.0100
+10    HIGH        TRUE  NORMAL     FALSE  0.0168
+11    HIGH        TRUE  NORMAL      TRUE  0.0168
+12     LOW       FALSE    HIGH     FALSE  0.0495
+13     LOW       FALSE    HIGH      TRUE  0.7605
+14     LOW       FALSE     LOW     FALSE  0.9190
+15     LOW       FALSE     LOW      TRUE  0.9720
+16     LOW       FALSE  NORMAL     FALSE  0.0840
+17     LOW       FALSE  NORMAL      TRUE  0.9042
+18     LOW        TRUE    HIGH     FALSE  0.4050
+19     LOW        TRUE    HIGH      TRUE  0.7842
+20     LOW        TRUE     LOW     FALSE  0.9585
+21     LOW        TRUE     LOW      TRUE  0.9729
+22     LOW        TRUE  NORMAL     FALSE  0.4947
+23     LOW        TRUE  NORMAL      TRUE  0.9315
+24  NORMAL       FALSE    HIGH     FALSE  0.0460
+25  NORMAL       FALSE    HIGH      TRUE  0.1822
+26  NORMAL       FALSE     LOW     FALSE  0.0710
+27  NORMAL       FALSE     LOW      TRUE  0.0180
+28  NORMAL       FALSE  NORMAL     FALSE  0.8720
+29  NORMAL       FALSE  NORMAL      TRUE  0.0790
+30  NORMAL        TRUE    HIGH     FALSE  0.1147
+31  NORMAL        TRUE    HIGH      TRUE  0.1867
+32  NORMAL        TRUE     LOW     FALSE  0.0315
+33  NORMAL        TRUE     LOW      TRUE  0.0171
+34  NORMAL        TRUE  NORMAL     FALSE  0.4885
+35  NORMAL        TRUE  NORMAL      TRUE  0.0517
+
+Variable 'STROKEVOLUME' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['ERRLOWOUTPUT', 'INSUFFANESTH', 'ANAPHYLAXIS', 'FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HYPOVOLEMIA', 'LVEDVOLUME', 'ERRCAUTER', 'TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'LVFAILURE', 'VENTLUNG', 'HR', 'INTUBATION']f_3(HYPOVOLEMIA)f_4(LVEDVOLUME, HYPOVOLEMIA, LVFAILURE)f_5(LVFAILURE)f_7(ERRLOWOUTPUT)f_10(ERRCAUTER)f_12(INSUFFANESTH)f_13(ANAPHYLAXIS)f_14(ANAPHYLAXIS, TPR)f_16(KINKEDTUBE)f_18(FIO2)f_19(FIO2, PVSAT, VENTALV)f_20(SAO2, SHUNT, PVSAT)f_22(PULMEMBOLUS)f_23(SHUNT, PULMEMBOLUS, INTUBATION)f_24(INTUBATION)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_29(DISCONNECT, VENTTUBE)f_30(KINKEDTUBE, INTUBATION, VENTTUBE, VENTLUNG)f_31(INTUBATION, VENTLUNG, VENTALV)f_32(VENTALV, ARTCO2)f_33(CATECHOL, TPR, ARTCO2, SAO2, INSUFFANESTH)f_34(CATECHOL, HR)f_0(LVFAILURE)f_1(LVEDVOLUME)f_2(LVEDVOLUME)f_8(HR, ERRLOWOUTPUT)f_9(ERRCAUTER, HR)f_11(ERRCAUTER, HR)f_15(ARTCO2, VENTLUNG)f_17(INTUBATION, VENTLUNG)f_21(PULMEMBOLUS)f_25(INTUBATION, VENTTUBE, KINKEDTUBE)f_36(CO, TPR)f_37(CO, HYPOVOLEMIA, HR, LVFAILURE)
+
+Variable 'ERRLOWOUTPUT' is being eliminated.
+
+f_7(ERRLOWOUTPUT)f_8(HR, ERRLOWOUTPUT) = f_38(HR, ERRLOWOUTPUT) = 
+  ERRLOWOUTPUT      HR  prob
+0         TRUE    HIGH  0.05
+1         TRUE     LOW  0.05
+2         TRUE  NORMAL  0.05
+3        FALSE    HIGH  0.95
+4        FALSE     LOW  0.95
+5        FALSE  NORMAL  0.95
+
+After summing out 'ERRLOWOUTPUT': f_38(HR) = 
+       HR  prob
+0    HIGH   1.0
+1     LOW   1.0
+2  NORMAL   1.0
+
+Variable 'ERRLOWOUTPUT' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['INSUFFANESTH', 'ANAPHYLAXIS', 'FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HYPOVOLEMIA', 'LVEDVOLUME', 'ERRCAUTER', 'TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'LVFAILURE', 'VENTLUNG', 'HR', 'INTUBATION']f_3(HYPOVOLEMIA)f_4(LVEDVOLUME, HYPOVOLEMIA, LVFAILURE)f_5(LVFAILURE)f_10(ERRCAUTER)f_12(INSUFFANESTH)f_13(ANAPHYLAXIS)f_14(ANAPHYLAXIS, TPR)f_16(KINKEDTUBE)f_18(FIO2)f_19(FIO2, PVSAT, VENTALV)f_20(SAO2, SHUNT, PVSAT)f_22(PULMEMBOLUS)f_23(SHUNT, PULMEMBOLUS, INTUBATION)f_24(INTUBATION)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_29(DISCONNECT, VENTTUBE)f_30(KINKEDTUBE, INTUBATION, VENTTUBE, VENTLUNG)f_31(INTUBATION, VENTLUNG, VENTALV)f_32(VENTALV, ARTCO2)f_33(CATECHOL, TPR, ARTCO2, SAO2, INSUFFANESTH)f_34(CATECHOL, HR)f_0(LVFAILURE)f_1(LVEDVOLUME)f_2(LVEDVOLUME)f_9(ERRCAUTER, HR)f_11(ERRCAUTER, HR)f_15(ARTCO2, VENTLUNG)f_17(INTUBATION, VENTLUNG)f_21(PULMEMBOLUS)f_25(INTUBATION, VENTTUBE, KINKEDTUBE)f_36(CO, TPR)f_37(CO, HYPOVOLEMIA, HR, LVFAILURE)f_38(HR)
+
+Variable 'INSUFFANESTH' is being eliminated.
+
+f_12(INSUFFANESTH)f_33(CATECHOL, TPR, ARTCO2, SAO2, INSUFFANESTH) = f_39(CATECHOL, TPR, ARTCO2, SAO2, INSUFFANESTH) = 
+    INSUFFANESTH CATECHOL  ARTCO2  SAO2   TPR   prob
+0           TRUE   NORMAL     LOW   LOW   LOW  0.001
+1           TRUE     HIGH     LOW   LOW   LOW  0.099
+2           TRUE   NORMAL  NORMAL   LOW   LOW  0.001
+3           TRUE     HIGH  NORMAL   LOW   LOW  0.099
+4           TRUE   NORMAL    HIGH   LOW   LOW  0.001
+..           ...      ...     ...   ...   ...    ...
+103        FALSE     HIGH     LOW  HIGH  HIGH  0.045
+104        FALSE   NORMAL  NORMAL  HIGH  HIGH  0.891
+105        FALSE     HIGH  NORMAL  HIGH  HIGH  0.009
+106        FALSE   NORMAL    HIGH  HIGH  HIGH  0.270
+107        FALSE     HIGH    HIGH  HIGH  HIGH  0.630
+
+[108 rows x 6 columns]
+
+After summing out 'INSUFFANESTH': f_39(CATECHOL, TPR, ARTCO2, SAO2) = 
+   CATECHOL     TPR  ARTCO2    SAO2   prob
+0      HIGH    HIGH    HIGH    HIGH  0.700
+1      HIGH    HIGH    HIGH     LOW  0.900
+2      HIGH    HIGH    HIGH  NORMAL  0.720
+3      HIGH    HIGH     LOW    HIGH  0.050
+4      HIGH    HIGH     LOW     LOW  0.300
+5      HIGH    HIGH     LOW  NORMAL  0.075
+6      HIGH    HIGH  NORMAL    HIGH  0.010
+7      HIGH    HIGH  NORMAL     LOW  0.300
+8      HIGH    HIGH  NORMAL  NORMAL  0.039
+9      HIGH     LOW    HIGH    HIGH  0.990
+10     HIGH     LOW    HIGH     LOW  0.990
+11     HIGH     LOW    HIGH  NORMAL  0.990
+12     HIGH     LOW     LOW    HIGH  0.954
+13     HIGH     LOW     LOW     LOW  0.990
+14     HIGH     LOW     LOW  NORMAL  0.990
+15     HIGH     LOW  NORMAL    HIGH  0.954
+16     HIGH     LOW  NORMAL     LOW  0.990
+17     HIGH     LOW  NORMAL  NORMAL  0.990
+18     HIGH  NORMAL    HIGH    HIGH  0.990
+19     HIGH  NORMAL    HIGH     LOW  0.990
+20     HIGH  NORMAL    HIGH  NORMAL  0.990
+21     HIGH  NORMAL     LOW    HIGH  0.950
+22     HIGH  NORMAL     LOW     LOW  0.954
+23     HIGH  NORMAL     LOW  NORMAL  0.950
+24     HIGH  NORMAL  NORMAL    HIGH  0.950
+25     HIGH  NORMAL  NORMAL     LOW  0.954
+26     HIGH  NORMAL  NORMAL  NORMAL  0.950
+27   NORMAL    HIGH    HIGH    HIGH  0.300
+28   NORMAL    HIGH    HIGH     LOW  0.100
+29   NORMAL    HIGH    HIGH  NORMAL  0.280
+30   NORMAL    HIGH     LOW    HIGH  0.950
+31   NORMAL    HIGH     LOW     LOW  0.700
+32   NORMAL    HIGH     LOW  NORMAL  0.925
+33   NORMAL    HIGH  NORMAL    HIGH  0.990
+34   NORMAL    HIGH  NORMAL     LOW  0.700
+35   NORMAL    HIGH  NORMAL  NORMAL  0.961
+36   NORMAL     LOW    HIGH    HIGH  0.010
+37   NORMAL     LOW    HIGH     LOW  0.010
+38   NORMAL     LOW    HIGH  NORMAL  0.010
+39   NORMAL     LOW     LOW    HIGH  0.046
+40   NORMAL     LOW     LOW     LOW  0.010
+41   NORMAL     LOW     LOW  NORMAL  0.010
+42   NORMAL     LOW  NORMAL    HIGH  0.046
+43   NORMAL     LOW  NORMAL     LOW  0.010
+44   NORMAL     LOW  NORMAL  NORMAL  0.010
+45   NORMAL  NORMAL    HIGH    HIGH  0.010
+46   NORMAL  NORMAL    HIGH     LOW  0.010
+47   NORMAL  NORMAL    HIGH  NORMAL  0.010
+48   NORMAL  NORMAL     LOW    HIGH  0.050
+49   NORMAL  NORMAL     LOW     LOW  0.046
+50   NORMAL  NORMAL     LOW  NORMAL  0.050
+51   NORMAL  NORMAL  NORMAL    HIGH  0.050
+52   NORMAL  NORMAL  NORMAL     LOW  0.046
+53   NORMAL  NORMAL  NORMAL  NORMAL  0.050
+
+Variable 'INSUFFANESTH' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['ANAPHYLAXIS', 'FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HYPOVOLEMIA', 'LVEDVOLUME', 'ERRCAUTER', 'TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'LVFAILURE', 'VENTLUNG', 'HR', 'INTUBATION']f_3(HYPOVOLEMIA)f_4(LVEDVOLUME, HYPOVOLEMIA, LVFAILURE)f_5(LVFAILURE)f_10(ERRCAUTER)f_13(ANAPHYLAXIS)f_14(ANAPHYLAXIS, TPR)f_16(KINKEDTUBE)f_18(FIO2)f_19(FIO2, PVSAT, VENTALV)f_20(SAO2, SHUNT, PVSAT)f_22(PULMEMBOLUS)f_23(SHUNT, PULMEMBOLUS, INTUBATION)f_24(INTUBATION)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_29(DISCONNECT, VENTTUBE)f_30(KINKEDTUBE, INTUBATION, VENTTUBE, VENTLUNG)f_31(INTUBATION, VENTLUNG, VENTALV)f_32(VENTALV, ARTCO2)f_34(CATECHOL, HR)f_0(LVFAILURE)f_1(LVEDVOLUME)f_2(LVEDVOLUME)f_9(ERRCAUTER, HR)f_11(ERRCAUTER, HR)f_15(ARTCO2, VENTLUNG)f_17(INTUBATION, VENTLUNG)f_21(PULMEMBOLUS)f_25(INTUBATION, VENTTUBE, KINKEDTUBE)f_36(CO, TPR)f_37(CO, HYPOVOLEMIA, HR, LVFAILURE)f_38(HR)f_39(CATECHOL, TPR, ARTCO2, SAO2)
+
+Variable 'ANAPHYLAXIS' is being eliminated.
+
+f_13(ANAPHYLAXIS)f_14(ANAPHYLAXIS, TPR) = f_40(ANAPHYLAXIS, TPR) = 
+  ANAPHYLAXIS     TPR    prob
+0        TRUE     LOW  0.0098
+1        TRUE  NORMAL  0.0001
+2        TRUE    HIGH  0.0001
+3       FALSE     LOW  0.2970
+4       FALSE  NORMAL  0.3960
+5       FALSE    HIGH  0.2970
+
+After summing out 'ANAPHYLAXIS': f_40(TPR) = 
+      TPR    prob
+0    HIGH  0.2971
+1     LOW  0.3068
+2  NORMAL  0.3961
+
+Variable 'ANAPHYLAXIS' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['FIO2', 'PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HYPOVOLEMIA', 'LVEDVOLUME', 'ERRCAUTER', 'TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'LVFAILURE', 'VENTLUNG', 'HR', 'INTUBATION']f_3(HYPOVOLEMIA)f_4(LVEDVOLUME, HYPOVOLEMIA, LVFAILURE)f_5(LVFAILURE)f_10(ERRCAUTER)f_16(KINKEDTUBE)f_18(FIO2)f_19(FIO2, PVSAT, VENTALV)f_20(SAO2, SHUNT, PVSAT)f_22(PULMEMBOLUS)f_23(SHUNT, PULMEMBOLUS, INTUBATION)f_24(INTUBATION)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_29(DISCONNECT, VENTTUBE)f_30(KINKEDTUBE, INTUBATION, VENTTUBE, VENTLUNG)f_31(INTUBATION, VENTLUNG, VENTALV)f_32(VENTALV, ARTCO2)f_34(CATECHOL, HR)f_0(LVFAILURE)f_1(LVEDVOLUME)f_2(LVEDVOLUME)f_9(ERRCAUTER, HR)f_11(ERRCAUTER, HR)f_15(ARTCO2, VENTLUNG)f_17(INTUBATION, VENTLUNG)f_21(PULMEMBOLUS)f_25(INTUBATION, VENTTUBE, KINKEDTUBE)f_36(CO, TPR)f_37(CO, HYPOVOLEMIA, HR, LVFAILURE)f_38(HR)f_39(CATECHOL, TPR, ARTCO2, SAO2)f_40(TPR)
+
+Variable 'FIO2' is being eliminated.
+
+f_18(FIO2)f_19(FIO2, PVSAT, VENTALV) = f_41(FIO2, PVSAT, VENTALV) = 
+      FIO2   PVSAT VENTALV    prob
+0      LOW     LOW    ZERO  0.0500
+1      LOW  NORMAL    ZERO  0.0000
+2      LOW    HIGH    ZERO  0.0000
+3      LOW     LOW     LOW  0.0475
+4      LOW  NORMAL     LOW  0.0020
+5      LOW    HIGH     LOW  0.0005
+6      LOW     LOW  NORMAL  0.0500
+7      LOW  NORMAL  NORMAL  0.0000
+8      LOW    HIGH  NORMAL  0.0000
+9      LOW     LOW    HIGH  0.0005
+10     LOW  NORMAL    HIGH  0.0475
+11     LOW    HIGH    HIGH  0.0020
+12  NORMAL     LOW    ZERO  0.9405
+13  NORMAL  NORMAL    ZERO  0.0095
+14  NORMAL    HIGH    ZERO  0.0000
+15  NORMAL     LOW     LOW  0.9025
+16  NORMAL  NORMAL     LOW  0.0380
+17  NORMAL    HIGH     LOW  0.0095
+18  NORMAL     LOW  NORMAL  0.9025
+19  NORMAL  NORMAL  NORMAL  0.0380
+20  NORMAL    HIGH  NORMAL  0.0095
+21  NORMAL     LOW    HIGH  0.0095
+22  NORMAL  NORMAL    HIGH  0.0095
+23  NORMAL    HIGH    HIGH  0.9310
+
+After summing out 'FIO2': f_41(PVSAT, VENTALV) = 
+     PVSAT VENTALV    prob
+0     HIGH    HIGH  0.9330
+1     HIGH     LOW  0.0100
+2     HIGH  NORMAL  0.0095
+3     HIGH    ZERO  0.0000
+4      LOW    HIGH  0.0100
+5      LOW     LOW  0.9500
+6      LOW  NORMAL  0.9525
+7      LOW    ZERO  0.9905
+8   NORMAL    HIGH  0.0570
+9   NORMAL     LOW  0.0400
+10  NORMAL  NORMAL  0.0380
+11  NORMAL    ZERO  0.0095
+
+Variable 'FIO2' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['PVSAT', 'SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HYPOVOLEMIA', 'LVEDVOLUME', 'ERRCAUTER', 'TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'LVFAILURE', 'VENTLUNG', 'HR', 'INTUBATION']f_3(HYPOVOLEMIA)f_4(LVEDVOLUME, HYPOVOLEMIA, LVFAILURE)f_5(LVFAILURE)f_10(ERRCAUTER)f_16(KINKEDTUBE)f_20(SAO2, SHUNT, PVSAT)f_22(PULMEMBOLUS)f_23(SHUNT, PULMEMBOLUS, INTUBATION)f_24(INTUBATION)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_29(DISCONNECT, VENTTUBE)f_30(KINKEDTUBE, INTUBATION, VENTTUBE, VENTLUNG)f_31(INTUBATION, VENTLUNG, VENTALV)f_32(VENTALV, ARTCO2)f_34(CATECHOL, HR)f_0(LVFAILURE)f_1(LVEDVOLUME)f_2(LVEDVOLUME)f_9(ERRCAUTER, HR)f_11(ERRCAUTER, HR)f_15(ARTCO2, VENTLUNG)f_17(INTUBATION, VENTLUNG)f_21(PULMEMBOLUS)f_25(INTUBATION, VENTTUBE, KINKEDTUBE)f_36(CO, TPR)f_37(CO, HYPOVOLEMIA, HR, LVFAILURE)f_38(HR)f_39(CATECHOL, TPR, ARTCO2, SAO2)f_40(TPR)f_41(PVSAT, VENTALV)
+
+Variable 'PVSAT' is being eliminated.
+
+f_20(SAO2, SHUNT, PVSAT)f_41(PVSAT, VENTALV) = f_42(SHUNT, SAO2, PVSAT, VENTALV) = 
+      SAO2 PVSAT   SHUNT VENTALV      prob
+0      LOW   LOW  NORMAL    HIGH  0.009800
+1      LOW   LOW  NORMAL     LOW  0.931000
+2      LOW   LOW  NORMAL  NORMAL  0.933450
+3      LOW   LOW  NORMAL    ZERO  0.970690
+4   NORMAL   LOW  NORMAL    HIGH  0.000100
+..     ...   ...     ...     ...       ...
+67  NORMAL  HIGH    HIGH    ZERO  0.000000
+68    HIGH  HIGH    HIGH    HIGH  0.009330
+69    HIGH  HIGH    HIGH     LOW  0.000100
+70    HIGH  HIGH    HIGH  NORMAL  0.000095
+71    HIGH  HIGH    HIGH    ZERO  0.000000
+
+[72 rows x 5 columns]
+
+After summing out 'PVSAT': f_42(SHUNT, SAO2, VENTALV) = 
+     SHUNT    SAO2 VENTALV      prob
+0     HIGH    HIGH    HIGH  0.010000
+1     HIGH    HIGH     LOW  0.010000
+2     HIGH    HIGH  NORMAL  0.010000
+3     HIGH    HIGH    ZERO  0.010000
+4     HIGH     LOW    HIGH  0.709430
+5     HIGH     LOW     LOW  0.977100
+6     HIGH     LOW  NORMAL  0.977245
+7     HIGH     LOW    ZERO  0.980000
+8     HIGH  NORMAL    HIGH  0.280570
+9     HIGH  NORMAL     LOW  0.012900
+10    HIGH  NORMAL  NORMAL  0.012755
+11    HIGH  NORMAL    ZERO  0.010000
+12  NORMAL    HIGH    HIGH  0.915010
+13  NORMAL    HIGH     LOW  0.019700
+14  NORMAL    HIGH  NORMAL  0.019215
+15  NORMAL    HIGH    ZERO  0.010000
+16  NORMAL     LOW    HIGH  0.019700
+17  NORMAL     LOW     LOW  0.931500
+18  NORMAL     LOW  NORMAL  0.933925
+19  NORMAL     LOW    ZERO  0.970785
+20  NORMAL  NORMAL    HIGH  0.065290
+21  NORMAL  NORMAL     LOW  0.048800
+22  NORMAL  NORMAL  NORMAL  0.046860
+23  NORMAL  NORMAL    ZERO  0.019215
+
+Variable 'PVSAT' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['SAO2', 'SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HYPOVOLEMIA', 'LVEDVOLUME', 'ERRCAUTER', 'TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'LVFAILURE', 'VENTLUNG', 'HR', 'INTUBATION']f_3(HYPOVOLEMIA)f_4(LVEDVOLUME, HYPOVOLEMIA, LVFAILURE)f_5(LVFAILURE)f_10(ERRCAUTER)f_16(KINKEDTUBE)f_22(PULMEMBOLUS)f_23(SHUNT, PULMEMBOLUS, INTUBATION)f_24(INTUBATION)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_29(DISCONNECT, VENTTUBE)f_30(KINKEDTUBE, INTUBATION, VENTTUBE, VENTLUNG)f_31(INTUBATION, VENTLUNG, VENTALV)f_32(VENTALV, ARTCO2)f_34(CATECHOL, HR)f_0(LVFAILURE)f_1(LVEDVOLUME)f_2(LVEDVOLUME)f_9(ERRCAUTER, HR)f_11(ERRCAUTER, HR)f_15(ARTCO2, VENTLUNG)f_17(INTUBATION, VENTLUNG)f_21(PULMEMBOLUS)f_25(INTUBATION, VENTTUBE, KINKEDTUBE)f_36(CO, TPR)f_37(CO, HYPOVOLEMIA, HR, LVFAILURE)f_38(HR)f_39(CATECHOL, TPR, ARTCO2, SAO2)f_40(TPR)f_42(SHUNT, SAO2, VENTALV)
+
+Variable 'SAO2' is being eliminated.
+
+f_39(CATECHOL, TPR, ARTCO2, SAO2)f_42(SHUNT, SAO2, VENTALV) = f_43(CATECHOL, SHUNT, TPR, ARTCO2, SAO2, VENTALV) = 
+    CATECHOL     TPR  ARTCO2    SAO2   SHUNT VENTALV      prob
+0       HIGH    HIGH    HIGH    HIGH    HIGH    HIGH  0.007000
+1       HIGH    HIGH    HIGH    HIGH    HIGH     LOW  0.007000
+2       HIGH    HIGH    HIGH    HIGH    HIGH  NORMAL  0.007000
+3       HIGH    HIGH    HIGH    HIGH    HIGH    ZERO  0.007000
+4       HIGH    HIGH    HIGH    HIGH  NORMAL    HIGH  0.640507
+..       ...     ...     ...     ...     ...     ...       ...
+427   NORMAL  NORMAL  NORMAL  NORMAL    HIGH    ZERO  0.000500
+428   NORMAL  NORMAL  NORMAL  NORMAL  NORMAL    HIGH  0.003265
+429   NORMAL  NORMAL  NORMAL  NORMAL  NORMAL     LOW  0.002440
+430   NORMAL  NORMAL  NORMAL  NORMAL  NORMAL  NORMAL  0.002343
+431   NORMAL  NORMAL  NORMAL  NORMAL  NORMAL    ZERO  0.000961
+
+[432 rows x 7 columns]
+
+After summing out 'SAO2': f_43(CATECHOL, SHUNT, TPR, ARTCO2, VENTALV) = 
+    CATECHOL   SHUNT     TPR  ARTCO2 VENTALV      prob
+0       HIGH    HIGH    HIGH    HIGH    HIGH  0.847497
+1       HIGH    HIGH    HIGH    HIGH     LOW  0.895678
+2       HIGH    HIGH    HIGH    HIGH  NORMAL  0.895704
+3       HIGH    HIGH    HIGH    HIGH    ZERO  0.896200
+4       HIGH    HIGH    HIGH     LOW    HIGH  0.234372
+..       ...     ...     ...     ...     ...       ...
+139   NORMAL  NORMAL  NORMAL     LOW    ZERO  0.046117
+140   NORMAL  NORMAL  NORMAL  NORMAL    HIGH  0.049921
+141   NORMAL  NORMAL  NORMAL  NORMAL     LOW  0.046274
+142   NORMAL  NORMAL  NORMAL  NORMAL  NORMAL  0.046264
+143   NORMAL  NORMAL  NORMAL  NORMAL    ZERO  0.046117
+
+[144 rows x 6 columns]
+
+Variable 'SAO2' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['SHUNT', 'DISCONNECT', 'CATECHOL', 'CO', 'HYPOVOLEMIA', 'LVEDVOLUME', 'ERRCAUTER', 'TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'LVFAILURE', 'VENTLUNG', 'HR', 'INTUBATION']f_3(HYPOVOLEMIA)f_4(LVEDVOLUME, HYPOVOLEMIA, LVFAILURE)f_5(LVFAILURE)f_10(ERRCAUTER)f_16(KINKEDTUBE)f_22(PULMEMBOLUS)f_23(SHUNT, PULMEMBOLUS, INTUBATION)f_24(INTUBATION)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_29(DISCONNECT, VENTTUBE)f_30(KINKEDTUBE, INTUBATION, VENTTUBE, VENTLUNG)f_31(INTUBATION, VENTLUNG, VENTALV)f_32(VENTALV, ARTCO2)f_34(CATECHOL, HR)f_0(LVFAILURE)f_1(LVEDVOLUME)f_2(LVEDVOLUME)f_9(ERRCAUTER, HR)f_11(ERRCAUTER, HR)f_15(ARTCO2, VENTLUNG)f_17(INTUBATION, VENTLUNG)f_21(PULMEMBOLUS)f_25(INTUBATION, VENTTUBE, KINKEDTUBE)f_36(CO, TPR)f_37(CO, HYPOVOLEMIA, HR, LVFAILURE)f_38(HR)f_40(TPR)f_43(CATECHOL, SHUNT, TPR, ARTCO2, VENTALV)
+
+Variable 'SHUNT' is being eliminated.
+
+f_23(SHUNT, PULMEMBOLUS, INTUBATION)f_43(CATECHOL, SHUNT, TPR, ARTCO2, VENTALV) = f_44(INTUBATION, CATECHOL, TPR, VENTALV, SHUNT, ARTCO2, PULMEMBOLUS) = 
+      SHUNT INTUBATION PULMEMBOLUS CATECHOL     TPR  ARTCO2 VENTALV      prob
+0    NORMAL     NORMAL        TRUE     HIGH    HIGH    HIGH    HIGH  0.070525
+1    NORMAL     NORMAL        TRUE     HIGH    HIGH    HIGH     LOW  0.088728
+2    NORMAL     NORMAL        TRUE     HIGH    HIGH    HIGH  NORMAL  0.088772
+3    NORMAL     NORMAL        TRUE     HIGH    HIGH    HIGH    ZERO  0.089454
+4    NORMAL     NORMAL        TRUE     HIGH    HIGH     LOW    HIGH  0.005656
+..      ...        ...         ...      ...     ...     ...     ...       ...
+859    HIGH   ONESIDED       FALSE   NORMAL  NORMAL     LOW    ZERO  0.043776
+860    HIGH   ONESIDED       FALSE   NORMAL  NORMAL  NORMAL    HIGH  0.044804
+861    HIGH   ONESIDED       FALSE   NORMAL  NORMAL  NORMAL     LOW  0.043787
+862    HIGH   ONESIDED       FALSE   NORMAL  NORMAL  NORMAL  NORMAL  0.043786
+863    HIGH   ONESIDED       FALSE   NORMAL  NORMAL  NORMAL    ZERO  0.043776
+
+[864 rows x 8 columns]
+
+After summing out 'SHUNT': f_44(INTUBATION, CATECHOL, TPR, VENTALV, ARTCO2, PULMEMBOLUS) = 
+     INTUBATION CATECHOL     TPR VENTALV  ARTCO2 PULMEMBOLUS      prob
+0    ESOPHAGEAL     HIGH    HIGH    HIGH    HIGH       FALSE  0.712358
+1    ESOPHAGEAL     HIGH    HIGH    HIGH    HIGH        TRUE  0.833272
+2    ESOPHAGEAL     HIGH    HIGH    HIGH     LOW       FALSE  0.065448
+3    ESOPHAGEAL     HIGH    HIGH    HIGH     LOW        TRUE  0.216590
+4    ESOPHAGEAL     HIGH    HIGH    HIGH  NORMAL       FALSE  0.027920
+..          ...      ...     ...     ...     ...         ...       ...
+427    ONESIDED   NORMAL  NORMAL    ZERO    HIGH        TRUE  0.010000
+428    ONESIDED   NORMAL  NORMAL    ZERO     LOW       FALSE  0.046082
+429    ONESIDED   NORMAL  NORMAL    ZERO     LOW        TRUE  0.046080
+430    ONESIDED   NORMAL  NORMAL    ZERO  NORMAL       FALSE  0.046082
+431    ONESIDED   NORMAL  NORMAL    ZERO  NORMAL        TRUE  0.046080
+
+[432 rows x 7 columns]
+
+Variable 'SHUNT' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['DISCONNECT', 'CATECHOL', 'CO', 'HYPOVOLEMIA', 'LVEDVOLUME', 'ERRCAUTER', 'TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'LVFAILURE', 'VENTLUNG', 'HR', 'INTUBATION']f_3(HYPOVOLEMIA)f_4(LVEDVOLUME, HYPOVOLEMIA, LVFAILURE)f_5(LVFAILURE)f_10(ERRCAUTER)f_16(KINKEDTUBE)f_22(PULMEMBOLUS)f_24(INTUBATION)f_26(DISCONNECT)f_27(MINVOLSET)f_28(MINVOLSET)f_29(DISCONNECT, VENTTUBE)f_30(KINKEDTUBE, INTUBATION, VENTTUBE, VENTLUNG)f_31(INTUBATION, VENTLUNG, VENTALV)f_32(VENTALV, ARTCO2)f_34(CATECHOL, HR)f_0(LVFAILURE)f_1(LVEDVOLUME)f_2(LVEDVOLUME)f_9(ERRCAUTER, HR)f_11(ERRCAUTER, HR)f_15(ARTCO2, VENTLUNG)f_17(INTUBATION, VENTLUNG)f_21(PULMEMBOLUS)f_25(INTUBATION, VENTTUBE, KINKEDTUBE)f_36(CO, TPR)f_37(CO, HYPOVOLEMIA, HR, LVFAILURE)f_38(HR)f_40(TPR)f_44(INTUBATION, CATECHOL, TPR, VENTALV, ARTCO2, PULMEMBOLUS)
+
+Variable 'DISCONNECT' is being eliminated.
+
+f_26(DISCONNECT)f_29(DISCONNECT, VENTTUBE) = f_45(DISCONNECT, VENTTUBE) = 
+  DISCONNECT VENTTUBE   prob
+0       TRUE     ZERO  0.097
+1       TRUE      LOW  0.001
+2       TRUE   NORMAL  0.001
+3       TRUE     HIGH  0.001
+4      FALSE     ZERO  0.873
+5      FALSE      LOW  0.009
+6      FALSE   NORMAL  0.009
+7      FALSE     HIGH  0.009
+
+After summing out 'DISCONNECT': f_45(VENTTUBE) = 
+  VENTTUBE  prob
+0     HIGH  0.01
+1      LOW  0.01
+2   NORMAL  0.01
+3     ZERO  0.97
+
+Variable 'DISCONNECT' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['CATECHOL', 'CO', 'HYPOVOLEMIA', 'LVEDVOLUME', 'ERRCAUTER', 'TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'LVFAILURE', 'VENTLUNG', 'HR', 'INTUBATION']f_3(HYPOVOLEMIA)f_4(LVEDVOLUME, HYPOVOLEMIA, LVFAILURE)f_5(LVFAILURE)f_10(ERRCAUTER)f_16(KINKEDTUBE)f_22(PULMEMBOLUS)f_24(INTUBATION)f_27(MINVOLSET)f_28(MINVOLSET)f_30(KINKEDTUBE, INTUBATION, VENTTUBE, VENTLUNG)f_31(INTUBATION, VENTLUNG, VENTALV)f_32(VENTALV, ARTCO2)f_34(CATECHOL, HR)f_0(LVFAILURE)f_1(LVEDVOLUME)f_2(LVEDVOLUME)f_9(ERRCAUTER, HR)f_11(ERRCAUTER, HR)f_15(ARTCO2, VENTLUNG)f_17(INTUBATION, VENTLUNG)f_21(PULMEMBOLUS)f_25(INTUBATION, VENTTUBE, KINKEDTUBE)f_36(CO, TPR)f_37(CO, HYPOVOLEMIA, HR, LVFAILURE)f_38(HR)f_40(TPR)f_44(INTUBATION, CATECHOL, TPR, VENTALV, ARTCO2, PULMEMBOLUS)f_45(VENTTUBE)
+
+Variable 'CATECHOL' is being eliminated.
+
+f_34(CATECHOL, HR)f_44(INTUBATION, CATECHOL, TPR, VENTALV, ARTCO2, PULMEMBOLUS) = f_46(CATECHOL, INTUBATION, TPR, VENTALV, ARTCO2, HR, PULMEMBOLUS) = 
+        HR CATECHOL  INTUBATION     TPR VENTALV  ARTCO2 PULMEMBOLUS      prob
+0      LOW   NORMAL  ESOPHAGEAL    HIGH    HIGH    HIGH       FALSE  0.014382
+1      LOW   NORMAL  ESOPHAGEAL    HIGH    HIGH    HIGH        TRUE  0.008336
+2      LOW   NORMAL  ESOPHAGEAL    HIGH    HIGH     LOW       FALSE  0.046728
+3      LOW   NORMAL  ESOPHAGEAL    HIGH    HIGH     LOW        TRUE  0.039170
+4      LOW   NORMAL  ESOPHAGEAL    HIGH    HIGH  NORMAL       FALSE  0.048604
+...    ...      ...         ...     ...     ...     ...         ...       ...
+1291  HIGH     HIGH    ONESIDED  NORMAL    ZERO    HIGH        TRUE  0.891000
+1292  HIGH     HIGH    ONESIDED  NORMAL    ZERO     LOW       FALSE  0.858526
+1293  HIGH     HIGH    ONESIDED  NORMAL    ZERO     LOW        TRUE  0.858528
+1294  HIGH     HIGH    ONESIDED  NORMAL    ZERO  NORMAL       FALSE  0.858526
+1295  HIGH     HIGH    ONESIDED  NORMAL    ZERO  NORMAL        TRUE  0.858528
+
+[1296 rows x 8 columns]
+
+After summing out 'CATECHOL': f_46(INTUBATION, TPR, VENTALV, ARTCO2, HR, PULMEMBOLUS) = 
+     INTUBATION     TPR VENTALV  ARTCO2      HR PULMEMBOLUS      prob
+0    ESOPHAGEAL    HIGH    HIGH    HIGH    HIGH       FALSE  0.655505
+1    ESOPHAGEAL    HIGH    HIGH    HIGH    HIGH        TRUE  0.758281
+2    ESOPHAGEAL    HIGH    HIGH    HIGH     LOW       FALSE  0.021506
+3    ESOPHAGEAL    HIGH    HIGH    HIGH     LOW        TRUE  0.016669
+4    ESOPHAGEAL    HIGH    HIGH    HIGH  NORMAL       FALSE  0.322990
+..          ...     ...     ...     ...     ...         ...       ...
+643    ONESIDED  NORMAL    ZERO  NORMAL    HIGH        TRUE  0.860832
+644    ONESIDED  NORMAL    ZERO  NORMAL     LOW       FALSE  0.011843
+645    ONESIDED  NORMAL    ZERO  NORMAL     LOW        TRUE  0.011843
+646    ONESIDED  NORMAL    ZERO  NORMAL  NORMAL       FALSE  0.127326
+647    ONESIDED  NORMAL    ZERO  NORMAL  NORMAL        TRUE  0.127325
+
+[648 rows x 7 columns]
+
+Variable 'CATECHOL' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['CO', 'HYPOVOLEMIA', 'LVEDVOLUME', 'ERRCAUTER', 'TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'LVFAILURE', 'VENTLUNG', 'HR', 'INTUBATION']f_3(HYPOVOLEMIA)f_4(LVEDVOLUME, HYPOVOLEMIA, LVFAILURE)f_5(LVFAILURE)f_10(ERRCAUTER)f_16(KINKEDTUBE)f_22(PULMEMBOLUS)f_24(INTUBATION)f_27(MINVOLSET)f_28(MINVOLSET)f_30(KINKEDTUBE, INTUBATION, VENTTUBE, VENTLUNG)f_31(INTUBATION, VENTLUNG, VENTALV)f_32(VENTALV, ARTCO2)f_0(LVFAILURE)f_1(LVEDVOLUME)f_2(LVEDVOLUME)f_9(ERRCAUTER, HR)f_11(ERRCAUTER, HR)f_15(ARTCO2, VENTLUNG)f_17(INTUBATION, VENTLUNG)f_21(PULMEMBOLUS)f_25(INTUBATION, VENTTUBE, KINKEDTUBE)f_36(CO, TPR)f_37(CO, HYPOVOLEMIA, HR, LVFAILURE)f_38(HR)f_40(TPR)f_45(VENTTUBE)f_46(INTUBATION, TPR, VENTALV, ARTCO2, HR, PULMEMBOLUS)
+
+Variable 'CO' is being eliminated.
+
+f_36(CO, TPR)f_37(CO, HYPOVOLEMIA, HR, LVFAILURE) = f_47(CO, TPR, HYPOVOLEMIA, HR, LVFAILURE) = 
+         CO     TPR HYPOVOLEMIA      HR LVFAILURE    prob
+0      HIGH    HIGH       FALSE    HIGH     FALSE  0.9045
+1      HIGH    HIGH       FALSE    HIGH      TRUE  0.0573
+2      HIGH    HIGH       FALSE     LOW     FALSE  0.0100
+3      HIGH    HIGH       FALSE     LOW      TRUE  0.0100
+4      HIGH    HIGH       FALSE  NORMAL     FALSE  0.0440
+..      ...     ...         ...     ...       ...     ...
+103  NORMAL  NORMAL        TRUE    HIGH      TRUE  0.1867
+104  NORMAL  NORMAL        TRUE     LOW     FALSE  0.0315
+105  NORMAL  NORMAL        TRUE     LOW      TRUE  0.0171
+106  NORMAL  NORMAL        TRUE  NORMAL     FALSE  0.4885
+107  NORMAL  NORMAL        TRUE  NORMAL      TRUE  0.0517
+
+[108 rows x 6 columns]
+
+After summing out 'CO': f_47(TPR, HYPOVOLEMIA, HR, LVFAILURE) = 
+       TPR HYPOVOLEMIA      HR LVFAILURE  prob
+0     HIGH       FALSE    HIGH     FALSE   1.0
+1     HIGH       FALSE    HIGH      TRUE   1.0
+2     HIGH       FALSE     LOW     FALSE   1.0
+3     HIGH       FALSE     LOW      TRUE   1.0
+4     HIGH       FALSE  NORMAL     FALSE   1.0
+5     HIGH       FALSE  NORMAL      TRUE   1.0
+6     HIGH        TRUE    HIGH     FALSE   1.0
+7     HIGH        TRUE    HIGH      TRUE   1.0
+8     HIGH        TRUE     LOW     FALSE   1.0
+9     HIGH        TRUE     LOW      TRUE   1.0
+10    HIGH        TRUE  NORMAL     FALSE   1.0
+11    HIGH        TRUE  NORMAL      TRUE   1.0
+12     LOW       FALSE    HIGH     FALSE   1.0
+13     LOW       FALSE    HIGH      TRUE   1.0
+14     LOW       FALSE     LOW     FALSE   1.0
+15     LOW       FALSE     LOW      TRUE   1.0
+16     LOW       FALSE  NORMAL     FALSE   1.0
+17     LOW       FALSE  NORMAL      TRUE   1.0
+18     LOW        TRUE    HIGH     FALSE   1.0
+19     LOW        TRUE    HIGH      TRUE   1.0
+20     LOW        TRUE     LOW     FALSE   1.0
+21     LOW        TRUE     LOW      TRUE   1.0
+22     LOW        TRUE  NORMAL     FALSE   1.0
+23     LOW        TRUE  NORMAL      TRUE   1.0
+24  NORMAL       FALSE    HIGH     FALSE   1.0
+25  NORMAL       FALSE    HIGH      TRUE   1.0
+26  NORMAL       FALSE     LOW     FALSE   1.0
+27  NORMAL       FALSE     LOW      TRUE   1.0
+28  NORMAL       FALSE  NORMAL     FALSE   1.0
+29  NORMAL       FALSE  NORMAL      TRUE   1.0
+30  NORMAL        TRUE    HIGH     FALSE   1.0
+31  NORMAL        TRUE    HIGH      TRUE   1.0
+32  NORMAL        TRUE     LOW     FALSE   1.0
+33  NORMAL        TRUE     LOW      TRUE   1.0
+34  NORMAL        TRUE  NORMAL     FALSE   1.0
+35  NORMAL        TRUE  NORMAL      TRUE   1.0
+
+Variable 'CO' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['HYPOVOLEMIA', 'LVEDVOLUME', 'ERRCAUTER', 'TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'LVFAILURE', 'VENTLUNG', 'HR', 'INTUBATION']f_3(HYPOVOLEMIA)f_4(LVEDVOLUME, HYPOVOLEMIA, LVFAILURE)f_5(LVFAILURE)f_10(ERRCAUTER)f_16(KINKEDTUBE)f_22(PULMEMBOLUS)f_24(INTUBATION)f_27(MINVOLSET)f_28(MINVOLSET)f_30(KINKEDTUBE, INTUBATION, VENTTUBE, VENTLUNG)f_31(INTUBATION, VENTLUNG, VENTALV)f_32(VENTALV, ARTCO2)f_0(LVFAILURE)f_1(LVEDVOLUME)f_2(LVEDVOLUME)f_9(ERRCAUTER, HR)f_11(ERRCAUTER, HR)f_15(ARTCO2, VENTLUNG)f_17(INTUBATION, VENTLUNG)f_21(PULMEMBOLUS)f_25(INTUBATION, VENTTUBE, KINKEDTUBE)f_38(HR)f_40(TPR)f_45(VENTTUBE)f_46(INTUBATION, TPR, VENTALV, ARTCO2, HR, PULMEMBOLUS)f_47(TPR, HYPOVOLEMIA, HR, LVFAILURE)
+
+Variable 'HYPOVOLEMIA' is being eliminated.
+
+f_3(HYPOVOLEMIA)f_4(LVEDVOLUME, HYPOVOLEMIA, LVFAILURE)f_47(TPR, HYPOVOLEMIA, HR, LVFAILURE) = f_49(LVEDVOLUME, HYPOVOLEMIA, TPR, HR, LVFAILURE) = 
+    HYPOVOLEMIA LVEDVOLUME LVFAILURE     TPR      HR  prob
+0          TRUE        LOW      TRUE    HIGH    HIGH  0.19
+1          TRUE        LOW      TRUE    HIGH     LOW  0.19
+2          TRUE        LOW      TRUE    HIGH  NORMAL  0.19
+3          TRUE        LOW      TRUE     LOW    HIGH  0.19
+4          TRUE        LOW      TRUE     LOW     LOW  0.19
+..          ...        ...       ...     ...     ...   ...
+103       FALSE       HIGH     FALSE     LOW     LOW  0.04
+104       FALSE       HIGH     FALSE     LOW  NORMAL  0.04
+105       FALSE       HIGH     FALSE  NORMAL    HIGH  0.04
+106       FALSE       HIGH     FALSE  NORMAL     LOW  0.04
+107       FALSE       HIGH     FALSE  NORMAL  NORMAL  0.04
+
+[108 rows x 6 columns]
+
+After summing out 'HYPOVOLEMIA': f_49(LVEDVOLUME, TPR, HR, LVFAILURE) = 
+   LVEDVOLUME     TPR      HR LVFAILURE   prob
+0        HIGH    HIGH    HIGH     FALSE  0.220
+1        HIGH    HIGH    HIGH      TRUE  0.010
+2        HIGH    HIGH     LOW     FALSE  0.220
+3        HIGH    HIGH     LOW      TRUE  0.010
+4        HIGH    HIGH  NORMAL     FALSE  0.220
+5        HIGH    HIGH  NORMAL      TRUE  0.010
+6        HIGH     LOW    HIGH     FALSE  0.220
+7        HIGH     LOW    HIGH      TRUE  0.010
+8        HIGH     LOW     LOW     FALSE  0.220
+9        HIGH     LOW     LOW      TRUE  0.010
+10       HIGH     LOW  NORMAL     FALSE  0.220
+11       HIGH     LOW  NORMAL      TRUE  0.010
+12       HIGH  NORMAL    HIGH     FALSE  0.220
+13       HIGH  NORMAL    HIGH      TRUE  0.010
+14       HIGH  NORMAL     LOW     FALSE  0.220
+15       HIGH  NORMAL     LOW      TRUE  0.010
+16       HIGH  NORMAL  NORMAL     FALSE  0.220
+17       HIGH  NORMAL  NORMAL      TRUE  0.010
+18        LOW    HIGH    HIGH     FALSE  0.042
+19        LOW    HIGH    HIGH      TRUE  0.974
+20        LOW    HIGH     LOW     FALSE  0.042
+21        LOW    HIGH     LOW      TRUE  0.974
+22        LOW    HIGH  NORMAL     FALSE  0.042
+23        LOW    HIGH  NORMAL      TRUE  0.974
+24        LOW     LOW    HIGH     FALSE  0.042
+25        LOW     LOW    HIGH      TRUE  0.974
+26        LOW     LOW     LOW     FALSE  0.042
+27        LOW     LOW     LOW      TRUE  0.974
+28        LOW     LOW  NORMAL     FALSE  0.042
+29        LOW     LOW  NORMAL      TRUE  0.974
+30        LOW  NORMAL    HIGH     FALSE  0.042
+31        LOW  NORMAL    HIGH      TRUE  0.974
+32        LOW  NORMAL     LOW     FALSE  0.042
+33        LOW  NORMAL     LOW      TRUE  0.974
+34        LOW  NORMAL  NORMAL     FALSE  0.042
+35        LOW  NORMAL  NORMAL      TRUE  0.974
+36     NORMAL    HIGH    HIGH     FALSE  0.738
+37     NORMAL    HIGH    HIGH      TRUE  0.016
+38     NORMAL    HIGH     LOW     FALSE  0.738
+39     NORMAL    HIGH     LOW      TRUE  0.016
+40     NORMAL    HIGH  NORMAL     FALSE  0.738
+41     NORMAL    HIGH  NORMAL      TRUE  0.016
+42     NORMAL     LOW    HIGH     FALSE  0.738
+43     NORMAL     LOW    HIGH      TRUE  0.016
+44     NORMAL     LOW     LOW     FALSE  0.738
+45     NORMAL     LOW     LOW      TRUE  0.016
+46     NORMAL     LOW  NORMAL     FALSE  0.738
+47     NORMAL     LOW  NORMAL      TRUE  0.016
+48     NORMAL  NORMAL    HIGH     FALSE  0.738
+49     NORMAL  NORMAL    HIGH      TRUE  0.016
+50     NORMAL  NORMAL     LOW     FALSE  0.738
+51     NORMAL  NORMAL     LOW      TRUE  0.016
+52     NORMAL  NORMAL  NORMAL     FALSE  0.738
+53     NORMAL  NORMAL  NORMAL      TRUE  0.016
+
+Variable 'HYPOVOLEMIA' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['LVEDVOLUME', 'ERRCAUTER', 'TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'LVFAILURE', 'VENTLUNG', 'HR', 'INTUBATION']f_5(LVFAILURE)f_10(ERRCAUTER)f_16(KINKEDTUBE)f_22(PULMEMBOLUS)f_24(INTUBATION)f_27(MINVOLSET)f_28(MINVOLSET)f_30(KINKEDTUBE, INTUBATION, VENTTUBE, VENTLUNG)f_31(INTUBATION, VENTLUNG, VENTALV)f_32(VENTALV, ARTCO2)f_0(LVFAILURE)f_1(LVEDVOLUME)f_2(LVEDVOLUME)f_9(ERRCAUTER, HR)f_11(ERRCAUTER, HR)f_15(ARTCO2, VENTLUNG)f_17(INTUBATION, VENTLUNG)f_21(PULMEMBOLUS)f_25(INTUBATION, VENTTUBE, KINKEDTUBE)f_38(HR)f_40(TPR)f_45(VENTTUBE)f_46(INTUBATION, TPR, VENTALV, ARTCO2, HR, PULMEMBOLUS)f_49(LVEDVOLUME, TPR, HR, LVFAILURE)
+
+Variable 'LVEDVOLUME' is being eliminated.
+
+f_1(LVEDVOLUME)f_2(LVEDVOLUME)f_49(LVEDVOLUME, TPR, HR, LVFAILURE) = f_51(LVEDVOLUME, TPR, HR, LVFAILURE) = 
+   LVEDVOLUME     TPR      HR LVFAILURE   prob
+0        HIGH    HIGH    HIGH     FALSE  0.220
+1        HIGH    HIGH    HIGH      TRUE  0.010
+2        HIGH    HIGH     LOW     FALSE  0.220
+3        HIGH    HIGH     LOW      TRUE  0.010
+4        HIGH    HIGH  NORMAL     FALSE  0.220
+5        HIGH    HIGH  NORMAL      TRUE  0.010
+6        HIGH     LOW    HIGH     FALSE  0.220
+7        HIGH     LOW    HIGH      TRUE  0.010
+8        HIGH     LOW     LOW     FALSE  0.220
+9        HIGH     LOW     LOW      TRUE  0.010
+10       HIGH     LOW  NORMAL     FALSE  0.220
+11       HIGH     LOW  NORMAL      TRUE  0.010
+12       HIGH  NORMAL    HIGH     FALSE  0.220
+13       HIGH  NORMAL    HIGH      TRUE  0.010
+14       HIGH  NORMAL     LOW     FALSE  0.220
+15       HIGH  NORMAL     LOW      TRUE  0.010
+16       HIGH  NORMAL  NORMAL     FALSE  0.220
+17       HIGH  NORMAL  NORMAL      TRUE  0.010
+18        LOW    HIGH    HIGH     FALSE  0.042
+19        LOW    HIGH    HIGH      TRUE  0.974
+20        LOW    HIGH     LOW     FALSE  0.042
+21        LOW    HIGH     LOW      TRUE  0.974
+22        LOW    HIGH  NORMAL     FALSE  0.042
+23        LOW    HIGH  NORMAL      TRUE  0.974
+24        LOW     LOW    HIGH     FALSE  0.042
+25        LOW     LOW    HIGH      TRUE  0.974
+26        LOW     LOW     LOW     FALSE  0.042
+27        LOW     LOW     LOW      TRUE  0.974
+28        LOW     LOW  NORMAL     FALSE  0.042
+29        LOW     LOW  NORMAL      TRUE  0.974
+30        LOW  NORMAL    HIGH     FALSE  0.042
+31        LOW  NORMAL    HIGH      TRUE  0.974
+32        LOW  NORMAL     LOW     FALSE  0.042
+33        LOW  NORMAL     LOW      TRUE  0.974
+34        LOW  NORMAL  NORMAL     FALSE  0.042
+35        LOW  NORMAL  NORMAL      TRUE  0.974
+36     NORMAL    HIGH    HIGH     FALSE  0.738
+37     NORMAL    HIGH    HIGH      TRUE  0.016
+38     NORMAL    HIGH     LOW     FALSE  0.738
+39     NORMAL    HIGH     LOW      TRUE  0.016
+40     NORMAL    HIGH  NORMAL     FALSE  0.738
+41     NORMAL    HIGH  NORMAL      TRUE  0.016
+42     NORMAL     LOW    HIGH     FALSE  0.738
+43     NORMAL     LOW    HIGH      TRUE  0.016
+44     NORMAL     LOW     LOW     FALSE  0.738
+45     NORMAL     LOW     LOW      TRUE  0.016
+46     NORMAL     LOW  NORMAL     FALSE  0.738
+47     NORMAL     LOW  NORMAL      TRUE  0.016
+48     NORMAL  NORMAL    HIGH     FALSE  0.738
+49     NORMAL  NORMAL    HIGH      TRUE  0.016
+50     NORMAL  NORMAL     LOW     FALSE  0.738
+51     NORMAL  NORMAL     LOW      TRUE  0.016
+52     NORMAL  NORMAL  NORMAL     FALSE  0.738
+53     NORMAL  NORMAL  NORMAL      TRUE  0.016
+
+After summing out 'LVEDVOLUME': f_51(TPR, HR, LVFAILURE) = 
+       TPR      HR LVFAILURE  prob
+0     HIGH    HIGH     FALSE   1.0
+1     HIGH    HIGH      TRUE   1.0
+2     HIGH     LOW     FALSE   1.0
+3     HIGH     LOW      TRUE   1.0
+4     HIGH  NORMAL     FALSE   1.0
+5     HIGH  NORMAL      TRUE   1.0
+6      LOW    HIGH     FALSE   1.0
+7      LOW    HIGH      TRUE   1.0
+8      LOW     LOW     FALSE   1.0
+9      LOW     LOW      TRUE   1.0
+10     LOW  NORMAL     FALSE   1.0
+11     LOW  NORMAL      TRUE   1.0
+12  NORMAL    HIGH     FALSE   1.0
+13  NORMAL    HIGH      TRUE   1.0
+14  NORMAL     LOW     FALSE   1.0
+15  NORMAL     LOW      TRUE   1.0
+16  NORMAL  NORMAL     FALSE   1.0
+17  NORMAL  NORMAL      TRUE   1.0
+
+Variable 'LVEDVOLUME' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['ERRCAUTER', 'TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'LVFAILURE', 'VENTLUNG', 'HR', 'INTUBATION']f_5(LVFAILURE)f_10(ERRCAUTER)f_16(KINKEDTUBE)f_22(PULMEMBOLUS)f_24(INTUBATION)f_27(MINVOLSET)f_28(MINVOLSET)f_30(KINKEDTUBE, INTUBATION, VENTTUBE, VENTLUNG)f_31(INTUBATION, VENTLUNG, VENTALV)f_32(VENTALV, ARTCO2)f_0(LVFAILURE)f_9(ERRCAUTER, HR)f_11(ERRCAUTER, HR)f_15(ARTCO2, VENTLUNG)f_17(INTUBATION, VENTLUNG)f_21(PULMEMBOLUS)f_25(INTUBATION, VENTTUBE, KINKEDTUBE)f_38(HR)f_40(TPR)f_45(VENTTUBE)f_46(INTUBATION, TPR, VENTALV, ARTCO2, HR, PULMEMBOLUS)f_51(TPR, HR, LVFAILURE)
+
+Variable 'ERRCAUTER' is being eliminated.
+
+f_10(ERRCAUTER)f_9(ERRCAUTER, HR)f_11(ERRCAUTER, HR) = f_53(ERRCAUTER, HR) = 
+  ERRCAUTER      HR  prob
+0      TRUE    HIGH   0.1
+1      TRUE     LOW   0.1
+2      TRUE  NORMAL   0.1
+3     FALSE    HIGH   0.9
+4     FALSE     LOW   0.9
+5     FALSE  NORMAL   0.9
+
+After summing out 'ERRCAUTER': f_53(HR) = 
+       HR  prob
+0    HIGH   1.0
+1     LOW   1.0
+2  NORMAL   1.0
+
+Variable 'ERRCAUTER' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['TPR', 'KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'LVFAILURE', 'VENTLUNG', 'HR', 'INTUBATION']f_5(LVFAILURE)f_16(KINKEDTUBE)f_22(PULMEMBOLUS)f_24(INTUBATION)f_27(MINVOLSET)f_28(MINVOLSET)f_30(KINKEDTUBE, INTUBATION, VENTTUBE, VENTLUNG)f_31(INTUBATION, VENTLUNG, VENTALV)f_32(VENTALV, ARTCO2)f_0(LVFAILURE)f_15(ARTCO2, VENTLUNG)f_17(INTUBATION, VENTLUNG)f_21(PULMEMBOLUS)f_25(INTUBATION, VENTTUBE, KINKEDTUBE)f_38(HR)f_40(TPR)f_45(VENTTUBE)f_46(INTUBATION, TPR, VENTALV, ARTCO2, HR, PULMEMBOLUS)f_51(TPR, HR, LVFAILURE)f_53(HR)
+
+Variable 'TPR' is being eliminated.
+
+f_40(TPR)f_46(INTUBATION, TPR, VENTALV, ARTCO2, HR, PULMEMBOLUS)f_51(TPR, HR, LVFAILURE) = f_55(INTUBATION, TPR, VENTALV, ARTCO2, HR, PULMEMBOLUS, LVFAILURE) = 
+         TPR  INTUBATION VENTALV  ARTCO2      HR PULMEMBOLUS LVFAILURE      prob
+0       HIGH  ESOPHAGEAL    HIGH    HIGH    HIGH       FALSE     FALSE  0.194750
+1       HIGH  ESOPHAGEAL    HIGH    HIGH    HIGH       FALSE      TRUE  0.194750
+2       HIGH  ESOPHAGEAL    HIGH    HIGH    HIGH        TRUE     FALSE  0.225285
+3       HIGH  ESOPHAGEAL    HIGH    HIGH    HIGH        TRUE      TRUE  0.225285
+4       HIGH  ESOPHAGEAL    HIGH     LOW    HIGH       FALSE     FALSE  0.031383
+...      ...         ...     ...     ...     ...         ...       ...       ...
+1291  NORMAL    ONESIDED    ZERO     LOW  NORMAL        TRUE      TRUE  0.050433
+1292  NORMAL    ONESIDED    ZERO  NORMAL  NORMAL       FALSE     FALSE  0.050434
+1293  NORMAL    ONESIDED    ZERO  NORMAL  NORMAL       FALSE      TRUE  0.050434
+1294  NORMAL    ONESIDED    ZERO  NORMAL  NORMAL        TRUE     FALSE  0.050433
+1295  NORMAL    ONESIDED    ZERO  NORMAL  NORMAL        TRUE      TRUE  0.050433
+
+[1296 rows x 8 columns]
+
+After summing out 'TPR': f_55(INTUBATION, VENTALV, ARTCO2, HR, PULMEMBOLUS, LVFAILURE) = 
+     INTUBATION VENTALV  ARTCO2      HR PULMEMBOLUS LVFAILURE      prob
+0    ESOPHAGEAL    HIGH    HIGH    HIGH       FALSE     FALSE  0.821386
+1    ESOPHAGEAL    HIGH    HIGH    HIGH       FALSE      TRUE  0.821386
+2    ESOPHAGEAL    HIGH    HIGH    HIGH        TRUE     FALSE  0.851921
+3    ESOPHAGEAL    HIGH    HIGH    HIGH        TRUE      TRUE  0.851921
+4    ESOPHAGEAL    HIGH    HIGH     LOW       FALSE     FALSE  0.013699
+..          ...     ...     ...     ...         ...       ...       ...
+427    ONESIDED    ZERO  NORMAL     LOW        TRUE      TRUE  0.019242
+428    ONESIDED    ZERO  NORMAL  NORMAL       FALSE     FALSE  0.277170
+429    ONESIDED    ZERO  NORMAL  NORMAL       FALSE      TRUE  0.277170
+430    ONESIDED    ZERO  NORMAL  NORMAL        TRUE     FALSE  0.277146
+431    ONESIDED    ZERO  NORMAL  NORMAL        TRUE      TRUE  0.277146
+
+[432 rows x 7 columns]
+
+Variable 'TPR' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['KINKEDTUBE', 'PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'LVFAILURE', 'VENTLUNG', 'HR', 'INTUBATION']f_5(LVFAILURE)f_16(KINKEDTUBE)f_22(PULMEMBOLUS)f_24(INTUBATION)f_27(MINVOLSET)f_28(MINVOLSET)f_30(KINKEDTUBE, INTUBATION, VENTTUBE, VENTLUNG)f_31(INTUBATION, VENTLUNG, VENTALV)f_32(VENTALV, ARTCO2)f_0(LVFAILURE)f_15(ARTCO2, VENTLUNG)f_17(INTUBATION, VENTLUNG)f_21(PULMEMBOLUS)f_25(INTUBATION, VENTTUBE, KINKEDTUBE)f_38(HR)f_45(VENTTUBE)f_53(HR)f_55(INTUBATION, VENTALV, ARTCO2, HR, PULMEMBOLUS, LVFAILURE)
+
+Variable 'KINKEDTUBE' is being eliminated.
+
+f_16(KINKEDTUBE)f_30(KINKEDTUBE, INTUBATION, VENTTUBE, VENTLUNG)f_25(INTUBATION, VENTTUBE, KINKEDTUBE) = f_57(INTUBATION, KINKEDTUBE, VENTTUBE, VENTLUNG) = 
+   KINKEDTUBE VENTLUNG  INTUBATION VENTTUBE    prob
+0        TRUE     ZERO      NORMAL     ZERO  0.0388
+1        TRUE      LOW      NORMAL     ZERO  0.0004
+2        TRUE   NORMAL      NORMAL     ZERO  0.0004
+3        TRUE     HIGH      NORMAL     ZERO  0.0004
+4        TRUE     ZERO  ESOPHAGEAL     ZERO  0.0380
+..        ...      ...         ...      ...     ...
+91      FALSE     HIGH  ESOPHAGEAL     HIGH  0.0096
+92      FALSE     ZERO    ONESIDED     HIGH  0.0096
+93      FALSE      LOW    ONESIDED     HIGH  0.0096
+94      FALSE   NORMAL    ONESIDED     HIGH  0.0096
+95      FALSE     HIGH    ONESIDED     HIGH  0.9312
+
+[96 rows x 5 columns]
+
+After summing out 'KINKEDTUBE': f_57(INTUBATION, VENTTUBE, VENTLUNG) = 
+    INTUBATION VENTTUBE VENTLUNG    prob
+0   ESOPHAGEAL     HIGH     HIGH  0.0100
+1   ESOPHAGEAL     HIGH      LOW  0.0100
+2   ESOPHAGEAL     HIGH   NORMAL  0.9316
+3   ESOPHAGEAL     HIGH     ZERO  0.0484
+4   ESOPHAGEAL      LOW     HIGH  0.0100
+5   ESOPHAGEAL      LOW      LOW  0.4612
+6   ESOPHAGEAL      LOW   NORMAL  0.0100
+7   ESOPHAGEAL      LOW     ZERO  0.5188
+8   ESOPHAGEAL   NORMAL     HIGH  0.0100
+9   ESOPHAGEAL   NORMAL      LOW  0.0484
+10  ESOPHAGEAL   NORMAL   NORMAL  0.0100
+11  ESOPHAGEAL   NORMAL     ZERO  0.9316
+12  ESOPHAGEAL     ZERO     HIGH  0.0100
+13  ESOPHAGEAL     ZERO      LOW  0.0108
+14  ESOPHAGEAL     ZERO   NORMAL  0.0100
+15  ESOPHAGEAL     ZERO     ZERO  0.9692
+16      NORMAL     HIGH     HIGH  0.0100
+17      NORMAL     HIGH      LOW  0.9316
+18      NORMAL     HIGH   NORMAL  0.0100
+19      NORMAL     HIGH     ZERO  0.0484
+20      NORMAL      LOW     HIGH  0.0100
+21      NORMAL      LOW      LOW  0.0292
+22      NORMAL      LOW   NORMAL  0.0100
+23      NORMAL      LOW     ZERO  0.9508
+24      NORMAL   NORMAL     HIGH  0.9316
+25      NORMAL   NORMAL      LOW  0.0100
+26      NORMAL   NORMAL   NORMAL  0.0100
+27      NORMAL   NORMAL     ZERO  0.0484
+28      NORMAL     ZERO     HIGH  0.0100
+29      NORMAL     ZERO      LOW  0.6532
+30      NORMAL     ZERO   NORMAL  0.0100
+31      NORMAL     ZERO     ZERO  0.3268
+32    ONESIDED     HIGH     HIGH  0.9316
+33    ONESIDED     HIGH      LOW  0.0100
+34    ONESIDED     HIGH   NORMAL  0.0100
+35    ONESIDED     HIGH     ZERO  0.0484
+36    ONESIDED      LOW     HIGH  0.0100
+37    ONESIDED      LOW      LOW  0.6532
+38    ONESIDED      LOW   NORMAL  0.0100
+39    ONESIDED      LOW     ZERO  0.3268
+40    ONESIDED   NORMAL     HIGH  0.0100
+41    ONESIDED   NORMAL      LOW  0.0100
+42    ONESIDED   NORMAL   NORMAL  0.0484
+43    ONESIDED   NORMAL     ZERO  0.9316
+44    ONESIDED     ZERO     HIGH  0.0100
+45    ONESIDED     ZERO      LOW  0.0328
+46    ONESIDED     ZERO   NORMAL  0.0100
+47    ONESIDED     ZERO     ZERO  0.9472
+
+Variable 'KINKEDTUBE' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['PULMEMBOLUS', 'VENTTUBE', 'VENTALV', 'ARTCO2', 'LVFAILURE', 'VENTLUNG', 'HR', 'INTUBATION']f_5(LVFAILURE)f_22(PULMEMBOLUS)f_24(INTUBATION)f_27(MINVOLSET)f_28(MINVOLSET)f_31(INTUBATION, VENTLUNG, VENTALV)f_32(VENTALV, ARTCO2)f_0(LVFAILURE)f_15(ARTCO2, VENTLUNG)f_17(INTUBATION, VENTLUNG)f_21(PULMEMBOLUS)f_38(HR)f_45(VENTTUBE)f_53(HR)f_55(INTUBATION, VENTALV, ARTCO2, HR, PULMEMBOLUS, LVFAILURE)f_57(INTUBATION, VENTTUBE, VENTLUNG)
+
+Variable 'PULMEMBOLUS' is being eliminated.
+
+f_22(PULMEMBOLUS)f_21(PULMEMBOLUS)f_55(INTUBATION, VENTALV, ARTCO2, HR, PULMEMBOLUS, LVFAILURE) = f_59(INTUBATION, ARTCO2, VENTALV, HR, PULMEMBOLUS, LVFAILURE) = 
+    PULMEMBOLUS  INTUBATION VENTALV  ARTCO2      HR LVFAILURE      prob
+0          TRUE  ESOPHAGEAL    HIGH    HIGH    HIGH     FALSE  0.008519
+1          TRUE  ESOPHAGEAL    HIGH    HIGH    HIGH      TRUE  0.008519
+2          TRUE  ESOPHAGEAL    HIGH    HIGH     LOW     FALSE  0.000123
+3          TRUE  ESOPHAGEAL    HIGH    HIGH     LOW      TRUE  0.000123
+4          TRUE  ESOPHAGEAL    HIGH    HIGH  NORMAL     FALSE  0.001358
+..          ...         ...     ...     ...     ...       ...       ...
+427       FALSE    ONESIDED    ZERO  NORMAL    HIGH      TRUE  0.696551
+428       FALSE    ONESIDED    ZERO  NORMAL     LOW     FALSE  0.019051
+429       FALSE    ONESIDED    ZERO  NORMAL     LOW      TRUE  0.019051
+430       FALSE    ONESIDED    ZERO  NORMAL  NORMAL     FALSE  0.274398
+431       FALSE    ONESIDED    ZERO  NORMAL  NORMAL      TRUE  0.274398
+
+[432 rows x 7 columns]
+
+After summing out 'PULMEMBOLUS': f_59(INTUBATION, ARTCO2, VENTALV, HR, LVFAILURE) = 
+     INTUBATION  ARTCO2 VENTALV      HR LVFAILURE      prob
+0    ESOPHAGEAL    HIGH    HIGH    HIGH     FALSE  0.821691
+1    ESOPHAGEAL    HIGH    HIGH    HIGH      TRUE  0.821691
+2    ESOPHAGEAL    HIGH    HIGH     LOW     FALSE  0.013685
+3    ESOPHAGEAL    HIGH    HIGH     LOW      TRUE  0.013685
+4    ESOPHAGEAL    HIGH    HIGH  NORMAL     FALSE  0.164624
+..          ...     ...     ...     ...       ...       ...
+211    ONESIDED  NORMAL    ZERO    HIGH      TRUE  0.703587
+212    ONESIDED  NORMAL    ZERO     LOW     FALSE  0.019243
+213    ONESIDED  NORMAL    ZERO     LOW      TRUE  0.019243
+214    ONESIDED  NORMAL    ZERO  NORMAL     FALSE  0.277170
+215    ONESIDED  NORMAL    ZERO  NORMAL      TRUE  0.277170
+
+[216 rows x 6 columns]
+
+Variable 'PULMEMBOLUS' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['VENTTUBE', 'VENTALV', 'ARTCO2', 'LVFAILURE', 'VENTLUNG', 'HR', 'INTUBATION']f_5(LVFAILURE)f_24(INTUBATION)f_27(MINVOLSET)f_28(MINVOLSET)f_31(INTUBATION, VENTLUNG, VENTALV)f_32(VENTALV, ARTCO2)f_0(LVFAILURE)f_15(ARTCO2, VENTLUNG)f_17(INTUBATION, VENTLUNG)f_38(HR)f_45(VENTTUBE)f_53(HR)f_57(INTUBATION, VENTTUBE, VENTLUNG)f_59(INTUBATION, ARTCO2, VENTALV, HR, LVFAILURE)
+
+Variable 'VENTTUBE' is being eliminated.
+
+f_45(VENTTUBE)f_57(INTUBATION, VENTTUBE, VENTLUNG) = f_60(INTUBATION, VENTTUBE, VENTLUNG) = 
+   VENTTUBE  INTUBATION VENTLUNG      prob
+0      HIGH  ESOPHAGEAL     HIGH  0.000100
+1      HIGH  ESOPHAGEAL      LOW  0.000100
+2      HIGH  ESOPHAGEAL   NORMAL  0.009316
+3      HIGH  ESOPHAGEAL     ZERO  0.000484
+4      HIGH      NORMAL     HIGH  0.000100
+5      HIGH      NORMAL      LOW  0.009316
+6      HIGH      NORMAL   NORMAL  0.000100
+7      HIGH      NORMAL     ZERO  0.000484
+8      HIGH    ONESIDED     HIGH  0.009316
+9      HIGH    ONESIDED      LOW  0.000100
+10     HIGH    ONESIDED   NORMAL  0.000100
+11     HIGH    ONESIDED     ZERO  0.000484
+12      LOW  ESOPHAGEAL     HIGH  0.000100
+13      LOW  ESOPHAGEAL      LOW  0.004612
+14      LOW  ESOPHAGEAL   NORMAL  0.000100
+15      LOW  ESOPHAGEAL     ZERO  0.005188
+16      LOW      NORMAL     HIGH  0.000100
+17      LOW      NORMAL      LOW  0.000292
+18      LOW      NORMAL   NORMAL  0.000100
+19      LOW      NORMAL     ZERO  0.009508
+20      LOW    ONESIDED     HIGH  0.000100
+21      LOW    ONESIDED      LOW  0.006532
+22      LOW    ONESIDED   NORMAL  0.000100
+23      LOW    ONESIDED     ZERO  0.003268
+24   NORMAL  ESOPHAGEAL     HIGH  0.000100
+25   NORMAL  ESOPHAGEAL      LOW  0.000484
+26   NORMAL  ESOPHAGEAL   NORMAL  0.000100
+27   NORMAL  ESOPHAGEAL     ZERO  0.009316
+28   NORMAL      NORMAL     HIGH  0.009316
+29   NORMAL      NORMAL      LOW  0.000100
+30   NORMAL      NORMAL   NORMAL  0.000100
+31   NORMAL      NORMAL     ZERO  0.000484
+32   NORMAL    ONESIDED     HIGH  0.000100
+33   NORMAL    ONESIDED      LOW  0.000100
+34   NORMAL    ONESIDED   NORMAL  0.000484
+35   NORMAL    ONESIDED     ZERO  0.009316
+36     ZERO  ESOPHAGEAL     HIGH  0.009700
+37     ZERO  ESOPHAGEAL      LOW  0.010476
+38     ZERO  ESOPHAGEAL   NORMAL  0.009700
+39     ZERO  ESOPHAGEAL     ZERO  0.940124
+40     ZERO      NORMAL     HIGH  0.009700
+41     ZERO      NORMAL      LOW  0.633604
+42     ZERO      NORMAL   NORMAL  0.009700
+43     ZERO      NORMAL     ZERO  0.316996
+44     ZERO    ONESIDED     HIGH  0.009700
+45     ZERO    ONESIDED      LOW  0.031816
+46     ZERO    ONESIDED   NORMAL  0.009700
+47     ZERO    ONESIDED     ZERO  0.918784
+
+After summing out 'VENTTUBE': f_60(INTUBATION, VENTLUNG) = 
+    INTUBATION VENTLUNG      prob
+0   ESOPHAGEAL     HIGH  0.010000
+1   ESOPHAGEAL      LOW  0.015672
+2   ESOPHAGEAL   NORMAL  0.019216
+3   ESOPHAGEAL     ZERO  0.955112
+4       NORMAL     HIGH  0.019216
+5       NORMAL      LOW  0.643312
+6       NORMAL   NORMAL  0.010000
+7       NORMAL     ZERO  0.327472
+8     ONESIDED     HIGH  0.019216
+9     ONESIDED      LOW  0.038548
+10    ONESIDED   NORMAL  0.010384
+11    ONESIDED     ZERO  0.931852
+
+Variable 'VENTTUBE' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['VENTALV', 'ARTCO2', 'LVFAILURE', 'VENTLUNG', 'HR', 'INTUBATION']f_5(LVFAILURE)f_24(INTUBATION)f_27(MINVOLSET)f_28(MINVOLSET)f_31(INTUBATION, VENTLUNG, VENTALV)f_32(VENTALV, ARTCO2)f_0(LVFAILURE)f_15(ARTCO2, VENTLUNG)f_17(INTUBATION, VENTLUNG)f_38(HR)f_53(HR)f_59(INTUBATION, ARTCO2, VENTALV, HR, LVFAILURE)f_60(INTUBATION, VENTLUNG)
+
+Variable 'VENTALV' is being eliminated.
+
+f_31(INTUBATION, VENTLUNG, VENTALV)f_32(VENTALV, ARTCO2)f_59(INTUBATION, ARTCO2, VENTALV, HR, LVFAILURE) = f_62(INTUBATION, VENTALV, VENTLUNG, ARTCO2, HR, LVFAILURE) = 
+    VENTALV INTUBATION VENTLUNG ARTCO2      HR LVFAILURE      prob
+0      ZERO     NORMAL     ZERO    LOW    HIGH     FALSE  0.006822
+1      ZERO     NORMAL     ZERO    LOW    HIGH      TRUE  0.006822
+2      ZERO     NORMAL     ZERO    LOW     LOW     FALSE  0.000187
+3      ZERO     NORMAL     ZERO    LOW     LOW      TRUE  0.000187
+4      ZERO     NORMAL     ZERO    LOW  NORMAL     FALSE  0.002691
+..      ...        ...      ...    ...     ...       ...       ...
+859    HIGH   ONESIDED     HIGH   HIGH    HIGH      TRUE  0.000085
+860    HIGH   ONESIDED     HIGH   HIGH     LOW     FALSE  0.000001
+861    HIGH   ONESIDED     HIGH   HIGH     LOW      TRUE  0.000001
+862    HIGH   ONESIDED     HIGH   HIGH  NORMAL     FALSE  0.000013
+863    HIGH   ONESIDED     HIGH   HIGH  NORMAL      TRUE  0.000013
+
+[864 rows x 7 columns]
+
+After summing out 'VENTALV': f_62(INTUBATION, VENTLUNG, ARTCO2, HR, LVFAILURE) = 
+     INTUBATION VENTLUNG  ARTCO2      HR LVFAILURE      prob
+0    ESOPHAGEAL     HIGH    HIGH    HIGH     FALSE  0.807435
+1    ESOPHAGEAL     HIGH    HIGH    HIGH      TRUE  0.807435
+2    ESOPHAGEAL     HIGH    HIGH     LOW     FALSE  0.010833
+3    ESOPHAGEAL     HIGH    HIGH     LOW      TRUE  0.010833
+4    ESOPHAGEAL     HIGH    HIGH  NORMAL     FALSE  0.114432
+..          ...      ...     ...     ...       ...       ...
+211    ONESIDED     ZERO  NORMAL    HIGH      TRUE  0.628362
+212    ONESIDED     ZERO  NORMAL     LOW     FALSE  0.017207
+213    ONESIDED     ZERO  NORMAL     LOW      TRUE  0.017207
+214    ONESIDED     ZERO  NORMAL  NORMAL     FALSE  0.247930
+215    ONESIDED     ZERO  NORMAL  NORMAL      TRUE  0.247930
+
+[216 rows x 6 columns]
+
+Variable 'VENTALV' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['ARTCO2', 'LVFAILURE', 'VENTLUNG', 'HR', 'INTUBATION']f_5(LVFAILURE)f_24(INTUBATION)f_27(MINVOLSET)f_28(MINVOLSET)f_0(LVFAILURE)f_15(ARTCO2, VENTLUNG)f_17(INTUBATION, VENTLUNG)f_38(HR)f_53(HR)f_60(INTUBATION, VENTLUNG)f_62(INTUBATION, VENTLUNG, ARTCO2, HR, LVFAILURE)
+
+Variable 'ARTCO2' is being eliminated.
+
+f_15(ARTCO2, VENTLUNG)f_62(INTUBATION, VENTLUNG, ARTCO2, HR, LVFAILURE) = f_63(INTUBATION, ARTCO2, HR, VENTLUNG, LVFAILURE) = 
+     ARTCO2 VENTLUNG  INTUBATION      HR LVFAILURE      prob
+0      HIGH     HIGH  ESOPHAGEAL    HIGH     FALSE  0.807435
+1      HIGH     HIGH  ESOPHAGEAL    HIGH      TRUE  0.807435
+2      HIGH     HIGH  ESOPHAGEAL     LOW     FALSE  0.010833
+3      HIGH     HIGH  ESOPHAGEAL     LOW      TRUE  0.010833
+4      HIGH     HIGH  ESOPHAGEAL  NORMAL     FALSE  0.114432
+..      ...      ...         ...     ...       ...       ...
+211  NORMAL     ZERO    ONESIDED    HIGH      TRUE  0.628362
+212  NORMAL     ZERO    ONESIDED     LOW     FALSE  0.017207
+213  NORMAL     ZERO    ONESIDED     LOW      TRUE  0.017207
+214  NORMAL     ZERO    ONESIDED  NORMAL     FALSE  0.247930
+215  NORMAL     ZERO    ONESIDED  NORMAL      TRUE  0.247930
+
+[216 rows x 6 columns]
+
+After summing out 'ARTCO2': f_63(INTUBATION, HR, VENTLUNG, LVFAILURE) = 
+    INTUBATION      HR VENTLUNG LVFAILURE      prob
+0   ESOPHAGEAL    HIGH     HIGH     FALSE  0.853948
+1   ESOPHAGEAL    HIGH     HIGH      TRUE  0.853948
+2   ESOPHAGEAL    HIGH      LOW     FALSE  0.860284
+3   ESOPHAGEAL    HIGH      LOW      TRUE  0.860284
+4   ESOPHAGEAL    HIGH   NORMAL     FALSE  0.643120
+..         ...     ...      ...       ...       ...
+67    ONESIDED  NORMAL      LOW      TRUE  0.127189
+68    ONESIDED  NORMAL   NORMAL     FALSE  0.126990
+69    ONESIDED  NORMAL   NORMAL      TRUE  0.126990
+70    ONESIDED  NORMAL     ZERO     FALSE  0.268465
+71    ONESIDED  NORMAL     ZERO      TRUE  0.268465
+
+[72 rows x 5 columns]
+
+Variable 'ARTCO2' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['LVFAILURE', 'VENTLUNG', 'HR', 'INTUBATION']f_5(LVFAILURE)f_24(INTUBATION)f_27(MINVOLSET)f_28(MINVOLSET)f_0(LVFAILURE)f_17(INTUBATION, VENTLUNG)f_38(HR)f_53(HR)f_60(INTUBATION, VENTLUNG)f_63(INTUBATION, HR, VENTLUNG, LVFAILURE)
+
+Variable 'LVFAILURE' is being eliminated.
+
+f_5(LVFAILURE)f_0(LVFAILURE)f_63(INTUBATION, HR, VENTLUNG, LVFAILURE) = f_65(INTUBATION, HR, VENTLUNG, LVFAILURE) = 
+   LVFAILURE  INTUBATION      HR VENTLUNG      prob
+0       TRUE  ESOPHAGEAL    HIGH     HIGH  0.042697
+1       TRUE  ESOPHAGEAL    HIGH      LOW  0.043014
+2       TRUE  ESOPHAGEAL    HIGH   NORMAL  0.032156
+3       TRUE  ESOPHAGEAL    HIGH     ZERO  0.042930
+4       TRUE  ESOPHAGEAL     LOW     HIGH  0.000608
+..       ...         ...     ...      ...       ...
+67     FALSE    ONESIDED     LOW     ZERO  0.017872
+68     FALSE    ONESIDED  NORMAL     HIGH  0.133412
+69     FALSE    ONESIDED  NORMAL      LOW  0.120830
+70     FALSE    ONESIDED  NORMAL   NORMAL  0.120640
+71     FALSE    ONESIDED  NORMAL     ZERO  0.255041
+
+[72 rows x 5 columns]
+
+After summing out 'LVFAILURE': f_65(INTUBATION, HR, VENTLUNG) = 
+    INTUBATION      HR VENTLUNG      prob
+0   ESOPHAGEAL    HIGH     HIGH  0.853948
+1   ESOPHAGEAL    HIGH      LOW  0.860284
+2   ESOPHAGEAL    HIGH   NORMAL  0.643120
+3   ESOPHAGEAL    HIGH     ZERO  0.858604
+4   ESOPHAGEAL     LOW     HIGH  0.012167
+5   ESOPHAGEAL     LOW      LOW  0.011869
+6   ESOPHAGEAL     LOW   NORMAL  0.022088
+7   ESOPHAGEAL     LOW     ZERO  0.011948
+8   ESOPHAGEAL  NORMAL     HIGH  0.133885
+9   ESOPHAGEAL  NORMAL      LOW  0.127847
+10  ESOPHAGEAL  NORMAL   NORMAL  0.334792
+11  ESOPHAGEAL  NORMAL     ZERO  0.129448
+12      NORMAL    HIGH     HIGH  0.858639
+13      NORMAL    HIGH      LOW  0.643120
+14      NORMAL    HIGH   NORMAL  0.709607
+15      NORMAL    HIGH     ZERO  0.860284
+16      NORMAL     LOW     HIGH  0.011946
+17      NORMAL     LOW      LOW  0.022088
+18      NORMAL     LOW   NORMAL  0.018960
+19      NORMAL     LOW     ZERO  0.011869
+20      NORMAL  NORMAL     HIGH  0.129415
+21      NORMAL  NORMAL      LOW  0.334792
+22      NORMAL  NORMAL   NORMAL  0.271433
+23      NORMAL  NORMAL     ZERO  0.127847
+24    ONESIDED    HIGH     HIGH  0.847076
+25    ONESIDED    HIGH      LOW  0.860974
+26    ONESIDED    HIGH   NORMAL  0.861183
+27    ONESIDED    HIGH     ZERO  0.712722
+28    ONESIDED     LOW     HIGH  0.012491
+29    ONESIDED     LOW      LOW  0.011837
+30    ONESIDED     LOW   NORMAL  0.011827
+31    ONESIDED     LOW     ZERO  0.018813
+32    ONESIDED  NORMAL     HIGH  0.140434
+33    ONESIDED  NORMAL      LOW  0.127189
+34    ONESIDED  NORMAL   NORMAL  0.126990
+35    ONESIDED  NORMAL     ZERO  0.268465
+
+Variable 'LVFAILURE' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['VENTLUNG', 'HR', 'INTUBATION']f_24(INTUBATION)f_27(MINVOLSET)f_28(MINVOLSET)f_17(INTUBATION, VENTLUNG)f_38(HR)f_53(HR)f_60(INTUBATION, VENTLUNG)f_65(INTUBATION, HR, VENTLUNG)
+
+Variable 'VENTLUNG' is being eliminated.
+
+f_17(INTUBATION, VENTLUNG)f_60(INTUBATION, VENTLUNG)f_65(INTUBATION, HR, VENTLUNG) = f_67(INTUBATION, HR, VENTLUNG) = 
+    INTUBATION VENTLUNG      HR      prob
+0   ESOPHAGEAL     HIGH    HIGH  0.008539
+1   ESOPHAGEAL     HIGH     LOW  0.000122
+2   ESOPHAGEAL     HIGH  NORMAL  0.001339
+3   ESOPHAGEAL      LOW    HIGH  0.013482
+4   ESOPHAGEAL      LOW     LOW  0.000186
+5   ESOPHAGEAL      LOW  NORMAL  0.002004
+6   ESOPHAGEAL   NORMAL    HIGH  0.012358
+7   ESOPHAGEAL   NORMAL     LOW  0.000424
+8   ESOPHAGEAL   NORMAL  NORMAL  0.006433
+9   ESOPHAGEAL     ZERO    HIGH  0.820063
+10  ESOPHAGEAL     ZERO     LOW  0.011412
+11  ESOPHAGEAL     ZERO  NORMAL  0.123638
+12      NORMAL     HIGH    HIGH  0.016500
+13      NORMAL     HIGH     LOW  0.000230
+14      NORMAL     HIGH  NORMAL  0.002487
+15      NORMAL      LOW    HIGH  0.413727
+16      NORMAL      LOW     LOW  0.014210
+17      NORMAL      LOW  NORMAL  0.215376
+18      NORMAL   NORMAL    HIGH  0.007096
+19      NORMAL   NORMAL     LOW  0.000190
+20      NORMAL   NORMAL  NORMAL  0.002714
+21      NORMAL     ZERO    HIGH  0.281719
+22      NORMAL     ZERO     LOW  0.003887
+23      NORMAL     ZERO  NORMAL  0.041866
+24    ONESIDED     HIGH    HIGH  0.016277
+25    ONESIDED     HIGH     LOW  0.000240
+26    ONESIDED     HIGH  NORMAL  0.002699
+27    ONESIDED      LOW    HIGH  0.033189
+28    ONESIDED      LOW     LOW  0.000456
+29    ONESIDED      LOW  NORMAL  0.004903
+30    ONESIDED   NORMAL    HIGH  0.008943
+31    ONESIDED   NORMAL     LOW  0.000123
+32    ONESIDED   NORMAL  NORMAL  0.001319
+33    ONESIDED     ZERO    HIGH  0.664152
+34    ONESIDED     ZERO     LOW  0.017531
+35    ONESIDED     ZERO  NORMAL  0.250169
+
+After summing out 'VENTLUNG': f_67(INTUBATION, HR) = 
+   INTUBATION      HR      prob
+0  ESOPHAGEAL    HIGH  0.854443
+1  ESOPHAGEAL     LOW  0.012144
+2  ESOPHAGEAL  NORMAL  0.133413
+3      NORMAL    HIGH  0.719041
+4      NORMAL     LOW  0.018516
+5      NORMAL  NORMAL  0.262443
+6    ONESIDED    HIGH  0.722560
+7    ONESIDED     LOW  0.018350
+8    ONESIDED  NORMAL  0.259089
+
+Variable 'VENTLUNG' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['HR', 'INTUBATION']f_24(INTUBATION)f_27(MINVOLSET)f_28(MINVOLSET)f_38(HR)f_53(HR)f_67(INTUBATION, HR)
+
+Variable 'HR' is being eliminated.
+
+f_38(HR)f_53(HR)f_67(INTUBATION, HR) = f_69(INTUBATION, HR) = 
+       HR  INTUBATION      prob
+0    HIGH  ESOPHAGEAL  0.854443
+1    HIGH      NORMAL  0.719041
+2    HIGH    ONESIDED  0.722560
+3     LOW  ESOPHAGEAL  0.012144
+4     LOW      NORMAL  0.018516
+5     LOW    ONESIDED  0.018350
+6  NORMAL  ESOPHAGEAL  0.133413
+7  NORMAL      NORMAL  0.262443
+8  NORMAL    ONESIDED  0.259089
+
+After summing out 'HR': f_69(INTUBATION) = 
+   INTUBATION  prob
+0  ESOPHAGEAL   1.0
+1      NORMAL   1.0
+2    ONESIDED   1.0
+
+Variable 'HR' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = sum_['INTUBATION']f_24(INTUBATION)f_27(MINVOLSET)f_28(MINVOLSET)f_69(INTUBATION)
+
+Variable 'INTUBATION' is being eliminated.
+
+f_24(INTUBATION)f_69(INTUBATION) = f_70(INTUBATION) = 
+   INTUBATION  prob
+0      NORMAL  0.92
+1  ESOPHAGEAL  0.03
+2    ONESIDED  0.05
+
+After summing out 'INTUBATION': f_70() = 
+   INTUBATION  prob
+0      NORMAL  0.92
+1  ESOPHAGEAL  0.03
+2    ONESIDED  0.05
+
+Variable 'INTUBATION' has been eliminated.
+
+P(MINVOLSET|VENTMACH = LOW) = f_27(MINVOLSET)f_28(MINVOLSET)
+
+f_27(MINVOLSET)f_28(MINVOLSET) = f_71(MINVOLSET) = 
+  MINVOLSET    prob
+0       LOW  0.0465
+1    NORMAL  0.0090
+2      HIGH  0.0005
+
+Now normalize the final vector.
+{'MINVOLSET':   MINVOLSET      prob
+0       LOW  0.830357
+1    NORMAL  0.160714
+2      HIGH  0.008929}

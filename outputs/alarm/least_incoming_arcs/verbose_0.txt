@@ -1,0 +1,4 @@
+{'MINVOLSET':   MINVOLSET      prob
+0       LOW  0.830357
+1    NORMAL  0.160714
+2      HIGH  0.008929}

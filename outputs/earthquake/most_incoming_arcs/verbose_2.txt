@@ -1,0 +1,139 @@
+Verbosity level: 2
+Query Variable: 'Alarm'
+Observed Variables: {'Burglary': 'True'}
+
+Elimination ordering function: most_incoming_arcs.
+Elimination variable ordering: ['Alarm', 'JohnCalls', 'MaryCalls', 'Burglary', 'Earthquake'].
+
+Identified Factors, before reducing observed variables
+f_0(Burglary) = 
+  Burglary  prob
+0     True  0.01
+1    False  0.99
+
+f_1(Earthquake) = 
+  Earthquake  prob
+0       True  0.02
+1      False  0.98
+
+f_2(Earthquake, Burglary, Alarm) = 
+   Alarm Burglary Earthquake   prob
+0   True     True       True  0.950
+1  False     True       True  0.050
+2   True    False       True  0.290
+3  False    False       True  0.710
+4   True     True      False  0.940
+5  False     True      False  0.060
+6   True    False      False  0.001
+7  False    False      False  0.999
+
+f_3(JohnCalls, Alarm) = 
+  JohnCalls  Alarm  prob
+0      True   True  0.90
+1     False   True  0.10
+2      True  False  0.05
+3     False  False  0.95
+
+f_4(MaryCalls, Alarm) = 
+  MaryCalls  Alarm  prob
+0      True   True  0.70
+1     False   True  0.30
+2      True  False  0.01
+3     False  False  0.99
+
+
+Identified Factors, after reducing observed variables
+f_1(Earthquake) = 
+  Earthquake  prob
+0       True  0.02
+1      False  0.98
+
+f_2(Earthquake, Alarm) = 
+   Alarm Earthquake  prob
+0   True       True  0.95
+1  False       True  0.05
+4   True      False  0.94
+5  False      False  0.06
+
+f_3(JohnCalls, Alarm) = 
+  JohnCalls  Alarm  prob
+0      True   True  0.90
+1     False   True  0.10
+2      True  False  0.05
+3     False  False  0.95
+
+f_4(MaryCalls, Alarm) = 
+  MaryCalls  Alarm  prob
+0      True   True  0.70
+1     False   True  0.30
+2      True  False  0.01
+3     False  False  0.99
+
+
+Elimination order:
+['JohnCalls', 'MaryCalls', 'Earthquake']
+P(Alarm|Burglary = True) = sum_['JohnCalls', 'MaryCalls', 'Earthquake']f_1(Earthquake)f_2(Earthquake, Alarm)f_3(JohnCalls, Alarm)f_4(MaryCalls, Alarm)
+
+Variable 'JohnCalls' is being eliminated.
+
+f_3(JohnCalls, Alarm) = 
+  JohnCalls  Alarm  prob
+0      True   True  0.90
+1     False   True  0.10
+2      True  False  0.05
+3     False  False  0.95
+
+After summing out 'JohnCalls': f_3(Alarm) = 
+   Alarm  prob
+0  False   1.0
+1   True   1.0
+
+Variable 'JohnCalls' has been eliminated.
+
+P(Alarm|Burglary = True) = sum_['MaryCalls', 'Earthquake']f_1(Earthquake)f_2(Earthquake, Alarm)f_4(MaryCalls, Alarm)f_3(Alarm)
+
+Variable 'MaryCalls' is being eliminated.
+
+f_4(MaryCalls, Alarm) = 
+  MaryCalls  Alarm  prob
+0      True   True  0.70
+1     False   True  0.30
+2      True  False  0.01
+3     False  False  0.99
+
+After summing out 'MaryCalls': f_4(Alarm) = 
+   Alarm  prob
+0  False   1.0
+1   True   1.0
+
+Variable 'MaryCalls' has been eliminated.
+
+P(Alarm|Burglary = True) = sum_['Earthquake']f_1(Earthquake)f_2(Earthquake, Alarm)f_3(Alarm)f_4(Alarm)
+
+Variable 'Earthquake' is being eliminated.
+
+f_1(Earthquake)f_2(Earthquake, Alarm) = f_5(Earthquake, Alarm) = 
+  Earthquake  Alarm    prob
+0       True   True  0.0190
+1       True  False  0.0010
+2      False   True  0.9212
+3      False  False  0.0588
+
+After summing out 'Earthquake': f_5(Alarm) = 
+   Alarm    prob
+0  False  0.0598
+1   True  0.9402
+
+Variable 'Earthquake' has been eliminated.
+
+P(Alarm|Burglary = True) = f_3(Alarm)f_4(Alarm)f_5(Alarm)
+
+f_3(Alarm)f_4(Alarm)f_5(Alarm) = f_7(Alarm) = 
+   Alarm    prob
+0  False  0.0598
+1   True  0.9402
+
+Now normalize the final vector.
+{'Alarm':    Alarm    prob
+0  False  0.0598
+1   True  0.9402}

@@ -1,0 +1,83 @@
+Verbosity level: 1
+Query Variable: 'Akt'
+Observed Variables: {'Mek': 'LOW', 'Plcg': 'AVG', 'Jnk': 'HIGH'}
+
+Elimination ordering function: least_outgoing_arcs.
+Elimination variable ordering: ['Akt', 'Jnk', 'P38', 'PIP2', 'Erk', 'Mek', 'PIP3', 'Raf', 'Plcg', 'PKC', 'PKA'].
+
+Identified Factors, before reducing observed variables
+f_0(PKA, Akt, Erk)
+f_1(PKA, Erk, Mek)
+f_2(PKA, Jnk, PKC)
+f_3(PKA, Raf, PKC, Mek)
+f_4(PKA, PKC, P38)
+f_5(PIP3, Plcg, PIP2)
+f_6(PIP3, Plcg)
+f_7(PKA, PKC)
+f_8(PKC)
+f_9(Plcg)
+f_10(PKA, Raf, PKC)
+
+Identified Factors, after reducing observed variables
+f_0(PKA, Akt, Erk)
+f_1(PKA, Erk)
+f_2(PKA, PKC)
+f_3(PKA, Raf, PKC)
+f_4(PKA, PKC, P38)
+f_5(PIP3, PIP2)
+f_6(PIP3)
+f_7(PKA, PKC)
+f_8(PKC)
+f_10(PKA, Raf, PKC)
+
+Elimination order:
+['P38', 'PIP2', 'Erk', 'PIP3', 'Raf', 'PKC', 'PKA']
+P(Akt|Mek = LOW, Plcg = AVG, Jnk = HIGH) = sum_['P38', 'PIP2', 'Erk', 'PIP3', 'Raf', 'PKC', 'PKA']f_0(PKA, Akt, Erk)f_1(PKA, Erk)f_2(PKA, PKC)f_3(PKA, Raf, PKC)f_4(PKA, PKC, P38)f_5(PIP3, PIP2)f_6(PIP3)f_7(PKA, PKC)f_8(PKC)f_10(PKA, Raf, PKC)
+
+Variable 'P38' is being eliminated.
+
+Variable 'P38' has been eliminated.
+
+P(Akt|Mek = LOW, Plcg = AVG, Jnk = HIGH) = sum_['PIP2', 'Erk', 'PIP3', 'Raf', 'PKC', 'PKA']f_0(PKA, Akt, Erk)f_1(PKA, Erk)f_2(PKA, PKC)f_3(PKA, Raf, PKC)f_5(PIP3, PIP2)f_6(PIP3)f_7(PKA, PKC)f_8(PKC)f_10(PKA, Raf, PKC)f_4(PKA, PKC)
+
+Variable 'PIP2' is being eliminated.
+
+Variable 'PIP2' has been eliminated.
+
+P(Akt|Mek = LOW, Plcg = AVG, Jnk = HIGH) = sum_['Erk', 'PIP3', 'Raf', 'PKC', 'PKA']f_0(PKA, Akt, Erk)f_1(PKA, Erk)f_2(PKA, PKC)f_3(PKA, Raf, PKC)f_6(PIP3)f_7(PKA, PKC)f_8(PKC)f_10(PKA, Raf, PKC)f_4(PKA, PKC)f_5(PIP3)
+
+Variable 'Erk' is being eliminated.
+
+Variable 'Erk' has been eliminated.
+
+P(Akt|Mek = LOW, Plcg = AVG, Jnk = HIGH) = sum_['PIP3', 'Raf', 'PKC', 'PKA']f_2(PKA, PKC)f_3(PKA, Raf, PKC)f_6(PIP3)f_7(PKA, PKC)f_8(PKC)f_10(PKA, Raf, PKC)f_4(PKA, PKC)f_5(PIP3)f_11(Akt, PKA)
+
+Variable 'PIP3' is being eliminated.
+
+Variable 'PIP3' has been eliminated.
+
+P(Akt|Mek = LOW, Plcg = AVG, Jnk = HIGH) = sum_['Raf', 'PKC', 'PKA']f_2(PKA, PKC)f_3(PKA, Raf, PKC)f_7(PKA, PKC)f_8(PKC)f_10(PKA, Raf, PKC)f_4(PKA, PKC)f_11(Akt, PKA)
+
+Variable 'Raf' is being eliminated.
+
+Variable 'Raf' has been eliminated.
+
+P(Akt|Mek = LOW, Plcg = AVG, Jnk = HIGH) = sum_['PKC', 'PKA']f_2(PKA, PKC)f_7(PKA, PKC)f_8(PKC)f_4(PKA, PKC)f_11(Akt, PKA)f_13(PKA, PKC)
+
+Variable 'PKC' is being eliminated.
+
+Variable 'PKC' has been eliminated.
+
+P(Akt|Mek = LOW, Plcg = AVG, Jnk = HIGH) = sum_['PKA']f_11(Akt, PKA)f_17(PKA)
+
+Variable 'PKA' is being eliminated.
+
+Variable 'PKA' has been eliminated.
+
+P(Akt|Mek = LOW, Plcg = AVG, Jnk = HIGH) = f_18(Akt)
+
+Now normalize the final vector.
+{'Akt':     Akt      prob
+0   AVG  0.369440
+1  HIGH  0.009173
+2   LOW  0.621387}
