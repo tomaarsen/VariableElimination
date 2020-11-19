@@ -182,8 +182,6 @@ class VariableElimination():
     def __init__(self, network, verbose: int = 0):
         """
         Initialize the variable elimination algorithm with the specified network.
-        Add more initializations if necessary.
-
         """
         self.network = network
         """
