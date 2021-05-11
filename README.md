@@ -2,6 +2,8 @@
 This repository holds an implementation of a Variable Elimination (VE) algorithm on Bayesian Networks, including a [paper](paper.pdf) describing the algorithm, implementation, testing and more. The introduction of this paper is copied over to this README, and can be viewed below. There are two versions of the main file, `variable_elim.py` and `variable_elim_stripped.py`. The first version has more commenting and logging, while the latter is stripped down a tad.
 The VE algorithm can be executed by running `run.py`.
 
+---
+
 # Introduction
 Variable Elimination (VE) is an inference algorithm that can be applied on Bayesian Networks (BN), which efficiently sums out variables in a sensible order. It can be used to calculate probabilities of values for variables within such a Bayesian Network.
 
@@ -25,6 +27,8 @@ These functions are evaluated on computation time. How exactly these questions w
 
 ### Contributing
 I am not taking contributions for this repository, as it is designed as an archive.
+
+---
 
 ### License
 This project is licensed under the MIT License - see the LICENSE.md file for details.
